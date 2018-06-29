@@ -1,2 +1,2 @@
-# CareerDeer
-:racehorse: :dart: Track down your next job
+# CareerDeer :deer:
+:dart: Track down your next job
