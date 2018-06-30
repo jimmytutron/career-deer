@@ -6,6 +6,8 @@ import {Col, Container, Row} from '../../components/Grid';
 import {Nav} from '../../components/Nav';
 import {HomePageJumbo} from '../../components/HomePageJumbo';
 import {Card, CardBody, CardTitle, CardSubtitle, CardText} from '../../components/Card';
+import {Button} from '../../components/Button';
+import {Badge} from '../../components/Badge';
 
 
 class App extends Component {
@@ -56,7 +58,9 @@ class App extends Component {
                 <CardBody>
                   <CardTitle><h3>Title</h3></CardTitle>
                   <CardSubtitle className="text-muted bg-dark">This is a subtitle</CardSubtitle>
-                  <CardText className="text-left text-info bg-warning">Lorem Ipsum</CardText>
+                  <CardText className="text-left text-info bg-warning">Lorem Ipsum
+                    <Button color="danger" className="btn-lg float-right">HELLO</Button>
+                  </CardText>
                 </CardBody>
               </Card>
             </Col>
@@ -65,7 +69,9 @@ class App extends Component {
                 <CardBody>
                   <CardTitle><h3>Title</h3></CardTitle>
                   <CardSubtitle className="text-muted bg-light">This is a subtitle</CardSubtitle>
-                  <CardText className="text-left text-success bg-secondary">Lorem Ipsum</CardText>
+                  <CardText className="text-left text-success bg-secondary">Lorem Ipsum
+                    <Button color="info" className="btn-sm"><h3>HELLO<Badge><i class="fab fa-accessible-icon"></i></Badge></h3></Button>
+                  </CardText>
                 </CardBody>
               </Card>
             </Col>
@@ -74,7 +80,7 @@ class App extends Component {
                 <CardBody>
                   <CardTitle><h3>Title</h3></CardTitle>
                   <CardSubtitle className="text-muted bg-info">This is a subtitle</CardSubtitle>
-                  <CardText className="text-left text-info bg-danger">Lorem Ipsum</CardText>
+                  <CardText className="text-left text-info bg-danger"><h1>Lorem Ipsum<Badge color="warning"><i class="far fa-grin-tongue-wink"></i></Badge></h1></CardText>
                 </CardBody>
               </Card>
             </Col>
