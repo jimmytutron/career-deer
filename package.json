@@ -20,15 +20,23 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bcrypt-nodejs": "^0.0.3",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "cheerio": "^1.0.0-rc.2",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
     "immutable": "^3.8.2",
     "mongoose": "^5.1.6",
     "morgan": "^1.9.0",
     "morgan-body": "^2.4.0",
+<<<<<<< HEAD
     "redux-immutable": "^4.0.0"
+=======
+    "nodemailer": "^4.6.7",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0"
+>>>>>>> a9b7f05691cd8f4af94b79fb51831907ee50851f
   }
 }

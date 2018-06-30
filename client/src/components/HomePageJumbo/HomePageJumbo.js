@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {Jumbotron} from '../../components/Jumbotron';
 
 const HomePageJumbo = ({className="", children, ...props}) => (
@@ -11,6 +11,6 @@ const HomePageJumbo = ({className="", children, ...props}) => (
       <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
     </p>
   </Jumbotron>
-)
+);
 
 export {HomePageJumbo};
