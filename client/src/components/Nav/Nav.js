@@ -44,7 +44,7 @@ const Nav = ({className="", children, ...props}) => (
   </div>
 </nav>
 
-)
+);
 
 
 export {Nav};
