@@ -15,12 +15,22 @@ import App from './containers/App/App';
 // what it needs to be concerned with.
 import configureStore from './configureStore';
 
-const initialState = {};
-const store = 
+
+// We need to determine what we want the initial state of
+// the application to be.
+const initialState = {
+  app: 'I am an app!',
+  test: 'Hello world!'
+};
+
+const store = configureStore(initialState);
+const MOUNT_NODE = document.querySelector('#root');
 
 ReactDOM.render(
-
-<App />,
- document.getElementById('root')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  MOUNT_NODE
 );
+
 registerServiceWorker();
