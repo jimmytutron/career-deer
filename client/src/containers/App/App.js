@@ -8,8 +8,12 @@ import { HomePageJumbo } from '../../components/HomePageJumbo';
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from '../../components/Card';
 import { Button } from '../../components/Button';
 import { Badge } from '../../components/Badge';
+
+// Redux stuff
 import { connect } from 'react-redux';
-import { updateTest } from '../../actions/test-actions'
+import { mapActionsToProps } from '../../actions';
+// do the same thing for mapping state to props;
+// import { mapStateToProps } from '../';
 
 class App extends Component {
   // Just for intial testing purposess 
@@ -33,7 +37,7 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div className="App">
         <header className="App-header">
@@ -106,10 +110,9 @@ const mapStateToProps = state => ({
   test: state.test
 });
 
-const mapActionsToProps = {
-  onUpdateTest: updateTest
-};
+const allActions = mapActionsToProps();
 // Connect can take 3 arguments
 // 1) mapStateToProps
 // 2) mapActionsToProps 
-export default connect(mapStateToProps,mapActionsToProps)(App);
+// 3) 
+export default connect(mapStateToProps,allActions)(App);
