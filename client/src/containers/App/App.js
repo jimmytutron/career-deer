@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import API from '../../utils/API';
+import {Col, Container, Row} from '../../components/Grid';
+import {Nav} from '../../components/Nav';
+import {Jumbotron} from '../../components/Jumbotron';
 
 class App extends Component {
   // Just for intial testing purposess 
@@ -33,6 +36,11 @@ class App extends Component {
         <div>
           Heres the API call data {this.state.data}
         </div>
+        <Container>
+          <Row>
+          
+          </Row>
+        </Container>
       </div>
     );
   }
