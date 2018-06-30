@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import axios from 'axios';
+import API from '../../utils/API';
 
 class App extends Component {
+  // Just for intial testing purposess 
   state = {
     data: null
   }
 
+  // Just testing the back-end linking front
   componentDidMount() {
     this.apiCallTest();
   }
 
   // This needs to be refactored, so that the API call is in a separate file
   apiCallTest = async () => {
-    const data = await axios.get('/tests');
-    this.setState({ data: data.data })
+    const data = await API.testRoute;
+    this.setState({ data: data.data });
   };
 
   render() {
