@@ -6,7 +6,7 @@ import React from "react";
 //   </nav>
 // );
 
-const Nav = ({className, children, ...props}) => (
+const Nav = ({className="", children, ...props}) => (
 
 <nav className={`navbar navbar-expand-lg navbar-light bg-light ${className}`} {...props}>
   <a className="navbar-brand" href="#">Career Deer</a>
