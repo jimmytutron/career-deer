@@ -1,8 +1,22 @@
 // This file will configure our store setup
 
 // Maybe add in applyMiddleware later?
-import { createStore, compose } from 'redux';
-// Will use this to convert arrays into immutable lists
-// and raw objects into immutable maps.
-import { fromJS } from 'immutable';
+import { createStore, combineReducers } from 'redux';
+import appReducer from './reducers/app-reducer';
+import testReducer from './reducers/test-reducer';
 
+const allReducers = combineReducers({
+  app: appReducer,
+  test: testReducer
+});
+
+export default function configureStore(initialState = {}) {
+
+  const store = createStore(
+    allReducers,
+    initialState,
+    window.devToolsExtension &&  window.devToolsExtension()
+  );
+
+  return store;
+};
