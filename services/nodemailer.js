@@ -38,3 +38,4 @@ nodemailer.createTestAccount((err, account) => {
         // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
     });
 });
+
