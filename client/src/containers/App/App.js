@@ -4,7 +4,8 @@ import './App.css';
 import API from '../../utils/API';
 import {Col, Container, Row} from '../../components/Grid';
 import {Nav} from '../../components/Nav';
-import {Jumbotron} from '../../components/Jumbotron';
+import {HomePageJumbo} from '../../components/HomePageJumbo';
+
 
 class App extends Component {
   // Just for intial testing purposess 
@@ -36,9 +37,15 @@ class App extends Component {
         <div>
           Heres the API call data {this.state.data}
         </div>
+        <Nav/>
         <Container>
+          <HomePageJumbo className="mt-3"/>
+        </Container>
+        <Container className="mb-5">
           <Row>
-          
+            <Col size="2 lg-4" className="bg-primary py-5">Banana</Col>
+            <Col size="8 lg-4" className="bg-light py-5">Chicken</Col>
+            <Col size="2 lg-4" className="bg-danger py-5" id="test">Bacon</Col>
           </Row>
         </Container>
       </div>
