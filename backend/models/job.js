@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Note = require('./note')
 const Schema = mongoose.Schema;
 
 const jobSchema = new Schema({
@@ -20,7 +21,7 @@ const jobSchema = new Schema({
   },
   applied: {
     type: Boolean,
-    default: 1
+    default: false
   },
   progress_stage: {
     type: String,
@@ -48,10 +49,22 @@ const jobSchema = new Schema({
   },
   hide: {
     type: Boolean,
-    defaul: 0
+    default: false
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
   }
 })
 
-const Job = mongoose.model("Job", jobSchema);
+jobSchema.post('remove', function (doc) {
+  Note.remove({job: doc._id}).exec();
+})
+
+const Job = mongoose.model('Job', jobSchema);
+
+
+
 module.exports = Job;
 
