@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Nav } from "../../components/Nav";
-import Home from "../Home/Home";
-import Login from "../Login/Login";
-import NoMatch from "../NoMatch/NoMatch";
-import "./App.css";
+import API from '../../utils/API';
+import { Col, Container, Row } from '../../components/Grid';
+import { Nav } from '../../components/Nav';
+import { HomePageJumbo } from '../../components/HomePageJumbo';
+import { Card, CardBody, CardTitle, CardSubtitle, CardText } from '../../components/Card';
+import { Button } from '../../components/Button';
+import { Badge } from '../../components/Badge';
 
 // Redux stuff
 import { connect } from 'react-redux';
@@ -13,7 +13,7 @@ import { mapActionsToProps } from '../../actions';
 // do the same thing for mapping state to props;
 // import { mapStateToProps } from '../';
 
-class App extends Component {
+class NoMatch extends Component {
   // Just for intial testing purposess 
   // state = {
   //   data: null
@@ -37,16 +37,11 @@ class App extends Component {
   render() {
     // console.log(this.props)
     return (
-      <Router>
       <React.Fragment>
-      <Nav />
-      <Switch>
-        <Route exact path ="/" component={Home}/>
-        <Route exact path ="/login" component={Login}/>
-        <Route component={NoMatch}/>
-      </Switch>
-      </React.Fragment>
-      </Router>
+        <Container>
+        404
+        </Container>
+        </React.Fragment>
     );
   }
 }
@@ -62,4 +57,4 @@ const allActions = mapActionsToProps();
 // 1) mapStateToProps
 // 2) mapActionsToProps 
 // 3) 
-export default connect(mapStateToProps,allActions)(App);
+export default connect(mapStateToProps,allActions)(NoMatch);
