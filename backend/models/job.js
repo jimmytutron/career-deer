@@ -20,7 +20,7 @@ const jobSchema = new Schema({
     },
     applied: {
         type: Boolean,
-        default: 1
+        default: false
     },
     progress_stage: {
         type: String,
@@ -48,7 +48,11 @@ const jobSchema = new Schema({
     },
     hide: {
         type: Boolean,
-        defaul: 0
+        default: false
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
     }
 })
 
