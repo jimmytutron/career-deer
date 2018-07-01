@@ -58,13 +58,14 @@ const jobSchema = new Schema({
   }
 })
 
-jobSchema.post('remove', function (doc) {
-  Note.remove({job: doc._id}).exec();
-})
+// REMOVE DOES NOT TRIGGER MIDDLEWARE. WE WILL HAVE TO DO THIS CONTROLLER SIDE
+// jobSchema.post('remove', function (doc) {
+//   console.log("Post Remove Hook Hit")
+//   Note.remove({user: doc.user, job: doc._id}).exec();
+// })
 
 const Job = mongoose.model('Job', jobSchema);
 
 
 
 module.exports = Job;
-
