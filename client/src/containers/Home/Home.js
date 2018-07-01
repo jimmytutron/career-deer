@@ -21,9 +21,7 @@ class Home extends Component {
     // console.log(this.props)
     return (
       <React.Fragment>
-        <Container>
-          <HomePageJumbo className="mt-3" />
-        </Container>
+        <HomePageJumbo className="home-jumbotron"/>
         <Container className="mb-3">
           <Row>
             <Col size="2 lg-4" className="bg-primary py-5">Banana</Col>
@@ -31,43 +29,8 @@ class Home extends Component {
             <Col size="2 lg-4" className="bg-danger py-5" id="test">Bacon</Col>
           </Row>
         </Container>
-        <Container className="mb-5">
-          <Row>
-            <Col size="4">
-              <Card className="bg-success py-5">
-                <CardBody>
-                  <CardTitle><h3>Title</h3></CardTitle>
-                  <CardSubtitle className="text-muted bg-dark">This is a subtitle</CardSubtitle>
-                  <CardText className="text-left text-info bg-warning">Lorem Ipsum
-                    <Button color="danger" className="btn-lg float-right">HELLO</Button>
-                  </CardText>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col size="4">
-              <Card className="bg-warning py-5">
-                <CardBody>
-                  <CardTitle><h3>Title</h3></CardTitle>
-                  <CardSubtitle className="text-muted bg-light">This is a subtitle</CardSubtitle>
-                  <CardText className="text-left text-success bg-secondary">Lorem Ipsum
-                    <Button color="info" className="btn-sm"><h3>HELLO<Badge><i class="fab fa-accessible-icon"></i></Badge></h3></Button>
-                  </CardText>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col size="4">
-              <Card className="bg-secondary py-5">
-                <CardBody>
-                  <CardTitle><h3>Title</h3></CardTitle>
-                  <CardSubtitle className="text-muted bg-info">This is a subtitle</CardSubtitle>
-                  <CardText className="text-left text-info bg-danger"><h1>Lorem Ipsum<Badge color="warning"><i class="far fa-grin-tongue-wink"></i></Badge></h1></CardText>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
           <button onClick={() => this.onUpdateTest()}>Update Test</button>
           {this.props.test}
-        </Container>
       </React.Fragment>
     );
   }
