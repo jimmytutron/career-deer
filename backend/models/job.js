@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Note = require('./note')
 const Schema = mongoose.Schema;
 
 const jobSchema = new Schema({
@@ -52,11 +53,16 @@ const jobSchema = new Schema({
   },
   user: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
     required: true
   }
 })
 
-const Job = mongoose.model("Job", jobSchema);
+const Job = mongoose.model('Job', jobSchema);
+
+Job.post('remove', function (doc) {
+  Note.remove({job: doc._id}).exec();
+})
+
 module.exports = Job;
 
