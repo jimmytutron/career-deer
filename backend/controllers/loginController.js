@@ -1,4 +1,4 @@
-var db = require('../models');
+const db = require('../models');
 
 module.exports = {
     signUp: async (req, res) => {
