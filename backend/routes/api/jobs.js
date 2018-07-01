@@ -1,10 +1,11 @@
 const router = require('express').Router();
-const jobsController = require('../../controllers/jobsController');
+const jobsController = require('../../backend/controllers/jobsController');
 // const authJobs = require('../../services/authJobs')
 
+//TODO update with authJobs.
 // Matching with "/api/jobs/search/?"
-router.route('/search/?')
-    .get(authJobs)
+// router.route('/search/?')
+//     .get(authJobs)
     
 // Matching with "/api/jobs/saved"
 router.route('/saved')
