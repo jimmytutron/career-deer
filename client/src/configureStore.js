@@ -1,5 +1,6 @@
 
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 import createSagaMiddleware from 'redux-saga';
 
 // Reducers
@@ -8,7 +9,8 @@ import testReducer from './reducers/test-reducer';
 
 const allReducers = combineReducers({
   app: appReducer,
-  test: testReducer
+  test: testReducer,
+  form: formReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();
