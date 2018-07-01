@@ -1,7 +1,8 @@
-// This file will configure our store setup
 
-// Maybe add in applyMiddleware later?
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+
+// Reducers
 import appReducer from './reducers/app-reducer';
 import testReducer from './reducers/test-reducer';
 
@@ -10,13 +11,41 @@ const allReducers = combineReducers({
   test: testReducer
 });
 
+const sagaMiddleware = createSagaMiddleware();
+
 export default function configureStore(initialState = {}) {
+
+// Add more middlewares here as needed.
+const middlewares = [
+  sagaMiddleware
+]
+
+const enhancers = [
+  applyMiddleware(...middlewares)
+];
+
+// This is being used so I'm still allowed to apply a series of middlewares in production
+// AND have redux dev tools extensions still accessible if it is installed for development
+// https://paulkogel.gitbooks.io/redux-docs/content/docs/api/compose.html
+// Compose is really cool, and worth playing around with
+// just by itself with basic functions I think.
+const composeEnhancers =
+process.env.NODE_ENV !== 'production' &&
+typeof window === 'object' &&
+window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+    shouldHotReload: false,
+  })
+  : compose;
+
 
   const store = createStore(
     allReducers,
     initialState,
-    window.devToolsExtension &&  window.devToolsExtension()
+    composeEnhancers(...enhancers)
   );
+
+  store.runSaga = sagaMiddleware.run;
 
   return store;
 };
