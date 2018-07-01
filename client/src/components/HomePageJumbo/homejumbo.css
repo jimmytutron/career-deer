@@ -1,0 +1,25 @@
+.home-jumbotron {
+    color: #fff;
+    width: 100%;
+    background: url('http://svgur.com/i/7Ra.svg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    margin: 0px;
+}
+
+.jumbotron-content {
+    display: block;
+    position: absolute;
+    top: 80%;
+    left: 30%;
+    width: 900px;
+    height: 900px;
+    margin-top: -450px;
+    /* Half the height */
+    margin-left: -450px;
+}

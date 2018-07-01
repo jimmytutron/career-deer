@@ -1,15 +1,18 @@
 import React from "react";
+import './HomeJumbo.css';
 import {Jumbotron} from '../../components/Jumbotron';
 
 const HomePageJumbo = ({className="", children, ...props}) => (
   <Jumbotron className={className} {...props}>
-    <h1 className="display-4">Hello, world!</h1>
-    <p className="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <div className="jumbotron-content">
+    <h1 className="display-3 font-bold">Don't be a deer in headlights...</h1>
+    <p className="lead">Track down your next job with CareerDeer</p>
     <hr className="my-4"/>
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <p>pew pew pew. lorem ipsum deer bucks tracks antlers rudolph the red nose reindeer had a very shiny nose.</p>
     <p className="lead">
       <a className="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
     </p>
+  </div>
   </Jumbotron>
 );
 
