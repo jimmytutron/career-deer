@@ -8,9 +8,6 @@ module.exports = {
                 email: req.body.email,
                 password: req.body.password
             })
-                .catch((err) => {
-                    res.status(400).json(err);
-                })
             )
         } catch (err) {
             // console.log(err);
