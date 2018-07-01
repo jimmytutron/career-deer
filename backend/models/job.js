@@ -58,11 +58,13 @@ const jobSchema = new Schema({
   }
 })
 
-const Job = mongoose.model('Job', jobSchema);
-
-Job.post('remove', function (doc) {
+jobSchema.post('remove', function (doc) {
   Note.remove({job: doc._id}).exec();
 })
+
+const Job = mongoose.model('Job', jobSchema);
+
+
 
 module.exports = Job;
 
