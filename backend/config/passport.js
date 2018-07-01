@@ -37,3 +37,4 @@ passport.serializeUser(db.User.serializeUser());
 passport.deserializeUser(db.User.deserializeUser());
 
 module.exports = passport;
+
