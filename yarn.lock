@@ -1383,8 +1383,8 @@ mongoose@^5.1.6:
     sliced "1.0.1"
 
 morgan-body@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/morgan-body/-/morgan-body-2.4.0.tgz#550850dd84af91a355be233e0e6afea9a0255e3c"
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/morgan-body/-/morgan-body-2.4.5.tgz#d4ce0cdc6e5ffe1f6e892898b0ca641196958c8d"
   dependencies:
     moment-timezone "^0.5.13"
     on-finished "^2.3.0"
@@ -1878,14 +1878,10 @@ readdirp@^2.0.0:
     readable-stream "^2.0.2"
     set-immediate-shim "^1.0.1"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 redux-immutable@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/redux-immutable/-/redux-immutable-4.0.0.tgz#3a1a32df66366462b63691f0e1dc35e472bbc9f3"
-=======
-=======
->>>>>>> fd4476ae20efaeb96a2cec075dab8bd855aa3c4a
+
 redux-saga@^0.16.0:
   version "0.16.0"
   resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-0.16.0.tgz#0a231db0a1489301dd980f6f2f88d8ced418f724"
@@ -1896,10 +1892,6 @@ redux@^4.0.0:
   dependencies:
     loose-envify "^1.1.0"
     symbol-observable "^1.2.0"
-<<<<<<< HEAD
->>>>>>> fd4476ae20efaeb96a2cec075dab8bd855aa3c4a
-=======
->>>>>>> fd4476ae20efaeb96a2cec075dab8bd855aa3c4a
 
 regenerator-runtime@^0.10.5:
   version "0.10.5"
