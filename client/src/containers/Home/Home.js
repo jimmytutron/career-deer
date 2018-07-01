@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Col, Container, Row } from '../../components/Grid';
-import { Nav } from '../../components/Nav';
 import { HomePageJumbo } from '../../components/HomePageJumbo';
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from '../../components/Card';
 import { Button } from '../../components/Button';
@@ -66,8 +65,10 @@ class Home extends Component {
               </Card>
             </Col>
           </Row>
+          <button onClick={() => this.onUpdateTest()}>Update Test</button>
+          {this.props.test}
         </Container>
-        </React.Fragment>
+      </React.Fragment>
     );
   }
 }
@@ -83,4 +84,4 @@ const allActions = mapActionsToProps();
 // 1) mapStateToProps
 // 2) mapActionsToProps 
 // 3) 
-export default connect(mapStateToProps,allActions)(Home);
+export default connect(mapStateToProps, allActions)(Home);
