@@ -51,10 +51,15 @@ class App extends Component {
   }
 }
 
-
+// Just to be safe, I'm mapping all actions and all props to state.
+// Not sure why. I might remove this later. The current idea is to give
+// App access to everything, and then each individual component
+// will only have the actions and states mapped to them which they should
+// be concered about.
 const mapStateToProps = state => ({
   app: state.app,
-  test: state.test
+  test: state.test,
+  form: state.form
 });
 
 const allActions = mapActionsToProps();

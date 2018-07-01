@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Container, Row } from '../../components/Grid';
 import { HomePageJumbo } from '../../components/HomePageJumbo';
-import { Card, CardBody, CardTitle, CardSubtitle, CardText } from '../../components/Card';
-import { Button } from '../../components/Button';
-import { Badge } from '../../components/Badge';
+
 
 // Redux stuff
 import { connect } from 'react-redux';
@@ -42,9 +40,21 @@ const mapStateToProps = state => ({
   test: state.test
 });
 
-const allActions = mapActionsToProps();
+// Only pull off the actions this component needs;
+// For not its just to test that a simple button is interacting with the store
+const { onUpdateTest, onUpdateApp } = mapActionsToProps();
+
+const actions = {
+  onUpdateTest,
+  onUpdateApp
+}
+
+// console.log(`Original: ${Object.values(mapActionsToProps())}`);
+// console.log(`Keys: ${Object.keys(actions)}`);
+// console.log(`Values: ${Object.values(actions)}`);
+
 // Connect can take 3 arguments
 // 1) mapStateToProps
 // 2) mapActionsToProps 
 // 3) 
-export default connect(mapStateToProps, allActions)(Home);
+export default connect(mapStateToProps, actions)(Home);
