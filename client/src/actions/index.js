@@ -6,15 +6,17 @@
 // directory
 
 // Import all actions to here
-import { updateTest } from './test-actions'
-import { updateApp } from './app-action'
-
+import { updateTest } from './test-actions';
+import { updateApp } from './app-action';
+import { login } from './login-form-action';
+ 
 
 // Returns an Object of action functions which return types and payloads
 function allActions() {
   return {
     updateTest,
-    updateApp
+    updateApp,
+    login
   };  
 }
 // create a function that takes a series of "action" functions --which themselves return objects
