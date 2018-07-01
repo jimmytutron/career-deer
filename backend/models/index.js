@@ -1,6 +1,6 @@
 module.exports = {
-    Job: require('./job'),
-    User: require('./user'),
-    Note: require('./note')
+  Job: require('./job'),
+  User: require('./user'),
+  Note: require('./note')
 };
 
