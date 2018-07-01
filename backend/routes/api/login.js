@@ -4,14 +4,14 @@ const loginController = require('../../backend/controllers/loginController');
 
 // Matching with "/api/user/login"
 router.route('/login')
-    .get(loginController.login)
-    .post(passport.authenticate("local"), loginController.loggingIn)
+  .get(loginController.login)
+  .post(passport.authenticate("local"), loginController.loggingIn)
 
 router.route('/signup')
-    .post(loginController.signUp)
+  .post(loginController.signUp)
 
 router.route('/logout')
-    .get(loginController.logout)
+  .get(loginController.logout)
 
 // router.route('/newuser')
 
