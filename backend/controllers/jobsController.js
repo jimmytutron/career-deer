@@ -52,6 +52,7 @@ module.exports = {
       res.status(422).json(err)
     }
   },
+  // Should also delete all the notes for the deleted job
   delete: async (req, res) => {
     console.log(req.user);
     try {
