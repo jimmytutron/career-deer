@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Note = require('./note')
+// const Note = require('./note')
 const Schema = mongoose.Schema;
 
 const jobSchema = new Schema({
@@ -41,7 +41,8 @@ const jobSchema = new Schema({
   },
   logo_url: {
     type: String,
-    required: false
+    required: false,
+    default: "./imgs/logo-symbol.svg"
   },
   last_update: {
     type: Date,
@@ -55,6 +56,11 @@ const jobSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true
+  },
+  note: {
+    type: Schema.Types.ObjectId,
+    ref: 'Note',
+    required: false
   }
 })
 
@@ -63,9 +69,6 @@ const jobSchema = new Schema({
 //   console.log("Post Remove Hook Hit")
 //   Note.remove({user: doc.user, job: doc._id}).exec();
 // })
-
 const Job = mongoose.model('Job', jobSchema);
-
-
 
 module.exports = Job;
