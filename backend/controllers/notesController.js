@@ -29,5 +29,29 @@ module.exports = {
       res.status(422).json(err);
     }
   },
-  // delete: 
+  update: async (req, res) => {
+    console.log(req.user);
+    try {
+      let query = {
+        _id: req.body._id,
+        user: req.user._id,
+        job: req.body.job
+      }
+      res.json(await db.Note.findOneAndUpdate(query, {$set: {...req.body}}))
+    } catch (err) {
+      res.status(422).json(err)
+    }
+  },
+  delete: async (req, res) => {
+    console.log(req.user);
+    try {
+      let query = {
+        ... req.body,
+        user: req.user._id
+      }
+      res.json(await db.Note.remove(query))
+    } catch (err) {
+      res.status(422).json(err)
+    }
+  }
 }

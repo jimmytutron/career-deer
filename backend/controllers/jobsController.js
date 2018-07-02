@@ -65,7 +65,7 @@ module.exports = {
         user: req.user,
         job: removed._id
       }
-      await db.Node.remove(query);
+      await db.Note.remove(query);
       res.json(removed)
     } catch (err) {
       res.status(422).json(err)
