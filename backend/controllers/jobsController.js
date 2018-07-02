@@ -43,7 +43,8 @@ module.exports = {
     if (req.user) {
       try {
         let query = {
-          _id: req.params.id
+          _id: req.params.id,
+          user: req.user.id
         }
         res.json(await db.Job.findOne(query).populate("note"))
       } catch (err) {
@@ -58,7 +59,8 @@ module.exports = {
     if (req.user) {
       try {
         let query = {
-          _id: req.body._id
+          _id: req.body._id,
+          user: req.user.id
         }
         res.json(await db.Job.findOneAndUpdate(query, {$set: {...req.body}}))
       } catch (err) {
@@ -74,7 +76,8 @@ module.exports = {
     if (req.user) {
       try {
         let query = {
-          _id: req.body._id
+          _id: req.body._id,
+          user: req.user.id
         }
         let removed = await db.Job.remove(query);
         query = {
