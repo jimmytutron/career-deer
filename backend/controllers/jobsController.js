@@ -7,9 +7,9 @@ module.exports = {
     console.log(req.user);
     try {
       let query = {
-        user: req.user._id
+        user: req.user.id
       }
-      res.json(await db.Job.find(query).sort({ last_update: -1 }));
+      res.json(await db.Job.find(query).populate("note").sort({ last_update: -1 }));
     } catch (err) {
       res.status(422).json(err);
     }
@@ -19,9 +19,11 @@ module.exports = {
     //is the id stored in _id or id?
     console.log(req.user);
     try {
+      newNote = await db.Note.create(newNote);
       let newJob = {
         ...req.body,
-        user: req.user._id
+        user: req.user.id,
+        note: newNote._id
       }
       res.json(await db.Job.create(newJob));
     } catch (err) {
@@ -35,7 +37,7 @@ module.exports = {
         ... req.body,
         user: req.user._id
       }
-      res.json(await db.Job.findOne(query))
+      res.json(await db.Job.findOne(query).populate("note"))
     } catch (err) {
       res.status(422).json(err)
     }
