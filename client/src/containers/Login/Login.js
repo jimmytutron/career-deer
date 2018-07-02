@@ -1,39 +1,19 @@
-import React from 'react';
-import API from '../../utils/API';
+import React, { Component } from 'react';
+import LoginForm from '../../components/LoginForm/LoginForm';
 
-
-// Redux stuff
-import { Field, reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 import { mapActionsToProps } from '../../actions';
-// do the same thing for mapping state to props;
-// import { mapStateToProps } from '../';
 
-let ContactForm = props => {
-  console.log(props);
-  const { handleSubmit } = props
-  return <form onSubmit={handleSubmit}>{/* form body*/}</form>
-};
+class ContactPage extends Component {
+  submit = values => {
+    // print the form values to the console
+    console.log(values)
+  }
+  render() {
+    return <LoginForm onSubmit={this.submit} />
+  }
+}
 
+const {  } = mapActionsToProps();
 
-ContactForm = reduxForm({
-  // a unique name for the form
-  form: 'contact'
-})(ContactForm);
-
-
-
-const mapStateToProps = state => ({
-  form: state.form
-});
-
-const { onLogin } = mapActionsToProps();
-
-const actions = {
-  onLogin
-};
-// Connect can take 3 arguments
-// 1) mapStateToProps
-// 2) mapActionsToProps 
-// 3) 
-export default connect(mapStateToProps,actions)(ContactForm);
+export default ContactPage;
