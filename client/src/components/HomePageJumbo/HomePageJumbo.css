@@ -1,24 +1,30 @@
 .home-jumbotron {
     color: #fff;
     width: 100%;
-    background: linear-gradient(45deg ,#168CF1, #be6d6d) fixed;
+    background: url(/imgs/background.png) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
     height: 100vh;
     display: flex;
+    align-items: center;
     margin: 0px;
+    overflow: hidden;
 }
 
-.jumbotron-content {
-    display: block;
-    position: absolute;
-    top: 80%;
-    left: 30%;
-    width: 1000px;
-    height: 900px;
-    margin-top: -450px;
-    /* Half the height */
-    margin-left: -450px;
+.jumbo-logo {
+    background: url(/imgs/logo-white.svg) no-repeat fixed;
+    background-position: 110% 50%;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+    height: 100vh;
+}
+
+@media (max-width: 992px) {
+    .jumbo-logo{
+        background-position: 550% 50%;
+    }
 }

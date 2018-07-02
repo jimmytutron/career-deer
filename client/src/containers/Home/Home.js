@@ -19,7 +19,7 @@ class Home extends Component {
     // console.log(this.props)
     return (
       <React.Fragment>
-        <HomePageJumbo className="home-jumbotron"/>
+        <HomePageJumbo />
         <Container className="mb-3">
           <Row>
             <Col size="2 lg-4" className="bg-primary py-5">Banana</Col>
