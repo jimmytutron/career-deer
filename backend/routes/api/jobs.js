@@ -16,6 +16,8 @@ router.route('/saved')
 // For retrieving info on 1 job, should also populate notes.
 router.route('/saved/:id')
   .get(jobsController.findOne)
+  .delete(jobsController.remove)
+  .put(jobsController.update)
 
 module.exports = router;
 
