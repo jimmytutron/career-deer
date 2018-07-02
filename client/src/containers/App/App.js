@@ -41,9 +41,9 @@ class App extends Component {
       <React.Fragment>
       <Nav />
       <Switch>
-        <Route exact path ="/" component={Home}/>
-        <Route exact path ="/login" component={Login}/>
-        <Route component={NoMatch}/>
+        <Route exact path ="/" component={Home} />
+        <Route exact path ="/login" component={Login} />
+        <Route component={NoMatch} />
       </Switch>
       </React.Fragment>
       </Router>
