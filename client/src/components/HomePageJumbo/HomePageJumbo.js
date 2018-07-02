@@ -1,5 +1,5 @@
 import React from "react";
-import './HomeJumbo.css';
+import './HomePageJumbo.css';
 import {Jumbotron} from '../../components/Jumbotron';
 
 const HomePageJumbo = ({className="", children, ...props}) => (

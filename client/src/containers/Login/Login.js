@@ -24,16 +24,13 @@ ContactForm = reduxForm({
 
 
 const mapStateToProps = state => ({
-  app: state.app,
-  test: state.test,
   form: state.form
 });
 
-const { onUpdateTest, onUpdateApp } = mapActionsToProps();
+const { onLogin } = mapActionsToProps();
 
 const actions = {
-  onUpdateTest,
-  onUpdateApp 
+  onLogin
 };
 // Connect can take 3 arguments
 // 1) mapStateToProps
