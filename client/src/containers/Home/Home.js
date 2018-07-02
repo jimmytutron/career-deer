@@ -27,7 +27,7 @@ class Home extends Component {
             <Col size="2 lg-4" className="bg-danger py-5" id="test">Bacon</Col>
           </Row>
         </Container>
-          <button onClick={() => this.onUpdateTest()}>Update Test</button>
+          <button className="btn btn-primary" onClick={() => this.onUpdateTest()}>Update Test</button>
           {this.props.test}
       </React.Fragment>
     );
