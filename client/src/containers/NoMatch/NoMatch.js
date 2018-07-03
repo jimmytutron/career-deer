@@ -9,9 +9,9 @@ import { Badge } from '../../components/Badge';
 
 // Redux stuff
 import { connect } from 'react-redux';
-import { mapActionsToProps } from '../../actions';
-// do the same thing for mapping state to props;
-// import { mapStateToProps } from '../';
+import {bindActionCreators } from 'redux';
+import { updateApp } from '../../actions/app-action';
+import { updateTest } from '../../actions/test-actions';
 
 class NoMatch extends Component {
   // Just for intial testing purposess 
@@ -52,9 +52,15 @@ const mapStateToProps = state => ({
   test: state.test
 });
 
-const allActions = mapActionsToProps();
+const mapActionsToProps = (dispatch, props) => {
+  return bindActionCreators({
+    onUpdateTest: updateTest,
+    onUpdateApp: updateApp
+  }, dispatch)
+};
+
 // Connect can take 3 arguments
 // 1) mapStateToProps
 // 2) mapActionsToProps 
 // 3) 
-export default connect(mapStateToProps,allActions)(NoMatch);
+export default connect(mapStateToProps,mapActionsToProps)(NoMatch);

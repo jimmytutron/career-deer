@@ -1,7 +1,7 @@
 
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { reducer as formReducer } from 'redux-form';
-import createSagaMiddleware from 'redux-saga';
+import thunk from 'redux-thunk';
 
 // Reducers
 import appReducer from './reducers/app-reducer';
@@ -13,13 +13,11 @@ const allReducers = combineReducers({
   form: formReducer
 });
 
-const sagaMiddleware = createSagaMiddleware();
-
 export default function configureStore(initialState = {}) {
 
 // Add more middlewares here as needed.
 const middlewares = [
-  sagaMiddleware
+  thunk
 ]
 
 const enhancers = [
@@ -46,8 +44,6 @@ window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
     initialState,
     composeEnhancers(...enhancers)
   );
-
-  store.runSaga = sagaMiddleware.run;
 
   return store;
 };

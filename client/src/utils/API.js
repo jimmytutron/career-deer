@@ -1,8 +1,10 @@
 
 const axios = require('axios');
 
-export default {
-  testRoute: function() {
-    return axios.get('/tests');
-  }
-};
+export function signIn(data) {
+  return axios.post('/login', data);
+}
+
+export function anotherAPICall(doSomething) {
+  return axios.get('/something',doSomething);
+}
