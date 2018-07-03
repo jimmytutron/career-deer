@@ -9,9 +9,9 @@ import "./App.css";
 
 // Redux stuff
 import { connect } from 'react-redux';
-import { mapActionsToProps } from '../../actions';
-// do the same thing for mapping state to props;
-// import { mapStateToProps } from '../';
+import { bindActionCreators } from 'redux';
+import { updateApp } from '../../actions/app-action';
+import { updateTest } from '../../actions/test-actions';
 
 class App extends Component {
   // Just for intial testing purposess 
@@ -23,16 +23,6 @@ class App extends Component {
   // componentDidMount() {
   //   this.apiCallTest();
   // }
-
-  // This needs to be refactored, so that the API call is in a separate file
-  // apiCallTest = async () => {
-  //   const data = await API.testRoute;
-  //   this.setState({ data: data.data });
-  // };
-
-  onUpdateTest = () => {
-    this.props.onUpdateTest('Test results!');
-  }
 
   render() {
     // console.log(this.props)
@@ -62,9 +52,14 @@ const mapStateToProps = state => ({
   form: state.form
 });
 
-const allActions = mapActionsToProps();
+const mapActionsToProps = (dispatch, props) => {
+  return bindActionCreators({
+    onUpdateTest: updateTest,
+    onUpdateApp: updateApp
+  }, dispatch)
+};
 // Connect can take 3 arguments
 // 1) mapStateToProps
 // 2) mapActionsToProps 
 // 3) 
-export default connect(mapStateToProps,allActions)(App);
+export default connect(mapStateToProps,mapActionsToProps)(App);
