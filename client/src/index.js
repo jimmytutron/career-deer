@@ -20,8 +20,7 @@ import configureStore from './configureStore';
 // the application to be.
 const initialState = {
   app: 'I am an app!',
-  test: 'Hello world!',
-  form: {}
+  test: 'Hello world!'
 };
 
 const store = configureStore(initialState);

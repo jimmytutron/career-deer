@@ -1,19 +1,34 @@
 import React, { Component } from 'react';
 import LoginForm from '../../components/LoginForm/LoginForm';
-
 import { connect } from 'react-redux';
-import { mapActionsToProps } from '../../actions';
+import { bindActionCreators } from 'redux';
+import { login } from './actions';
 
 class ContactPage extends Component {
+
   submit = values => {
-    // print the form values to the console
-    console.log(values)
+    this.props.login(values);
   }
+
   render() {
     return <LoginForm onSubmit={this.submit} />
   }
+
 }
 
-const {  } = mapActionsToProps();
+const mapStateToProps = (state, props) => {
+  return {
+    app: state.app,
+    test: state.test
+  }
+};
 
-export default ContactPage;
+const mapActionsToProps = (dispatch, props) => {
+  return bindActionCreators({
+    login
+  }, dispatch)
+}
+
+export default connect(mapStateToProps,mapActionsToProps)(ContactPage);
+// export default ContactPage;
+

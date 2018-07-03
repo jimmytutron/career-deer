@@ -5,9 +5,9 @@ import { HomePageJumbo } from '../../components/HomePageJumbo';
 
 // Redux stuff
 import { connect } from 'react-redux';
-import { mapActionsToProps } from '../../actions';
-// do the same thing for mapping state to props;
-// import { mapStateToProps } from '../';
+import { bindActionCreators } from 'redux';
+import { updateTest } from '../../actions/test-actions';
+import { updateApp } from '../../actions/app-action';
 
 class Home extends Component {
 
@@ -35,26 +35,26 @@ class Home extends Component {
 }
 
 
-const mapStateToProps = state => ({
-  app: state.app,
-  test: state.test
-});
+// If you want the component to have access to props passed from a parent
+// component, you need to pass them in to here;
+const mapStateToProps = (state, props) => {
+  return {
+    app: state.app,
+    test: state.test
+  }
+};
 
-// Only pull off the actions this component needs;
-// For not its just to test that a simple button is interacting with the store
-const { onUpdateTest, onUpdateApp } = mapActionsToProps();
-
-const actions = {
-  onUpdateTest,
-  onUpdateApp
-}
-
-// console.log(`Original: ${Object.values(mapActionsToProps())}`);
-// console.log(`Keys: ${Object.keys(actions)}`);
-// console.log(`Values: ${Object.values(actions)}`);
+const mapActionsToProps = (dispatch, props) => {
+  return bindActionCreators({
+    onUpdateTest: updateTest,
+    onUpdateApp: updateApp
+  }, dispatch)
+};
 
 // Connect can take 3 arguments
 // 1) mapStateToProps
 // 2) mapActionsToProps 
-// 3) 
-export default connect(mapStateToProps, actions)(Home);
+// 3) mergeProps
+
+// bindActionCreators()
+export default connect(mapStateToProps, mapActionsToProps)(Home);
