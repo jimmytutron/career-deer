@@ -7,8 +7,7 @@ export function login(userInfo) {
   return async (dispatch, getState) => {
     try {
       const apiResonse = await (signIn(userInfo));
-      console.log(apiResonse);
-      dispatch(signedIn(apiResonse));
+      dispatch(signedIn(apiResonse.data));
     } catch (err) {
       dispatch(failedSignIn(err));
     }
@@ -16,9 +15,10 @@ export function login(userInfo) {
 };
 
 export function signedIn(data) {
+  console.log(data,'==========MAUUAUWUWUFBWUB===========');
   return {
     type: LOGIN,
-    payLoad: {
+    payload: {
       loggedIn: true
     }
   }
@@ -28,8 +28,9 @@ export function signedIn(data) {
 export function failedSignIn(err) {
   return {
     type: FAILED_LOGIN,
-    payLoad: {
-      loggedIn: false
+    payload: {
+      loggedIn: false,
+      err: err   
     }
   }
 };

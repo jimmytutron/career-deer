@@ -25,18 +25,19 @@ module.exports = {
   },
 
   login: (req, res) => {
-    try {
-      if (req.user) {
-        // Sending user to the logged in page, and stating req.user is true.
-        // TODO: update json to logged in route.
-        res.render('loggedinpage', { loggedIn: !(!req.user) });
-      } else {
-        // Sending user to login page with logged in being false.
-        res.render('login', { loggedIn: !(!req.user) });
-      }
-    } catch (err) {
-      res.status(422).json(err);
-    }
+    // try {
+    //   if (req.user) {
+    //     // Sending user to the logged in page, and stating req.user is true.
+    //     // TODO: update json to logged in route.
+    //     res.render('loggedinpage', { loggedIn: !(!req.user) });
+    //   } else {
+    //     // Sending user to login page with logged in being false.
+    //     res.render('login', { loggedIn: !(!req.user) });
+    //   }
+    // } catch (err) {
+    //   res.status(422).json(err);
+    // }
+    res.json(req.body);
   },
 
   logout: (req, res) => {
