@@ -12,19 +12,3 @@
     margin: 0px;
     overflow: hidden;
 }
-
-.jumbo-logo {
-    background: url(/imgs/logo-white.svg) no-repeat fixed;
-    background-position: 110% 50%;
-    -webkit-background-size: contain;
-    -moz-background-size: contain;
-    -o-background-size: contain;
-    background-size: contain;
-    height: 100vh;
-}
-
-@media (max-width: 992px) {
-    .jumbo-logo{
-        background-position: 550% 50%;
-    }
-}
