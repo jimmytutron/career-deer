@@ -18,14 +18,12 @@ const Nav = ({className="", children, ...props}) => (
         <a className="nav-link" href="">Another Link</a>
       </li>
       <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+        <a className="nav-link dropdown-toggle" href="/login" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sign Up
         </a>
         <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <a className="dropdown-item" href="/login">Sign Up</a>
-          <a className="dropdown-item" href="/login">Another action</a>
-          <div className="dropdown-divider"></div>
-          <a className="dropdown-item" href="login">Something else here</a>
+          <a className="dropdown-item" href="/login">Login</a>
         </div>
       </li>
     </ul>
