@@ -3,8 +3,8 @@ const moment = require('moment');
 
 // const req = {
 //   query: {
-//     keywords: "sql python",
-//     location: "new york"
+//     keywords: "web developer",
+//     location: "san francisco"
 //   }
 // }
 
@@ -18,12 +18,12 @@ module.exports = async (req, res) => {
 
   // keywords in authJobs uses comma, and are listed as OR conditions.
   // location example sanfranciscocaus
-  const authJobs_keywords = keywords.replace(/ /g, "+");
-  const authJobs_location = location.replace(/ /g, "");
+  const authJobs_keywords = keywords.trim().replace(/ /g, ",");
+  const authJobs_location = location.trim().replace(/ /g, "+").replace(/,/g, "");
 
   //Changing keywords to an array for multiple queries on github.
-  const github_keywords = keywords.replace(/ /g, "+");
-  const github_location = location.replace(/ /g, "+");
+  const github_keywords = keywords.trim().replace(/ /g, "+");
+  const github_location = location.trim().replace(/ /g, "+");
 
   try {
 
@@ -31,6 +31,8 @@ module.exports = async (req, res) => {
     let jobData = {};
 
     const authJobs_url = `https://authenticjobs.com/api/?api_key=${AUTHJOB_API_KEY}&method=aj.jobs.search&perpage=100&format=json&keywords=${authJobs_keywords}&location=${authJobs_location}`
+
+    console.log(authJobs_url);
 
     // GET request for authenticJobs API
     const data_authJobs = await axios({
@@ -40,11 +42,12 @@ module.exports = async (req, res) => {
     })
 
     // Storing the results array from authentic jobs api.
-    const res_authJobs = data_authJobs.data.listings;
+    const res_authJobs = data_authJobs.data.listings.listing;
 
+    // console.log(res_authJobs)
     for (let h = 0; h < res_authJobs.length; h++) {
       jobData = {};
-      jobData.post_date = res_authJobs[h].post_date;
+      jobData.post_date = moment(res_authJobs[h].post_date, "YYYY-MM-DD HH:mm:ss").format("YYYY-MM-DD");
       jobData.title = res_authJobs[h].title;
       jobData.url = res_authJobs[h].url;
       jobData.company_name = res_authJobs[h].company.name;
@@ -52,7 +55,7 @@ module.exports = async (req, res) => {
       jobData.location = res_authJobs[h].company.location.name;
       jobData.description = res_authJobs[h].description;
       jobData.logo_url = res_authJobs[h].company.logo;
-
+      
       jobList.push(jobData);
     }
 
@@ -69,7 +72,8 @@ module.exports = async (req, res) => {
     // console.log(data.data);
     for (let j = 0; j < data_github.data.length; j++) {
       jobData = {};
-      jobData.post_date = data_github.data[j].created_at;
+      jobData.post_date = moment(data_github.data[j].created_at, "ddd MMM DD  HH:mm:ss zzz YYYY").format("YYYY-MM-DD");
+      // jobData.post_date = data_github.data[j].created_at;
       jobData.title = data_github.data[j].title;
       jobData.url = data_github.data[j].url;
       jobData.company_name = data_github.data[j].company;
@@ -79,10 +83,9 @@ module.exports = async (req, res) => {
       jobData.logo_url = data_github.data[j].company_logo;
 
       jobList.push(jobData);
-
     }
 
-    console.log(jobList);
+    // console.log(jobList);
 
     res.json(jobList);
     // }

@@ -5,11 +5,15 @@
 <h3 align="center">:deer: Track down your next job :dart: </h3>
 <h1 align="center">:construction: UNDER CONSTRUCTION :construction: </h1>
 
+Ever feel like a deer in the headlights when it comes to your job search? With Career Deer, we’ll turn you from the hunted into the hunter and help you track down the job of your dreams.
+
+The job hunt is a challenging and scary process. There’s a lot of names to keep track of and even more dates. We provide you with a single location to organize and schedule your progress. There's even job search functionality so you can look at job listings without leaving our site and get reminders when your interviews are coming up.
+
 ## Getting Started :evergreen_tree:
 
-You can open up the deployed link and explore the website. Enter a search query along with the time range you'd like to search for articles from. You'll get the most recent responses from the New York Times.
+Simply open up the deployed link and explore the website. You can create a new account or, if you're a returning user, you can just log in. You can use our job search function to find jobs to populate your board with or use the custom form to input a job you've discovered elsewhere. If you're interested to see how you compare to other users on our site, you can take advantage of our data visualization features.
 
-You can store interesting articles to look at later and then remove them from the saved list.
+If you want to run your own local instance, follow the installation instructions included in this document.
 
 ### Prerequisites :open_file_folder:
 You will need both `node` and `yarn` installed on your computer in order to run this app. You can find out more about `yarn` at their [official site.](https://yarnpkg.com/lang/en/docs/install/)
