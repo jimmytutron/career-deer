@@ -4,10 +4,12 @@ export const LOGIN = 'LOGIN';
 export const FAILED_LOGIN = 'FAILED_LOGIN';
 
 export function login(userInfo) {
+  // return a fn
   return async (dispatch, getState) => {
     try {
-      const apiResonse = await (signIn(userInfo));
-      dispatch(signedIn(apiResonse.data));
+      const apiResponse = await (signIn(userInfo));
+      // dispatch here
+      dispatch(signedIn(apiResponse.data));
     } catch (err) {
       dispatch(failedSignIn(err));
     }
@@ -15,7 +17,7 @@ export function login(userInfo) {
 };
 
 export function signedIn(data) {
-  console.log(data,'==========MAUUAUWUWUFBWUB===========');
+  console.log(data);
   return {
     type: LOGIN,
     payload: {
