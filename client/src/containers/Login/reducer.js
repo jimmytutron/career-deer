@@ -3,11 +3,18 @@ import { LOGIN, FAILED_LOGIN } from './actions';
 export default function loginReducer(state = '', { type, payload }) {
   switch(type) {
     case LOGIN:
-    // Use stuff here to make sure we are doing it in an immutable way
-      return payload.loggedIn;
+      return {
+        ...state,
+        ...payload,
+        status: payload.status
+      }
     case FAILED_LOGIN:
-    // Use stuff here to make sure we are doing it in an immutable way
-      return payload.loggedIn;
+      return {
+        ...state,
+        ...payload,
+        status: payload.status,
+        error: payload.err
+      }
     default:
       return state
   }

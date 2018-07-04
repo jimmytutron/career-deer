@@ -31,5 +31,3 @@ const mapActionsToProps = (dispatch, props) => {
 }
 
 export default connect(mapStateToProps,mapActionsToProps)(ContactPage);
-// export default ContactPage;
-

@@ -85,6 +85,7 @@ module.exports = {
           _id: removed.note
         }
         await db.Note.remove(query);
+        // May need to be removed.data
         res.json(removed)
       } catch (err) {
         res.status(422).json(err)
