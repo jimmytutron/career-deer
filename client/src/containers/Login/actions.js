@@ -31,7 +31,7 @@ export function failedSignIn(err) {
     type: FAILED_LOGIN,
     payload: {
       status: false,
-      err: err   
+      error: err   
     }
   }
 };
