@@ -5,6 +5,7 @@ import { Nav } from "../../components/Nav";
 import Home from "../Home/Home";
 import Login from "../Login/Login";
 import NoMatch from "../NoMatch/NoMatch";
+import SignUp from "../SignUp/SignUp"
 import "./App.css";
 
 // Redux stuff
@@ -33,6 +34,7 @@ class App extends Component {
       <Switch>
         <Route exact path ="/" component={Home} />
         <Route exact path ="/login" component={Login} />
+        <Route exact path ="/signup" component={SignUp} />
         <Route component={NoMatch} />
       </Switch>
       </React.Fragment>
