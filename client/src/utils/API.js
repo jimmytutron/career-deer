@@ -8,3 +8,4 @@ export function signIn(data) {
 export function anotherAPICall(doSomething) {
   return axios.get('/api/user/something',doSomething);
 }
+
