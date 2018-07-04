@@ -5,7 +5,8 @@ const loginController = require('../../controllers/loginController');
 // Matching with "/api/user/login"
 router.route('/login')
   .get(loginController.login)
-  .post(passport.authenticate("local"), loginController.loggingIn)
+  .post(loginController.login)
+  // .post(passport.authenticate("local"), loginController.loggingIn)
 
 router.route('/signup')
   .post(loginController.signUp)

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const jobsController = require('../../backend/controllers/jobsController');
+const jobsController = require('../../controllers/jobsController');
 // const authJobs = require('../../services/authJobs')
 
 //TODO update with authJobs.
@@ -16,7 +16,7 @@ router.route('/saved')
 // For retrieving info on 1 job, should also populate notes.
 router.route('/saved/:id')
   .get(jobsController.findOne)
-  .delete(jobsController.remove)
+  // .delete(jobsController.remove)
   .put(jobsController.update)
 
 module.exports = router;

@@ -38,14 +38,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //TODO enable once routes are fixed.
-// const routes = require('../../routes/api/index.js');
-// app.use(routes);
+const routes = require('../routes/api/index');
+app.use(routes);
 
-// Just a basic test route to hit for making sure everything was
-// linking up properly for development and production.
-app.get('/tests', (req, res) => {
-  res.json('The backend is linked!');
+
+// Send every other request to the React app
+// Define any API routes before this runs
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
-
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));

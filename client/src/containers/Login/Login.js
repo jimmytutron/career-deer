@@ -11,7 +11,7 @@ class ContactPage extends Component {
   }
 
   render() {
-    return <LoginForm onSubmit={this.submit} />
+    return  <LoginForm onSubmit={this.submit} />
   }
 
 }
@@ -19,7 +19,8 @@ class ContactPage extends Component {
 const mapStateToProps = (state, props) => {
   return {
     app: state.app,
-    test: state.test
+    test: state.test,
+    loggedIn: state.loggedIn
   }
 };
 
