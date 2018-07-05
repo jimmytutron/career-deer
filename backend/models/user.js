@@ -25,10 +25,10 @@ const userSchema = new Schema({
 
 userSchema.plugin(passportLocalMongoose);
 
-userSchema.methods.authenticate = function(password) {
-  return bcrypt.compareSync(password, this.password)
-}
+// userSchema.methods.authenticate = function(password) {
+//   return bcrypt.compareSync(password, this.password)
+// }
 
-const User = mongoose.model("email", userSchema);
+const User = mongoose.model("User", userSchema);
 module.exports = User;
 
