@@ -16,9 +16,7 @@ module.exports = async (req, res) => {
 
   try {
 
-    // Generate test SMTP service account from ethereal.email
-    // Only needed if you don't have a real mail account for testing
-    await nodemailer.createTestAccount((err, account) => {
+
       // create reusable transporter object using the default SMTP transport
       let transporter = nodemailer.createTransport({
         // host: 'smtp.ethereal.email',
@@ -28,20 +26,24 @@ module.exports = async (req, res) => {
         auth: {
           user: process.env.TRANSPORTER_USER,
           pass: process.env.TRANSPORTER_PASS
+        },
+        tls: {
+          rejectUnauthorized: false
         }
       });
 
       // setup email data with unicode symbols
       let mailOptions = {
         from: '"careerdeer 🦌" <careerdeer@gmail.com>', // sender address
-        to: `${emailTo}, careerdeer@gmail.com`, // list of receivers
+        to: `${emailTo}`, // list of receivers
+        bcc: `careerdeer@gmail.com`, // Sending hidden email to self for reference.
         subject: `${emailSubject}`, // Subject line
         text: `${emailText}`, // plain text body
         html: `${emailHtml}` // html body
       };
 
       // send mail with defined transport object
-      transporter.sendMail(mailOptions, (error, info) => {
+      await transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
           return console.log(error);
         }
@@ -52,7 +54,7 @@ module.exports = async (req, res) => {
         // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
         // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
       });
-    });
+
   } catch (err) {
     console.log(err);
   }
