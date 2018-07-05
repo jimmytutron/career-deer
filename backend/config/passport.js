@@ -8,9 +8,9 @@ passport.use(new LocalStrategy(
     //Updating username field to email rather than default "username" from LocalStrategy
     usernameField: 'email'
   },
-  (username, password, done) => {
+  (email, password, done) => {
     db.User.findOne({
-      username: username
+      email: email
     }, (err, user) => {
       if (err) {
         return done(err);
