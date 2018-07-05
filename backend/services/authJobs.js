@@ -1,5 +1,6 @@
 const axios = require('axios');
 const moment = require('moment');
+const cheerio = require('cheerio');
 
 // const req = {
 //   query: {
@@ -35,7 +36,6 @@ module.exports = async (req, res) => {
 
     const authJobs_url = `https://authenticjobs.com/api/?api_key=${AUTHJOB_API_KEY}&method=aj.jobs.search&perpage=100&format=json&keywords=${authJobs_keywords}&location=${authJobs_location}`
 
-    console.log(authJobs_url);
 
     // GET request for authenticJobs API
     const data_authJobs = await axios({
@@ -69,7 +69,7 @@ module.exports = async (req, res) => {
       url: github_url,
       responseType: 'json'
     })
-    // console.log(data.data);
+    
     for (let j = 0; j < data_github.data.length; j++) {
       const github_jobData = {};
       github_jobData.post_date = moment(data_github.data[j].created_at, "ddd MMM DD  HH:mm:ss zzz YYYY").format("YYYY-MM-DD");
@@ -87,14 +87,15 @@ module.exports = async (req, res) => {
 
 
     const findJobs_url = `https://find.jobs/search?keyword=${findJobs_keywords}&location=${findJobs_location}`
-    const data_findJobs = await axios.get({
+    
+
+    const data_findJobs = await axios({
       method: 'get',
       url: findJobs_url,
       responseType: 'json'
     })
 
-    // .then(function (response) {
-    const $ = cheerio.load(data_findJobs);
+    const $ = cheerio.load(data_findJobs.data);
     ;
     // const numbResults = $("article.advance-search-job").length;
 
