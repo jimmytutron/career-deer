@@ -1,55 +1,49 @@
 import React from 'react';
-import {Container, Col, Row} from '../../components/Grid'
-
 // Redux stuff
 import { Field, reduxForm } from 'redux-form';
+import { TextField } from 'redux-form-material-ui';
 
-let SignUpForm = ({submit}) => {
-
-  return (
-    <form onSubmit={submit}>
-      <Container>
-        <Row>
-          <Col size="12 md-6">
-            <div>
-              <label htmlFor="firstName">First Name</label>
-              <Field name="firstName" component="input" type="text" />
-            </div>
-          </Col>
-          <Col size="12 md-6">
-            <div>
-              <label htmlFor="lastName">Last Name</label>
-              <Field name="lastName" component="input" type="text" />
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="mt-3">
-            <div>
-              <label htmlFor="email">Email: &nbsp;</label>
-              <Field name="email" component="input" type="email" />
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="mt-3">
-            <div>
-              <label htmlFor="password">Password: &nbsp;</label>
-              <Field name="password" component="input" type="password" />
-            </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="text-right mt-3">
-            <button type="submit">Sign Up</button>
-          </Col>
-        </Row>
-
-      </Container>
-    </form>
+const renderTextField = ({
+  input,
+  label,
+  meta: { touched, error },
+  ...custom
+}) => (
+    <TextField
+      hintText={label}
+      floatingLabelText={label}
+      errorText={touched && error}
+      {...input}
+      {...custom}
+    />
   )
-};
 
+let SignUpForm = ({ handleSubmit, pristine, reset, submitting }) => {
+  return (
+    <form>
+      <div>
+        <Field name="first-name" component={renderTextField} type="text" label="First Name"></Field>
+      </div>
+      <div>
+        <Field name="last-name" component={renderTextField} type="text" label="Last Name"></Field>
+      </div>
+      <div>
+        <Field name="email" component={renderTextField} type="email" label="Email"></Field>
+      </div>
+      <div>
+        <Field name="password" component={renderTextField} type="password" label="Password"></Field>
+      </div>
+      <div>
+        <button type="submit" disabled={pristine || submitting}>
+          Submit
+        </button>
+        <button type="button" disabled={pristine || submitting} onClick={reset}>
+          Clear Values
+        </button>
+      </div>
+    </form>
+  );
+};
 
 SignUpForm = reduxForm({
   // a unique name for the form
