@@ -30,7 +30,7 @@ module.exports = {
   //   }
   // },
 
-  login: (req, res) => {
+  login: async (req, res) => {
     console.log("-------------Logging In-----------------")
     try {
       const user = await db.User.authenticate()(req.body.email, req.body.password)
