@@ -26,6 +26,14 @@ const initialState = {
   loggedIn: {
     status: false,
     error: null
+  },
+  signedUp: {
+    status: false,
+    error: null,
+    firstName: null,
+    lastName: null,
+    email: null,
+    password: null
   }
 };
 

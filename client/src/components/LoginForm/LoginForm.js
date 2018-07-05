@@ -23,7 +23,7 @@ let LoginForm = ({ handleSubmit, pristine, reset, submitting }) => {
     <form onSubmit={handleSubmit}>
 
       <div>
-        <Field name="email" component={renderTextField} type="Email" label="Email" />
+        <Field name="email" component={renderTextField} type="email" label="Email" />
       </div>
 
       <div>

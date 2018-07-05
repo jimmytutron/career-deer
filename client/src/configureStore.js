@@ -7,18 +7,17 @@ import thunk from 'redux-thunk';
 import appReducer from './reducers/app-reducer';
 import testReducer from './reducers/test-reducer';
 import loginReducer from './containers/Login/reducer';
-
-
+import signUpReducer from './containers/SignUp/reducer';
 
 const allReducers = combineReducers({
   app: appReducer,
   test: testReducer,
   form: formReducer,
-  loggedIn: loginReducer
+  loggedIn: loginReducer,
+  signedUp: signUpReducer
 });
 
 export default function configureStore(initialState = {}) {
-
 // Add more middlewares here as needed.
 const middlewares = [
   thunk

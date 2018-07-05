@@ -1,6 +1,6 @@
 import { signIn } from '../../utils/API';
 
-export const LOGIN = 'LOGIN';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const FAILED_LOGIN = 'FAILED_LOGIN';
 
 export function login(userInfo) {
@@ -18,13 +18,12 @@ export function login(userInfo) {
 
 export function signedIn(data) {
   return {
-    type: LOGIN,
+    type: LOGIN_SUCCESS,
     payload: {
       status: true
     }
   }
 };
-
 
 export function failedSignIn(err) {
   return {
