@@ -1,22 +1,42 @@
 import React from 'react';
 // Redux stuff
 import { Field, reduxForm } from 'redux-form';
+import { TextField } from 'redux-form-material-ui';
 
-let LoginForm = ({ handleSubmit }) => {
+const renderTextField = ({
+  input,
+  label,
+  meta: { touched, error },
+  ...custom
+}) => (
+    <TextField
+      hintText={label}
+      floatingLabelText={label}
+      errorText={touched && error}
+      {...input}
+      {...custom}
+    />
+  )
+
+let LoginForm = ({ handleSubmit, pristine, reset, submitting }) => {
   return (
     <form onSubmit={handleSubmit}>
-    
+
       <div>
-        <label htmlFor="email">Email</label>
-        <Field name="email" component="input" type="email" />
+        <Field name="email" component={renderTextField} type="Email" label="Email" />
       </div>
 
       <div>
-        <label htmlFor="password">Password</label>
-        <Field name="password" component="input" type="password" />
+        <Field name="password" component={renderTextField} type="password" label="Password" />
       </div>
-
-      <button type="submit">Submit</button>
+      <div>
+        <button type="submit" disabled={pristine || submitting}>
+          Submit
+        </button>
+        <button type="button" disabled={pristine || submitting} onClick={reset}>
+          Clear Values
+        </button>
+      </div>
     </form>
   )
 };
@@ -24,10 +44,10 @@ let LoginForm = ({ handleSubmit }) => {
 
 LoginForm = reduxForm({
   // a unique name for the form
-  form: 'contact'
+  form: 'login'
 })(LoginForm);
 
 // Inside this file, we wrapped our component inside the imported 'reduxForm' function
-// We can think of reduxForm() from redux-form behaving similar to connect() from react-redux in
+// We can think of reduxForm(), from redux-form, behaving similar to connect() from react-redux in
 // terms of connecting a component to communicate with the store 
 export default LoginForm;

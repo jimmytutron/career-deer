@@ -39,7 +39,8 @@ module.exports = {
     }
   },
   findOne: async (req, res) => {
-    console.log(req.user);
+    console.log(req.user,'Req.user');
+    console.log(req.params.id,'Req.params.id');
     if (req.user) {
       try {
         let query = {
