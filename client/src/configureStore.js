@@ -6,11 +6,15 @@ import thunk from 'redux-thunk';
 // Reducers
 import appReducer from './reducers/app-reducer';
 import testReducer from './reducers/test-reducer';
+import loginReducer from './containers/Login/reducer';
+
+
 
 const allReducers = combineReducers({
   app: appReducer,
   test: testReducer,
-  form: formReducer
+  form: formReducer,
+  loggedIn: loginReducer
 });
 
 export default function configureStore(initialState = {}) {

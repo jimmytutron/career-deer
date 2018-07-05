@@ -4,11 +4,12 @@ export const LOGIN = 'LOGIN';
 export const FAILED_LOGIN = 'FAILED_LOGIN';
 
 export function login(userInfo) {
+  // return a fn
   return async (dispatch, getState) => {
     try {
-      const apiResonse = await (signIn(userInfo));
-      console.log(apiResonse);
-      dispatch(signedIn(apiResonse));
+      const apiResponse = await (signIn(userInfo));
+      // dispatch here
+      dispatch(signedIn(apiResponse.data));
     } catch (err) {
       dispatch(failedSignIn(err));
     }
@@ -16,9 +17,10 @@ export function login(userInfo) {
 };
 
 export function signedIn(data) {
+  console.log(data);
   return {
     type: LOGIN,
-    payLoad: {
+    payload: {
       loggedIn: true
     }
   }
@@ -28,8 +30,9 @@ export function signedIn(data) {
 export function failedSignIn(err) {
   return {
     type: FAILED_LOGIN,
-    payLoad: {
-      loggedIn: false
+    payload: {
+      loggedIn: false,
+      err: err   
     }
   }
 };
