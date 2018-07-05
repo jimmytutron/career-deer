@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
-//require bcrypt for password
-var bcrypt = require("bcrypt-nodejs");
+
 
 const userSchema = new Schema({
   firstName: {
@@ -30,8 +29,6 @@ userSchema.methods.authenticate = function(password) {
   return bcrypt.compareSync(password, this.password)
 }
 
-userSchema.pre('')
-
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("email", userSchema);
 module.exports = User;
 

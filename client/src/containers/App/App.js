@@ -23,6 +23,7 @@ class App extends Component {
       <Switch>
         <Route exact path ="/" component={Home} />
         <Route exact path ="/login" component={LoginPage} />
+        <Route exact path ="/signup" component={SignUp} />
         <Route component={NoMatch} />
       </Switch>
       </React.Fragment>
