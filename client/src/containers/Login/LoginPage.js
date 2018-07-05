@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { login } from './actions';
 
-class ContactPage extends Component {
+class LoginPage extends Component {
 
   submit = values => {
     this.props.login(values);
   }
 
   render() {
-    return  <LoginForm onSubmit={this.submit} />
+    return <LoginForm onSubmit={this.submit} />
   }
 
 }
@@ -30,6 +30,4 @@ const mapActionsToProps = (dispatch, props) => {
   }, dispatch)
 }
 
-export default connect(mapStateToProps,mapActionsToProps)(ContactPage);
-// export default ContactPage;
-
+export default connect(mapStateToProps,mapActionsToProps)(LoginPage);

@@ -24,23 +24,23 @@ let SignUpForm = ({submit}) => {
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col className="mt-3">
             <div>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">Email: &nbsp;</label>
               <Field name="email" component="input" type="email" />
             </div>
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col className="mt-3">
             <div>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Password: &nbsp;</label>
               <Field name="password" component="input" type="password" />
             </div>
           </Col>
         </Row>
         <Row>
-          <Col className="text-right">
+          <Col className="text-right mt-3">
             <button type="submit">Sign Up</button>
           </Col>
         </Row>

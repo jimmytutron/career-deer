@@ -3,6 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
+// This wraps our Main app component to give access to material-ui stuff
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // This gives our app access to the store
 import { Provider } from 'react-redux';
 
@@ -21,16 +23,21 @@ import configureStore from './configureStore';
 const initialState = {
   app: 'I am an app!',
   test: 'Hello world!',
-  loggedIn: false
+  loggedIn: {
+    status: false,
+    error: null
+  }
 };
 
 const store = configureStore(initialState);
 const MOUNT_NODE = document.querySelector('#root');
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <MuiThemeProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </MuiThemeProvider>,
   MOUNT_NODE
 );
 
