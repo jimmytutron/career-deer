@@ -39,7 +39,8 @@ module.exports = {
     }
   },
   findOne: async (req, res) => {
-    console.log(req.user);
+    console.log(req.user,'Req.user');
+    console.log(req.params.id,'Req.params.id');
     if (req.user) {
       try {
         let query = {
@@ -85,6 +86,7 @@ module.exports = {
           _id: removed.note
         }
         await db.Note.remove(query);
+        // May need to be removed.data
         res.json(removed)
       } catch (err) {
         res.status(422).json(err)

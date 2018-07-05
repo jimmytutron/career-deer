@@ -17,11 +17,10 @@ export function login(userInfo) {
 };
 
 export function signedIn(data) {
-  console.log(data);
   return {
     type: LOGIN,
     payload: {
-      loggedIn: true
+      status: true
     }
   }
 };
@@ -31,8 +30,8 @@ export function failedSignIn(err) {
   return {
     type: FAILED_LOGIN,
     payload: {
-      loggedIn: false,
-      err: err   
+      status: false,
+      error: err   
     }
   }
 };

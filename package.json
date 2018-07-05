@@ -28,6 +28,7 @@
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "if-env": "^1.0.4",
+    "material-ui": "^0.20.1",
     "moment": "^2.22.2",
     "mongoose": "^5.1.6",
     "morgan": "^1.9.0",
@@ -40,6 +41,7 @@
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-form": "^7.4.2",
+    "redux-form-material-ui": "^4.3.4",
     "redux-thunk": "^2.3.0"
   }
 }
