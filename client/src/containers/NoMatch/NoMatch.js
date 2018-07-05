@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import API from '../../utils/API';
-import { Col, Container, Row } from '../../components/Grid';
-import { Nav } from '../../components/Nav';
-import { HomePageJumbo } from '../../components/HomePageJumbo';
-import { Card, CardBody, CardTitle, CardSubtitle, CardText } from '../../components/Card';
-import { Button } from '../../components/Button';
-import { Badge } from '../../components/Badge';
+// import API from '../../utils/API';
+// import { Col, Container, Row } from '../../components/Grid';
+import { Container } from '../../components/Grid';
+// import { Nav } from '../../components/Nav';
+// import { HomePageJumbo } from '../../components/HomePageJumbo';
+// import { Card, CardBody, CardTitle, CardSubtitle, CardText } from '../../components/Card';
+// import { Button } from '../../components/Button';
+// import { Badge } from '../../components/Badge';
 
 // Redux stuff
 import { connect } from 'react-redux';

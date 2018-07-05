@@ -2,6 +2,7 @@ const db = require('../models');
 
 module.exports = {
   signUp: async (req, res) => {
+    console.log("=============Signing Up===============")
     try {
       const user = new db.User({
         email: req.body.email,
@@ -10,7 +11,10 @@ module.exports = {
       });
       await user.setPassword(req.body.password);
       await user.save();
-      res.json(await db.User.authenticate()(req.body.email, req.body.password));
+      res.json({
+        email: req.body.email, 
+        password: req.body.password
+      });
     } catch (err) {
       // console.log(err);
       res.status(422).json(err);
@@ -27,13 +31,13 @@ module.exports = {
   // },
 
   login: (req, res) => {
+    console.log("-------------Logging In-----------------")
     try {
-      db.User.
-      res.json(req.body);
+      const user = await db.User.authenticate()(req.body.email, req.body.password)
+      res.json(user);
     } catch (err) {
       res.status(422).json(err);
     }
-
   },
 
   logout: (req, res) => {
