@@ -3,7 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Nav } from "../../components/Nav";
 import Home from "../Home/Home";
-import Login from "../Login/Login";
+import LoginPage from "../Login/LoginPage";
 import NoMatch from "../NoMatch/NoMatch";
 import "./App.css";
 
@@ -14,25 +14,14 @@ import { updateApp } from '../../actions/app-action';
 import { updateTest } from '../../actions/test-actions';
 
 class App extends Component {
-  // Just for intial testing purposess 
-  // state = {
-  //   data: null
-  // }
-
-  // Just testing the back-end linking front
-  // componentDidMount() {
-  //   this.apiCallTest();
-  // }
-
   render() {
-    // console.log(this.props)
     return (
       <Router>
       <React.Fragment>
       <Nav />
       <Switch>
         <Route exact path ="/" component={Home} />
-        <Route exact path ="/login" component={Login} />
+        <Route exact path ="/login" component={LoginPage} />
         <Route component={NoMatch} />
       </Switch>
       </React.Fragment>
@@ -49,9 +38,12 @@ class App extends Component {
 const mapStateToProps = state => ({
   app: state.app,
   test: state.test,
-  form: state.form
+  form: state.form,
+  loggedIn: state.loggedIn
 });
 
+
+// TODO remove these test reducers off of here, as well as the test reducer folders.
 const mapActionsToProps = (dispatch, props) => {
   return bindActionCreators({
     onUpdateTest: updateTest,
