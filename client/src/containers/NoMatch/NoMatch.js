@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { Col, Container, Row } from '../../components/Grid';
 import './NoMatch.css';
-import { Button } from '../../components/Button';
-import { Badge } from '../../components/Badge';
 
 class NoMatch extends Component {
 
   render() {
-    // console.log(this.props)
     return (
       <React.Fragment>
         <Container fluid className="nomatch-jumbotron">
@@ -25,9 +22,4 @@ class NoMatch extends Component {
   }
 }
 
-
-// Connect can take 3 arguments
-// 1) mapStateToProps
-// 2) mapActionsToProps 
-// 3) 
 export default NoMatch;
