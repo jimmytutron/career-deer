@@ -2,11 +2,6 @@ const db = require('../models');
 
 module.exports = {
   signUp: async (req, res) => {
-    console.log("=============Signing Up===============")
-    console.log("email: ", req.body.email)
-    console.log("firstName: ", req.body.firstName)
-    console.log("lastName: ", req.body.lastName)
-    console.log("password: ", req.body.password)
     try {
       const user = new db.User({
         email: req.body.email,
@@ -15,33 +10,12 @@ module.exports = {
       });
       await user.setPassword(req.body.password);
       await user.save();
-      console.log("---------------Yay!------------------")
       res.json({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         email: req.body.email, 
         password: req.body.password
       });
-    } catch (err) {
-      console.log("****************Save Error***********************")
-      res.status(422).json(err);
-    }
-  },
-
-  // loggingIn: (req, res) => {
-  //   try {
-  //     // TODO: update json to logged in route.
-  //     res.json('/loggedinpage')
-  //   } catch (err) {
-  //     res.status(422).json(err);
-  //   }
-  // },
-
-  login: async (req, res) => {
-    console.log("-------------Logging In-----------------")
-    try {
-      const user = await db.User.authenticate(req.body.password)
-      res.json(user);
     } catch (err) {
       res.status(422).json(err);
     }
