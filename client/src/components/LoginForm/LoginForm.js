@@ -1,7 +1,7 @@
 import React from 'react';
 // Redux stuff
 import { Field, reduxForm, reset } from 'redux-form';
-import { TextField } from 'redux-form-material-ui';
+import TextField from 'material-ui/TextField';
 import { googleSignIn } from '../../utils/API';
 
  
@@ -28,7 +28,7 @@ const googleAuth = () => {
 let LoginForm = ({ handleSubmit, pristine, reset, submitting }) => {
   return (
     <React.Fragment>
-      <form onSubmit={handleSubmit}>
+      <form className="text-center" onSubmit={handleSubmit}>
 
         <div>
           <Field name="email" component={renderTextField} type="email" label="Email" />
@@ -37,15 +37,16 @@ let LoginForm = ({ handleSubmit, pristine, reset, submitting }) => {
         <div>
           <Field name="password" component={renderTextField} type="password" label="Password" />
         </div>
-        <div>
-          <button type="submit" disabled={pristine || submitting}>
-            Submit
-          </button>
+        <div className="mt-3">
+          <button className="login-btn btn btn-success" type="submit" disabled={pristine || submitting}>
+            Sign In <i className="fas fa-sign-in-alt"></i>
+          </button> {" "}
+        <button className="login-btn btn btn-primary" onClick={() => {googleAuth()}}>
+        Sign In With <i className="fab fa-google"></i> 
+        </button>
         </div>
       </form>  
-      <button onClick={() => {googleAuth()}}>
-        Sign In with Google
-      </button>
+
     </React.Fragment>
   )
 };
