@@ -8,6 +8,7 @@ import { login } from './actions';
 
 class LoginPage extends Component {
   login = values => {
+    // This calls the login action creator, passing the form values to it
     this.props.login(values);
   }
   render() {
@@ -24,11 +25,12 @@ class LoginPage extends Component {
   }
 };
 
+// LoginPage needs to be aware of the signedUp state, since it will be used for
+// auto logins after signing up for an account.
 const mapStateToProps = (state, props) => {
   return {
-    app: state.app,
-    test: state.test,
-    loggedIn: state.loggedIn
+    loggedIn: state.loggedIn,
+    signedUp: state.signedUp
   }
 };
 

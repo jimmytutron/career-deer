@@ -8,9 +8,8 @@ import { signup } from './actions';
 
 class SignUp extends Component {
   signup = values => {
-    // print the user info to the console
-    console.log(this.props,'=====Props');
-    console.log(values,'=====User Values');
+    // This calls the signup action creator, passing the form values to it
+    this.props.signup(values)
   }
   render() {
     return (
@@ -27,9 +26,9 @@ class SignUp extends Component {
   }
 };
 
+// Only need SignUp to be aware of the sign up state.
 const mapStateToProps = (state,props) => {
   return { 
-    loggedIn: state.loggedIn,
     signedUp: state.signedUp
   }
 };
