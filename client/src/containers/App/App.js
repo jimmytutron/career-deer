@@ -6,6 +6,7 @@ import Home from "../Home/Home";
 import LoginPage from "../Login/LoginPage";
 import NoMatch from "../NoMatch/NoMatch";
 import SignUp from "../SignUp/SignUp";
+import AddJob from "../AddJob"
 import "./App.css";
 import Chart from '../Chart/Chart';
 
@@ -25,7 +26,11 @@ class App extends Component {
         <Route exact path ="/" component={Home} />
         <Route exact path ="/login" component={LoginPage} />
         <Route exact path ="/signup" component={SignUp} />
+<<<<<<< HEAD
         <Route exact path ="/chart" component={Chart} />
+=======
+        <Route exact path ="/addjob" component={AddJob} />
+>>>>>>> c71c602f42fd908773fa87504059163fa203399d
         <Route component={NoMatch} />
       </Switch>
       </React.Fragment>

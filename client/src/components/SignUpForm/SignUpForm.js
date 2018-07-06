@@ -1,6 +1,6 @@
 import React from 'react';
 // Redux stuff
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 
 const renderTextField = ({
@@ -37,9 +37,6 @@ let SignUpForm = ({ handleSubmit, pristine, reset, submitting }) => {
         <button type="submit" disabled={pristine || submitting}>
           Submit
         </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
-          Clear Values
-        </button>
       </div>
     </form>
   );
@@ -47,7 +44,8 @@ let SignUpForm = ({ handleSubmit, pristine, reset, submitting }) => {
 
 SignUpForm = reduxForm({
   // a unique name for the form
-  form: 'signup'
+  form: 'signup',
+  onSubmitSuccess: (result, dispatch) => dispatch(reset('signup'))
 })(SignUpForm);
 
 // Inside this file, we wrapped our component inside the imported 'reduxForm' function
