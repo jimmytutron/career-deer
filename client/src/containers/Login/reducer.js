@@ -1,8 +1,8 @@
-import { LOGIN, FAILED_LOGIN } from './actions';
+import { LOGIN_SUCCESS, FAILED_LOGIN } from './actions';
 
 export default function loginReducer(state = '', { type, payload }) {
   switch(type) {
-    case LOGIN:
+    case LOGIN_SUCCESS:
       return {
         ...state,
         ...payload
