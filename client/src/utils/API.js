@@ -9,6 +9,7 @@ export function signIn(data) {
 export function signUp(data) {
   return axios.post('/api/user/signup', data);
 };
+
 // ======================================================
 
 // TESTING OAuth Logins
