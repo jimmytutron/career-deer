@@ -25,8 +25,7 @@ class LoginPage extends Component {
   }
 };
 
-// LoginPage needs to be aware of the signedUp state, since it will be used for
-// auto logins after signing up for an account.
+// LoginPage needs to be aware of the signedUp state
 const mapStateToProps = (state, props) => {
   return {
     loggedIn: state.loggedIn,
