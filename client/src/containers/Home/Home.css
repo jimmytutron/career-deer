@@ -2,7 +2,42 @@
 	/*background-color: #b8bde7;*/
 }
 
-.target {
+.svg-icon {
 	width: 40%;
 	display:block;
+}
+
+.svg-icon-chart {
+	width: 200px;
+}
+
+.centered {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.description  {
+	width: calc(100% - 200px);
+	padding: 30px;
+}
+
+.welcome-msg {
+	margin-bottom: 100px;
+}
+
+.montserrat {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.roboto {
+	font-family: 'Roboto', sans-serif;
+}
+
+.section-2 {
+	background-color: #ededed;
+}
+
+.section-3 {
+	margin-top: 50px;
 }
