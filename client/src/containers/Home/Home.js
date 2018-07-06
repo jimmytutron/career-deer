@@ -38,7 +38,7 @@ class Home extends Component {
           <Row className="justify-content-center mb-3">
             <Col size="12 md-4 lg-3">
             <Rotate duration={1500}>
-            <img className="target mx-auto my-3" src="/imgs/icons/circular-target.svg"/>
+            <img className="target mx-auto my-3" src="/imgs/icons/circular-target.svg" alt="circular target"/>
             </Rotate>
             <h1 className="display-6 text-center">Hunt down the job</h1>
             <p className="px-5">
@@ -47,7 +47,7 @@ class Home extends Component {
             </Col>
             <Col size="12 md-4 lg-3">
             <Zoom duration={1500}>
-            <img className="target mx-auto my-3" src="/imgs/icons/check-box.svg"/>
+            <img className="target mx-auto my-3" src="/imgs/icons/check-box.svg" alt="check box"/>
             </Zoom>
             <h1 className="display-6 text-center">Track your progress</h1>
             <p className="px-5">
@@ -56,7 +56,7 @@ class Home extends Component {
             </Col>
             <Col size="12 md-4 lg-3">
             <LightSpeed right duration={1500}>
-            <img className="target mx-auto my-3" src="/imgs/icons/dart-board.svg"/>
+            <img className="target mx-auto my-3" src="/imgs/icons/dart-board.svg" alt="dart board"/>
             </LightSpeed>
             <h1 className="display-6 text-center">Hit your target</h1>
             <p className="px-5">
