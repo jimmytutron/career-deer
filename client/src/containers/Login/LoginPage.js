@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
 import LoginForm from '../../components/LoginForm/LoginForm';
 import { Container, Col, Row } from '../../components/Grid';
  
@@ -12,6 +13,11 @@ class LoginPage extends Component {
     this.props.login(values);
   }
   render() {
+
+    if (this.props.loggedIn.status) {
+      return <Redirect to='/' />
+    }
+
     return (
       <Container>
         <Row>
