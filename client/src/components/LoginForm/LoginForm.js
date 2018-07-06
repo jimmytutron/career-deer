@@ -41,7 +41,7 @@ let LoginForm = ({ handleSubmit, pristine, reset, submitting }) => {
       </form>  
       {/* This is outside of the form to prevent handleSubmit from firing */}
       {/* <Link className="btn btn-primary btn-lg" to="/auth/google" role="button">Sign up with Google</Link> */}
-      <a href='/auth/google'>Sign in With Google</a>
+      <a href='/auth/google'>Sign in With Google!</a>
     </React.Fragment>
   )
 };
