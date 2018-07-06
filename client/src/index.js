@@ -27,6 +27,7 @@ const initialState = {
     error: null
   },
   signedUp: {
+    status: false,
     error: null
   }
 };

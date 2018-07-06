@@ -29,7 +29,11 @@ export function signedIn(data) {
   return {
     type: LOGIN_SUCCESS,
     payload: {
-      status: true
+      status: {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email
+      }
     }
   }
 };

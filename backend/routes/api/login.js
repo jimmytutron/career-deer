@@ -7,7 +7,7 @@ router.route('/login')
   .post(passport.authenticate('local'), loginController.login)
 
 router.route('/signup')
-  .post(loginController.signUp)
+  .post(loginController.signUp, loginController.login)
 
 router.route('/logout')
   .get(loginController.logout)
