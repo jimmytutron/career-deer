@@ -9,7 +9,7 @@ import { signup } from './actions';
 class SignUp extends Component {
   signup = values => {
     // This calls the signup action creator, passing the form values to it
-    this.props.signup(values)
+    this.props.signup(values);
   }
   render() {
     return (

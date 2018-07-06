@@ -22,10 +22,10 @@ let SignUpForm = ({ handleSubmit, pristine, reset, submitting }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <Field name="first-name" component={renderTextField} type="text" label="First Name"></Field>
+        <Field name="firstName" component={renderTextField} type="text" label="First Name"></Field>
       </div>
       <div>
-        <Field name="last-name" component={renderTextField} type="text" label="Last Name"></Field>
+        <Field name="lastName" component={renderTextField} type="text" label="Last Name"></Field>
       </div>
       <div>
         <Field name="email" component={renderTextField} type="email" label="Email"></Field>

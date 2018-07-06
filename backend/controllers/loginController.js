@@ -16,7 +16,6 @@ module.exports = {
         password: req.body.password
       });
     } catch (err) {
-      // console.log(err);
       res.status(422).json(err);
     }
   },

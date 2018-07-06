@@ -10,7 +10,7 @@ export default function signUpReducer(state = '', { type, payload }) {
     case FAILED_SIGNUP:
       return {
         ...state,
-        payload
+        ...payload
       }
     default:
       return state
