@@ -17,7 +17,6 @@ import App from './containers/App/App';
 // what it needs to be concerned with.
 import configureStore from './configureStore';
 
-
 // We need to determine what we want the initial state of
 // the application to be.
 const initialState = {
@@ -28,12 +27,7 @@ const initialState = {
     error: null
   },
   signedUp: {
-    status: false,
-    error: null,
-    firstName: null,
-    lastName: null,
-    email: null,
-    password: null
+    error: null
   }
 };
 

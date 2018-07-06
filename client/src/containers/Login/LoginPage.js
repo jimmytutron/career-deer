@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
 import LoginForm from '../../components/LoginForm/LoginForm';
 import { Container, Col, Row } from '../../components/Grid';
  
@@ -12,6 +13,11 @@ class LoginPage extends Component {
     this.props.login(values);
   }
   render() {
+
+    if (this.props.loggedIn.status) {
+      return <Redirect to='/' />
+    }
+
     return (
       <Container>
         <Row>
@@ -25,8 +31,7 @@ class LoginPage extends Component {
   }
 };
 
-// LoginPage needs to be aware of the signedUp state, since it will be used for
-// auto logins after signing up for an account.
+// LoginPage needs to be aware of the signedUp state
 const mapStateToProps = (state, props) => {
   return {
     loggedIn: state.loggedIn,
