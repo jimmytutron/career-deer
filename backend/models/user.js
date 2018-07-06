@@ -22,7 +22,10 @@ const userSchema = new Schema({
   }
 })
 
-userSchema.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose, {
+  //Updating username field to email rather than default "username" from LocalStrategy
+  usernameField: 'email'
+});
 
 // userSchema.methods.authenticate = function(password) {
 //   return bcrypt.compareSync(password, this.password)
