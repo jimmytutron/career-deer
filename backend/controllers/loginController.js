@@ -2,42 +2,42 @@ const db = require('../models');
 
 module.exports = {
   signUp: async (req, res) => {
+    console.log("=============Signing Up===============")
     try {
-      res.json(await db.User.create({
-        name: req.body.name,
+      const user = new db.User({
         email: req.body.email,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName
+      });
+      await user.setPassword(req.body.password);
+      await user.save();
+      res.json({
+        email: req.body.email, 
         password: req.body.password
-      })
-      )
+      });
     } catch (err) {
       // console.log(err);
       res.status(422).json(err);
     }
   },
 
-  loggingIn: (req, res) => {
+  // loggingIn: (req, res) => {
+  //   try {
+  //     // TODO: update json to logged in route.
+  //     res.json('/loggedinpage')
+  //   } catch (err) {
+  //     res.status(422).json(err);
+  //   }
+  // },
+
+  login: async (req, res) => {
+    console.log("-------------Logging In-----------------")
     try {
-      // TODO: update json to logged in route.
-      res.json('/loggedinpage')
+      const user = await db.User.authenticate()(req.body.email, req.body.password)
+      res.json(user);
     } catch (err) {
       res.status(422).json(err);
     }
-  },
-
-  login: (req, res) => {
-    // try {
-    //   if (req.user) {
-    //     // Sending user to the logged in page, and stating req.user is true.
-    //     // TODO: update json to logged in route.
-    //     res.render('loggedinpage', { loggedIn: !(!req.user) });
-    //   } else {
-    //     // Sending user to login page with logged in being false.
-    //     res.render('login', { loggedIn: !(!req.user) });
-    //   }
-    // } catch (err) {
-    //   res.status(422).json(err);
-    // }
-    res.json(req.body);
   },
 
   logout: (req, res) => {

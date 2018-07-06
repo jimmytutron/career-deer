@@ -30,7 +30,7 @@ morganBody(app, {
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/career-deer", {promiseLibrary: bluebird})
 
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'keyboard cat',
+  secret: process.env.SESSION_SECRET || 'career deer',
   resave: false,
   saveUninitialized: false
 }));
