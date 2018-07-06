@@ -2,6 +2,7 @@ import { signUp } from '../../utils/API';
 import { LOGIN_SUCCESS } from '../Login/actions';
  
 export const FAILED_SIGNUP = 'FAILED_SIGNUP';
+export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 
 // Using Redux thunk middleware https://github.com/reduxjs/redux-thunk
 // our action creator returns a function instead of an action. This function can
@@ -17,6 +18,7 @@ export function signup(userInfo) {
       const apiResponse = await (signUp(userInfo));
       // dispatch here
       dispatch(signedUp(apiResponse.data));
+      dispatch(loggedIn(apiResponse.data));
     } catch (err) {
       // and here
       dispatch(failedSignUp(err));
@@ -24,9 +26,20 @@ export function signup(userInfo) {
   };
 };
 
-// We dispatch a type of LOGIN_SUCCESS because we want to log the user in
-// if they successfully created an account. The Login reducer will pick up a LOGIN_SUCCESS.
+// We dispatch a type of SIGNUP_SUCCESS because we want to know 
+// when the signup and subsequent login was successful.
 export function signedUp(data) {
+  return {
+    type: SIGNUP_SUCCESS,
+    payload: {
+      status: true
+    }
+  };
+};
+
+// We dispatch a LOGIN_SUCCESS to the login reducer, so we can easily 
+// access the user info in other components
+export function loggedIn(data) {
   return {
     type: LOGIN_SUCCESS,
     payload: {

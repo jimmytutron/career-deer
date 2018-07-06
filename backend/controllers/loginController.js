@@ -11,20 +11,21 @@ module.exports = {
       });
       await user.setPassword(req.body.password);
       await user.save();
-      // res.json({
-      //   firstName: req.body.firstName,
-      //   lastName: req.body.lastName,
-      //   email: req.body.email, 
-      //   password: req.body.password
-      // });
+
+      // log in after signing up
       passport.authenticate('local')(req, res, next)
     } catch (err) {
       res.status(422).json(err);
     }
   },
 
-  login: (req, res) => {
-    res.json({email: req.body.email})
+  login: async (req, res) => {
+    user = await db.User.findOne({email: req.body.email});
+    res.json({
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName
+    });
   },
 
   logout: (req, res) => {

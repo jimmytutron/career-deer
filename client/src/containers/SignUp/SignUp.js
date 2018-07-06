@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import { Container, Col, Row } from '../../components/Grid';
 
@@ -12,6 +13,11 @@ class SignUp extends Component {
    this.props.signup(values);
   }
   render() {
+
+    if (this.props.signedUp.status) {
+      return <Redirect to='/' />
+    }
+
     return (
       <Container>
         <Row>
