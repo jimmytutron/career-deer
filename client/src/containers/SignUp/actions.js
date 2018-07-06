@@ -8,7 +8,8 @@ export function signup(userInfo) {
   return async (dispatch, getState) => {
     try {
       const apiResponse = await (signUp(userInfo));
-      dispatch(signedUp(apiResponse.data));
+      console.log(apiResponse.data);
+      // dispatch(signedUp(apiResponse.data));
     } catch (err) {
       dispatch(failedSignUp(err));
     }

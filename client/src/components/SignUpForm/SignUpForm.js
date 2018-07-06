@@ -20,7 +20,7 @@ const renderTextField = ({
 
 let SignUpForm = ({ handleSubmit, pristine, reset, submitting }) => {
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div>
         <Field name="first-name" component={renderTextField} type="text" label="First Name"></Field>
       </div>
