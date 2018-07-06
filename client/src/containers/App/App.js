@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Nav } from "../../components/Nav";
+import { Footer } from "../../components/Footer";
 import Home from "../Home/Home";
 import LoginPage from "../Login/LoginPage";
 import NoMatch from "../NoMatch/NoMatch";
@@ -26,6 +27,7 @@ class App extends Component {
         <Route exact path ="/signup" component={SignUp} />
         <Route component={NoMatch} />
       </Switch>
+      <Footer />
       </React.Fragment>
       </Router>
     );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Container, Row } from '../../components/Grid';
+import { Col, Row } from '../../components/Grid';
 import { HomePageJumbo } from '../../components/HomePageJumbo';
 
 
