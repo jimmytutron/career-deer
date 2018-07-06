@@ -23,8 +23,13 @@ module.exports = {
     }
   },
 
-  login: (req, res) => {
-    res.json({email: req.body.email})
+  login: async (req, res) => {
+    user = await db.User.findOne({email: req.body.email});
+    res.json({
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName
+    });
   },
 
   logout: (req, res) => {
