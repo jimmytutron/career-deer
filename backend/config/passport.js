@@ -3,7 +3,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 const db = require('../models');
 
-passport.use(new LocalStrategy(
+passport.use(db.User.createStrategy(
   {
     //Updating username field to email rather than default "username" from LocalStrategy
     usernameField: 'email'
