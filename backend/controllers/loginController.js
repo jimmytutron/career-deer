@@ -13,7 +13,7 @@ module.exports = {
       await user.setPassword(req.body.password);
       await user.save();
       console.log("made!")
-      res.json(await user.authenticate()(req.body.email, req.body.password))
+      // res.json(await user.authenticate()(req.body.email, req.body.password))
       // res.json({
       //   firstName: req.body.firstName,
       //   lastName: req.body.lastName,
