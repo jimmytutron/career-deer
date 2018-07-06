@@ -3,6 +3,7 @@ const db = require('../models');
 module.exports = {
   signUp: async (req, res) => {
     console.log("=============Signing Up===============")
+    console.log("email: ", req.body.email)
     try {
       const user = new db.User({
         email: req.body.email,

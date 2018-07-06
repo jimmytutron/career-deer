@@ -1,5 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+// console.log(LocalStrategy)
 
 const db = require('../models');
 
@@ -8,9 +9,9 @@ passport.use(new LocalStrategy(
     //Updating username field to email rather than default "username" from LocalStrategy
     usernameField: 'email'
   },
-  (email, password, done) => {
+  function (username, password, done) {
     db.User.findOne({
-      email: email
+      email: username
     }, (err, user) => {
       if (err) {
         return done(err);
@@ -37,4 +38,3 @@ passport.serializeUser(db.User.serializeUser());
 passport.deserializeUser(db.User.deserializeUser());
 
 module.exports = passport;
-
