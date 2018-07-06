@@ -51,7 +51,7 @@ class Home extends Component {
             </Zoom>
             <h1 className="display-6 text-center">Track your progress</h1>
             <p className="px-5">
-            Lorem ipsum dolor amet keytar wolf post-ironic swag franzen lyft. Vinyl tattooed tumeric shabby chic, adaptogen cliche meh disrupt snackwave. Cred scenester next level neutra raclette. Scenester succulents leggings portland, air plant raw denim swag four dollar toast health goth.
+            Lorem ipsum dolor amet keytar wolf post-ironic swag franzen lyft. Vinyl tattooed tumeric shabby chic, adaptogen cliche meh disrupt snackwave. Cred ailoi scenester next level neutra raclette. Scenester succulents leggings portland, air plant raw denim swag four dollar toast health goth.
             </p>
             </Col>
             <Col size="12 md-4 lg-3">
