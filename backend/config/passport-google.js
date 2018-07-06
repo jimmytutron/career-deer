@@ -12,3 +12,5 @@ passport.use(
   // passport callback function
   })
 ) 
+
+module.exports = passport;
