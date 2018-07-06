@@ -8,9 +8,9 @@ export function signup(userInfo) {
   return async (dispatch, getState) => {
     try {
       const apiResponse = await (signUp(userInfo));
-      console.log(apiResponse.data);
-      // dispatch(signedUp(apiResponse.data));
+      dispatch(signedUp(apiResponse.data));
     } catch (err) {
+      console.log('error hit');
       dispatch(failedSignUp(err));
     }
   };
