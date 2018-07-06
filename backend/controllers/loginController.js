@@ -1,7 +1,9 @@
 const db = require('../models');
+const passport = require('../config/passport.js');
 
 module.exports = {
-  signUp: async (req, res) => {
+  signUp: async (req, res, next) => {
+    // console.log(typeof test)
     try {
       const user = new db.User({
         email: req.body.email,
@@ -10,12 +12,13 @@ module.exports = {
       });
       await user.setPassword(req.body.password);
       await user.save();
-      res.json({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email, 
-        password: req.body.password
-      });
+      // res.json({
+      //   firstName: req.body.firstName,
+      //   lastName: req.body.lastName,
+      //   email: req.body.email, 
+      //   password: req.body.password
+      // });
+      passport.authenticate('local')(req, res, next)
     } catch (err) {
       res.status(422).json(err);
     }
