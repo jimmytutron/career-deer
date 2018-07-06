@@ -1,5 +1,4 @@
 const passport = require('passport');
-
 const db = require('../models');
 
 passport.use(db.User.createStrategy());
