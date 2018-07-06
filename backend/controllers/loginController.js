@@ -12,6 +12,8 @@ module.exports = {
       await user.setPassword(req.body.password);
       await user.save();
       res.json({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         email: req.body.email, 
         password: req.body.password
       });
