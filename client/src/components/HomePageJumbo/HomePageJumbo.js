@@ -3,6 +3,7 @@ import './HomePageJumbo.css';
 import {Col, Row} from "../Grid";
 import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
+import { Link } from "react-router-dom";
 
 const HomePageJumbo = () => (
   <Fade duration={2000}>
@@ -18,7 +19,7 @@ const HomePageJumbo = () => (
     </p>
 
     <p className="lead">
-      <a className="btn btn-primary btn-lg" href="#" role="button">Learn More</a>
+      <Link className="btn btn-primary btn-lg" to="/" role="button">Learn More</Link>
     </p>
   </Col>
   <Col size="12 md-4" className="m-0">
