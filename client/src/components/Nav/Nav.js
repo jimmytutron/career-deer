@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Nav.css";
 
 const Nav = ({className="", children, ...props}) => (
 
 <nav className={`navbar sticky-top navbar-expand-lg navbar-light bg-light ${className}`} {...props}>
-  <a className="navbar-brand" href="#"><img className="logo" src="imgs/logo-horizontal.svg"/></a>
+  <Link className="navbar-brand" to="/"><img className="logo" src="imgs/logo-horizontal.svg"/></Link>
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
   </button>
@@ -12,18 +13,18 @@ const Nav = ({className="", children, ...props}) => (
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav ml-auto w-100 justify-content-end">
       <li className="nav-item">
-        <a className="nav-link" href="/">Home</a>
+        <Link className="nav-link" to="/">Home</Link>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="">Another Link</a>
+        <Link className="nav-link" to="/nomatch">Another Link</Link>
       </li>
       <li className="nav-item dropdown">
-        <a className="nav-link dropdown-toggle" href="/login" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <Link className="nav-link dropdown-toggle" to="/signup" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Sign Up
-        </a>
+        </Link>
         <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a className="dropdown-item" href="/login">Sign Up</a>
-          <a className="dropdown-item" href="/login">Login</a>
+          <Link className="dropdown-item" to="/signup">Sign Up</Link>
+          <Link className="dropdown-item" to="/login">Login</Link>
         </div>
       </li>
     </ul>
