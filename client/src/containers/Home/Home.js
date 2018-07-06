@@ -88,14 +88,28 @@ class Home extends Component {
             </Row>
           </div>
           <Container className="section-3">
-            <Row className="justify-content-center no-gutters">
-                <Col size="12 md-4">
-                <img className="svg-icon mx-auto my-3" src="/imgs/icons/archive.svg" alt="searching"/>
+            <Row className="justify-content-center">
+                <Col size="12 md-2">
+                <img className="svg-icon-list my-3" src="/imgs/icons/archive.svg" alt="searching"/>
                 </Col>
                 <Col size="12 md-6">
                 <p className="roboto">
+                <h1>Find Jobs</h1>
                 Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. 
                 </p>
+                <button className="btn btn-primary float-right"><i className="fas fa-search"></i></button>
+                </Col>
+            </Row>
+            <Row className="justify-content-center">
+                <Col size="12 md-2">
+                <img className="svg-icon-list my-3" src="/imgs/icons/archive.svg" alt="searching"/>
+                </Col>
+                <Col size="12 md-6">
+                <p className="roboto">
+                <h1>Find Jobs</h1>
+                Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. 
+                </p>
+                <button className="btn btn-primary float-right"><i className="fas fa-search"></i></button>
                 </Col>
             </Row>
           </Container>

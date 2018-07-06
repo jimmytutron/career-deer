@@ -11,11 +11,6 @@
 	width: 200px;
 }
 
-.centered {
-	display: block;
-	margin-right: auto;
-	margin-left: auto;
-}
 
 .description  {
 	width: calc(100% - 200px);
