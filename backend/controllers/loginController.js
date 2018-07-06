@@ -3,7 +3,6 @@ const passport = require('../config/passport.js');
 
 module.exports = {
   signUp: async (req, res, next) => {
-    // console.log(typeof test)
     try {
       const user = new db.User({
         email: req.body.email,
