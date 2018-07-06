@@ -1,0 +1,14 @@
+.nomatch-jumbotron {
+  color: #fff;
+  width: 100%;
+  background: url(/imgs/background.png) no-repeat center right fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  margin: 0px;
+  overflow: hidden;
+}
