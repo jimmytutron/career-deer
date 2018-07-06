@@ -4,7 +4,7 @@ const passport = require('../../config/passport.js');
 
 // Matching with "/api/user/login"
 router.route('/login')
-  .post(passport.authenticate('local'))
+  .post(passport.authenticate('local'), loginController.login)
 
 router.route('/signup')
   .post(loginController.signUp)

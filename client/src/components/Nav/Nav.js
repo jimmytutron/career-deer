@@ -13,10 +13,21 @@ const Nav = ({className="", children, ...props}) => (
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav ml-auto w-100 justify-content-end">
       <li className="nav-item">
-        <Link className="nav-link" to="/">Home</Link>
+        <Link 
+          to="/"
+          className={
+            window.location.pathname === "/" ? "nav-link active" : "nav-link"
+          }>
+          Home
+        </Link>
       </li>
       <li className="nav-item">
-        <Link className="nav-link" to="/nomatch">Another Link</Link>
+        <Link to="/nomatch"
+          className={
+            window.location.pathname === "/nomatch" ? "nav-link active" : "nav-link"
+          }>
+          Another Link
+        </Link>
       </li>
       <li className="nav-item dropdown">
         <Link className="nav-link dropdown-toggle" to="/signup" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

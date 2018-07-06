@@ -23,6 +23,10 @@ module.exports = {
     }
   },
 
+  login: (req, res) => {
+    res.json({email: req.body.email})
+  },
+
   logout: (req, res) => {
     try {
       if (req.user) {

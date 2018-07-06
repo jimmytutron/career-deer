@@ -24,7 +24,7 @@ const userSchema = new Schema({
 
 userSchema.plugin(passportLocalMongoose, {
   //Updating username field to email rather than default "username" from LocalStrategy
-  usernameField: 'email'
+  usernameField: 'email',
 });
 
 const User = mongoose.model("User", userSchema);

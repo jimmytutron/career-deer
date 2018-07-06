@@ -1,8 +1,9 @@
 import React from 'react';
 // Redux stuff
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
-import { googleSignIn } from '../../utils/API'
+import { googleSignIn } from '../../utils/API';
+
  
 const renderTextField = ({
   input,
@@ -27,35 +28,32 @@ const googleAuth = () => {
 let LoginForm = ({ handleSubmit, pristine, reset, submitting }) => {
   return (
     <React.Fragment>
-    <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
 
-      <div>
-        <Field name="email" component={renderTextField} type="email" label="Email" />
-      </div>
+        <div>
+          <Field name="email" component={renderTextField} type="email" label="Email" />
+        </div>
 
-      <div>
-        <Field name="password" component={renderTextField} type="password" label="Password" />
-      </div>
-      <div>
-        <button type="submit" disabled={pristine || submitting}>
-          Submit
-        </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
-          Clear Values
-        </button>
-      </div>
-    </form>  
+        <div>
+          <Field name="password" component={renderTextField} type="password" label="Password" />
+        </div>
+        <div>
+          <button type="submit" disabled={pristine || submitting}>
+            Submit
+          </button>
+        </div>
+      </form>  
       <button onClick={() => {googleAuth()}}>
-        Google Sign In
+        Sign In with Google
       </button>
     </React.Fragment>
   )
 };
 
-
 LoginForm = reduxForm({
   // a unique name for the form
-  form: 'login'
+  form: 'login',
+  onSubmitSuccess: (result, dispatch) => dispatch(reset('login'))
 })(LoginForm);
 
 // Inside this file, we wrapped our component inside the imported 'reduxForm' function

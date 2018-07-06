@@ -6,6 +6,7 @@ import Home from "../Home/Home";
 import LoginPage from "../Login/LoginPage";
 import NoMatch from "../NoMatch/NoMatch";
 import SignUp from "../SignUp/SignUp";
+import AddJob from "../AddJob"
 import "./App.css";
 
 // Redux stuff
@@ -24,6 +25,7 @@ class App extends Component {
         <Route exact path ="/" component={Home} />
         <Route exact path ="/login" component={LoginPage} />
         <Route exact path ="/signup" component={SignUp} />
+        <Route exact path ="/addjob" component={AddJob} />
         <Route component={NoMatch} />
       </Switch>
       </React.Fragment>
