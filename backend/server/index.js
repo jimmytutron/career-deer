@@ -1,18 +1,20 @@
 require('dotenv').config();
 
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const bluebird = require('bluebird');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const morganBody = require('morgan-body');
-
 const passport = require('../config/passport.js');
+// const passportGoogle = require('../config/passport-google');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -27,7 +29,7 @@ morganBody(app, {
   logReqUserAgent: false
 })
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/career-deer", {promiseLibrary: bluebird})
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/career-deer", { promiseLibrary: bluebird })
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'career deer',

@@ -2,7 +2,8 @@ import React from 'react';
 // Redux stuff
 import { Field, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
-
+import { googleSignIn } from '../../utils/API'
+ 
 const renderTextField = ({
   input,
   label,
@@ -18,8 +19,14 @@ const renderTextField = ({
     />
   )
 
+const googleAuth = () => {
+  googleSignIn()
+    .then(data => console.log(data.data));
+}
+
 let LoginForm = ({ handleSubmit, pristine, reset, submitting }) => {
   return (
+    <React.Fragment>
     <form onSubmit={handleSubmit}>
 
       <div>
@@ -37,7 +44,11 @@ let LoginForm = ({ handleSubmit, pristine, reset, submitting }) => {
           Clear Values
         </button>
       </div>
-    </form>
+    </form>  
+      <button onClick={() => {googleAuth()}}>
+        Google Sign In
+      </button>
+    </React.Fragment>
   )
 };
 

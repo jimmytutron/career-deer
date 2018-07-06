@@ -1,7 +1,7 @@
 
 const axios = require('axios');
 
-// Login/Sign up
+// Basic Login/Sign up
 export function signIn(data) {
   return axios.post('/api/user/login', data);
 };
@@ -9,7 +9,18 @@ export function signIn(data) {
 export function signUp(data) {
   return axios.post('/api/user/signup', data);
 };
+// ======================================================
 
+// TESTING OAuth Logins
+export function googleSignUp(data) {
+  return axios.post('/auth/google', data);
+};
+
+export function googleSignIn() {
+  return axios.get('/auth/google');
+};
+
+// ======================================================
 // Jobs
 export function createJob(data) {
   return axios.post('/api/jobs/saved',data);
