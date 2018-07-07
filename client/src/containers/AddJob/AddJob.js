@@ -9,7 +9,7 @@ import { addjob, resetaddjob } from './actions';
 
 class AddJob extends Component {
   addjob = values => {
-    // This calls the addJob action creator, passing the form values to it 
+    // This calls the addJob action creator, passing the form values to it
    this.props.addjob(values);
   }
 
