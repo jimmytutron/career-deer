@@ -42,3 +42,7 @@ export function deleteJobById(id) {
 export function updateJobById(id) {
   return axios.put(`/api/jobs/saved/${id}`);
 };
+
+export function getJobData(){
+  return axios.get('/api/jobs/chart');
+}

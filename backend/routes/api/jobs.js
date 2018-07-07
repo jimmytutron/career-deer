@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const jobsController = require('../../controllers/jobsController');
+const chartController = require('../../controllers/chartController');
 // const authJobs = require('../../services/authJobs')
 
 //TODO update with authJobs.
@@ -18,6 +19,10 @@ router.route('/saved/:id')
   .get(jobsController.findOne)
   .delete(jobsController.delete)
   .put(jobsController.update)
+
+// Matching with "/api/jobs/chart"
+router.route('/chart')
+  .get(chartController.findAll)
 
 module.exports = router;
 

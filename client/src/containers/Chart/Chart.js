@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Bar, Line, Pie } from 'react-chartjs-2';
 import { selectJob } from './actions';
 import { bindActionCreators } from 'redux';
-
+// import { grabData } from '../../utils/API'; 
 
 class Chart extends Component {
   // static defaultProps = {
@@ -12,16 +12,21 @@ class Chart extends Component {
   //   legendPosition: 'right'
   // }
 
+  // componentDidMount(){
+
+  // }
+
+
   render() {
 
     if (!this.props.chart.chartData) {
-      return <div>No job was selected.</div>
+      return <div><button type="button" onClick={() => this.props.selectJob()}> Test Me! </button> No job was selected.</div>
     }
 
     return (
       <div className="col-12 col-md-8 col-lg-6 mx-auto">
           <button type="button"
-          onClick={() => this.props.selectJob('yes')}>
+          onClick={() => this.props.selectJob()}>
           Test Me!
           </button>
         <div className="chart">
@@ -88,7 +93,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({ selectJob: selectJob }, dispatch)
+  return bindActionCreators({ selectJob }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chart);
