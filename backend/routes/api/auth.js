@@ -6,4 +6,11 @@ const passport = require('passport');
 router.route('/google')
   .get(passport.authenticate('google', { scope: ['profile'] }));
 
+router.route('/google/redirect')
+  .get(passport.authenticate('google', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+  })
+)
+
 module.exports = router;
