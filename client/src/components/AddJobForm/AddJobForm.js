@@ -24,12 +24,13 @@ const validate = values => {
   return errors
 }
 
-const renderTextField = ({
-  input,
-  label,
-  meta: { touched, error },
-  ...custom
-}) => (
+const renderTextField = (
+  {
+    input,
+    label,
+    meta: { touched, error },
+    ...custom
+  }) => (
     <TextField
       hintText={label}
       floatingLabelText={label}
@@ -39,20 +40,39 @@ const renderTextField = ({
     />
   )
 
-let SignUpForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
+const renderTextBox = (
+  {
+    input,
+    label,
+    meta: { touched, error },
+    ...custom
+  }) => (
+    <TextField
+      hintText={label}
+      floatingLabelText={label}
+      errorText={touched && error && <span>{error}</span>}
+      {...input}
+      {...custom}
+    />
+  )
+
+let AddJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <Field name="firstName" component={renderTextField} type="text" label="First Name"></Field>
+        <Field name="title" component={renderTextField} type="text" label="Job Title"></Field>
       </div>
       <div>
-        <Field name="lastName" component={renderTextField} type="text" label="Last Name"></Field>
+        <Field name="company_name" component={renderTextField} type="text" label="Company"></Field>
       </div>
       <div>
-        <Field name="email" component={renderTextField} type="email" label="Email"></Field>
+        <Field name="location" component={renderTextField} type="text" label="Location"></Field>
       </div>
       <div>
-        <Field name="password" component={renderTextField} type="password" label="Password"></Field>
+        <Field name="url" component={renderTextField} type="text" label="Link URL"></Field>
+      </div>
+      <div>
+        <Field name="post_date" component={renderTextField} type="date" label="Job Post Date"></Field>
       </div>
       <div>
         <h6>{errorMessage}</h6>
@@ -64,15 +84,14 @@ let SignUpForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =
   );
 };
 
-SignUpForm = reduxForm({
+AddJobForm = reduxForm({
   // a unique name for the form
-  form: 'signup',
-  validate
-  // We don't want the form to clear on submission because if there's an error, 
-  // we want the user to be able to edit what they already entered
-})(SignUpForm);
+  form: 'addjob',
+  validate,
+  onSubmitSuccess: (result, dispatch) => dispatch(reset('addjob'))
+})(AddJobForm);
 
 // Inside this file, we wrapped our component inside the imported 'reduxForm' function
 // We can think of reduxForm() from redux-form behaving similar to connect() from react-redux in
 // terms of connecting a component to communicate with the store 
-export default SignUpForm
+export default AddJobForm

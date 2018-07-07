@@ -1,42 +1,56 @@
-// import React, { Component } from 'react';
-// import SignUpForm from '../../components/SignUpForm/SignUpForm';
-// import { Container, Col, Row } from '../../components/Grid';
+import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
+import AddJobForm from '../../components/AddJobForm/AddJobForm';
+import { Container, Col, Row } from '../../components/Grid';
 
-// import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-// import { addjob } from './actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addjob, resetaddjob } from './actions';
 
-// class SignUp extends Component {
-//   signup = values => {
-//     // This calls the signup action creator, passing the form values to it 
-//    this.props.signup(values);
-//   }
-//   render() {
-//     return (
-//       <Container>
-//         <Row>
-//           <Col />
-//           <Col size="12 md-8 lg-6" className="banana">
-//             <SignUpForm onSubmit={this.signup} />
-//           </Col>
-//           <Col />
-//         </Row>
-//       </Container>
-//     )
-//   }
-// };
+class AddJob extends Component {
+  addjob = values => {
+    // This calls the addJob action creator, passing the form values to it 
+   this.props.addjob(values);
+  }
 
-// // Only need SignUp to be aware of the sign up state.
-// const mapStateToProps = (state,props) => {
-//   return { 
-//     signedUp: state.signedUp
-//   }
-// };
+  resetaddjob = () => this.props.resetaddjob();
+  render() {
+    if (this.props.addJob.status) {
+      this.props.resetaddjob();
+      return <Redirect to='/' />
+    }
 
-// const mapActionsToProps = (dispatch,props) => {
-//   return bindActionCreators({
-//     signup
-//   }, dispatch);
-// }
 
-// export default connect(mapStateToProps,mapActionsToProps)(SignUp);
+    return (
+      <Container>
+        <Row>
+          <Col className="text-center">
+            Add a job to your board
+          </Col>
+        </Row>
+        <Row>
+          <Col />
+          <Col size="12 md-8 lg-6">
+            <AddJobForm onSubmit={this.addJob} />
+          </Col>
+          <Col />
+        </Row>
+      </Container>
+    )
+  }
+};
+
+const mapStateToProps = (state,props) => {
+  return { 
+    addJob: state.addJob
+  }
+};
+
+const mapActionsToProps = (dispatch,props) => {
+  return bindActionCreators({
+    addjob,
+    resetaddjob
+  }, dispatch);
+}
+
+export default connect(mapStateToProps,mapActionsToProps)(AddJob);

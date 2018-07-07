@@ -8,13 +8,17 @@ import appReducer from './reducers/app-reducer';
 import testReducer from './reducers/test-reducer';
 import loginReducer from './containers/Login/reducer';
 import signUpReducer from './containers/SignUp/reducer';
+import chartReducer from './containers/Chart/reducer';
+import addJobReducer from './containers/AddJob/reducer';
 
 const allReducers = combineReducers({
   app: appReducer,
   test: testReducer,
   form: formReducer,
   loggedIn: loginReducer,
-  signedUp: signUpReducer
+  signedUp: signUpReducer,
+  chart: chartReducer,
+  addJob: addJobReducer
 });
 
 export default function configureStore(initialState = {}) {
