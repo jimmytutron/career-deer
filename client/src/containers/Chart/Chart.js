@@ -1,58 +1,99 @@
-//need to install react-chartjs-2 and chart.js
-
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Bar, Line, Pie } from 'react-chartjs-2';
+import { selectJob } from './actions';
+import { bindActionCreators } from 'redux';
+
 
 class Chart extends Component {
 
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      chartData: {
-        labels: [
-          'Saved', 'Applied', 'Phone Interview', 'On-site Interview', 'Offer'
-        ],
-        datasets: [
-          {
-            label: 'Users',
-            data: [
-              50,
-              20,
-              10,
-              5,
-              1
-            ],
-            backgroundColor: [
-              'rgba(225,225,225, 0.8)',
-              'rgba(200,200,200, 0.8)',
-              'rgba(150,150,150, 0.8)',
-              'rgba(100,100,100, 0.8)',
-              'rgba(50,50,50, 0.8)'
-            ]
-          }
-        ]
-      }
-    }
-  }
+  // static defaultProps = {
+  //   displayTitle: true,
+  //   displayLegend: true,
+  //   legendPosition: 'right'
+  // }
+
 
   render() {
+
+    if (!this.props.chart.chartData) {
+      return <div>No job was selected.</div>
+    }
+
     return (
-      <div className="chart">
-        <Bar
-          data={this.state.chartData}
-          options={{
-            maintainAspectRatio: false
-          }}
-        />
+      <div className="col-12 col-md-8 col-lg-6 mx-auto">
+          <button type="button"
+          onClick={() => this.props.selectJob('yes')}>
+          Test Me!
+          </button>
+        <div className="chart">
+          <Bar
+            data={this.props.chart.chartData}
+            options={{
+              title: {
+                display: this.props.chart.chartData.title.display,
+                text: this.props.chart.chartData.title.text,
+                fontSize: 20
+              },
+              legend: {
+                display: this.props.chart.chartData.legend.display,
+                position: this.props.chart.chartData.legend.position
+              },
+              maintainAspectRatio: false
+            }}
+          />
+        </div>
+        <div className="chart">
+          <Line
+            data={this.props.chart.chartData}
+            options={{
+              title: {
+                display: this.props.chart.chartData.title.display,
+                text: this.props.chart.chartData.title.text,
+                fontSize: 20
+              },
+              legend: {
+                display: this.props.chart.chartData.legend.display,
+                position: this.props.chart.chartData.legend.position
+              },
+              maintainAspectRatio: false
+            }}
+          />
+        </div>
+        <div className="chart">
+          <Pie
+            data={this.props.chart.chartData}
+            options={{
+              title: {
+                display: this.props.chart.chartData.title.display,
+                text: this.props.chart.chartData.title.text,
+                fontSize: 20
+              },
+              legend: {
+                display: this.props.chart.chartData.legend.display,
+                position: this.props.chart.chartData.legend.position
+              },
+              maintainAspectRatio: false
+            }}
+          />
+        </div>
       </div>
     )
   }
-
-
 }
 
 
-export default Chart;
+function mapStateToProps(state) {
+  return {
+    chart: state.chart
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({ selectJob: selectJob }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chart);
 
 

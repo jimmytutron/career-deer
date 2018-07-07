@@ -26,11 +26,8 @@ class App extends Component {
         <Route exact path ="/" component={Home} />
         <Route exact path ="/login" component={LoginPage} />
         <Route exact path ="/signup" component={SignUp} />
-<<<<<<< HEAD
         <Route exact path ="/chart" component={Chart} />
-=======
         <Route exact path ="/addjob" component={AddJob} />
->>>>>>> c71c602f42fd908773fa87504059163fa203399d
         <Route component={NoMatch} />
       </Switch>
       </React.Fragment>
