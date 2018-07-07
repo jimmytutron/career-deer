@@ -32,13 +32,20 @@ class LoginPage extends Component {
           <Col size="12 md-6 lg-6" className="log-in">
           <h1 className="text-center mt-5 montserrat font-weight-bold">Welcome Back!</h1>
           <h2 className="text-center mt-2 montserrat">Let's get you on track</h2>
-            <LoginForm onSubmit={this.login} />
+            <LoginForm onSubmit={this.login} errorMessage={renderError(this.props.loggedIn)} />
           </Col>
         </Row>
       </Container>
     )
   }
 };
+
+const renderError = (loggedIn) => {
+  if (!loggedIn.status && loggedIn.error)
+      return "Incorrect email or password.";
+  else
+    return "";
+}
 
 // LoginPage needs to be aware of the signedUp state
 const mapStateToProps = (state, props) => {
