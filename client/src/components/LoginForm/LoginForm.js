@@ -1,6 +1,7 @@
 import React from 'react';
 // Redux stuff
 import { Field, reduxForm, reset } from 'redux-form';
+
 import { TextField } from 'redux-form-material-ui';
 import { Link } from 'react-router-dom';
 // import { googleSignIn } from '../../utils/API';
@@ -24,24 +25,28 @@ const renderTextField = ({
 let LoginForm = ({ handleSubmit, pristine, reset, submitting }) => {
   return (
     <React.Fragment>
-      <form onSubmit={handleSubmit}>
+      <form className="text-center" onSubmit={handleSubmit}>
 
         <div>
-          <Field name="email" component={renderTextField} type="email" label="Email" />
+          <Field className="text-input" name="email" component={renderTextField} type="email" label="Email" />
         </div>
 
         <div>
-          <Field name="password" component={renderTextField} type="password" label="Password" />
+          <Field className="text-input" name="password" component={renderTextField} type="password" label="Password" />
         </div>
-        <div>
-          <button type="submit" disabled={pristine || submitting}>
-            Submit
-          </button>
+        <div className="mt-3">
+          <button className="roboto login-btn btn btn-info" type="submit" disabled={pristine || submitting}>
+            Login <i className="fas fa-sign-in-alt"></i>
+          </button> {" "}
+        <a href='/auth/google' className="roboto login-btn btn btn-light">
+        Login with {" "} <img height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
+        </a>
         </div>
       </form>  
+
       {/* This is outside of the form to prevent handleSubmit from firing */}
       {/* <Link className="btn btn-primary btn-lg" to="/auth/google" role="button">Sign up with Google</Link> */}
-      <a href='/auth/google'>Sign in With Google!</a>
+      {/*<a href='/auth/google'>Sign in With Google!</a>*/}
     </React.Fragment>
   )
 };
