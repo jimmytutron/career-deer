@@ -6,7 +6,7 @@ import Home from "../Home/Home";
 import LoginPage from "../Login/LoginPage";
 import NoMatch from "../NoMatch/NoMatch";
 import SignUp from "../SignUp/SignUp";
-import AddJob from "../AddJob"
+import AddJob from "../AddJob/AddJob";
 import "./App.css";
 import Chart from '../Chart/Chart';
 
@@ -46,7 +46,8 @@ const mapStateToProps = state => ({
   app: state.app,
   test: state.test,
   form: state.form,
-  loggedIn: state.loggedIn
+  loggedIn: state.loggedIn,
+  addJob: state.addJob
 });
 
 

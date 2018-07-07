@@ -29,6 +29,10 @@ const initialState = {
   signedUp: {
     status: false,
     error: null
+  },
+  addJob: {
+    status: false,
+    error: null
   }
 };
 

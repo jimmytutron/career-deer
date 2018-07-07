@@ -2,18 +2,55 @@ import React from 'react';
 // Redux stuff
 import { Field, reduxForm, reset } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
-const  { DOM: { input, select, textarea } } = React
 
-const renderTextField = ({
-  input,
-  label,
-  meta: { touched, error },
-  ...custom
-}) => (
+const validate = values => {
+  const errors = {}
+  if (!values.firstName) {
+    errors.firstName = 'Please input your first name'
+  }
+  if (!values.lastName) {
+    errors.lastName = 'Please input your last name'
+  }
+  if (!values.email) {
+    errors.email = 'You must enter an email'
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Please enter a valid email address'
+  }
+  if (!values.password) {
+    errors.password = 'A password is required'
+  } else if (values.password.length < 6) {
+    errors.password = 'Your password must be at least 6 characters long'
+  }
+  return errors
+}
+
+const renderTextField = (
+  {
+    input,
+    label,
+    meta: { touched, error },
+    ...custom
+  }) => (
     <TextField
       hintText={label}
       floatingLabelText={label}
-      errorText={touched && error}
+      errorText={touched && error && <span>{error}</span>}
+      {...input}
+      {...custom}
+    />
+  )
+
+const renderTextBox = (
+  {
+    input,
+    label,
+    meta: { touched, error },
+    ...custom
+  }) => (
+    <TextField
+      hintText={label}
+      floatingLabelText={label}
+      errorText={touched && error && <span>{error}</span>}
       {...input}
       {...custom}
     />
@@ -35,7 +72,7 @@ let AddJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =
         <Field name="url" component={renderTextField} type="text" label="Link URL"></Field>
       </div>
       <div>
-        <Field name="post_date" component={renderTextField} type="date" label="post_date"></Field>
+        <Field name="post_date" component={renderTextField} type="date" label="Job Post Date"></Field>
       </div>
       <div>
         <h6>{errorMessage}</h6>
@@ -50,6 +87,7 @@ let AddJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =
 AddJobForm = reduxForm({
   // a unique name for the form
   form: 'addjob',
+  validate,
   onSubmitSuccess: (result, dispatch) => dispatch(reset('addjob'))
 })(AddJobForm);
 
