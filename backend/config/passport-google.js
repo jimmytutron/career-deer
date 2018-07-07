@@ -1,5 +1,5 @@
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-const User = require('../models');
+const db = require('../models');
 
 const strategy = new GoogleStrategy(
 	{
@@ -12,7 +12,7 @@ const strategy = new GoogleStrategy(
 		console.log('===== GOOGLE PROFILE =======')
 		console.log(profile)
 		console.log('======== END ===========')
-		// code
+    // code
 		const { id, name, photos } = profile
 		db.User.findOne({ 'google.googleId': id }, (err, userMatch) => {
 			// handle errors here:
