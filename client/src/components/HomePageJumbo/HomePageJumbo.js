@@ -3,15 +3,16 @@ import './HomePageJumbo.css';
 import {Col, Row} from "../Grid";
 import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
+import Rotate from 'react-reveal/Rotate';
 import { Link } from "react-router-dom";
 
 const HomePageJumbo = () => (
   <Fade duration={2000}>
   <Row className="justify-content-center home-jumbotron p-0">
 
-  <Col size="12 md-6" className="pl-5">
+  <Col size="12 md-6" className="pl-5 mt-5">
     <Zoom cascade>
-    <h1 className="main-heading font-weight-bold montserrat">Don't be a deer in headlights...</h1>
+    <h1 className="main-heading font-weight-bold montserrat text-left">Don't be a deer in headlights...</h1>
     </Zoom>
     <h4 className="sub-heading font-italic montserrat">Track down your next job with CareerDeer</h4>
     
@@ -19,10 +20,23 @@ const HomePageJumbo = () => (
     </p>
 
     <p className="lead">
-      <Link className="btn btn-primary btn-lg" to="/" role="button">Learn More</Link>
+      <Link className="btn btn-danger btn-lg" to="/" role="button">Learn More</Link>
     </p>
   </Col>
-  <Col size="12 md-4" className="m-0">
+  <Col size="12 md-4" >
+  <Rotate top right duration={1700}>
+  <img className="main-deer" src="/imgs/logo-white.svg" alt="career deer logo white"/>
+  </Rotate>
+  </Col>
+  </Row>
+
+  <Row className="justify-content-center home-jumbotron-small p-0">
+  <Col size="12">
+  <h1 className="montserrat font-weight-bold text-center mobile-heading">Don't be a deer in headlights...</h1>
+  <h4 className="font-italic montserrat text-center">Track down your next job with CareerDeer</h4>
+  </Col>
+  <Col size="12" >
+  <img className="main-deer" src="/imgs/logo-white.svg" alt="career deer logo white"/>
   </Col>
   </Row>
   </Fade>
