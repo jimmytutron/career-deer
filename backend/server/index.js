@@ -8,8 +8,8 @@ const bluebird = require('bluebird');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const morganBody = require('morgan-body');
-// const passport = require('../config/passport.js');
-const passportGoogle = require('../config/passport-google');
+
+const passport = require('../config/');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
