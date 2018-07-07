@@ -22,7 +22,7 @@ const renderTextField = ({
     />
   )
 
-let LoginForm = ({ handleSubmit, pristine, reset, submitting }) => {
+let LoginForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
   return (
     <React.Fragment>
       <form className="text-center" onSubmit={handleSubmit}>
@@ -35,11 +35,12 @@ let LoginForm = ({ handleSubmit, pristine, reset, submitting }) => {
           <Field className="text-input" name="password" component={renderTextField} type="password" label="Password" />
         </div>
         <div className="mt-3">
+          <h6>{errorMessage}</h6>
           <button className="roboto login-btn btn btn-info" type="submit" disabled={pristine || submitting}>
             Login <i className="fas fa-sign-in-alt"></i>
-          </button> {" "}
+          </button>&nbsp;&nbsp;&nbsp;&nbsp;
         <a href='/auth/google' className="roboto login-btn btn btn-light">
-        Login with {" "} <img height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
+        Login with <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
         </a>
         </div>
       </form>  

@@ -37,12 +37,12 @@ const renderError = (signedUp) => {
     if (signedUp.error.response)
       if (signedUp.error.response.data){
         if (signedUp.error.response.data.name === "ValidationError")
-          return "You must enter a first name, last name, and an email."
+          return "You must enter a first name, last name, and an email.";
         if (signedUp.error.response.data.name === "MissingPasswordError")
-          return "You must enter a password."
+          return "You must enter a password.";
         if (signedUp.error.response.data.code === 11000)
-          return "An account with that email already exists. Please choose another email."
-      }
+          return "An account with that email already exists. Please choose another email.";
+      };
   }
   return "";
 }
