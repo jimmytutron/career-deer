@@ -17,7 +17,7 @@ const allReducers = combineReducers({
   form: formReducer,
   loggedIn: loginReducer,
   signedUp: signUpReducer,
-  chart: chartReducer,
+  chartData: chartReducer,
   addJob: addJobReducer
 });
 
