@@ -1,7 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('./passport');
 const GoogleStrategy = require('./passport-google');
-const User = require('../models');
+const db = require('../models');
 
 passport.serializeUser((user, done) => {
 	console.log('=== serialize ... called ===')
@@ -11,12 +11,12 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
-	console.log('DEserialize ... called')
+	console.log('Deserialize ... called')
 	db.User.findOne(
 		{ _id: id },
 		'firstName lastName photos local.username',
 		(err, user) => {
-			console.log('======= DESERILAIZE USER CALLED ======')
+			console.log('======= DESERIALIZE USER CALLED ======')
 			console.log(user)
 			console.log('--------------')
 			done(null, user)
