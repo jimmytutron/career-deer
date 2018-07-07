@@ -1,5 +1,5 @@
-.homepage {
-	/*background-color: #b8bde7;*/
+.hide-overflow {
+	overflow-x: hidden;
 }
 
 .svg-icon {
@@ -25,6 +25,12 @@
 
 }
 
+@media only screen and (max-width: 350px){
+	.svg-icon-list {
+	width: 50%;
+}
+}
+
 .description  {
 	width: calc(100% - 200px);
 	padding: 30px;
@@ -44,10 +50,12 @@
 
 .section-2 {
 	background-color: #ededed;
+	overflow-x: hidden;
 }
 
 .section-3 {
 	margin-top: 50px;
+
 }
 
 .section-4 {
@@ -55,6 +63,7 @@
 	margin-top: 30px;
 	padding-top: 30px;
 	padding-bottom: 70px;
+	overflow-x: hidden;
 }
 
 .sign-up-btn {

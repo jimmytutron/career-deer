@@ -26,7 +26,7 @@ class Home extends Component {
   render() {
     // console.log(this.props)
     return (
-      <React.Fragment>
+      <div className="hide-overflow">
         <HomePageJumbo />
         <Slide bottom>
         <Row className="justify-content-center mt-5 mb-3">
@@ -158,7 +158,7 @@ class Home extends Component {
                 </Pulse>
                 <h1 className="display-6 text-center montserrat">kickstart your career hunt</h1>
                  <p className="roboto mt-1">
-                Your dream job is just a couple hoofs away.
+                Your dream job is just a couple hooves away.
                 </p>
                 <button className="btn sign-up-btn btn-info mb-5">Sign Up</button>
                 </Col>
@@ -167,7 +167,7 @@ class Home extends Component {
           <Footer />
           {/*<button className="btn btn-primary" onClick={() => this.onUpdateTest()}>Update Test</button>
           {this.props.test}*/}
-      </React.Fragment>
+      </div>
     );
   }
 }
