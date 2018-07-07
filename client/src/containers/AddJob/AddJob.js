@@ -1,24 +1,33 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
 import AddJobForm from '../../components/AddJobForm/AddJobForm';
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addjob } from './actions';
+import { addjob, resetaddjob } from './actions';
 
 class AddJob extends Component {
-  addJob = values => {
+  addjob = values => {
     // This calls the addJob action creator, passing the form values to it 
-   this.props.addJob(values);
+   this.props.addjob(values);
   }
+
+  resetaddjob = () => this.props.resetaddjob();
   render() {
     if (this.props.addJob.status) {
+      this.props.resetaddjob();
       return <Redirect to='/' />
     }
 
 
     return (
       <Container>
+        <Row>
+          <Col className="text-center">
+            Add a job to your board
+          </Col>
+        </Row>
         <Row>
           <Col />
           <Col size="12 md-8 lg-6">
@@ -39,7 +48,8 @@ const mapStateToProps = (state,props) => {
 
 const mapActionsToProps = (dispatch,props) => {
   return bindActionCreators({
-    addJob
+    addjob,
+    resetaddjob
   }, dispatch);
 }
 

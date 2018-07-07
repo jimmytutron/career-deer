@@ -9,21 +9,24 @@ export const ADDJOB_CLEAR = 'ADDJOB_CLEAR'
 // be asynchronous to either delay the dispatch of an action, or dispatch only if certain
 // conditions are met. In our case, we are having different actions dispatched depending on
 // what part of the async process something is happening. This can be useful for transitional
-// rendering, such as having a spinnging loading wheel while awaiting some data to be received from
+// rendering, such as having a spinning loading wheel while awaiting some data to be received from
 // a DB query etc.
-export function addJob(jobInfo) {
-  // return a fn
+export function addjob(jobInfo) {
+  // return an asynchronous function
   return async (dispatch, getState) => {
     try {
       await createJob(jobInfo);
-      // dispatch here
+      // dispatch the action only after the database call has finished
       dispatch(successAddJob());
     } catch (err) {
-      // and here
       dispatch(failedAddJob(err));
     }
   };
 };
+
+export function resetaddjob() {
+  return dispatch => dispatch(clearAddJob());
+}
 
 export function successAddJob() {
   return {
