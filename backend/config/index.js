@@ -8,7 +8,7 @@ passport.serializeUser((user, done) => {
 	console.log(user) // the whole raw user object!
 	console.log('---------')
 	done(null, { _id: user._id })
-})
+});
 
 passport.deserializeUser((id, done) => {
 	console.log('DEserialize ... called')
@@ -22,7 +22,7 @@ passport.deserializeUser((id, done) => {
 			done(null, user)
 		}
 	)
-})
+});
 
 // ==== Register Strategies ====
 passport.use(LocalStrategy);
