@@ -17,6 +17,8 @@ import LightSpeed from 'react-reveal/LightSpeed';
 import Slide from 'react-reveal/Slide';
 import Pulse from 'react-reveal/Pulse';
 
+import ScrollableAnchor from 'react-scrollable-anchor';
+
 class Home extends Component {
 
   onUpdateTest = () => {
@@ -29,11 +31,13 @@ class Home extends Component {
       <React.Fragment>
         <HomePageJumbo />
         <Slide bottom>
+        <ScrollableAnchor id={'section1'}>
         <Row className="justify-content-center mt-5 mb-3">
             <Col size="12">
             <h1 className="display-4 text-center montserrat">Makin' it Rein...</h1>
             </Col>
         </Row>
+        </ScrollableAnchor>
         <Row className="justify-content-center welcome-msg">
             <Col size="12 md-6">
             <p>
@@ -74,11 +78,13 @@ class Home extends Component {
           </Container>
           </Slide>
           <div className="section-2">
+          <ScrollableAnchor id={'section2'}>
             <Row className="justify-content-center mt-5 mb-3 pt-5">
                 <Col size="12">
                 <h1 className="display-4 text-center montserrat">For real doe?</h1>
                 </Col>
-            </Row>          
+            </Row>
+            </ScrollableAnchor>         
             <Row className="justify-content-center">
                 <Col size="12 md-12 lg-6">
                 <Zoom>

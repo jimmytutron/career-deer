@@ -1,0 +1,31 @@
+const passport = require('passport');
+const LocalStrategy = require('./passport');
+const GoogleStratgey = require('./passport-google');
+const User = require('../models');
+
+passport.serializeUser((user, done) => {
+	console.log('=== serialize ... called ===')
+	console.log(user) // the whole raw user object!
+	console.log('---------')
+	done(null, { _id: user._id })
+});
+
+passport.deserializeUser((id, done) => {
+	console.log('DEserialize ... called')
+	db.User.findOne(
+		{ _id: id },
+		'firstName lastName photos local.username',
+		(err, user) => {
+			console.log('======= DESERILAIZE USER CALLED ======')
+			console.log(user)
+			console.log('--------------')
+			done(null, user)
+		}
+	)
+});
+
+// ==== Register Strategies ====
+passport.use(LocalStrategy);
+passport.use(GoogleStratgey);
+
+module.exports = passport;
