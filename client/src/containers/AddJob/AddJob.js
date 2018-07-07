@@ -1,15 +1,15 @@
 // import React, { Component } from 'react';
-// import SignUpForm from '../../components/SignUpForm/SignUpForm';
+// import AddJobForm from '../../components/AddJobForm/AddJobForm';
 // import { Container, Col, Row } from '../../components/Grid';
 
 // import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 // import { addjob } from './actions';
 
-// class SignUp extends Component {
-//   signup = values => {
-//     // This calls the signup action creator, passing the form values to it 
-//    this.props.signup(values);
+// class AddJob extends Component {
+//   addJob = values => {
+//     // This calls the addJob action creator, passing the form values to it 
+//    this.props.addJob(values);
 //   }
 //   render() {
 //     return (
@@ -17,7 +17,7 @@
 //         <Row>
 //           <Col />
 //           <Col size="12 md-8 lg-6" className="banana">
-//             <SignUpForm onSubmit={this.signup} />
+//             <AddJobForm onSubmit={this.addJob} />
 //           </Col>
 //           <Col />
 //         </Row>
@@ -26,17 +26,16 @@
 //   }
 // };
 
-// // Only need SignUp to be aware of the sign up state.
 // const mapStateToProps = (state,props) => {
 //   return { 
-//     signedUp: state.signedUp
+//     addJob: state.addJob
 //   }
 // };
 
 // const mapActionsToProps = (dispatch,props) => {
 //   return bindActionCreators({
-//     signup
+//     addJob
 //   }, dispatch);
 // }
 
-// export default connect(mapStateToProps,mapActionsToProps)(SignUp);
+// export default connect(mapStateToProps,mapActionsToProps)(AddJob);

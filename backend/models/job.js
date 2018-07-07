@@ -3,15 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const jobSchema = new Schema({
-  post_date: {
-    type: Date,
-    required: true
-  },
   title: {
-    type: String,
-    required: true
-  },
-  url: {
     type: String,
     required: true
   },
@@ -19,38 +11,47 @@ const jobSchema = new Schema({
     type: String,
     required: true
   },
-  applied: {
-    type: Boolean,
-    default: false
-  },
-  progress_stage: {
-    type: String,
-    default: "saved"
-  },
-  type: {
-    type: String,
-    default: "unknown"
-  },
   location: {
     type: String,
     required: true
   },
-  description: {
+  applied: {
+    type: Boolean,
+    default: false
+  },
+  url: {
     type: String,
     required: true
   },
+  post_date: {
+    type: Date,
+    required: false,
+    default: Date.now
+  },
+
   logo_url: {
     type: String,
     required: false,
     default: "./imgs/logo-symbol.svg"
   },
+  description: {
+    type: String,
+    required: false
+  },
+  type: {
+    type: String,
+    default: "unknown",
+    required: false
+  },
+  
+  progress_stage: {
+    type: String,
+    required: false,
+    default: "saved"
+  },
   last_update: {
     type: Date,
-    required: true
-  },
-  hide: {
-    type: Boolean,
-    default: false
+    default: Date.now
   },
   user: {
     type: Schema.Types.ObjectId,
