@@ -10,7 +10,7 @@ const validate = values => {
   if (!values.email) {
     errors.email = 'You must enter an email'
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address'
+    errors.email = 'Please enter a valid email address'
   }
   if (!values.password) {
     errors.password = 'A password is required'
@@ -47,7 +47,7 @@ let LoginForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =>
           <Field className="text-input" name="password" component={renderTextField} type="password" label="Password" />
         </div>
         <div className="mt-3">
-          {/* <h6>{errorMessage}</h6> */}
+          <h6>{errorMessage}</h6>
           <button className="roboto login-btn btn btn-info" type="submit" disabled={pristine || submitting}>
             Login <i className="fas fa-sign-in-alt"></i>
           </button>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -61,10 +61,12 @@ let LoginForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =>
   )
 };
 
+
 LoginForm = reduxForm({
   // a unique name for the form
   form: 'login',
   validate,
+  // clears the form after submission
   onSubmitSuccess: (result, dispatch) => dispatch(reset('login'))
 })(LoginForm);
 
