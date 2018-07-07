@@ -38,15 +38,15 @@ let LoginForm = ({ handleSubmit, pristine, reset, submitting }) => {
           <button className="roboto login-btn btn btn-info" type="submit" disabled={pristine || submitting}>
             Login <i className="fas fa-sign-in-alt"></i>
           </button> {" "}
-        <button className="roboto login-btn btn btn-light" onClick={() => {googleAuth()}}>
+        <a href='/auth/google' className="roboto login-btn btn btn-light">
         Login with {" "} <img height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
-        </button>
+        </a>
         </div>
       </form>  
 
       {/* This is outside of the form to prevent handleSubmit from firing */}
       {/* <Link className="btn btn-primary btn-lg" to="/auth/google" role="button">Sign up with Google</Link> */}
-      <a href='/auth/google'>Sign in With Google!</a>
+      {/*<a href='/auth/google'>Sign in With Google!</a>*/}
     </React.Fragment>
   )
 };
