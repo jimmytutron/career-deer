@@ -15,6 +15,7 @@ import Rotate from 'react-reveal/Rotate';
 import Zoom from 'react-reveal/Zoom';
 import LightSpeed from 'react-reveal/LightSpeed';
 import Slide from 'react-reveal/Slide';
+import Pulse from 'react-reveal/Pulse';
 
 class Home extends Component {
 
@@ -80,7 +81,9 @@ class Home extends Component {
             </Row>          
             <Row className="justify-content-center">
                 <Col size="12 md-12 lg-6">
+                <Zoom>
                 <img className="svg-icon-chart my-3" src="/imgs/icons/bars-chart.svg" alt="bars chart"/>
+                </Zoom>
                 <p className="description roboto float-right">
                 Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. Activated charcoal chambray jianbing, gastropub man braid blog skateboard aesthetic actually hell of vice prism. Cred iPhone ugh, ennui forage poutine drinking vinegar biodiesel occupy viral raw denim glossier. Paleo pitchfork irony banh mi, roof party whatever selvage ramps crucifix dreamcatcher hella kogi.
                 </p>
@@ -88,31 +91,79 @@ class Home extends Component {
             </Row>
           </div>
           <Container className="section-3">
+          <Row className="justify-content-end">
+          <LightSpeed right>
+          <img className="deer-guy" src="/imgs/icons/deer-guy.svg" alt="deer guy"/>
+          </LightSpeed>
+          </Row>
             <Row className="justify-content-center">
                 <Col size="12 md-2">
+                <Rotate>
                 <img className="svg-icon-list my-3" src="/imgs/icons/archive.svg" alt="searching"/>
+                </Rotate>
                 </Col>
                 <Col size="12 md-6">
-                <p className="roboto">
-                <h1>Find Jobs</h1>
+                <h4 className="montserrat mt-4">Finding Jobs</h4>
+                <p className="roboto mt-1">
                 Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. 
                 </p>
-                <button className="btn btn-primary float-right"><i className="fas fa-search"></i></button>
                 </Col>
             </Row>
             <Row className="justify-content-center">
                 <Col size="12 md-2">
-                <img className="svg-icon-list my-3" src="/imgs/icons/archive.svg" alt="searching"/>
+                <Rotate>
+                <img className="svg-icon-list my-3" src="/imgs/icons/manage.svg" alt="searching"/>
+                </Rotate>
                 </Col>
                 <Col size="12 md-6">
-                <p className="roboto">
-                <h1>Find Jobs</h1>
+                <h4 className="montserrat mt-4">Manage your notes and data</h4>
+                <p className="roboto mt-1">
                 Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. 
                 </p>
-                <button className="btn btn-primary float-right"><i className="fas fa-search"></i></button>
+                </Col>
+            </Row>
+            <Row className="justify-content-center">
+                <Col size="12 md-2">
+                <Rotate>
+                <img className="svg-icon-list my-3" src="/imgs/icons/calendar.svg" alt="searching"/>
+                </Rotate>
+                </Col>
+                <Col size="12 md-6">
+                <h4 className="montserrat mt-4">Set reminders and schedules</h4>
+                <p className="roboto mt-1">
+                Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. 
+                </p>
+                </Col>
+            </Row>
+            <Row className="justify-content-center">
+                <Col size="12 md-2">
+                <Rotate>
+                <img className="svg-icon-list my-3" src="/imgs/icons/chatting.svg" alt="searching"/>
+                </Rotate>
+                </Col>
+                <Col size="12 md-6">
+                <h4 className="montserrat mt-4">Ace that interview!</h4>
+                <p className="roboto mt-1">
+                Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. 
+                </p>
                 </Col>
             </Row>
           </Container>
+
+          <div className="section-4">
+            <Row className="justify-content-center text-center mt-5 pt-5">
+                <Col size="12 md-8">
+                <Pulse>
+                <img width="250px" src="/imgs/logo-symbol.svg" alt="logo"/>
+                </Pulse>
+                <h1 className="display-6 text-center montserrat">kickstart your career hunt</h1>
+                 <p className="roboto mt-1">
+                Your dream job is just a couple hoofs away.
+                </p>
+                <button className="btn sign-up-btn btn-info mb-5">Sign Up</button>
+                </Col>
+            </Row>          
+          </div>
           <Footer />
           {/*<button className="btn btn-primary" onClick={() => this.onUpdateTest()}>Update Test</button>
           {this.props.test}*/}

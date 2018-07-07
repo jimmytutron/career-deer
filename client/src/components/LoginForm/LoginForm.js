@@ -31,18 +31,18 @@ let LoginForm = ({ handleSubmit, pristine, reset, submitting }) => {
       <form className="text-center" onSubmit={handleSubmit}>
 
         <div>
-          <Field name="email" component={renderTextField} type="email" label="Email" />
+          <Field className="text-input" name="email" component={renderTextField} type="email" label="Email" />
         </div>
 
         <div>
-          <Field name="password" component={renderTextField} type="password" label="Password" />
+          <Field className="text-input" name="password" component={renderTextField} type="password" label="Password" />
         </div>
         <div className="mt-3">
-          <button className="login-btn btn btn-success" type="submit" disabled={pristine || submitting}>
-            Sign In <i className="fas fa-sign-in-alt"></i>
+          <button className="roboto login-btn btn btn-info" type="submit" disabled={pristine || submitting}>
+            Login <i className="fas fa-sign-in-alt"></i>
           </button> {" "}
-        <button className="login-btn btn btn-primary" onClick={() => {googleAuth()}}>
-        Sign In With <i className="fab fa-google"></i> 
+        <button className="roboto login-btn btn btn-light" onClick={() => {googleAuth()}}>
+        Login with {" "} <img height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
         </button>
         </div>
       </form>  

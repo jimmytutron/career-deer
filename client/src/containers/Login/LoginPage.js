@@ -26,8 +26,8 @@ class LoginPage extends Component {
       </Col>
       </Row>
         <Row className="justify-content-center">
-        <Col size="12 md-3 lg-5">
-        <img className="img-fluid" src="/imgs/icons/studying.svg" />
+        <Col size="12 md-6 lg-5">
+        <img className="img-fluid" src="/imgs/icons/studying.svg" alt="empty desk" />
         </Col>
           <Col size="12 md-6 lg-6" className="log-in">
           <h1 className="text-center mt-5 montserrat font-weight-bold">Welcome Back!</h1>
