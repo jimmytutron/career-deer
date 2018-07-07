@@ -7,6 +7,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { signup } from './actions';
 
+import Rotate from 'react-reveal/Rotate';
+
+import { StickyFooter } from '../../components/Footer';
+
 class SignUp extends Component {
   signup = values => {
     // This calls the signup action creator, passing the form values to it 
@@ -17,17 +21,32 @@ class SignUp extends Component {
     if (this.props.signedUp.status) {
       return <Redirect to='/' />
     }
-
+ 
     return (
-      <Container>
-        <Row>
+      <React.Fragment>
+      <Container className="mt-5">
+      <Row className="justify-content-center">
+      <Col size="12 md-6 lg-4">
+      <Rotate>
+      <img className="mt-4" src="/imgs/icons/lost.svg" alt="deer lost in woods" />
+      </Rotate>
+      </Col>
+      <Col size="12 md-6 lg-4">
+      <h1 className="montserrat mt-5 font-weight-bold">Let's help you find your way!</h1>
+      <h3 className="montserrat mt-1">Make it through the wilderness~</h3>
+      <h6 className="montserrat">(of job searching)</h6>
+      </Col>
+      </Row>
+        <Row className="justify-content-center">
           <Col />
-          <Col size="12 md-8 lg-6" className="banana">
+          <Col size="12 md-8 lg-8" className="banana">
             <SignUpForm onSubmit={this.signup} errorMessage={renderError(this.props.signedUp)}/>
           </Col>
           <Col />
         </Row>
       </Container>
+      <StickyFooter />
+      </React.Fragment>
     )
   }
 };

@@ -36,7 +36,7 @@ class Home extends Component {
         </Row>
         <Row className="justify-content-center welcome-msg">
             <Col size="12 md-6">
-            <p>
+            <p className="px-5">
             YOLO vice plaid messenger bag, af palo santo poutine offal fixie you probably haven't heard of them. Etsy scenester kinfolk forage asymmetrical meh paleo. Cred scenester next level neutra raclette. Scenester succulents leggings portland, air plant raw denim swag four dollar toast health goth. Lorem ipsum dolor amet keytar wolf post-ironic swag franzen lyft. Vinyl tattooed tumeric shabby chic, adaptogen cliche meh disrupt snackwave. Cred ailoi scenester next level neutra raclette. Scenester succulents leggings portland, air plant raw denim swag four dollar toast health goth.
             </p>
             </Col>
@@ -48,7 +48,7 @@ class Home extends Component {
                     <img className="svg-icon mx-auto my-3" src="/imgs/icons/circular-target.svg" alt="circular target"/>
                     </Rotate>
                     <h2 className="text-center montserrat">Hunt down the job</h2>
-                    <p className="px-5 roboto text-center">
+                    <p className="px-5  text-center">
                     YOLO vice plaid messenger bag, af palo santo poutine offal fixie you probably haven't heard of them. Etsy scenester kinfolk forage asymmetrical meh paleo. Cred scenester next level neutra raclette. Scenester succulents leggings portland, air plant raw denim swag four dollar toast health goth.
                     </p>
                 </Col>
@@ -57,7 +57,7 @@ class Home extends Component {
                     <img className="svg-icon mx-auto my-3" src="/imgs/icons/check-box.svg" alt="check box"/>
                     </Zoom>
                     <h2 className="text-center montserrat">Track your progress</h2>
-                    <p className="px-5 roboto text-center">
+                    <p className="px-5  text-center">
                     Lorem ipsum dolor amet keytar wolf post-ironic swag franzen lyft. Vinyl tattooed tumeric shabby chic, adaptogen cliche meh disrupt snackwave. Cred ailoi scenester next level neutra raclette. Scenester succulents leggings portland, air plant raw denim swag four dollar toast health goth.
                     </p>
                 </Col>
@@ -66,7 +66,7 @@ class Home extends Component {
                     <img className="svg-icon mx-auto my-3" src="/imgs/icons/dart-board.svg" alt="dart board"/>
                     </LightSpeed>
                     <h2 className="text-center montserrat">Hit your target</h2>
-                    <p className="px-5 roboto text-center">
+                    <p className="px-5  text-center">
                     You probably haven't heard of them scenester cloud bread, vape disrupt trust fund food truck pok pok. Cred scenester next level neutra raclette. Scenester succulents leggings portland, air plant raw denim swag four dollar toast health goth.
                     </p>
                 </Col>
@@ -80,11 +80,13 @@ class Home extends Component {
                 </Col>
             </Row>        
             <Row className="justify-content-center">
-                <Col size="12 md-12 lg-6">
+                <Col size="12 md-12 lg-2">
                 <Zoom>
                 <img className="svg-icon-chart my-3" src="/imgs/icons/bars-chart.svg" alt="bars chart"/>
                 </Zoom>
-                <p className="description roboto float-right">
+                </Col>
+                <Col size="12 md-12 lg-4">
+                <p className="px-3">
                 Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. Activated charcoal chambray jianbing, gastropub man braid blog skateboard aesthetic actually hell of vice prism. Cred iPhone ugh, ennui forage poutine drinking vinegar biodiesel occupy viral raw denim glossier. Paleo pitchfork irony banh mi, roof party whatever selvage ramps crucifix dreamcatcher hella kogi.
                 </p>
                 </Col>
@@ -104,7 +106,7 @@ class Home extends Component {
                 </Col>
                 <Col size="12 md-6">
                 <h4 className="montserrat mt-4">Finding Jobs</h4>
-                <p className="roboto mt-1">
+                <p className=" mt-1 px-1">
                 Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. 
                 </p>
                 </Col>
@@ -117,7 +119,7 @@ class Home extends Component {
                 </Col>
                 <Col size="12 md-6">
                 <h4 className="montserrat mt-4">Manage your notes and data</h4>
-                <p className="roboto mt-1">
+                <p className=" mt-1 px-1">
                 Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. 
                 </p>
                 </Col>
@@ -130,7 +132,7 @@ class Home extends Component {
                 </Col>
                 <Col size="12 md-6">
                 <h4 className="montserrat mt-4">Set reminders and schedules</h4>
-                <p className="roboto mt-1">
+                <p className=" mt-1 px-1">
                 Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. 
                 </p>
                 </Col>
@@ -143,7 +145,7 @@ class Home extends Component {
                 </Col>
                 <Col size="12 md-6">
                 <h4 className="montserrat mt-4">Ace that interview!</h4>
-                <p className="roboto mt-1">
+                <p className=" mt-1 px-1">
                 Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. 
                 </p>
                 </Col>
@@ -157,10 +159,10 @@ class Home extends Component {
                 <img width="250px" src="/imgs/logo-symbol.svg" alt="logo"/>
                 </Pulse>
                 <h1 className="display-6 text-center montserrat">kickstart your career hunt</h1>
-                 <p className="roboto mt-1">
+                 <p className=" mt-1">
                 Your dream job is just a couple hooves away.
                 </p>
-                <button className="btn sign-up-btn btn-info mb-5">Sign Up</button>
+                <a className="btn sign-up-btn btn-info mb-5" href="/signup">Get Started!</a>
                 </Col>
             </Row>          
           </div>

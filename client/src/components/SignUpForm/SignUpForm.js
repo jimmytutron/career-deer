@@ -2,6 +2,7 @@ import React from 'react';
 // Redux stuff
 import { Field, reduxForm, reset } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
+import { Col, Row } from '../Grid';
 
 const renderTextField = ({
   input,
@@ -18,30 +19,46 @@ const renderTextField = ({
     />
   )
 
-
+ 
 
 
 let SignUpForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <Field name="firstName" component={renderTextField} type="text" label="First Name"></Field>
-      </div>
-      <div>
-        <Field name="lastName" component={renderTextField} type="text" label="Last Name"></Field>
-      </div>
-      <div>
-        <Field name="email" component={renderTextField} type="email" label="Email"></Field>
-      </div>
-      <div>
-        <Field name="password" component={renderTextField} type="password" label="Password"></Field>
-      </div>
-      <div>
-        <h6>{errorMessage}</h6>
-        <button type="submit" disabled={pristine || submitting}>
-          Submit
-        </button>
-      </div>
+      <Row className="justify-content-center">
+      <Col size="12 md-12 lg-6">
+        <Field className="text-input" name="firstName" component={renderTextField} type="text" label="First Name"></Field>
+      </Col>
+      <Col size="12 md-12 lg-6">
+        <Field className="text-input" name="lastName" component={renderTextField} type="text" label="Last Name"></Field>
+      </Col>
+      </Row>
+      <Row className="justify-content-center">
+      <Col size="12 md-12">
+        <Field className="text-input" name="email" component={renderTextField} type="email" label="Email"></Field>
+      </Col>
+      </Row>
+      <Row className="justify-content-center">
+      <Col size="12 md-12">
+        <Field className="text-input" name="password" component={renderTextField} type="password" label="Password"></Field>
+      </Col>
+      </Row>
+      <Row className="justify-content-end">
+      <Col size="12">
+      <h6>{errorMessage}</h6>
+      </Col>
+      </Row>
+      <Row className="justify-content-end">
+      <Col size="4 md-4 lg-4">
+        <button className="btn btn-info" type="submit" disabled={pristine || submitting}>
+          Sign Up
+        </button> &nbsp;&nbsp;
+        <a href='/auth/google' className="roboto login-btn btn btn-light">
+        Login with <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
+        </a>
+      </Col>
+      </Row>
+
     </form>
   );
 };
