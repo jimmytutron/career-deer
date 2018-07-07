@@ -18,7 +18,10 @@ const renderTextField = ({
     />
   )
 
-let SignUpForm = ({ handleSubmit, pristine, reset, submitting }) => {
+
+
+
+let SignUpForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -34,6 +37,7 @@ let SignUpForm = ({ handleSubmit, pristine, reset, submitting }) => {
         <Field name="password" component={renderTextField} type="password" label="Password"></Field>
       </div>
       <div>
+        <h6>{errorMessage}</h6>
         <button type="submit" disabled={pristine || submitting}>
           Submit
         </button>

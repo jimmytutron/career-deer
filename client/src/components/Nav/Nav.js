@@ -31,7 +31,7 @@ const Nav = ({className="", children, ...props}) => (
       </li>
       <li className="nav-item dropdown">
         <Link className="nav-link dropdown-toggle" to="/signup" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Sign Up
+          Sign Up / Login
         </Link>
         <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <Link className="dropdown-item" to="/signup">Sign Up</Link>
