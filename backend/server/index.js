@@ -31,13 +31,13 @@ morganBody(app, {
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/career-deer", { promiseLibrary: bluebird })
 
-// app.use(session({
-//   secret: process.env.SESSION_SECRET || 'career deer',
-//   resave: false,
-//   saveUninitialized: false
-// }));
-app.use(passportGoogle.initialize());
-// app.use(passport.session());
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'career deer',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 //TODO enable once routes are fixed.
 const routes = require('../routes/api/index');
