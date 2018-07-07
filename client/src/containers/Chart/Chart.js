@@ -19,7 +19,7 @@ class Chart extends Component {
 
   render() {
 
-    if (!this.props.chart.chartData) {
+    if (!this.props.chartData) {
       return <div><button type="button" onClick={() => this.props.selectJob()}> Test Me! </button> No job was selected.</div>
     }
 
@@ -31,16 +31,16 @@ class Chart extends Component {
           </button>
         <div className="chart">
           <Bar
-            data={this.props.chart.chartData}
+            data={this.props.chartData}
             options={{
               title: {
-                display: this.props.chart.chartData.title.display,
-                text: this.props.chart.chartData.title.text,
+                display: this.props.chartData.title.display,
+                text: this.props.chartData.title.text,
                 fontSize: 20
               },
               legend: {
-                display: this.props.chart.chartData.legend.display,
-                position: this.props.chart.chartData.legend.position
+                display: this.props.chartData.legend.display,
+                position: this.props.chartData.legend.position
               },
               maintainAspectRatio: false
             }}
@@ -48,16 +48,16 @@ class Chart extends Component {
         </div>
         <div className="chart">
           <Line
-            data={this.props.chart.chartData}
+            data={this.props.chartData}
             options={{
               title: {
-                display: this.props.chart.chartData.title.display,
-                text: this.props.chart.chartData.title.text,
+                display: this.props.chartData.title.display,
+                text: this.props.chartData.title.text,
                 fontSize: 20
               },
               legend: {
-                display: this.props.chart.chartData.legend.display,
-                position: this.props.chart.chartData.legend.position
+                display: this.props.chartData.legend.display,
+                position: this.props.chartData.legend.position
               },
               maintainAspectRatio: false
             }}
@@ -65,16 +65,16 @@ class Chart extends Component {
         </div>
         <div className="chart">
           <Pie
-            data={this.props.chart.chartData}
+            data={this.props.chartData}
             options={{
               title: {
-                display: this.props.chart.chartData.title.display,
-                text: this.props.chart.chartData.title.text,
+                display: this.props.chartData.title.display,
+                text: this.props.chartData.title.text,
                 fontSize: 20
               },
               legend: {
-                display: this.props.chart.chartData.legend.display,
-                position: this.props.chart.chartData.legend.position
+                display: this.props.chartData.legend.display,
+                position: this.props.chartData.legend.position
               },
               maintainAspectRatio: false
             }}
@@ -84,11 +84,10 @@ class Chart extends Component {
     )
   }
 }
-
-
+//banana
 function mapStateToProps(state) {
   return {
-    chart: state.chart
+    chartData: state.chartData
   }
 }
 
