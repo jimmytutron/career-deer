@@ -12,3 +12,25 @@
     margin: 0px;
     overflow: hidden;
 }
+
+.main-heading {
+    font-size: 2.5vw;
+}
+
+.sub-heading {
+    font-size: 1.4vw;
+}
+
+@media only screen and (max-width: 992px){
+    .main-heading {
+        font-size: 20px;
+    }
+
+    .sub-heading {
+        font-size: 15px;
+    }
+    .heading-lead {
+        font-size: 12px;
+    }
+
+}

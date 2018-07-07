@@ -2,7 +2,64 @@
 	/*background-color: #b8bde7;*/
 }
 
-.target {
+.svg-icon {
 	width: 40%;
 	display:block;
+}
+
+.svg-icon-chart {
+	width: 200px;
+}
+
+.deer-guy{
+	height: 290px;
+	display: block;
+	margin-top: -270px;
+	margin-right: -200px;
+}
+
+@media only screen and (max-width: 990px){
+	.deer-guy{
+		display: none;
+	}
+
+}
+
+.description  {
+	width: calc(100% - 200px);
+	padding: 30px;
+}
+
+.welcome-msg {
+	margin-bottom: 100px;
+}
+
+.montserrat {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.roboto {
+	font-family: 'Roboto', sans-serif;
+}
+
+.section-2 {
+	background-color: #ededed;
+}
+
+.section-3 {
+	margin-top: 50px;
+}
+
+.section-4 {
+	background-color: #ededed;
+	margin-top: 30px;
+	padding-top: 30px;
+	padding-bottom: 70px;
+}
+
+.sign-up-btn {
+	font-size: 30px;
+	height: 70px;
+	width: 250px;
+	box-shadow: 0px 0px 1px #888888;
 }
