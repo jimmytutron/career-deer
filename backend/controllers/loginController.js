@@ -1,5 +1,5 @@
 const db = require('../models');
-const passport = require('../config/passport.js');
+const passport = require('../config/');
 
 module.exports = {
   signUp: async (req, res, next) => {
