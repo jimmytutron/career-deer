@@ -84,7 +84,7 @@ class Chart extends Component {
     )
   }
 }
-
+//banana
 function mapStateToProps(state) {
   return {
     chartData: state.chartData
