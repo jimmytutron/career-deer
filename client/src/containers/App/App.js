@@ -6,7 +6,7 @@ import Home from "../Home/Home";
 import LoginPage from "../Login/LoginPage";
 import NoMatch from "../NoMatch/NoMatch";
 import SignUp from "../SignUp/SignUp";
-import AddJob from "../AddJob"
+import AddJob from "../AddJob/AddJob";
 import "./App.css";
 import Chart from '../Chart/Chart';
 
@@ -28,7 +28,6 @@ class App extends Component {
         <Route exact path ="/signup" component={SignUp} />
         <Route exact path ="/chart" component={Chart} />
         <Route exact path ="/addjob" component={AddJob} />
-        {/* <Route exact path ="/auth/google" component={} /> */}
         <Route component={NoMatch} />
       </Switch>
       </React.Fragment>
@@ -46,7 +45,8 @@ const mapStateToProps = state => ({
   app: state.app,
   test: state.test,
   form: state.form,
-  loggedIn: state.loggedIn
+  loggedIn: state.loggedIn,
+  addJob: state.addJob
 });
 
 
