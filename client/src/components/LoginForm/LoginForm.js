@@ -3,10 +3,22 @@ import React from 'react';
 import { Field, reduxForm, reset } from 'redux-form';
 
 import { TextField } from 'redux-form-material-ui';
-import { Link } from 'react-router-dom';
 // import { googleSignIn } from '../../utils/API';
 
- 
+const validate = values => {
+  const errors = {}
+  if (!values.email) {
+    errors.email = 'You must enter an email'
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = 'Invalid email address'
+  }
+  if (!values.password) {
+    errors.password = 'A password is required'
+  }
+  return errors
+}
+
+
 const renderTextField = ({
   input,
   label,
@@ -16,7 +28,7 @@ const renderTextField = ({
     <TextField
       hintText={label}
       floatingLabelText={label}
-      errorText={touched && error}
+      errorText={touched && error && <span>{error}</span>}
       {...input}
       {...custom}
     />
@@ -35,7 +47,7 @@ let LoginForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =>
           <Field className="text-input" name="password" component={renderTextField} type="password" label="Password" />
         </div>
         <div className="mt-3">
-          <h6>{errorMessage}</h6>
+          {/* <h6>{errorMessage}</h6> */}
           <button className="roboto login-btn btn btn-info" type="submit" disabled={pristine || submitting}>
             Login <i className="fas fa-sign-in-alt"></i>
           </button>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -45,9 +57,6 @@ let LoginForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =>
         </div>
       </form>  
 
-      {/* This is outside of the form to prevent handleSubmit from firing */}
-      {/* <Link className="btn btn-primary btn-lg" to="/auth/google" role="button">Sign up with Google</Link> */}
-      {/*<a href='/auth/google'>Sign in With Google!</a>*/}
     </React.Fragment>
   )
 };
@@ -55,6 +64,7 @@ let LoginForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =>
 LoginForm = reduxForm({
   // a unique name for the form
   form: 'login',
+  validate,
   onSubmitSuccess: (result, dispatch) => dispatch(reset('login'))
 })(LoginForm);
 

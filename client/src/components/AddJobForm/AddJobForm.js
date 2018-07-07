@@ -2,6 +2,7 @@ import React from 'react';
 // Redux stuff
 import { Field, reduxForm, reset } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
+const  { DOM: { input, select, textarea } } = React
 
 const renderTextField = ({
   input,
@@ -22,16 +23,19 @@ let AddJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <Field name="firstName" component={renderTextField} type="text" label="First Name"></Field>
+        <Field name="title" component={renderTextField} type="text" label="Job Title"></Field>
       </div>
       <div>
-        <Field name="lastName" component={renderTextField} type="text" label="Last Name"></Field>
+        <Field name="company_name" component={renderTextField} type="text" label="Company"></Field>
       </div>
       <div>
-        <Field name="email" component={renderTextField} type="email" label="Email"></Field>
+        <Field name="location" component={renderTextField} type="text" label="Location"></Field>
       </div>
       <div>
-        <Field name="password" component={renderTextField} type="password" label="Password"></Field>
+        <Field name="url" component={renderTextField} type="text" label="Link URL"></Field>
+      </div>
+      <div>
+        <Field name="post_date" component={renderTextField} type="date" label="post_date"></Field>
       </div>
       <div>
         <h6>{errorMessage}</h6>
