@@ -33,7 +33,8 @@ export function signedIn(data) {
         firstName: data.firstName,
         lastName: data.lastName,
         email: data.email
-      }
+      },
+      error: null
     }
   }
 };

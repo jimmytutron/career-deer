@@ -32,7 +32,8 @@ export function signedUp(data) {
   return {
     type: SIGNUP_SUCCESS,
     payload: {
-      status: true
+      status: true,
+      error: null
     }
   };
 };
@@ -47,7 +48,8 @@ export function loggedIn(data) {
         firstName: data.firstName,
         lastName: data.lastName,
         email: data.email
-      }
+      },
+      error: null
     }
   };
 };
