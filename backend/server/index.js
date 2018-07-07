@@ -8,8 +8,8 @@ const bluebird = require('bluebird');
 const mongoose = require('mongoose');
 const logger = require('morgan');
 const morganBody = require('morgan-body');
-const passport = require('../config/passport.js');
-// const passportGoogle = require('../config/passport-google');
+
+const passport = require('../config/');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -31,13 +31,13 @@ morganBody(app, {
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/career-deer", { promiseLibrary: bluebird })
 
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'career deer',
-  resave: false,
-  saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(session({
+//   secret: process.env.SESSION_SECRET || 'career deer',
+//   resave: false,
+//   saveUninitialized: false
+// }));
+app.use(passportGoogle.initialize());
+// app.use(passport.session());
 
 //TODO enable once routes are fixed.
 const routes = require('../routes/api/index');

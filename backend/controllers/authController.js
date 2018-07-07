@@ -4,6 +4,7 @@ const passport = require('passport');
 module.exports = {
 
   authenticate: async() => {
+    console.log("I'm hit!");
     (() => passport.authenticate('google', {
       scope: ['profile']
     }))();

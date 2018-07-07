@@ -2,7 +2,8 @@ import React from 'react';
 // Redux stuff
 import { Field, reduxForm, reset } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
-import { googleSignIn } from '../../utils/API';
+import { Link } from 'react-router-dom';
+// import { googleSignIn } from '../../utils/API';
 
  
 const renderTextField = ({
@@ -19,11 +20,6 @@ const renderTextField = ({
       {...custom}
     />
   )
-
-const googleAuth = () => {
-  googleSignIn()
-    .then(data => console.log(data.data));
-}
 
 let LoginForm = ({ handleSubmit, pristine, reset, submitting }) => {
   return (
@@ -43,9 +39,9 @@ let LoginForm = ({ handleSubmit, pristine, reset, submitting }) => {
           </button>
         </div>
       </form>  
-      <button onClick={() => {googleAuth()}}>
-        Sign In with Google
-      </button>
+      {/* This is outside of the form to prevent handleSubmit from firing */}
+      {/* <Link className="btn btn-primary btn-lg" to="/auth/google" role="button">Sign up with Google</Link> */}
+      <a href='/auth/google'>Sign in With Google!</a>
     </React.Fragment>
   )
 };
