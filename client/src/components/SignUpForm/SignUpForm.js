@@ -67,12 +67,12 @@ let SignUpForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =
       </Col>
       </Row>
       <Row className="justify-content-end">
-      <Col size="4 md-4 lg-4">
+      <Col size="10 md-10 lg-5">
         <button className="btn btn-info" type="submit" disabled={pristine || submitting}>
           Sign Up
-        </button> &nbsp;&nbsp;
+        </button> &nbsp;
         <a href='/auth/google' className="roboto login-btn btn btn-light">
-        Login with <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
+        Sign Up with <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
         </a>
       </Col>
       </Row>
