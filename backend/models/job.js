@@ -13,22 +13,17 @@ const jobSchema = new Schema({
   },
   location: {
     type: String,
-    required: true
-  },
-  applied: {
-    type: Boolean,
-    default: false
+    required: false
   },
   url: {
     type: String,
-    required: true
+    required: false
   },
   post_date: {
     type: Date,
     required: false,
     default: Date.now
   },
-
   logo_url: {
     type: String,
     required: false,
@@ -43,7 +38,6 @@ const jobSchema = new Schema({
     default: "unknown",
     required: false
   },
-  
   progress_stage: {
     type: String,
     required: false,
