@@ -9,6 +9,7 @@ import testReducer from './reducers/test-reducer';
 import loginReducer from './containers/Login/reducer';
 import signUpReducer from './containers/SignUp/reducer';
 import chartReducer from './containers/Chart/reducer';
+import searchReducer from './containers/Search/reducer';
 import addJobReducer from './containers/AddJob/reducer';
 
 const allReducers = combineReducers({
@@ -18,6 +19,7 @@ const allReducers = combineReducers({
   loggedIn: loginReducer,
   signedUp: signUpReducer,
   chartData: chartReducer,
+  searchData: searchReducer,
   addJob: addJobReducer
 });
 
