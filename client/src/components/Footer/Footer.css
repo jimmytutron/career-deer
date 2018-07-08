@@ -19,7 +19,7 @@
   bottom: 0;
 }
 
-@media only screen and (max-width: 500px){
+@media only screen and (max-width: 780px){
     .sticky-footer{
         display: none;
     }
