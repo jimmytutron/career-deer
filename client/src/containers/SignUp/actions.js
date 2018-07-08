@@ -1,8 +1,10 @@
 import { signUp } from '../../utils/API';
+import { googleSignIn } from '../../utils/API';
 import { LOGIN_SUCCESS } from '../Login/actions';
  
 export const FAILED_SIGNUP = 'FAILED_SIGNUP';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 
 // Using Redux thunk middleware https://github.com/reduxjs/redux-thunk
 // our action creator returns a function instead of an action. This function can
@@ -25,6 +27,28 @@ export function signup(userInfo) {
     }
   };
 };
+
+// Testing an auth thunk
+export function authThunk() {
+  return async (dispatch, getState) => {
+    try {
+      const apiResponse = await (googleSignIn());
+      dispatch(testAuth(apiResponse.data));
+    } catch(err) {
+      dispatch(failedSignUp(err));
+    }
+  }
+};
+
+
+export function testAuth(data) {
+  return {
+    type: AUTH_SUCCESS,
+    payload: {
+      renderMaterial: data
+    }
+  }
+}
 
 // We dispatch a type of SIGNUP_SUCCESS because we want to know 
 // when the signup and subsequent login was successful.

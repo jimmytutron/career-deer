@@ -6,6 +6,7 @@ import { Container, Col, Row } from '../../components/Grid';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { signup } from './actions';
+import { authThunk } from './actions';
 
 import Rotate from 'react-reveal/Rotate';
 
@@ -16,6 +17,11 @@ class SignUp extends Component {
     // This calls the signup action creator, passing the form values to it 
    this.props.signup(values);
   }
+
+  auth = () => {
+    this.props.authThunk();
+  }
+
   render() {
 
     if (this.props.signedUp.status) {
@@ -40,12 +46,13 @@ class SignUp extends Component {
         <Row className="justify-content-center">
           <Col />
           <Col size="12 md-8 lg-8" className="banana">
-            <SignUpForm onSubmit={this.signup} errorMessage={renderError(this.props.signedUp)}/>
+            <SignUpForm onSubmit={this.signup} errorMessage={renderError(this.props.signedUp)} auth={this.auth} />
           </Col>
           <Col />
         </Row>
-      </Container>
+      </Container>,
       <StickyFooter />
+      <div>{this.props.renderMaterial}</div>
       </React.Fragment>
     )
   }
@@ -69,13 +76,15 @@ const renderError = (signedUp) => {
 // Only need SignUp to be aware of the sign up state.
 const mapStateToProps = (state,props) => {
   return { 
-    signedUp: state.signedUp
+    signedUp: state.signedUp,
+    renderMaterial: state.auth.renderMaterial
   }
 };
 
 const mapActionsToProps = (dispatch,props) => {
   return bindActionCreators({
-    signup
+    signup,
+    authThunk
   }, dispatch);
 }
 
