@@ -51,7 +51,7 @@ export function getJobData(){
 
 // ======================================================
 // Search
-export function getSearchResults(){
-  return axios.get('/api/jobs/search')
+export function getSearchResults(data){
+  return axios.get('/api/jobs/search', data)
 }
 
