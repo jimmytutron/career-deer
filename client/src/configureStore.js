@@ -9,6 +9,7 @@ import testReducer from './reducers/test-reducer';
 import loginReducer from './containers/Login/reducer';
 import { signUpReducer } from './containers/SignUp/reducer';
 import chartReducer from './containers/Chart/reducer';
+import searchReducer from './containers/Search/reducer';
 import addJobReducer from './containers/AddJob/reducer';
 import { authTestReducer } from './containers/SignUp/reducer';
 
@@ -20,7 +21,9 @@ const allReducers = combineReducers({
   signedUp: signUpReducer,
   chartData: chartReducer,
   addJob: addJobReducer,
-  auth: authTestReducer
+  auth: authTestReducer,
+  searchData: searchReducer,
+  addJob: addJobReducer
 });
 
 export default function configureStore(initialState = {}) {

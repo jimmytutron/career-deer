@@ -67,7 +67,7 @@ let SignUpForm = ({ handleSubmit, pristine, reset, submitting, errorMessage, aut
       </Col>
       </Row>
       <Row className="justify-content-end">
-      <Col size="4 md-4 lg-4">
+      <Col size="10 md-10 lg-5">
         <button className="btn btn-info" type="submit" disabled={pristine || submitting}>
           Sign Up
         </button> &nbsp;&nbsp;

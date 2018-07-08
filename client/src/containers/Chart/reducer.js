@@ -12,9 +12,8 @@ export default function chartReducer(state = '', { type, payload }) {
         ...payload
       }
     default:
-      console.log('Reducer: No data input, will use default sample data.');
       return state;
-    }
   }
+}
 
 

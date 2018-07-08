@@ -30,7 +30,7 @@ class SignUp extends Component {
  
     return (
       <React.Fragment>
-      <Container className="mt-5">
+      <Container className="my-5">
       <Row className="justify-content-center">
       <Col size="12 md-6 lg-4">
       <Rotate>
