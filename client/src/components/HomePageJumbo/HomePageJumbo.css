@@ -1,17 +1,23 @@
 .home-jumbotron {
     color: #fff;
     width: 100%;
-    background: url(/imgs/background.png) no-repeat center right fixed;
+    background-color: #168CF1;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 100vh;
+    height: 58vh;
     display: flex;
     align-items: center;
     margin: 0px;
     overflow: hidden;
+    word-break: normal;
 }
+
+.home-jumbotron-small {
+    display: none;
+}
+
 
 .main-heading {
     font-size: 2.5vw;
@@ -21,16 +27,45 @@
     font-size: 1.4vw;
 }
 
-@media only screen and (max-width: 992px){
+.main-deer {
+    margin-top: -40px;
+    margin-right: -100px;
+    width: 150%;
+}
+
+@media only screen and (max-width: 992px) {
     .main-heading {
-        font-size: 20px;
+        font-size: 25px;
     }
 
     .sub-heading {
-        font-size: 15px;
+        font-size: 20px;
     }
     .heading-lead {
-        font-size: 12px;
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .home-jumbotron {
+        display: none;
     }
 
+    .mobile-heading {
+        margin-top: 30%;
+    }
+    .home-jumbotron-small {
+        color: #fff;
+        background-color: #168CF1;
+        height: 75vh;
+        display: flex;
+        align-items: center;
+        margin: 0px;
+        overflow: hidden;
+    }
+
+    .main-deer {
+        margin-top: 10%;
+        width: 95%;
+    }
 }

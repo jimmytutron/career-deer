@@ -33,6 +33,20 @@ const initialState = {
   addJob: {
     status: false,
     error: null
+  },
+  chartData: {
+    title: {
+      display: true,
+      text: 'Current Employment Progress (SAMPLE)'
+    },
+    legend: {
+      display: true,
+      position: 'right'
+    },
+    labels: [
+      'Saved', 'Applied', 'Phone Interview', 'On-site Interview', 'Offer'
+    ],
+    data: [50, 30, 20, 10, 5]
   }
 };
 

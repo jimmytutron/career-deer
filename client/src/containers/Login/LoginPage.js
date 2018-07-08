@@ -7,6 +7,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { login } from './actions';
 import './Login.css';
+import { StickyFooter } from '../../components/Footer';
+
+import Bounce from 'react-reveal/Bounce';
 
 class LoginPage extends Component {
   login = values => {
@@ -20,14 +23,17 @@ class LoginPage extends Component {
     }
 
     return (
-      <Container>
+      <React.Fragment>
+      <Container className="mt-5">
       <Row className="justify-content-center">
       <Col size="12 md-8">
       </Col>
       </Row>
         <Row className="justify-content-center">
         <Col size="12 md-6 lg-5">
+        <Bounce top duration={2000}>
         <img className="img-fluid" src="/imgs/icons/studying.svg" alt="empty desk" />
+        </Bounce>
         </Col>
           <Col size="12 md-6 lg-6" className="log-in">
           <h1 className="text-center mt-5 montserrat font-weight-bold">Welcome Back!</h1>
@@ -36,6 +42,8 @@ class LoginPage extends Component {
           </Col>
         </Row>
       </Container>
+       <StickyFooter />
+      </React.Fragment>
     )
   }
 };

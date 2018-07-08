@@ -9,6 +9,7 @@ import SignUp from "../SignUp/SignUp";
 import AddJob from "../AddJob/AddJob";
 import "./App.css";
 import Chart from '../Chart/Chart';
+import Search from '../Search/Search';
 
 // Redux stuff
 import { connect } from 'react-redux';
@@ -28,7 +29,7 @@ class App extends Component {
         <Route exact path ="/signup" component={SignUp} />
         <Route exact path ="/chart" component={Chart} />
         <Route exact path ="/addjob" component={AddJob} />
-        {/* <Route exact path ="/auth/google" component={} /> */}
+        <Route exact path ="/search" component={Search} />
         <Route component={NoMatch} />
       </Switch>
       </React.Fragment>

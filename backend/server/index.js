@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const bluebird = require('bluebird');
 const mongoose = require('mongoose');
 const logger = require('morgan');
@@ -33,9 +34,11 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/career-deer", {
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'career deer',
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
   resave: false,
   saveUninitialized: false
 }));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
