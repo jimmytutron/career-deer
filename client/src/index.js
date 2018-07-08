@@ -65,6 +65,9 @@ const initialState = {
         ]
       }
     ]
+  },
+  auth: {
+    renderMaterial: null
   }
 };
 
