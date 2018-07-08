@@ -40,7 +40,7 @@ const renderTextField = ({
     />
   )
 
-let SignUpForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
+let SignUpForm = ({ handleSubmit, pristine, reset, submitting, errorMessage, auth }) => {
   return (
     <form onSubmit={handleSubmit}>
       <Row className="justify-content-center">
@@ -70,10 +70,10 @@ let SignUpForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =
       <Col size="10 md-10 lg-5">
         <button className="btn btn-info" type="submit" disabled={pristine || submitting}>
           Sign Up
-        </button> &nbsp;
-        <a href='/auth/google' className="roboto login-btn btn btn-light">
-        Sign Up with <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
-        </a>
+        </button> &nbsp;&nbsp;
+        <button onClick={auth} className="roboto login-btn btn btn-light">
+        Login with <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
+        </button>
       </Col>
       </Row>
 
