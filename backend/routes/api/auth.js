@@ -1,10 +1,10 @@
 const router = require('express').Router();
 const authController = require('../../controllers/authController');
-const passport = require('passport');
+const passport = require('../../config');
 
 // prepended with /auth/
 router.route('/google')
-  .get(passport.authenticate('google', { scope: ['profile'] }));
+  .get(passport.authenticate('google', { scope: ['profile'] }))
 
 router.route('/google/redirect')
   .get(passport.authenticate('google', {

@@ -1,13 +1,9 @@
 const db = require('../models');
-const passport = require('passport');
 
 module.exports = {
-
   authenticate: async() => {
-    console.log("I'm hit!");
-    (() => passport.authenticate('google', {
-      scope: ['profile']
-    }))();
+    console.log('I am hit!');
+    res.json('I am hit!');
   },
 
   login: async (req,res) => {

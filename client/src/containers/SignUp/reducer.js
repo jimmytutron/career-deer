@@ -1,6 +1,6 @@
-import { FAILED_SIGNUP, SIGNUP_SUCCESS } from './actions';
+import { FAILED_SIGNUP, SIGNUP_SUCCESS, AUTH_SUCCESS } from './actions';
 
-export default function signUpReducer(state = '', { type, payload }) {
+export function signUpReducer(state = '', { type, payload }) {
   switch(type) {
     case FAILED_SIGNUP:
       return {
@@ -13,6 +13,18 @@ export default function signUpReducer(state = '', { type, payload }) {
         ...payload
       }
     default:
-      return state
+      return state;
+  }
+};
+
+export function authTestReducer(state = '', { type, payload }) {
+  switch(type) {
+    case AUTH_SUCCESS:
+      return  {
+        ...state,
+        ...payload
+      }
+    default:
+      return state;
   }
 };
