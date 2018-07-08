@@ -4,8 +4,6 @@ export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 export const SEARCH_FAILED = 'SEARCH_FAILED';
 
 export function getSearchJobs(searchInfo){
-  console.log("entered get search jobs function");
-  console.log(searchInfo);
   return async (dispatch, getState) => {
     try {
       const apiResponse = await getSearchResults(searchInfo.keywords, searchInfo.location);
@@ -18,7 +16,6 @@ export function getSearchJobs(searchInfo){
 }
 
 export function successSearch(data){
-  console.log(data);
   return {
     type: SEARCH_SUCCESS,
     payload: data
@@ -26,7 +23,6 @@ export function successSearch(data){
 }
 
 export function failedSearch(err){
-  console.log("entered failed search in action")
   return {
     type: SEARCH_FAILED,
     payload: {

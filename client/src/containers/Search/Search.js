@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchForm from '../../components/SearchForm';
+import SearchResults from '../../components/SearchResults';
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
@@ -10,28 +11,21 @@ class Search extends Component {
 
   searchJobs = values => {
     // Calling the search job action.
-    console.log('entered search button function.')
-    console.log(values);
     this.props.getSearchJobs(values);
   }
   
-
   render() {
-
-    // console.log(this.props.searchData);
-
     return (
       <Container>
         <Row className="justify-content-center">
           <SearchForm onSubmit={this.searchJobs} />
         </Row>
         <Row className="justify-content-center mt-5">
-          Search Results go here.
+          <SearchResults results={this.props.searchData}/>
         </Row>
       </Container>
     )
   }
-
 
 }
 
