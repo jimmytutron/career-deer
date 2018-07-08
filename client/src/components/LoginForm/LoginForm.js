@@ -1,6 +1,4 @@
 import React from 'react';
-import { Row } from '../Grid';
-
 // Redux stuff
 import { Field, reduxForm, reset } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
@@ -37,27 +35,23 @@ const renderTextField = ({
 
 let LoginForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
   return (
-    <React.Fragment>
-      <Row className="justify-content-end">
-        <a href='/auth/google' className="roboto login-btn btn btn-light">
+    <form className="text-center" onSubmit={handleSubmit}>
+      <div>
+        <Field className="text-input" name="email" component={renderTextField} type="email" label="Email" />
+      </div>
+      <div>
+        <Field className="text-input" name="password" component={renderTextField} type="password" label="Password" />
+      </div>
+      <div className="mt-3">
+        <h6>{errorMessage}</h6>
+        <button className="roboto login-btn btn btn-info" type="submit" disabled={pristine || submitting}>
+          Login <i className="fas fa-sign-in-alt"></i>
+        </button>&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href='/auth/google' className="roboto login-btn btn btn-light">
           Login with <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo" />
         </a>
-      </Row>
-      <form className="text-center" onSubmit={handleSubmit}>
-        <div>
-          <Field className="text-input" name="email" component={renderTextField} type="email" label="Email" />
-        </div>
-        <div>
-          <Field className="text-input" name="password" component={renderTextField} type="password" label="Password" />
-        </div>
-        <div className="mt-3">
-          <h6>{errorMessage}</h6>
-          <button className="roboto login-btn btn btn-info" type="submit" disabled={pristine || submitting}>
-            Login <i className="fas fa-sign-in-alt"></i>
-          </button>&nbsp;&nbsp;&nbsp;&nbsp;
-        </div>
-      </form>
-    </React.Fragment>
+      </div>
+    </form>
   )
 };
 
