@@ -43,6 +43,15 @@ export function updateJobById(id) {
   return axios.put(`/api/jobs/saved/${id}`);
 };
 
+// ======================================================
+// Chart
 export function getJobData(){
   return axios.get('/api/jobs/chart');
 }
+
+// ======================================================
+// Search
+export function getSearchResults(){
+  return axios.get('/api/jobs/search')
+}
+
