@@ -33,7 +33,7 @@ const renderTextField = ({
     />
   )
 
-let LoginForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
+let LoginForm = ({ handleSubmit, pristine, submitting, errorMessage }) => {
   return (
     <form className="text-center" onSubmit={handleSubmit}>
       <div>

@@ -31,7 +31,7 @@ class AddJob extends Component {
         <Row>
           <Col />
           <Col size="12 md-8 lg-6">
-            <AddJobForm onSubmit={this.addJob} />
+            <AddJobForm onSubmit={this.addjob} />
           </Col>
           <Col />
         </Row>

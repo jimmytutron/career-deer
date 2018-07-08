@@ -1,6 +1,6 @@
 import React from 'react';
 // Redux stuff
-import { Field, reduxForm, reset } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { Col, Row } from '../Grid';
 
