@@ -22,11 +22,35 @@ const Nav = ({className="", children, ...props}) => (
         </Link>
       </li>
       <li className="nav-item">
+        <Link to="/addjob"
+          className={
+            window.location.pathname === "/addjob" ? "nav-link active" : "nav-link"
+          }>
+          Add Custom Job
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/search"
+          className={
+            window.location.pathname === "/search" ? "nav-link active" : "nav-link"
+          }>
+         Search for a Job
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link to="/chart"
+          className={
+            window.location.pathname === "/chart" ? "nav-link active" : "nav-link"
+          }>
+          View Chart Data
+        </Link>
+      </li>
+      <li className="nav-item">
         <Link to="/nomatch"
           className={
             window.location.pathname === "/nomatch" ? "nav-link active" : "nav-link"
           }>
-          Another Link
+          404 Page
         </Link>
       </li>
       <li className="nav-item dropdown">
