@@ -7,9 +7,11 @@ import LoginPage from "../Login/LoginPage";
 import NoMatch from "../NoMatch/NoMatch";
 import SignUp from "../SignUp/SignUp";
 import AddJob from "../AddJob/AddJob";
-import "./App.css";
 import Chart from '../Chart/Chart';
 import Search from '../Search/Search';
+import TestContainer from '../TestContainer/TestContainer';
+import "./App.css";
+
 
 // Redux stuff
 import { connect } from 'react-redux';
@@ -30,6 +32,7 @@ class App extends Component {
         <Route exact path ="/chart" component={Chart} />
         <Route exact path ="/addjob" component={AddJob} />
         <Route exact path ="/search" component={Search} />
+        <Route exact path ="/test-drag" component={ TestContainer } />
         <Route component={NoMatch} />
       </Switch>
       </React.Fragment>
