@@ -2,14 +2,14 @@ import { getJobData } from '../../utils/API';
 
 export const DATA_AVAIL = 'DATA_AVAIL';
 
-export function selectJob() {
+export function getChartData() {
 
   return async (dispatch, getState) => {
     try {
       //TODO: DISABLED for testing.
       const apiResponse = await (getJobData());
       // const apiResponse={data: 'lots of data'};
-      console.log(apiResponse.data);
+      console.log('applying jobData function to dispatch')
       dispatch(jobData(apiResponse.data));
 
     } catch (err) {
@@ -19,8 +19,6 @@ export function selectJob() {
 }
 
 export function jobData(data) {
-  console.log(data);
-
   const organizedData = {
     'Saved': 0,
     'Applied': 0,
@@ -69,7 +67,7 @@ export function jobData(data) {
   return {
     type: DATA_AVAIL,
     payload: {
-      chartData: {
+      // chartData: {
         title: {
           display: true,
           text: 'Current Employment Progress'
@@ -79,20 +77,8 @@ export function jobData(data) {
           position: 'right'
         },
         labels: labels,
-        datasets: [
-          {
-            label: 'Users',
-            data: dataArray,
-            backgroundColor: [
-              'rgba(0,47,178, 0.7)',
-              'rgba(255,0,0, 0.7)',
-              'rgba(0,255,0, 0.7)',
-              'rgba(255,255,0, 0.7)',
-              'rgba(40,40,40, 0.7)'
-            ]
-          }
-        ]
-      }
+        data: dataArray,
+      // }
     }
   }
 }
