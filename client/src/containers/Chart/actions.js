@@ -9,7 +9,6 @@ export function getChartData() {
       //TODO: DISABLED for testing.
       const apiResponse = await (getJobData());
       // const apiResponse={data: 'lots of data'};
-      console.log('applying jobData function to dispatch')
       dispatch(jobData(apiResponse.data));
 
     } catch (err) {
