@@ -8,7 +8,7 @@ export function getSearchJobs(searchInfo){
   console.log(searchInfo);
   return async (dispatch, getState) => {
     try {
-      const apiResponse = await getSearchResults(searchInfo);
+      const apiResponse = await getSearchResults(searchInfo.keywords, searchInfo.location);
       dispatch(successSearch(apiResponse.data))
 
     } catch(err) {

@@ -51,7 +51,7 @@ export function getJobData(){
 
 // ======================================================
 // Search
-export function getSearchResults(data){
-  return axios.get('/api/jobs/search', data)
+export function getSearchResults(keywords, location){
+  return axios.get(`/api/jobs/search/?keywords=${keywords}&location=${location}`);
 }
 
