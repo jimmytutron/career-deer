@@ -34,12 +34,14 @@ let LoginForm = ({ handleSubmit, pristine, submitting, errorMessage }) => {
       </div>
       <div className="mt-3">
         <h6>{errorMessage}</h6>
+        <div className="text-right">
         <button className="roboto login-btn btn btn-info" type="submit" disabled={pristine || submitting}>
           Login <i className="fas fa-sign-in-alt"></i>
         </button>&nbsp;&nbsp;&nbsp;&nbsp;
           <a href='/auth/google' className="roboto login-btn btn btn-light">
            Login with <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo" />
           </a>
+        </div>
       </div>
     </form>
   )

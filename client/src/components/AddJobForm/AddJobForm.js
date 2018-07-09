@@ -83,8 +83,8 @@ let AddJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =
     </Col>
       <Col size="12 md-12 lg-5">
         <h6>{errorMessage}</h6>
-        <button className="btn btn-info" type="submit" disabled={pristine || submitting}>
-          Submit
+        <button className="btn btn-info my-1" type="submit" disabled={pristine || submitting}>
+          Track It!
         </button>
         <p className="text-right">* indicates a required field.</p>
       </Col>
