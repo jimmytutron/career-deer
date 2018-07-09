@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { addjob, resetaddjob } from './actions';
 
+import RubberBand from 'react-reveal/RubberBand';
+
 class AddJob extends Component {
   addjob = values => {
     // This calls the addjob action creator, passing the form values to it
@@ -21,19 +23,22 @@ class AddJob extends Component {
     };
 
     return (
-      <Container>
+      <Container className="mt-5">
+        <Row className="justify-content-center my-5 pt-5 text-center">
+        <Col size = "12 lg-10">
+        <RubberBand>
+        <img width="80%" src="/imgs/icons/walking.svg" alt="hunt the deer"/>
+        </RubberBand>
+        </Col>
+        </Row>
         <Row>
           <Col className="text-center">
-            <h3>Add a job to your board</h3>
+            <h3 className="montserrat font-weight-bold">Track a New Job</h3>
+            <h6>Found a job from somewhere else? Import it here and you'll be able to track your progress!</h6>
           </Col>
         </Row>
-        <Row>
-          <Col />
-          <Col size="12 md-8 lg-6">
-            <AddJobForm onSubmit={this.addjob} />
-          </Col>
-          <Col />
-        </Row>
+        <AddJobForm onSubmit={this.addjob} />
+
       </Container>
     );
   };
