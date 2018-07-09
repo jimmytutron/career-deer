@@ -54,7 +54,28 @@ const initialState = {
   },
   testDrag: {
     items: [],
-    selected: []
+    selected: [
+      {
+        id: '0',
+        val: 'chicken'
+      },
+      {
+        id: '0',
+        val: 'chicken'
+      },
+      {
+        id: '0',
+        val: 'chicken'
+      },
+      {
+        id: '0',
+        val: 'chicken'
+      },
+      {
+        id: '0',
+        val: 'chicken'
+      }
+    ]
   },
   grabJobs: {
     jobs: []
