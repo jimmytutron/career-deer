@@ -167,8 +167,6 @@ class Home extends Component {
             </Row>          
           </div>
           <Footer />
-          {/*<button className="btn btn-primary" onClick={() => this.onUpdateTest()}>Update Test</button>
-          {this.props.test}*/}
       </div>
     );
   }

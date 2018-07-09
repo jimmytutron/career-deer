@@ -11,6 +11,7 @@ import { signUpReducer, authTestReducer } from './containers/SignUp/reducer';
 import chartReducer from './containers/Chart/reducer';
 import searchReducer from './containers/Search/reducer';
 import addJobReducer from './containers/AddJob/reducer';
+import updateJobReducer from './containers/UpdateJob/reducer';
 import { testDragReducer, grabJobsReducer } from './containers/TestContainer/reducer';
 
 const allReducers = combineReducers({
@@ -24,6 +25,7 @@ const allReducers = combineReducers({
   auth: authTestReducer,
   searchData: searchReducer,
   addJob: addJobReducer,
+  updateJob: updateJobReducer,
   testDrag: testDragReducer,
   grabJobs: grabJobsReducer
 });

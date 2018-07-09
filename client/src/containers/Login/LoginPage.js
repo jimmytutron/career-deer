@@ -42,7 +42,7 @@ class LoginPage extends Component {
           </Col>
         </Row>
       </Container>
-       <StickyFooter />
+      <StickyFooter />
       </React.Fragment>
     );
   };

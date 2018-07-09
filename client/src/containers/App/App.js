@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Nav } from "../../components/Nav";
+import { Footer } from "../../components/Footer";
 import Home from "../Home/Home";
 import LoginPage from "../Login/LoginPage";
 import NoMatch from "../NoMatch/NoMatch";
 import SignUp from "../SignUp/SignUp";
 import AddJob from "../AddJob/AddJob";
+import UpdateJob from '../UpdateJob/UpdateJob';
 import Chart from '../Chart/Chart';
 import Search from '../Search/Search';
 import TestContainer from '../TestContainer/TestContainer';
+
 import "./App.css";
 
 
@@ -18,6 +21,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { updateApp } from '../../actions/app-action';
 import { updateTest } from '../../actions/test-actions';
+import { updateJob } from '../UpdateJob/actions';
 
 class App extends Component {
   render() {
@@ -33,6 +37,7 @@ class App extends Component {
         <Route exact path ="/addjob" component={AddJob} />
         <Route exact path ="/search" component={Search} />
         <Route exact path ="/test-drag" component={ TestContainer } />
+        <Route path ="/updatejob" component={updateJob} />
         <Route component={NoMatch} />
       </Switch>
       </React.Fragment>
