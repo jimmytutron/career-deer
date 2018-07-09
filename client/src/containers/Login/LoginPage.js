@@ -41,10 +41,6 @@ class LoginPage extends Component {
           </Col>
         </Row>
       </Container>
-<<<<<<< HEAD
-      <StickyFooter />
-=======
->>>>>>> 1de6567160d29591042863ac6f65450ffe1b3508
       </React.Fragment>
     );
   };

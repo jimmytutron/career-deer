@@ -50,7 +50,6 @@ class SignUp extends Component {
         </Row>
       </Container>
       <div>{this.props.renderMaterial}</div>
-      <StickyFooter />
       </React.Fragment>
     );
   };

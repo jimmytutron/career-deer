@@ -1,7 +1,8 @@
 import React from 'react';
 // Redux stuff
 import { Field, reduxForm, FieldArray, reset } from 'redux-form';
-import { TextField } from 'redux-form-material-ui';
+import { TextField, renderField } from 'redux-form-material-ui';
+import { Badge } from '../Badge'
 import { validate } from './validate'
 
 const renderTextField = (
@@ -35,36 +36,38 @@ const renderNote = (
     meta,
     ... custom
   }) => (
-    <ul>
-      <li>
-        <button type="button" onClick={()=>fields.push("")}>Add Node</button>
-      </li>
+    <React.Fragment>
+    <button type="button" onClick={()=>fields.push()}>Add Note</button>
+    <ul className="mt-3">
       {fields.map((note, index) => (
         <li key={index}>
-          <button type="button" title="Remove Note" onClick={() => fields.remove(index)} />
-          <h4>Note #{index + 1}</h4>
-          <TextField
+          <button title="Remove Note" className="btn btn-danger mr-3" onClick={() => fields.remove(index)}>X</button>
+          <Field
             floatingLabelText={`Note #${index + 1}`}
             floatingLabelFixed={true}
+            name={note}
+            label={`Note $${index + 1}`}
             multiLine={true}
             // sets the initial and maximum size of the text box
             rows={2}
             rowsMax={4}
-            {...custom}
+            type='text'
+            component={TextField}
           />
         </li>
       ))}
     </ul>
+    </React.Fragment>
   )
 
 let UpdateJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <Field name="title" component={renderTextField} type="text" label="Job Title" value="test" required></Field>
+        <Field name="title" component={renderTextField} type="text" label="Job Title" required></Field>
       </div>
       <div>
-        <Field name="company_name" component={renderTextField} type="text" label="Company" value="yes" required></Field>
+        <Field name="company_name" component={renderTextField} type="text" label="Company" required></Field>
       </div>
       <div>
         <Field name="location" component={renderTextField} type="text" label="Location"></Field>
@@ -76,7 +79,7 @@ let UpdateJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }
         <Field name="post_date" component={renderTextField} type="date" label="Job Post Date" dateField></Field>
       </div>
       <div>
-        <FieldArray name="note" component={renderNote} type="text" label="note" value="hello" textArea></FieldArray>
+        <FieldArray name="note" component={renderNote} type="text" label="note" textArea></FieldArray>
       </div>
       <div>
         <h6>{errorMessage}</h6>

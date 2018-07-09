@@ -34,7 +34,7 @@ class App extends Component {
         <Route exact path ="/addjob" component={AddJob} />
         <Route exact path ="/search" component={Search} />
         <Route exact path ="/test-drag" component={ TestContainer } />
-        <Route path ="/updatejob" component={updateJob} />
+        <Route path ="/updatejob" component={UpdateJob} />
         <Route component={NoMatch} />
       </Switch>
       <StickyFooter />
