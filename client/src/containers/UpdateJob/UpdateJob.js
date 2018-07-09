@@ -8,11 +8,10 @@ import { bindActionCreators } from 'redux';
 import { updateJob, resetUpdateJob } from './actions';
 
 class UpdateJob extends Component {
-  updateJob = values => {
-   this.props.updateJob(values);
-  };
+  updateJob = values => this.props.updateJob(values);
 
   resetUpdateJob = () => this.props.resetUpdateJob();
+
   render() {
     if (this.props.updateJob.status) {
       this.props.resetUpdateJob();
@@ -46,8 +45,12 @@ const mapStateToProps = (state,props) => {
 
 const mapActionsToProps = (dispatch,props) => {
   return bindActionCreators({
+    selectUpdateJob,
     updateJob,
-    resetUpdateJob
+    deleteJob,
+    resetUpdateJob,
+    failedUpdateJob,
+    clearUpdateJob
   }, dispatch);
 };
 

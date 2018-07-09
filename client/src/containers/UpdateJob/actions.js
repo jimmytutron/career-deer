@@ -2,7 +2,8 @@ import { deleteJobById, updateJobById } from '../../utils/API';
  
 export const UPDATEJOB_FAILED = 'UPDATEJOB_FAILED';
 export const UPDATEJOB_SUCCESS = 'UPDATEJOB_SUCCESS';
-export const UPDATEJOB_CLEAR = 'UPDATEJOB_CLEAR'
+export const UPDATEJOB_CLEAR = 'UPDATEJOB_CLEAR';
+export const UPDATEJOB_SELECT = 'UPDATEJOB_SELECT';
 
 // Using Redux thunk middleware https://github.com/reduxjs/redux-thunk
 // our action creator returns a function instead of an action. This function can
@@ -37,6 +38,15 @@ export function deleteJob(jobInfo) {
   };
 };
 
+export function selectUpdateJob(job) {
+  return {
+    UPDATEJOB_SELECT,
+    payload: {
+      job: job
+    }
+  }
+}
+
 export function resetUpdateJob() {
   return dispatch => dispatch(clearUpdateJob());
 }
@@ -44,7 +54,7 @@ export function resetUpdateJob() {
 export function successUpdateJob() {
   return {
     type: UPDATEJOB_SUCCESS,
-    payload: null
+    payload: {}
   };
 };
 
@@ -60,6 +70,6 @@ export function failedUpdateJob(err) {
 export function clearUpdateJob() {
   return {
     type: UPDATEJOB_CLEAR,
-    payload: null
+    payload: {}
   }
 }
