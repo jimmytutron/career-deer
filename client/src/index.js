@@ -34,6 +34,10 @@ const initialState = {
     status: false,
     error: null
   },
+  searchData: {
+    data: [],
+    saved: []
+  },
   chartData: {
     title: {
       display: true,
