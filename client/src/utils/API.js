@@ -24,7 +24,6 @@ export function googleSignIn() {
 // ======================================================
 // Jobs
 export function createJob(data) {
-  console.log("Saving Job")
   return axios.post('/api/jobs/saved',data);
 };
 
