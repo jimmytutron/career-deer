@@ -45,13 +45,17 @@ export function updateJobById(id, data) {
 
 // ======================================================
 // Chart
-export function getJobData(){
-  return axios.get('/api/jobs/chart');
-}
+export function getJobDataAll(){
+  return axios.get('/api/jobs/chart/all');
+};
+
+export function getJobDataUser(){
+  return axios.get('/api/jobs/chart/user');
+};
 
 // ======================================================
 // Search
 export function getSearchResults(keywords, location){
   return axios.get(`/api/jobs/search/?keywords=${keywords}&location=${location}`);
-}
+};
 

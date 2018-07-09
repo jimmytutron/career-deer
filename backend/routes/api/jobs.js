@@ -20,9 +20,12 @@ router.route('/saved/:id')
   .delete(jobsController.delete)
   .put(jobsController.update)
 
-// Matching with "/api/jobs/chart"
-router.route('/chart')
+// Matching with "/api/jobs/chart/all"
+router.route('/chart/all')
   .get(chartController.findAll)
+
+router.route('/chart/user')
+  .get(chartController.findUser)
 
 module.exports = router;
 
