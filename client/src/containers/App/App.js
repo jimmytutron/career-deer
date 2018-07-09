@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Nav } from "../../components/Nav";
-import { Footer } from "../../components/Footer";
 import Home from "../Home/Home";
 import LoginPage from "../Login/LoginPage";
 import NoMatch from "../NoMatch/NoMatch";
@@ -19,9 +18,6 @@ import "./App.css";
 // Redux stuff
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateApp } from '../../actions/app-action';
-import { updateTest } from '../../actions/test-actions';
-import { updateJob } from '../UpdateJob/actions';
 
 class App extends Component {
   render() {
@@ -51,24 +47,24 @@ class App extends Component {
 // App access to everything, and then each individual component
 // will only have the actions and states mapped to them which they should
 // be concered about.
-const mapStateToProps = state => ({
-  app: state.app,
-  test: state.test,
-  form: state.form,
-  loggedIn: state.loggedIn,
-  addJob: state.addJob
-});
+// const mapStateToProps = state => ({
+//   app: state.app,
+//   test: state.test,
+//   form: state.form,
+//   loggedIn: state.loggedIn,
+//   addJob: state.addJob
+// });
 
 
 // TODO remove these test reducers off of here, as well as the test reducer folders.
-const mapActionsToProps = (dispatch, props) => {
-  return bindActionCreators({
-    onUpdateTest: updateTest,
-    onUpdateApp: updateApp
-  }, dispatch)
-};
+// const mapActionsToProps = (dispatch, props) => {
+//   return bindActionCreators({
+
+//   }, dispatch)
+// };
 // Connect can take 3 arguments
 // 1) mapStateToProps
 // 2) mapActionsToProps 
 // 3) 
-export default connect(mapStateToProps,mapActionsToProps)(App);
+// export default connect(mapStateToProps,mapActionsToProps)(App);
+export default App;

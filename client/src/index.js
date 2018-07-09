@@ -20,8 +20,6 @@ import configureStore from './configureStore';
 // We need to determine what we want the initial state of
 // the application to be.
 const initialState = {
-  app: 'I am an app!',
-  test: 'Hello world!',
   loggedIn: {
     status: false,
     error: null
@@ -59,9 +57,30 @@ const initialState = {
   },
   testDrag: {
     items: [],
-    selected: []
+    selected: [
+      {
+        id: '0',
+        val: 'chicken'
+      },
+      {
+        id: '0',
+        val: 'chicken'
+      },
+      {
+        id: '0',
+        val: 'chicken'
+      },
+      {
+        id: '0',
+        val: 'chicken'
+      },
+      {
+        id: '0',
+        val: 'chicken'
+      }
+    ]
   },
-  grabJobs: {
+  allJobs: {
     jobs: []
   }
 };

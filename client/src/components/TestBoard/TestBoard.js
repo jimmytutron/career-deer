@@ -23,42 +23,48 @@ const getListStyle = isDraggingOver => ({
   padding: grid,
   width: 250
 });
-
+// banana
 const TestBoard = ({ items, selected }) => (
   <React.Fragment>
-  <h1>Hello</h1>
-    <Droppable droppableId="droppable">
+    <h1>Hello</h1>
+    {/* <Droppable droppableId="droppable">
       {(provided, snapshot) => (
         <div
           ref={provided.innerRef}
           style={getListStyle(snapshot.isDraggingOver)}>
-          {items.map((item, index) => (
-            <Draggable
-              key={item.id}
-              draggableId={item.id}
-              index={index}>
-              {(provided, snapshot) => (
-                <div
-                  ref={provided.innerRef}
-                  {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                  style={getItemStyle(
-                    snapshot.isDragging,
-                    provided.draggableProps.style
-                  )}>
-                  {item.content}
-                </div>
-              )}
-            </Draggable>
-          ))}
+          {
+            items.map((item, index) => (
+
+              <Draggable
+                key={item.id}
+                draggableId={item.id}
+                index={index}>
+                {
+                  (provided, snapshot) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      style={getItemStyle(
+                        snapshot.isDragging,
+                        provided.draggableProps.style
+                      )}>
+                      {item.content}
+                    </div>
+                  )
+                }
+              </Draggable>
+
+            ))
+          }
           {provided.placeholder}
         </div>
       )}
-    </Droppable>
+    </Droppable> */}
 
-    {console.log(selected)}
+    {/* {console.log(selected)} */}
 
-    <Droppable droppableId="droppable2">
+    {/* <Droppable droppableId="droppable2">
       {(provided, snapshot) => (
         <div
           ref={provided.innerRef}
@@ -85,7 +91,7 @@ const TestBoard = ({ items, selected }) => (
           {provided.placeholder}
         </div>
       )}
-    </Droppable>
+    </Droppable> */}
   </React.Fragment>
 )
 
