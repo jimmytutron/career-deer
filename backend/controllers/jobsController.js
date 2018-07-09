@@ -2,15 +2,12 @@ const db = require('../models');
 
 module.exports = {
   findAll: async (req, res) => {
-     //This needs to change in order to handle user log in. (Is user still stored in req.user?
-     //is the ide stored in _id or id?
-    console.log(req.user);
     if (req.user) {
       try {
         let query = {
           user: req.user._id
         }
-        res.json(await db.Job.find(query).populate("note").sort({ last_update: -1 }));
+        res.json(await db.Job.find(query).sort({ last_update: -1 }));
       } catch (err) {
         res.status(422).json(err);
       }
@@ -19,21 +16,13 @@ module.exports = {
     }
   },
   create: async (req, res) => {
-    //This needs to change in order to handle user log in. (Is user still stored in req.user?)
-    //is the id stored in _id or id?
-    console.log("=-=-=-=-=-----------------------Me---------------------------------------")
-    console.log(req.body);
     if (req.user) {
       try {
-        console.log("creating note")
-        const newNote = await db.Note.create({body: req.body.note || ''});
-        console.log("note created")
         const newJob = {
           ...req.body,
+          note: [req.body.note],
           user: req.user._id,
-          note: newNote._id
         }
-        console.log(newJob)
         res.json(await db.Job.create(newJob));
       } catch (err) {
         res.status(422).json(err);
@@ -85,11 +74,6 @@ module.exports = {
           user: req.user._id
         }
         let removed = await db.Job.remove(query);
-        query = {
-          user: req.user,
-          _id: removed.note
-        }
-        await db.Note.remove(query);
         // May need to be removed.data
         res.json(removed)
       } catch (err) {

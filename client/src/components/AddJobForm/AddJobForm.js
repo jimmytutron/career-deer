@@ -41,17 +41,28 @@ const renderTextField = (
     label,
     required,
     dateField,
+    textArea,
     meta: { touched, error, warning },
     ...custom
   }) => (
     <TextField
+      // don't show the hint text when it's a date because the default date always shows
       hintText={!dateField && label}
+      // add the asterisk to the end of the label if it's a required field
       floatingLabelText={label + (required ? '*' : '')}
+      // show the label above the date always because we're not showing the hint text
       floatingLabelFixed={!!dateField}
+      // defines the error/warning text
       errorText={touched &&
         ((error && <span>{error}</span>) ||
         (warning && <span>{warning}</span>))}
-      errorStyle={warning ? styles.warningStyle : {}}
+      // changes the color of the text to yellow from red when it's a warning and not an error
+      errorStyle={(warning && !error) ? styles.warningStyle : {}}
+      // determines whether it's going to be a text box
+      multiLine={!!textArea}
+      // sets the initial and maximum size of the text box
+      rows={textArea ? 2 : 1}
+      rowsMax={textArea ? 4 : 1}
       {...input}
       {...custom}
     />
@@ -74,6 +85,9 @@ let AddJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =
       </div>
       <div>
         <Field name="post_date" component={renderTextField} type="date" label="Job Post Date" dateField></Field>
+      </div>
+      <div>
+        <Field name="note" component={renderTextField} type="text" label="note" textArea></Field>
       </div>
       <div>
         <h6>{errorMessage}</h6>

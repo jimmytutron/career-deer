@@ -14,7 +14,7 @@ router.route('/saved')
   .post(jobsController.create)
 
 // Matching with "/api/jobs/saved/:id"
-// For retrieving info on 1 job, should also populate notes.
+// For retrieving/deleting/updating info on 1 job
 router.route('/saved/:id')
   .get(jobsController.findOne)
   .delete(jobsController.delete)
