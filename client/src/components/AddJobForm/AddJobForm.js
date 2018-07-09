@@ -3,6 +3,7 @@ import React from 'react';
 import { Field, reduxForm, reset } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { validate, warn } from './validate';
+import { Col, Row } from '../Grid';
 
 
 
@@ -25,7 +26,7 @@ const renderTextField = (
   }) => (
     <TextField
       // don't show the hint text when it's a date because the default date always shows
-      hintText={!dateField && label}
+      hintText={!dateField && !textArea && label}
       // add the asterisk to the end of the label if it's a required field
       floatingLabelText={label + (required ? '*' : '')}
       // show the label above the date always because we're not showing the hint text
@@ -49,31 +50,45 @@ const renderTextField = (
 let AddJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <Field name="title" component={renderTextField} type="text" label="Job Title" required></Field>
-      </div>
-      <div>
-        <Field name="company_name" component={renderTextField} type="text" label="Company" required></Field>
-      </div>
-      <div>
-        <Field name="location" component={renderTextField} type="text" label="Location"></Field>
-      </div>
-      <div>
-        <Field name="url" component={renderTextField} type="text" label="Link URL"></Field>
-      </div>
-      <div>
-        <Field name="post_date" component={renderTextField} type="date" label="Job Post Date" dateField></Field>
-      </div>
-      <div>
-        <Field name="note" component={renderTextField} type="text" label="note" textArea></Field>
-      </div>
-      <div>
+    <Row className="justify-content-center">
+      <Col size="12 md-12 lg-5">
+        <Field className="text-input" name="title" component={renderTextField} type="text" label="Job Title" required></Field>
+      </Col>
+      <Col size="12 md-12 lg-5">
+        <Field className="text-input" name="company_name" component={renderTextField} type="text" label="Company" required></Field>
+      </Col>
+    </Row>
+    <Row className="justify-content-center">
+      <Col size="12 md-12 lg-5">
+        <Field className="text-input" name="url" component={renderTextField} type="text" label="Link URL"></Field>
+      </Col>
+      <Col size="12 md-12 lg-5">
+        <Field className="text-input" name="location" component={renderTextField} type="text" label="Location"></Field>
+      </Col>
+    </Row>
+    <Row className="justify-content-center">
+      <Col size="12 md-12 lg-5">
+        <Field className="text-input" name="post_date" component={renderTextField} type="date" label="Job Post Date" dateField></Field>
+      </Col>
+      <Col size="12 md-12 lg-5">
+      </Col>
+    </Row>
+    <Row className="justify-content-center">
+      <Col size="12 md-12 lg-10">
+        <Field className="text-input" name="note" component={renderTextField} type="text" label="note" textArea></Field>
+      </Col>
+    </Row>
+    <Row className="justify-content-center text-right">
+    <Col size="12 lg-5">
+    </Col>
+      <Col size="12 md-12 lg-5">
         <h6>{errorMessage}</h6>
-        <button type="submit" disabled={pristine || submitting}>
+        <button className="btn btn-info" type="submit" disabled={pristine || submitting}>
           Submit
         </button>
-        <p>* indicates a required field.</p>
-      </div>
+        <p className="text-right">* indicates a required field.</p>
+      </Col>
+    </Row>
     </form>
   );
 };

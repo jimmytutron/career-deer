@@ -21,19 +21,13 @@ class AddJob extends Component {
     };
 
     return (
-      <Container>
+      <Container className="mt-5">
         <Row>
           <Col className="text-center">
-            <h3>Add a job to your board</h3>
+            <h3>Track a New Job</h3>
           </Col>
         </Row>
-        <Row>
-          <Col />
-          <Col size="12 md-8 lg-6">
-            <AddJobForm onSubmit={this.addjob} />
-          </Col>
-          <Col />
-        </Row>
+        <AddJobForm onSubmit={this.addjob} />
       </Container>
     );
   };
