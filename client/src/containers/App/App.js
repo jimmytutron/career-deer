@@ -7,16 +7,18 @@ import LoginPage from "../Login/LoginPage";
 import NoMatch from "../NoMatch/NoMatch";
 import SignUp from "../SignUp/SignUp";
 import AddJob from "../AddJob/AddJob";
+import UpdateJob from '../UpdateJob/UpdateJob';
 import Chart from '../Chart/Chart';
 import Search from '../Search/Search';
 import TestContainer from '../TestContainer/TestContainer';
+
 import "./App.css";
+import { StickyFooter } from '../../components/Footer';
 
 
 // Redux stuff
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
 
 class App extends Component {
   render() {
@@ -32,8 +34,10 @@ class App extends Component {
         <Route exact path ="/addjob" component={AddJob} />
         <Route exact path ="/search" component={Search} />
         <Route exact path ="/test-drag" component={ TestContainer } />
+        <Route path ="/updatejob" component={UpdateJob} />
         <Route component={NoMatch} />
       </Switch>
+      <StickyFooter />
       </React.Fragment>
       </Router>
     );
