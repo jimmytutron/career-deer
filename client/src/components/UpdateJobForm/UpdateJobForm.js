@@ -1,17 +1,8 @@
 import React from 'react';
 // Redux stuff
-import { Field, reduxForm, reset } from 'redux-form';
+import { Field, reduxForm, FieldArray, reset } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
-import { validate, warn } from './validate';
-
-
-
-//styling for warning messages
-const styles = {
-  warningStyle: {
-    color: 'rgb(255,204,0)',
-  }
-};
+import { validate } from './validate'
 
 const renderTextField = (
   {
@@ -20,7 +11,7 @@ const renderTextField = (
     required,
     dateField,
     textArea,
-    meta: { touched, error, warning },
+    meta: { touched, error },
     ...custom
   }) => (
     <TextField
@@ -30,30 +21,50 @@ const renderTextField = (
       floatingLabelText={label + (required ? '*' : '')}
       // show the label above the date always because we're not showing the hint text
       floatingLabelFixed={!!dateField}
-      // defines the error/warning text
-      errorText={touched &&
-        ((error && <span>{error}</span>) ||
-        (warning && <span>{warning}</span>))}
-      // changes the color of the text to yellow from red when it's a warning and not an error
-      errorStyle={(warning && !error) ? styles.warningStyle : {}}
-      // determines whether it's going to be a text box
-      multiLine={!!textArea}
-      // sets the initial and maximum size of the text box
-      rows={textArea ? 2 : 1}
-      rowsMax={textArea ? 4 : 1}
+      // defines the error text
+      errorText={touched && error && <span>{error}</span>}
+
       {...input}
       {...custom}
     />
   );
 
-let AddJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
+const renderNote = (
+  {
+    fields, 
+    meta,
+    ... custom
+  }) => (
+    <ul>
+      <li>
+        <button type="button" onClick={()=>fields.push("")}>Add Node</button>
+      </li>
+      {fields.map((note, index) => (
+        <li key={index}>
+          <button type="button" title="Remove Note" onClick={() => fields.remove(index)} />
+          <h4>Note #{index + 1}</h4>
+          <TextField
+            floatingLabelText={`Note #${index + 1}`}
+            floatingLabelFixed={true}
+            multiLine={true}
+            // sets the initial and maximum size of the text box
+            rows={2}
+            rowsMax={4}
+            {...custom}
+          />
+        </li>
+      ))}
+    </ul>
+  )
+
+let UpdateJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <Field name="title" component={renderTextField} type="text" label="Job Title" required></Field>
+        <Field name="title" component={renderTextField} type="text" label="Job Title" value="test" required></Field>
       </div>
       <div>
-        <Field name="company_name" component={renderTextField} type="text" label="Company" required></Field>
+        <Field name="company_name" component={renderTextField} type="text" label="Company" value="yes" required></Field>
       </div>
       <div>
         <Field name="location" component={renderTextField} type="text" label="Location"></Field>
@@ -65,7 +76,7 @@ let AddJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =
         <Field name="post_date" component={renderTextField} type="date" label="Job Post Date" dateField></Field>
       </div>
       <div>
-        <Field name="note" component={renderTextField} type="text" label="note" textArea></Field>
+        <FieldArray name="note" component={renderNote} type="text" label="note" value="hello" textArea></FieldArray>
       </div>
       <div>
         <h6>{errorMessage}</h6>
@@ -78,15 +89,14 @@ let AddJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =
   );
 };
 
-AddJobForm = reduxForm({
+UpdateJobForm = reduxForm({
   // a unique name for the form
   form: 'addjob',
   validate,
-  warn,
   onSubmitSuccess: (result, dispatch) => dispatch(reset('addjob'))
-})(AddJobForm);
+})(UpdateJobForm);
 
 // Inside this file, we wrapped our component inside the imported 'reduxForm' function
 // We can think of reduxForm() from redux-form behaving similar to connect() from react-redux in
 // terms of connecting a component to communicate with the store 
-export default AddJobForm;
+export default UpdateJobForm;

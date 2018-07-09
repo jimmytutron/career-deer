@@ -16,17 +16,17 @@ class SignUp extends Component {
   signup = values => {
     // This calls the signup action creator, passing the form values to it 
    this.props.signup(values);
-  }
+  };
 
   auth = () => {
     this.props.authThunk();
-  }
+  };
 
   render() {
 
     if (this.props.signedUp.status) {
-      return <Redirect to='/' />
-    }
+      return <Redirect to='/' />;
+    };
  
     return (
       <React.Fragment>
@@ -54,8 +54,8 @@ class SignUp extends Component {
       <StickyFooter />
       <div>{this.props.renderMaterial}</div>
       </React.Fragment>
-    )
-  }
+    );
+  };
 };
 
 const renderError = (signedUp) => {
@@ -69,16 +69,16 @@ const renderError = (signedUp) => {
         if (signedUp.error.response.data.code === 11000)
           return "An account with that email already exists. Please choose another email.";
       };
-  }
+  };
   return "";
-}
+};
 
 // Only need SignUp to be aware of the sign up state.
 const mapStateToProps = (state,props) => {
   return { 
     signedUp: state.signedUp,
     renderMaterial: state.auth.renderMaterial
-  }
+  };
 };
 
 const mapActionsToProps = (dispatch,props) => {
@@ -86,6 +86,6 @@ const mapActionsToProps = (dispatch,props) => {
     signup,
     authThunk
   }, dispatch);
-}
+};
 
 export default connect(mapStateToProps,mapActionsToProps)(SignUp);

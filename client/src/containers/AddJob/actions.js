@@ -2,7 +2,7 @@ import { createJob } from '../../utils/API';
  
 export const ADDJOB_FAILED = 'ADDJOB_FAILED';
 export const ADDJOB_SUCCESS = 'ADDJOB_SUCCESS';
-export const ADDJOB_CLEAR = 'ADDJOB_CLEAR'
+export const ADDJOB_CLEAR = 'ADDJOB_CLEAR';
 
 // Using Redux thunk middleware https://github.com/reduxjs/redux-thunk
 // our action creator returns a function instead of an action. This function can
@@ -20,13 +20,13 @@ export function addjob(jobInfo) {
       dispatch(successAddJob());
     } catch (err) {
       dispatch(failedAddJob(err));
-    }
+    };
   };
 };
 
 export function resetaddjob() {
   return dispatch => dispatch(clearAddJob());
-}
+};
 
 export function successAddJob() {
   return {
@@ -40,7 +40,7 @@ export function failedAddJob(err) {
     type: ADDJOB_FAILED,
     payload: {
       error: err
-    } 
+    }
   };
 };
 
@@ -48,5 +48,5 @@ export function clearAddJob() {
   return {
     type: ADDJOB_CLEAR,
     payload: null
-  }
-}
+  };
+};

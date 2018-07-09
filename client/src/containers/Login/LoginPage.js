@@ -15,12 +15,12 @@ class LoginPage extends Component {
   login = values => {
     // This calls the login action creator, passing the form values to it
     this.props.login(values);
-  }
+  };
   render() {
 
     if (this.props.loggedIn.status) {
       return <Redirect to='/' />
-    }
+    };
 
     return (
       <React.Fragment>
@@ -44,8 +44,8 @@ class LoginPage extends Component {
       </Container>
        <StickyFooter />
       </React.Fragment>
-    )
-  }
+    );
+  };
 };
 
 const renderError = (loggedIn) => {
@@ -53,20 +53,20 @@ const renderError = (loggedIn) => {
       return "Incorrect email or password.";
   else
     return "";
-}
+};
 
 // LoginPage needs to be aware of the signedUp state
 const mapStateToProps = (state, props) => {
   return {
     loggedIn: state.loggedIn,
     signedUp: state.signedUp
-  }
+  };
 };
 
 const mapActionsToProps = (dispatch, props) => {
   return bindActionCreators({
     login
-  }, dispatch)
-}
+  }, dispatch);
+};
 
 export default connect(mapStateToProps, mapActionsToProps)(LoginPage);

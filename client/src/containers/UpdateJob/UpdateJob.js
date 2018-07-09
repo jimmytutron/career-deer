@@ -5,19 +5,19 @@ import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addjob, resetaddjob } from './actions';
+import { updateJob, resetUpdateJob } from './actions';
 
 class AddJob extends Component {
-  addjob = values => {
+  updateJob = values => {
     // This calls the addjob action creator, passing the form values to it
-   this.props.addjob(values);
-  }
+   this.props.updateJob(values);
+  };
 
-  resetaddjob = () => this.props.resetaddjob();
+  resetUpdateJob = () => this.props.resetUpdateJob();
   render() {
     if (this.props.addJob.status) {
       this.props.resetaddjob();
-      return <Redirect to='/' />;
+      return <Redirect to='/' />
     };
 
     return (
@@ -41,14 +41,14 @@ class AddJob extends Component {
 
 const mapStateToProps = (state,props) => {
   return { 
-    addJob: state.addJob
+    updateJob: state.updateJob
   };
 };
 
 const mapActionsToProps = (dispatch,props) => {
   return bindActionCreators({
-    addjob,
-    resetaddjob
+    updateJob,
+    resetUpdateJob
   }, dispatch);
 };
 

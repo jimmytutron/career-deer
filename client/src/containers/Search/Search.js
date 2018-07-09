@@ -15,9 +15,20 @@ class Search extends Component {
   }
 
   saveJob = index => {
-    // console.log(index);
-    console.log(this.props.searchData.data[index])
-    this.props.postSaveJob(this.props.searchData.data[index])
+    const savedData = this.props.searchData.saved
+    const saveJob_url = this.props.searchData.data[index].url
+
+    let unique = true;
+    for (let i = 0; i < savedData.length; i++) {
+      if (saveJob_url === savedData[i].url) {
+        //URL is found in saved jobs from database.
+        unique = false;
+      }
+    }
+
+    if (unique === true) {
+      this.props.postSaveJob(this.props.searchData.data[index])
+    }
   }
 
   componentWillMount() {

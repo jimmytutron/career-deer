@@ -24,7 +24,7 @@ export function signup(userInfo) {
     } catch (err) {
       // and here
       dispatch(failedSignUp(err));
-    }
+    };
   };
 };
 
@@ -36,8 +36,8 @@ export function authThunk() {
       dispatch(testAuth(apiResponse.data));
     } catch(err) {
       dispatch(failedSignUp(err));
-    }
-  }
+    };
+  };
 };
 
 
@@ -47,8 +47,8 @@ export function testAuth(data) {
     payload: {
       renderMaterial: data
     }
-  }
-}
+  };
+};
 
 // We dispatch a type of SIGNUP_SUCCESS because we want to know 
 // when the signup and subsequent login was successful.
