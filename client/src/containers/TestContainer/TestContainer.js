@@ -49,6 +49,7 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 class TestContainer extends Component {
 
   componentWillMount() {
+    console.log('Grabbing Jobs..');
     this.props.grabJobs();
   };
   /**
@@ -120,7 +121,7 @@ class TestContainer extends Component {
 const mapStateToProps = (state, props) => {
   return {
     testDrag: state.testDrag,
-    allJobs: state.grabJobs
+    allJobs: state.allJobs
   }
 }
 

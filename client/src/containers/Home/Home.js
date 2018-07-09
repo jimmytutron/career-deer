@@ -7,8 +7,6 @@ import { Footer } from "../../components/Footer";
 // Redux stuff
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateTest } from '../../actions/test-actions';
-import { updateApp } from '../../actions/app-action';
 import './Home.css';
 
 import Rotate from 'react-reveal/Rotate';
@@ -24,7 +22,6 @@ class Home extends Component {
   }
 
   render() {
-    // console.log(this.props)
     return (
       <div className="hide-overflow">
         <HomePageJumbo />
@@ -167,8 +164,6 @@ class Home extends Component {
             </Row>          
           </div>
           <Footer />
-          {/*<button className="btn btn-primary" onClick={() => this.onUpdateTest()}>Update Test</button>
-          {this.props.test}*/}
       </div>
     );
   }
@@ -177,19 +172,15 @@ class Home extends Component {
 
 // If you want the component to have access to props passed from a parent
 // component, you need to pass them in to here;
-const mapStateToProps = (state, props) => {
-  return {
-    app: state.app,
-    test: state.test
-  }
-};
+// const mapStateToProps = (state, props) => {
+//   return {
+//   }
+// };
 
-const mapActionsToProps = (dispatch, props) => {
-  return bindActionCreators({
-    onUpdateTest: updateTest,
-    onUpdateApp: updateApp
-  }, dispatch)
-};
+// const mapActionsToProps = (dispatch, props) => {
+//   return bindActionCreators({
+//   }, dispatch)
+// };
 
 // Connect can take 3 arguments
 // 1) mapStateToProps
@@ -197,4 +188,5 @@ const mapActionsToProps = (dispatch, props) => {
 // 3) mergeProps
 
 // bindActionCreators()
-export default connect(mapStateToProps, mapActionsToProps)(Home);
+// export default connect(mapStateToProps, mapActionsToProps)(Home);
+export default Home;
