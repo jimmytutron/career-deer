@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getSearchJobs, postSaveJob, getAllSavedJobs } from './actions';
 
+import Bounce from 'react-reveal/Bounce';
+
 class Search extends Component {
 
   searchJobs = values => {
@@ -37,12 +39,17 @@ class Search extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className="mt-5">
         <Row className="justify-content-center">
+          <Col size="12 md-12 lg-5">
+          <Bounce>
+          <img src="/imgs/icons/hunt.svg" alt="hunt the deer"/>
+          </Bounce>
+          </Col>
           <SearchForm onSubmit={this.searchJobs} />
         </Row>
         <Row className="justify-content-center mt-5">
-          <Col size="12 md-8 lg-8 card">
+          <Col size="12 card">
             {this.props.searchData.data.map((result, i) => {
               return (
                 <SearchResults

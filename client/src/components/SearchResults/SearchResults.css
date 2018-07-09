@@ -2,3 +2,7 @@ a.title {
   text-decoration: none;
   color: black;
 }
+
+a:hover {
+	color: #CE6565;
+}
