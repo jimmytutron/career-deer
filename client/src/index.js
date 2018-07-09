@@ -34,6 +34,10 @@ const initialState = {
     status: false,
     error: null
   },
+  searchData: {
+    data: [],
+    saved: []
+  },
   chartData: {
     title: {
       display: true,
@@ -47,6 +51,13 @@ const initialState = {
       'Saved', 'Applied', 'Phone Interview', 'On-site Interview', 'Offer'
     ],
     data: [50, 30, 20, 10, 5]
+  },
+  testDrag: {
+    items: [],
+    selected: []
+  },
+  grabJobs: {
+    jobs: []
   }
 };
 

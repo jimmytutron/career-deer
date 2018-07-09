@@ -4,12 +4,13 @@ import TestBoard from '../../components/TestBoard/TestBoard';
 
 // Redux Stuff
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {
+  defaultLocation,
+  newLocation,
+  grabJobs
+} from './actions';
 
-// May add later
-// import { bindActionCreators } from 'redux';
-
-// import { <action here> } from './actions';
-// import './style path here' from blah
 
 
 // fake data generator
@@ -47,11 +48,9 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 
 class TestContainer extends Component {
 
-  state = {
-    items: getItems(10),
-    selected: getItems(5, 10)
+  componentWillMount() {
+    this.props.grabJobs();
   };
-
   /**
    * A semi-generic way to handle multiple lists. Matches
    * the IDs of the droppable container to the names of the
@@ -62,7 +61,8 @@ class TestContainer extends Component {
     droppable2: 'selected'
   };
 
-  getList = id => this.state[this.id2List[id]];
+  // this.props.testDrag[this.id2list[id]]
+  getList = id => this.props.testDrag[this.id2List[id]];
 
   onDragEnd = result => {
     const { source, destination } = result;
@@ -79,13 +79,13 @@ class TestContainer extends Component {
         destination.index
       );
 
-      let state = { items };
+      let status = { items };
 
       if (source.droppableId === 'droppable2') {
-        state = { selected: items };
+        status = { selected: items };
       }
-
-      this.setState(state);
+      //this may or may not be the default
+      this.props.defaultLocation(status);
     } else {
       const result = move(
         this.getList(source.droppableId),
@@ -94,7 +94,7 @@ class TestContainer extends Component {
         destination
       );
 
-      this.setState({
+      this.props.newLocation({
         items: result.droppable,
         selected: result.droppable2
       });
@@ -104,15 +104,34 @@ class TestContainer extends Component {
   // Normally you would want to split things out into separate components.
   // But in this example everything is just done in one place for simplicity
   render() {
+    console.log(this.props.allJobs);
     return (
-      <DragDropContext onDragEnd={this.onDragEnd}>
-        <TestBoard />
+
+      <DragDropContext onDragEnd={this.onDragEnd} >
+        <TestBoard
+          items={this.props.testDrag.items}
+          selected={this.props.testDrag.selected}
+        />
       </DragDropContext>
     );
   }
 }
 
+const mapStateToProps = (state, props) => {
+  return {
+    testDrag: state.testDrag,
+    allJobs: state.grabJobs
+  }
+}
+
+const mapActionsToProps = (dispatch, props) => {
+  return bindActionCreators({
+    defaultLocation,
+    newLocation,
+    grabJobs
+  }, dispatch)
+}
+
 
 // Put the things into the DOM!
-// export default connect()(TestContainer);
-export default TestContainer;
+export default connect(mapStateToProps, mapActionsToProps)(TestContainer);
