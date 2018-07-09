@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Bar, Line, Pie, } from 'react-chartjs-2';
-import { getChartData } from './actions';
+// import { getChartAllData } from './actions';
+import { getChartAllData, getChartUserData } from './actions';
 import { bindActionCreators } from 'redux';
-// import { getJobData } from '../../utils/API';
 
 class Chart extends Component {
 
-  componentWillMount() {
-    this.props.getChartData();
+  componentDidMount() {
+    this.props.getChartAllData();
+    this.props.getChartUserData();
   }
 
   render() {
@@ -25,10 +26,21 @@ class Chart extends Component {
         <div className="chart">
           <Bar
             data={{
-              labels: this.props.chartData.labels,
+              labels: this.props.chartData.all.labels,
               datasets: [{
                 label: 'Users',
-                data: this.props.chartData.data,
+                data: this.props.chartData.all.data,
+                backgroundColor: [
+                  'rgba(0,47,178, 0.7)',
+                  'rgba(255,0,0, 0.7)',
+                  'rgba(0,255,0, 0.7)',
+                  'rgba(255,255,0, 0.7)',
+                  'rgba(40,40,40, 0.7)'
+                ]
+              },
+              {
+                label: 'Users',
+                data: this.props.chartData.user.data,
                 backgroundColor: [
                   'rgba(0,47,178, 0.7)',
                   'rgba(255,0,0, 0.7)',
@@ -47,13 +59,13 @@ class Chart extends Component {
                 }]
               },
               title: {
-                display: this.props.chartData.title.display,
-                text: this.props.chartData.title.text,
+                display: this.props.chartData.all.title.display,
+                text: this.props.chartData.all.title.text,
                 fontSize: 20
               },
               legend: {
-                display: this.props.chartData.legend.display,
-                position: this.props.chartData.legend.position
+                display: this.props.chartData.all.legend.display,
+                position: this.props.chartData.all.legend.position
               },
               maintainAspectRatio: false
             }}
@@ -63,11 +75,11 @@ class Chart extends Component {
         <div className="chart">
           <Line
             data={{
-              labels: this.props.chartData.labels,
+              labels: this.props.chartData.all.labels,
               datasets: [{
                 label: 'Users',
                 fill: false,
-                data: this.props.chartData.data,
+                data: this.props.chartData.all.data,
                 backgroundColor: [
                   'rgba(0,47,178, 0.7)',
                   'rgba(255,0,0, 0.7)',
@@ -86,13 +98,13 @@ class Chart extends Component {
                 }]
               },
               title: {
-                display: this.props.chartData.title.display,
-                text: this.props.chartData.title.text,
+                display: this.props.chartData.all.title.display,
+                text: this.props.chartData.all.title.text,
                 fontSize: 20
               },
               legend: {
-                display: this.props.chartData.legend.display,
-                position: this.props.chartData.legend.position
+                display: this.props.chartData.all.legend.display,
+                position: this.props.chartData.all.legend.position
               },
               maintainAspectRatio: false
             }}
@@ -102,11 +114,11 @@ class Chart extends Component {
         <div className="chart">
           <Line
             data={{
-              labels: this.props.chartData.labels,
+              labels: this.props.chartData.all.labels,
               datasets: [{
                 label: 'Users',
                 fill: true,
-                data: this.props.chartData.data,
+                data: this.props.chartData.all.data,
                 backgroundColor: [
                   'rgba(0,47,178, 0.7)',
                   'rgba(255,0,0, 0.7)',
@@ -125,13 +137,13 @@ class Chart extends Component {
                 }]
               },
               title: {
-                display: this.props.chartData.title.display,
-                text: this.props.chartData.title.text,
+                display: this.props.chartData.all.title.display,
+                text: this.props.chartData.all.title.text,
                 fontSize: 20
               },
               legend: {
-                display: this.props.chartData.legend.display,
-                position: this.props.chartData.legend.position
+                display: this.props.chartData.all.legend.display,
+                position: this.props.chartData.all.legend.position
               },
               maintainAspectRatio: false
             }}
@@ -141,10 +153,10 @@ class Chart extends Component {
         <div className="chart">
           <Pie
             data={{
-              labels: this.props.chartData.labels,
+              labels: this.props.chartData.all.labels,
               datasets: [{
                 label: 'Users',
-                data: this.props.chartData.data,
+                data: this.props.chartData.all.data,
                 backgroundColor: [
                   'rgba(0,47,178, 0.7)',
                   'rgba(255,0,0, 0.7)',
@@ -156,13 +168,13 @@ class Chart extends Component {
             }}
             options={{
               title: {
-                display: this.props.chartData.title.display,
-                text: this.props.chartData.title.text,
+                display: this.props.chartData.all.title.display,
+                text: this.props.chartData.all.title.text,
                 fontSize: 20
               },
               legend: {
-                display: this.props.chartData.legend.display,
-                position: this.props.chartData.legend.position
+                display: this.props.chartData.all.legend.display,
+                position: this.props.chartData.all.legend.position
               },
               maintainAspectRatio: false
             }}
@@ -180,7 +192,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getChartData }, dispatch)
+  return bindActionCreators({ getChartAllData, getChartUserData }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chart);
