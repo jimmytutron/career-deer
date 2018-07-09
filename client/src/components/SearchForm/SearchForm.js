@@ -45,8 +45,8 @@ let SearchForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
 SearchForm = reduxForm({
   form: 'search',
