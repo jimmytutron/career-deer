@@ -1,4 +1,4 @@
-import { ADDJOB_FAILED, ADDJOB_SUCCESS, ADDJOB_CLEAR } from './actions';
+import { UPDATEJOB_FAILED, UPDATEJOB_SUCCESS, UPDATEJOB_CLEAR } from './actions';
 
 // There's only a case for failed signup here, because a sucessful signup dispatches
 // an action of a type LOGIN_SUCCESS. The loginReducer will pick up on this dispatched
@@ -6,7 +6,7 @@ import { ADDJOB_FAILED, ADDJOB_SUCCESS, ADDJOB_CLEAR } from './actions';
 // listening to dispatched errors for unsuccessful logins.
 export default function addJobReducer(state = '', { type, payload }) {
   switch(type) {
-    case ADDJOB_FAILED:
+    case UPDATEJOB_FAILED:
       return {
         ...state,
         ...payload,
@@ -14,7 +14,7 @@ export default function addJobReducer(state = '', { type, payload }) {
           status: true
         }
       }
-    case ADDJOB_SUCCESS:
+    case UPDATEJOB_SUCCESS:
       return {
         ...state,
         addJob: {
@@ -22,7 +22,7 @@ export default function addJobReducer(state = '', { type, payload }) {
           error: false
         }
       }
-    case ADDJOB_CLEAR:
+    case UPDATEJOB_CLEAR:
       return {
         ...state,
         addJob: {
@@ -32,5 +32,5 @@ export default function addJobReducer(state = '', { type, payload }) {
       }
     default:
       return state
-  };
+  }
 };

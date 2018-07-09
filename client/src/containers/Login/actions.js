@@ -21,8 +21,8 @@ export function login(userInfo) {
     } catch (err) {
       // and here
       dispatch(failedSignIn(err));
-    }
-  }
+    };
+  };
 };
 
 export function signedIn(data) {
@@ -36,7 +36,7 @@ export function signedIn(data) {
       },
       error: null
     }
-  }
+  };
 };
 
 export function failedSignIn(err) {
@@ -46,5 +46,5 @@ export function failedSignIn(err) {
       status: false,
       error: err   
     }
-  }
+  };
 };
