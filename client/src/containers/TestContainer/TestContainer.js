@@ -109,7 +109,7 @@ class TestContainer extends Component {
 
       <DragDropContext onDragEnd={this.onDragEnd} >
         <TestBoard
-          items={this.props.testDrag.items}
+          items={this.props.allJobs}
           selected={this.props.testDrag.selected}
         />
       </DragDropContext>
@@ -131,7 +131,6 @@ const mapActionsToProps = (dispatch, props) => {
     grabJobs
   }, dispatch)
 }
-
 
 // Put the things into the DOM!
 export default connect(mapStateToProps, mapActionsToProps)(TestContainer);
