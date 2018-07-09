@@ -27,14 +27,14 @@ const renderTextField = (
 let SearchForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
   return (
     <Col size="12 col-md-12 lg-5">
-        <h1 className="text-center mt-5 pt-4 montserrat">Time to start the hunt!</h1>
+        <h2 className="text-center mt-5 pt-4 montserrat font-weight-bold">Time to start the hunt!</h2>
         <h6 className="text-center">Let's hunt for some jobs! Use our job hunter to add jobs to your tracker</h6>
       <form onSubmit={handleSubmit}>
           <Row>
-            <Field className="text-input" name="keywords" component={renderTextField} type="text" label="What are you hunting for?"></Field>
+            <Field className="px-2 text-input" name="keywords" component={renderTextField} type="text" label="What are you hunting for?"></Field>
           </Row>
           <Row>
-            <Field className="text-input" name="location" component={renderTextField} type="text" label="Where shall we look?"></Field>
+            <Field className="px-2 text-input" name="location" component={renderTextField} type="text" label="Where shall we look?"></Field>
           </Row>
         <h6>{errorMessage}</h6>
         <Row className="justify-content-end">
