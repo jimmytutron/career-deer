@@ -24,10 +24,10 @@ export function googleSignIn() {
 // ======================================================
 // Jobs
 export function createJob(data) {
-  return axios.post('/api/jobs/saved',data);
+  return axios.post('/api/jobs/saved', data);
 };
 
-export function getAllJobs(data) {
+export function getAllJobs() {
   return axios.get('/api/jobs/saved');
 };
 
@@ -39,8 +39,8 @@ export function deleteJobById(id) {
   return axios.delete(`/api/jobs/saved/${id}`);
 };
 
-export function updateJobById(id) {
-  return axios.put(`/api/jobs/saved/${id}`);
+export function updateJobById(id, data) {
+  return axios.put(`/api/jobs/saved/${id}`, data);
 };
 
 // ======================================================

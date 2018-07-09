@@ -2,15 +2,12 @@ const db = require('../models');
 
 module.exports = {
   findAll: async (req, res) => {
-     //This needs to change in order to handle user log in. (Is user still stored in req.user?
-     //is the ide stored in _id or id?
-    console.log(req.user);
     if (req.user) {
       try {
         let query = {
-          user: req.user.id
+          user: req.user._id
         }
-        res.json(await db.Job.find(query).populate("note").sort({ last_update: -1 }));
+        res.json(await db.Job.find(query).sort({ last_update: -1 }));
       } catch (err) {
         res.status(422).json(err);
       }
@@ -19,16 +16,12 @@ module.exports = {
     }
   },
   create: async (req, res) => {
-    //This needs to change in order to handle user log in. (Is user still stored in req.user?)
-    //is the id stored in _id or id?
-    console.log(req.user);
     if (req.user) {
-    try {
-        newNote = await db.Note.create(newNote);
-        let newJob = {
+      try {
+        const newJob = {
           ...req.body,
-          user: req.user.id,
-          note: newNote._id
+          note: [req.body.note],
+          user: req.user._id,
         }
         res.json(await db.Job.create(newJob));
       } catch (err) {
@@ -45,7 +38,7 @@ module.exports = {
       try {
         let query = {
           _id: req.params.id,
-          user: req.user.id
+          user: req.user._id
         }
         res.json(await db.Job.findOne(query).populate("note"))
       } catch (err) {
@@ -61,7 +54,7 @@ module.exports = {
       try {
         let query = {
           _id: req.body._id,
-          user: req.user.id
+          user: req.user._id
         }
         res.json(await db.Job.findOneAndUpdate(query, {$set: {...req.body}}))
       } catch (err) {
@@ -78,14 +71,9 @@ module.exports = {
       try {
         let query = {
           _id: req.body._id,
-          user: req.user.id
+          user: req.user._id
         }
         let removed = await db.Job.remove(query);
-        query = {
-          user: req.user,
-          _id: removed.note
-        }
-        await db.Note.remove(query);
         // May need to be removed.data
         res.json(removed)
       } catch (err) {

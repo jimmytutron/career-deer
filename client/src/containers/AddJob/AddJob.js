@@ -9,7 +9,7 @@ import { addjob, resetaddjob } from './actions';
 
 class AddJob extends Component {
   addjob = values => {
-    // This calls the addJob action creator, passing the form values to it 
+    // This calls the addjob action creator, passing the form values to it
    this.props.addjob(values);
   }
 
@@ -20,18 +20,17 @@ class AddJob extends Component {
       return <Redirect to='/' />
     }
 
-
     return (
       <Container>
         <Row>
           <Col className="text-center">
-            Add a job to your board
+            <h3>Add a job to your board</h3>
           </Col>
         </Row>
         <Row>
           <Col />
           <Col size="12 md-8 lg-6">
-            <AddJobForm onSubmit={this.addJob} />
+            <AddJobForm onSubmit={this.addjob} />
           </Col>
           <Col />
         </Row>

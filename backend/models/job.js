@@ -13,22 +13,19 @@ const jobSchema = new Schema({
   },
   location: {
     type: String,
-    required: true
-  },
-  applied: {
-    type: Boolean,
-    default: false
+    required: false,
+    default: ""
   },
   url: {
     type: String,
-    required: true
+    required: false,
+    default: ""
   },
   post_date: {
     type: Date,
     required: false,
     default: Date.now
   },
-
   logo_url: {
     type: String,
     required: false,
@@ -36,14 +33,14 @@ const jobSchema = new Schema({
   },
   description: {
     type: String,
-    required: false
+    required: false,
+    default: ""
   },
   type: {
     type: String,
     default: "unknown",
     required: false
   },
-  
   progress_stage: {
     type: String,
     required: false,
@@ -53,23 +50,18 @@ const jobSchema = new Schema({
     type: Date,
     default: Date.now
   },
+  note: {
+    type: [String],
+    require: false,
+    default: [""]
+  },
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true
-  },
-  note: {
-    type: Schema.Types.ObjectId,
-    ref: 'Note',
-    required: false
   }
 })
 
-// REMOVE DOES NOT TRIGGER MIDDLEWARE. WE WILL HAVE TO DO THIS CONTROLLER SIDE
-// jobSchema.post('remove', function (doc) {
-//   console.log("Post Remove Hook Hit")
-//   Note.remove({user: doc.user, job: doc._id}).exec();
-// })
 const Job = mongoose.model('Job', jobSchema);
 
 module.exports = Job;
