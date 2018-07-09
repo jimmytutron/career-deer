@@ -1,8 +1,7 @@
 import React from 'react';
 // Redux stuff
 import { Field, reduxForm, FieldArray, reset } from 'redux-form';
-import { TextField, renderField } from 'redux-form-material-ui';
-import { Badge } from '../Badge'
+import { TextField } from 'redux-form-material-ui';
 import { validate } from './validate'
 
 const renderTextField = (
@@ -32,9 +31,7 @@ const renderTextField = (
 
 const renderNote = (
   {
-    fields, 
-    meta,
-    ... custom
+    fields
   }) => (
     <React.Fragment>
     <button type="button" onClick={()=>fields.push()}>Add Note</button>
