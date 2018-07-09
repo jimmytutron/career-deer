@@ -1,12 +1,17 @@
-import { DATA_AVAIL } from './actions';
+import { CHART_ALL, CHART_USER } from './actions';
 
 //For testing default output.
-// const DATA_AVAIL = undefined;
+// const CHART_ALL = undefined;
 
 export default function chartReducer(state = '', { type, payload }) {
 
   switch (type) {
-    case DATA_AVAIL:
+    case CHART_ALL:
+      return {
+        ...state,
+        ...payload
+      }
+    case CHART_USER:
       return {
         ...state,
         ...payload
