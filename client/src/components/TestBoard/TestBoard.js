@@ -1,5 +1,6 @@
 import React from 'react';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
+import { connect } from 'react-redux';
 
 
 const grid = 8;
@@ -23,14 +24,15 @@ const getListStyle = isDraggingOver => ({
   width: 250
 });
 
-const TestBoard = () => (
+const TestBoard = ({ items, selected }) => (
   <React.Fragment>
+  <h1>Hello</h1>
     <Droppable droppableId="droppable">
       {(provided, snapshot) => (
         <div
           ref={provided.innerRef}
           style={getListStyle(snapshot.isDraggingOver)}>
-          {this.state.items.map((item, index) => (
+          {items.map((item, index) => (
             <Draggable
               key={item.id}
               draggableId={item.id}
@@ -53,12 +55,15 @@ const TestBoard = () => (
         </div>
       )}
     </Droppable>
+
+    {console.log(selected)}
+
     <Droppable droppableId="droppable2">
       {(provided, snapshot) => (
         <div
           ref={provided.innerRef}
           style={getListStyle(snapshot.isDraggingOver)}>
-          {this.state.selected.map((item, index) => (
+          {selected.map((item, index) => (
             <Draggable
               key={item.id}
               draggableId={item.id}

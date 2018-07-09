@@ -1,11 +1,8 @@
 .home-jumbotron {
     color: #fff;
     width: 100%;
+    background: linear-gradient(#368FCC,#6673A3);
     background-color: #368FCC;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
     height: 58vh;
     display: flex;
     align-items: center;
@@ -56,6 +53,7 @@
     }
     .home-jumbotron-small {
         color: #fff;
+        background: linear-gradient(#368FCC,#6673A3);
         background-color: #368FCC;
         height: 75vh;
         display: flex;
