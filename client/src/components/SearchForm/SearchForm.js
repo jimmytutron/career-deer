@@ -4,17 +4,7 @@ import React from 'react';
 import { Field, reduxForm, reset } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { Col, Row } from '../Grid';
-
-const validate = values => {
-  const errors = {}
-  if (!values.keywords) {
-    errors.keywords = 'Please enter a field or skill'
-  }
-  if (!values.location) {
-    errors.location = 'Please enter a location'
-  }
-  return errors
-}
+import { validate } from './validate';
 
 const renderTextField = (
   {
@@ -30,7 +20,7 @@ const renderTextField = (
       {...input}
       {...custom}
     />
-  )
+  );
 
 
 

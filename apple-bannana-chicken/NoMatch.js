@@ -47,20 +47,19 @@ class NoMatch extends Component {
 }
 
 
-const mapStateToProps = state => ({
-  app: state.app,
-  test: state.test
-});
+// const mapStateToProps = state => ({
+//   app: state.app,
+//   test: state.test
+// });
 
-const mapActionsToProps = (dispatch, props) => {
-  return bindActionCreators({
-    onUpdateTest: updateTest,
-    onUpdateApp: updateApp
-  }, dispatch)
-};
+// const mapActionsToProps = (dispatch, props) => {
+//   return bindActionCreators({
+//   }, dispatch)
+// };
 
 // Connect can take 3 arguments
 // 1) mapStateToProps
 // 2) mapActionsToProps 
 // 3) 
-export default connect(mapStateToProps,mapActionsToProps)(NoMatch);
+// export default connect(mapStateToProps,mapActionsToProps)(NoMatch);
+export default NoMatch;
