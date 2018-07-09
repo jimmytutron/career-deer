@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { login } from './actions';
 import './Login.css';
-import { StickyFooter } from '../../components/Footer';
 
 import Bounce from 'react-reveal/Bounce';
 
@@ -24,7 +23,7 @@ class LoginPage extends Component {
 
     return (
       <React.Fragment>
-      <Container className="mt-5">
+      <Container className="mt-5 pb-5">
       <Row className="justify-content-center">
       <Col size="12 md-8">
       </Col>
@@ -42,7 +41,6 @@ class LoginPage extends Component {
           </Col>
         </Row>
       </Container>
-       <StickyFooter />
       </React.Fragment>
     );
   };
