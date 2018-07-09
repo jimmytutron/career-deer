@@ -32,6 +32,11 @@ const initialState = {
     status: false,
     error: null
   },
+  updateJob: {
+    status: false,
+    error: null,
+    job: null
+  },
   searchData: {
     data: [],
     saved: []

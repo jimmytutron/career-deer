@@ -10,23 +10,25 @@ export default function addJobReducer(state = '', { type, payload }) {
       return {
         ...state,
         ...payload,
-        addJob: {
-          status: true
+        updateJob: {
+          status: false
         }
       }
     case UPDATEJOB_SUCCESS:
       return {
         ...state,
-        addJob: {
+        updateJob: {
           status: true,
+          job: null,
           error: false
         }
       }
     case UPDATEJOB_CLEAR:
       return {
         ...state,
-        addJob: {
+        updateJob: {
           status: false,
+          job: null,
           error: false
         }
       }
