@@ -11,6 +11,7 @@ import Chart from '../Chart/Chart';
 import Search from '../Search/Search';
 import TestContainer from '../TestContainer/TestContainer';
 import "./App.css";
+import { StickyFooter } from '../../components/Footer';
 
 
 // Redux stuff
@@ -35,6 +36,7 @@ class App extends Component {
         <Route exact path ="/test-drag" component={ TestContainer } />
         <Route component={NoMatch} />
       </Switch>
+      <StickyFooter />
       </React.Fragment>
       </Router>
     );

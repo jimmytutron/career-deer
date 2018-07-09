@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
 import { HomePageJumbo } from '../../components/HomePageJumbo';
-import { Footer } from "../../components/Footer";
 
 
 // Redux stuff
@@ -166,7 +165,6 @@ class Home extends Component {
                 </Col>
             </Row>          
           </div>
-          <Footer />
           {/*<button className="btn btn-primary" onClick={() => this.onUpdateTest()}>Update Test</button>
           {this.props.test}*/}
       </div>
