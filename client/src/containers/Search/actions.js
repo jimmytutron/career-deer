@@ -25,8 +25,6 @@ export function postSaveJob(saveInfo){
       console.log(saveInfo);
       await createJob(saveInfo)
       dispatch(getAllSavedJobs())
-      // const savedJobs = await getAllJobs();
-      // dispatch(getSaved())
 
     } catch(err) {
       // dispatch(failedSave(err));
@@ -72,14 +70,5 @@ export function updateSaved(data){
     payload: {saved: data}
   }
 }
-
-// export function failedSave(err){
-//   return {
-//     type: SAVE_FAILED,
-//     payload: {
-//       error: err
-//     }
-//   }
-// }
 
 
