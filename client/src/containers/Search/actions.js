@@ -1,7 +1,9 @@
-import { getSearchResults } from '../../utils/API';
+import { getSearchResults, createJob, getAllJobs } from '../../utils/API';
 
 export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 export const SEARCH_FAILED = 'SEARCH_FAILED';
+export const SEARCH_SAVED_UPDATE = 'SEARCH_SAVED_UPDATE';
+export const SEARCH_SAVED_FAILED = 'SEARCH_SAVED_FAILED';
 
 export function getSearchJobs(searchInfo){
   return async (dispatch, getState) => {
@@ -15,10 +17,42 @@ export function getSearchJobs(searchInfo){
   }
 }
 
+
+export function postSaveJob(saveInfo){
+  return async (dispatch, getState) => {
+    try {
+      console.log('saving info');
+      console.log(saveInfo);
+      await createJob(saveInfo)
+      dispatch(getAllSavedJobs())
+      // const savedJobs = await getAllJobs();
+      // dispatch(getSaved())
+
+    } catch(err) {
+      // dispatch(failedSave(err));
+    }
+  }
+}
+
+export function getAllSavedJobs(){
+  return async (dispatch, getState) => {
+    try {
+      const apiResponse = await getAllJobs();
+      dispatch(updateSaved(apiResponse.data))
+
+    } catch(err) {
+      // dispatch(failedSave(err));
+    }
+  }
+}
+
+
+
+
 export function successSearch(data){
   return {
     type: SEARCH_SUCCESS,
-    payload: data
+    payload: {data: data}
   }
 }
 
@@ -30,5 +64,22 @@ export function failedSearch(err){
     }
   }
 }
+
+
+export function updateSaved(data){
+  return {
+    type: SEARCH_SAVED_UPDATE,
+    payload: {saved: data}
+  }
+}
+
+// export function failedSave(err){
+//   return {
+//     type: SAVE_FAILED,
+//     payload: {
+//       error: err
+//     }
+//   }
+// }
 
 
