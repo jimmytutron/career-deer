@@ -12,6 +12,7 @@ import chartReducer from './containers/Chart/reducer';
 import searchReducer from './containers/Search/reducer';
 import addJobReducer from './containers/AddJob/reducer';
 import { authTestReducer } from './containers/SignUp/reducer';
+import testDragReducer from './containers/TestContainer/reducer';
 
 const allReducers = combineReducers({
   app: appReducer,
@@ -23,7 +24,8 @@ const allReducers = combineReducers({
   addJob: addJobReducer,
   auth: authTestReducer,
   searchData: searchReducer,
-  addJob: addJobReducer
+  addJob: addJobReducer,
+  testDrag: testDragReducer
 });
 
 export default function configureStore(initialState = {}) {
