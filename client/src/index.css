@@ -1,4 +1,5 @@
 html {
+<<<<<<< HEAD
   min-height: 100%;
   position: relative;
 }
@@ -10,3 +11,12 @@ body {
   min-height: 100%;
   font-family: 'Roboto', sans-serif; 
 }
+=======
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 100px;
+  font-family: 'Roboto', sans-serif; 
+}
+>>>>>>> 1de6567160d29591042863ac6f65450ffe1b3508
