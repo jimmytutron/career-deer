@@ -121,7 +121,7 @@ class TestContainer extends Component {
 const mapStateToProps = (state, props) => {
   return {
     testDrag: state.testDrag,
-    allJobs: state.grabJobs
+    allJobs: state.allJobs
   }
 }
 
