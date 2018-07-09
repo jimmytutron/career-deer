@@ -28,7 +28,7 @@ class Chart extends Component {
             data={{
               labels: this.props.chartData.all.labels,
               datasets: [{
-                label: 'Users',
+                label: 'All',
                 data: this.props.chartData.all.data,
                 backgroundColor: [
                   'rgba(0,47,178, 0.7)',
@@ -77,7 +77,7 @@ class Chart extends Component {
             data={{
               labels: this.props.chartData.all.labels,
               datasets: [{
-                label: 'Users',
+                label: 'All',
                 fill: false,
                 data: this.props.chartData.all.data,
                 backgroundColor: [
@@ -116,7 +116,7 @@ class Chart extends Component {
             data={{
               labels: this.props.chartData.all.labels,
               datasets: [{
-                label: 'Users',
+                label: 'All',
                 fill: true,
                 data: this.props.chartData.all.data,
                 backgroundColor: [
