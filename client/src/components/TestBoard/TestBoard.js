@@ -55,6 +55,9 @@ const TestBoard = ({ items, selected }) => (
         </div>
       )}
     </Droppable>
+
+    {console.log(selected)}
+
     <Droppable droppableId="droppable2">
       {(provided, snapshot) => (
         <div
@@ -82,7 +85,7 @@ const TestBoard = ({ items, selected }) => (
           {provided.placeholder}
         </div>
       )}
-    </Droppable> 
+    </Droppable>
   </React.Fragment>
 )
 

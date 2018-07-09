@@ -50,7 +50,10 @@ const initialState = {
   },
   testDrag: {
     items: [],
-    selected: "bacon"
+    selected: []
+  },
+  grabJobs: {
+    jobs: []
   }
 };
 

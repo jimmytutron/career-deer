@@ -7,12 +7,11 @@ import thunk from 'redux-thunk';
 import appReducer from './reducers/app-reducer';
 import testReducer from './reducers/test-reducer';
 import loginReducer from './containers/Login/reducer';
-import { signUpReducer } from './containers/SignUp/reducer';
+import { signUpReducer, authTestReducer } from './containers/SignUp/reducer';
 import chartReducer from './containers/Chart/reducer';
 import searchReducer from './containers/Search/reducer';
 import addJobReducer from './containers/AddJob/reducer';
-import { authTestReducer } from './containers/SignUp/reducer';
-import testDragReducer from './containers/TestContainer/reducer';
+import { testDragReducer, grabJobsReducer } from './containers/TestContainer/reducer';
 
 const allReducers = combineReducers({
   app: appReducer,
@@ -25,7 +24,8 @@ const allReducers = combineReducers({
   auth: authTestReducer,
   searchData: searchReducer,
   addJob: addJobReducer,
-  testDrag: testDragReducer
+  testDrag: testDragReducer,
+  grabJobs: grabJobsReducer
 });
 
 export default function configureStore(initialState = {}) {

@@ -1,6 +1,6 @@
-import { NEW_LOC, DEFAULT_LOC } from './actions';
+import { NEW_LOC, DEFAULT_LOC, JOBS_SUCCESS, JOBS_FAIL } from './actions';
 
-export default function testDragReducer(state = 'chicken', { type, payload }) {
+export function testDragReducer(state = 'chicken', { type, payload }) {
     switch (type) {
         case DEFAULT_LOC:
             return {
@@ -16,4 +16,21 @@ export default function testDragReducer(state = 'chicken', { type, payload }) {
         default:
         	return state
     }
+}
+
+export function grabJobsReducer(state = '', { type, payload }) {
+	switch (type){
+		case JOBS_SUCCESS:
+			return {
+				...state,
+				jobs: [...payload]
+			}
+		case JOBS_FAIL:
+			return {
+				...state,
+				jobs: [...payload]
+			}
+		default:
+			return state
+	}
 }
