@@ -1,0 +1,9 @@
+.chart {
+  position: relative;
+  height: 30vh;
+  width: 100%;
+}
+
+.chart-50 {
+  width: 50%!important;
+}
