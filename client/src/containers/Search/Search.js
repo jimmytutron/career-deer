@@ -94,13 +94,11 @@ const mapStateToProps = (state, props) => {
   }
 };
 
-const mapActionsToProps = (dispatch, props) => {
-  return bindActionCreators({
+const mapActionsToProps = (dispatch, props) => ({
     getSearchJobs,
     postSaveJob,
     getAllSavedJobs
-  }, dispatch);
-}
+  })
 
-export default connect(mapStateToProps, mapActionsToProps)(Search);
+export default connect(mapStateToProps, mapActionsToProps())(Search);
 

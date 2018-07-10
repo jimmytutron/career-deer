@@ -15,10 +15,9 @@ class AddJob extends Component {
    this.props.addjob(values);
   }
 
-  resetaddjob = () => this.props.resetaddjob();
   render() {
-    this.props.resetaddjob();
     if (this.props.addJob.status) {
+      this.props.resetaddjob();
       return <Redirect to='/' />;
     };
 
@@ -50,11 +49,9 @@ const mapStateToProps = (state,props) => {
   }
 };
 
-const mapActionsToProps = (dispatch,props) => {
-  return {
+const mapActionsToProps = (dispatch,props) => ({
     addjob,
     resetaddjob
-  }
-};
+  })
 
 export default connect(mapStateToProps,mapActionsToProps())(AddJob);
