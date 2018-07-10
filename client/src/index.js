@@ -71,33 +71,27 @@ const initialState = {
       data: [50, 30, 20, 10, 5]
     }
   },
-  testDrag: {
-    items: [],
-    selected: [
-      {
-        id: '0',
-        val: 'chicken'
+  boards: {
+      // Think of progress_stage as an id here.
+      saved: {
+        jobs: []
       },
-      {
-        id: '0',
-        val: 'chicken'
+
+      applied: {
+        jobs: []
       },
-      {
-        id: '0',
-        val: 'chicken'
+
+      on_phone: {
+        jobs: []
       },
-      {
-        id: '0',
-        val: 'chicken'
+
+      on_site: {
+        jobs: []
       },
-      {
-        id: '0',
-        val: 'chicken'
+
+      offer: {
+        jobs: []
       }
-    ]
-  },
-  allJobs: {
-    jobs: []
   },
   burgerMenu: {
     isOpen: false
