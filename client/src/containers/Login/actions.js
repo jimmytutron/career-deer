@@ -15,7 +15,6 @@ export function login(userInfo) {
   return async (dispatch, getState) => {
     try {
       const apiResponse = await (signIn(userInfo));
-      console.log(apiResponse)
       // dispatch here
       dispatch(signedIn(apiResponse.data));
     } catch (err) {

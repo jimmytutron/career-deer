@@ -57,7 +57,7 @@ const renderNote = (
     </React.Fragment>
   )
 
-let UpdateJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
+let UpdateJobForm = ({ handleSubmit, pristine, submitting, errorMessage }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -80,7 +80,7 @@ let UpdateJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }
       </div>
       <div>
         <h6>{errorMessage}</h6>
-        <button type="submit" disabled={pristine || submitting}>
+        <button type="submit" disabled={submitting}>
           Submit
         </button>
         <p>* indicates a required field.</p>

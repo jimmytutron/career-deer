@@ -40,10 +40,6 @@ export function deleteJobById(id) {
 };
 
 export function updateJobById(id, data) {
-  console.log("219301923109230129310923012931029309129301293")
-  console.log(id)
-  console.log(data)
-  console.log("gjkfds;glskdfjg;lsdkfjg;sldkfgj;sldkfgjs;ldfkgj;sldfkg")
   return axios.put(`/api/jobs/saved/${id}`, data);
 };
 
