@@ -3,7 +3,6 @@ import { Redirect } from "react-router-dom";
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { editJob, resetViewJobs, getAllSavedJobs, updateViewJobs } from './actions';
 
 class ViewJobs extends Component {
@@ -14,7 +13,6 @@ class ViewJobs extends Component {
 
   render() {
     if (this.props.viewJobs.edit) {
-      this.props.resetViewJobs();
       return <Redirect to='/updateJob' />
     };
     return (
@@ -50,14 +48,12 @@ const mapStateToProps = (state, props) => {
   }
 };
 
-const mapActionsToProps = (dispatch, props) => {
-  return bindActionCreators({
-    resetViewJobs,
-    updateViewJobs,
-    getAllSavedJobs,
-    editJob
-  }, dispatch);
-}
+const mapActionsToProps = (dispatch, props) => ({
+  resetViewJobs,
+  updateViewJobs,
+  getAllSavedJobs,
+  editJob
+})
 
-export default connect(mapStateToProps, mapActionsToProps)(ViewJobs);
+export default connect(mapStateToProps, mapActionsToProps())(ViewJobs);
 

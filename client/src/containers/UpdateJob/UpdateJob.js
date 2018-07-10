@@ -4,7 +4,6 @@ import UpdateJobForm from '../../components/UpdateJobForm/UpdateJobForm';
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { executeDeleteJob, executeUpdateJob, resetUpdateJob, selectUpdateJob } from './actions';
 
 class UpdateJob extends Component {
@@ -20,7 +19,7 @@ class UpdateJob extends Component {
     this.props.executeDeleteJob(this.props.updateJob.job);
   }
 
-  resetUpdateJob = () => this.props.resetUpdateJob();
+  // resetUpdateJob = () => this.props.resetUpdateJob();
 
   componentWillMount() {
     if (this.props.viewJobs.edit)
@@ -30,7 +29,7 @@ class UpdateJob extends Component {
 
   render() {
     if (this.props.updateJob.status || !this.props.viewJobs.edit) {
-      this.props.resetViewJobs();
+      this.props.resetUpdateJob();
       return <Redirect to='/viewjobs' />
     };
 
@@ -64,13 +63,11 @@ const mapStateToProps = (state,props) => {
   };
 };
 
-const mapActionsToProps = (dispatch,props) => {
-  return bindActionCreators({
-    executeDeleteJob,
-    executeUpdateJob,
-    resetUpdateJob,
-    selectUpdateJob
-  }, dispatch);
-};
+const mapActionsToProps = (dispatch,props) => ({
+  executeDeleteJob,
+  executeUpdateJob,
+  resetUpdateJob,
+  selectUpdateJob
+})
 
-export default connect(mapStateToProps,mapActionsToProps)(UpdateJob);
+export default connect(mapStateToProps,mapActionsToProps())(UpdateJob);
