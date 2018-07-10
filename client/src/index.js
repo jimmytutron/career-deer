@@ -37,6 +37,10 @@ const initialState = {
     error: null,
     job: null
   },
+  viewJobs: {
+    data: [],
+    edit: null
+  },
   searchData: {
     data: [],
     saved: []
