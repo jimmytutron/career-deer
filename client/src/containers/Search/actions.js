@@ -17,12 +17,9 @@ export function getSearchJobs(searchInfo){
   }
 }
 
-
 export function postSaveJob(saveInfo){
   return async (dispatch, getState) => {
     try {
-      console.log('saving info');
-      console.log(saveInfo);
       await createJob(saveInfo)
       dispatch(getAllSavedJobs())
 
@@ -43,9 +40,6 @@ export function getAllSavedJobs(){
     }
   }
 }
-
-
-
 
 export function successSearch(data){
   return {
