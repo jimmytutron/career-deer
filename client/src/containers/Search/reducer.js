@@ -1,6 +1,7 @@
 import { SEARCH_SUCCESS, SEARCH_SAVED_UPDATE } from './actions';
+import initialState from '../../initialState';
 
-export default function searchReducer(state = '', { type, payload }) {
+export default function searchReducer(state = initialState, { type, payload }) {
 
   switch (type) {
     case SEARCH_SUCCESS:

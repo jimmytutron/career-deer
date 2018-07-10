@@ -1,8 +1,9 @@
 import { /*NEW_LOC, DEFAULT_LOC,*/ JOBS_SUCCESS, JOBS_FAIL } from './actions';
+import initialState from '../../initialState';
 
 
 
-// export function locationsReducer(state = 'chicken', { type, payload }) {
+// export function locationsReducer(state = initialState, { type, payload }) {
 //   switch (type) {
 //     case DEFAULT_LOC:
 //       return {
@@ -20,7 +21,7 @@ import { /*NEW_LOC, DEFAULT_LOC,*/ JOBS_SUCCESS, JOBS_FAIL } from './actions';
 //   };
 // };
 
-export function grabJobsReducer(state = '', { type, payload }) {
+export function grabJobsReducer(state = initialState, { type, payload }) {
   switch (type) {
     case JOBS_SUCCESS:
       return {

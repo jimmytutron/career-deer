@@ -1,6 +1,7 @@
 import { VIEWJOBS_SUCCESS, VIEWJOBS_RESET, VIEWJOBS_EDIT } from './actions';
+import initialState from '../../initialState';
 
-export default function viewJobsReducer(state = '', { type, payload }) {
+export default function viewJobsReducer(state = initialState, { type, payload }) {
 
   switch (type) {
     case VIEWJOBS_SUCCESS:
