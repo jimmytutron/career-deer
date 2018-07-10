@@ -45,12 +45,8 @@ const mapStateToProps = (state,props) => {
 
 const mapActionsToProps = (dispatch,props) => {
   return bindActionCreators({
-    selectUpdateJob,
     updateJob,
-    deleteJob,
     resetUpdateJob,
-    failedUpdateJob,
-    clearUpdateJob
   }, dispatch);
 };
 

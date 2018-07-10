@@ -11,6 +11,7 @@ import searchReducer from './containers/Search/reducer';
 import addJobReducer from './containers/AddJob/reducer';
 import updateJobReducer from './containers/UpdateJob/reducer';
 import { testDragReducer, grabJobsReducer } from './containers/TestContainer/reducer';
+import viewJobsReducer from './containers/ViewJobs/reducer';
 
 const allReducers = combineReducers({
   form: formReducer,
@@ -21,6 +22,7 @@ const allReducers = combineReducers({
   auth: authTestReducer,
   searchData: searchReducer,
   addJob: addJobReducer,
+  viewJobs: viewJobsReducer,
   updateJob: updateJobReducer,
   testDrag: testDragReducer,
   allJobs: grabJobsReducer

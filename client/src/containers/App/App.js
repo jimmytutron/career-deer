@@ -8,6 +8,7 @@ import NoMatch from "../NoMatch/NoMatch";
 import SignUp from "../SignUp/SignUp";
 import AddJob from "../AddJob/AddJob";
 import UpdateJob from '../UpdateJob/UpdateJob';
+import ViewJobs from '../ViewJobs/ViewJobs';
 import Chart from '../Chart/Chart';
 import Search from '../Search/Search';
 import TestContainer from '../TestContainer/TestContainer';
@@ -34,7 +35,8 @@ class App extends Component {
         <Route exact path ="/addjob" component={AddJob} />
         <Route exact path ="/search" component={Search} />
         <Route exact path ="/test-drag" component={ TestContainer } />
-        <Route path ="/updatejob" component={UpdateJob} />
+        <Route exact path ="/updatejob" component={UpdateJob} />
+        <Route exact path ="/viewjobs" component={ViewJobs} />
         <Route component={NoMatch} />
       </Switch>
       <StickyFooter />

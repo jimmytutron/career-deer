@@ -37,6 +37,9 @@ const initialState = {
     error: null,
     job: null
   },
+  viewJobs: {
+    data: [],
+  },
   searchData: {
     data: [],
     saved: []

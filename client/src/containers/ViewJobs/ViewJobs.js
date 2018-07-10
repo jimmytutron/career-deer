@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { editJob, updateViewJobs, resetViewJobs, getAllSavedJobs } from './actions';
+import { editJob, resetViewJobs, getAllSavedJobs, updateViewJobs } from './actions';
 
 class ViewJobs extends Component {
 
@@ -16,6 +17,10 @@ class ViewJobs extends Component {
   }
 
   render() {
+    if (this.props.viewJobs.status) {
+      this.props.resetViewJobs();
+      return <Redirect to='/updateJob' />
+    };
     return (
       <Container className="mt-5">
         <Row className="justify-content-center">
@@ -31,7 +36,7 @@ class ViewJobs extends Component {
                 <p>{job.company}</p>
                 <p>{job.post_date}</p>
                 <p>{job.location}</p>
-                <button className="btn btn-light" onClick={() => this.props.editjob(this.props.viewJobs.data[i])}>{job._id}</button>
+                <button className="btn btn-light" onClick={() => this.props.editJob(this.props.viewJobs.data[i])}>{job._id}</button>
               </div>
             ))}
           </Col>
@@ -44,7 +49,8 @@ class ViewJobs extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    searchData: state.searchData
+    viewJobs: state.viewJobs,
+    updateJob: state.updateJob
   }
 };
 

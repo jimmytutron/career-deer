@@ -2,6 +2,7 @@ import { getAllJobs } from '../../utils/API';
 
 export const VIEWJOBS_SUCCESS = 'VIEWJOBS_RESET';
 export const VIEWJOBS_RESET = 'VIEWJOBS_RESET';
+export const VIEWJOBS_EDIT = 'VIEWJOBS_EDIT';
 
 export function getAllSavedJobs(){
   return async (dispatch, getState) => {
@@ -16,7 +17,6 @@ export function getAllSavedJobs(){
 }
 
 export function editJob(job) {
-  dispatch(resetViewJobs())
   return {
     type: VIEWJOBS_EDIT,
     payload: {

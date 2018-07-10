@@ -1,4 +1,4 @@
-import { VIEWJOBS_SUCCESS, VIEWJOBS_RESET } from './actions';
+import { VIEWJOBS_SUCCESS, VIEWJOBS_RESET, VIEWJOBS_EDIT } from './actions';
 
 export default function viewJobsReducer(state = '', { type, payload }) {
 
@@ -8,22 +8,28 @@ export default function viewJobsReducer(state = '', { type, payload }) {
         ...state,
         ...payload,
         viewJobs: {
-          edit: null
+          status: false
         }
       }
     case VIEWJOBS_RESET:
       return {
         ...state,
         viewJobs: {
-          edit: null,
+          status: false,
           data: []
         }
       }
     case VIEWJOBS_EDIT:
-      return {
+      const newState = {
         ...state,
-        payload
+        viewJobs: {
+          status: true,
+        }
       }
+      newState.updateJob.job = payload.edit
+      return newState;
+    default:
+      return state;
   }
 }
 
