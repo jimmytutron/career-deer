@@ -4,7 +4,7 @@ import AddJobForm from '../../components/AddJobForm/AddJobForm';
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import { addjob, resetaddjob } from './actions';
 
 import RubberBand from 'react-reveal/RubberBand';
@@ -50,14 +50,14 @@ class AddJob extends Component {
 const mapStateToProps = (state,props) => {
   return { 
     addJob: state.addJob
-  };
+  }
 };
 
 const mapActionsToProps = (dispatch,props) => {
-  return bindActionCreators({
+  return {
     addjob,
     resetaddjob
-  }, dispatch);
+  }
 };
 
-export default connect(mapStateToProps,mapActionsToProps)(AddJob);
+export default connect(mapStateToProps,mapActionsToProps())(AddJob);
