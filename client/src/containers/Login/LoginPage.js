@@ -4,7 +4,7 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 import { Container, Col, Row } from '../../components/Grid';
  
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import { login } from './actions';
 import './Login.css';
 
@@ -61,10 +61,8 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapActionsToProps = (dispatch, props) => {
-  return bindActionCreators({
-    login
-  }, dispatch);
-};
+const mapActionsToProps = (dispatch, props) => ({
+  login
+});
 
-export default connect(mapStateToProps, mapActionsToProps)(LoginPage);
+export default connect(mapStateToProps, mapActionsToProps())(LoginPage);

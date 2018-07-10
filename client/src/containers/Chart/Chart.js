@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Bar, Line, Pie, } from 'react-chartjs-2';
 import { getChartAllData, getChartUserData } from './actions';
-import { bindActionCreators } from 'redux';
 // import 'chartjs-plugin-datalabels';
 
 import './Chart.css';
@@ -268,10 +267,10 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ getChartAllData }, dispatch)
-}
+const mapActionsToProps = (dispatch,props) => ({
+  getChartAllData
+})
 
-export default connect(mapStateToProps, mapDispatchToProps)(Chart);
+export default connect(mapStateToProps, mapActionsToProps())(Chart);
 
 
