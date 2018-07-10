@@ -2,7 +2,7 @@ import React from 'react';
 // Redux stuff
 import { Field, reduxForm, FieldArray, reset } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
-import { validate } from './validate'
+import { validate } from './validate';
 
 const renderTextField = (
   {
@@ -57,9 +57,10 @@ const renderNote = (
     </React.Fragment>
   )
 
-let UpdateJobForm = ({ handleSubmit, pristine, submitting, errorMessage }) => {
+let UpdateJobForm = ({ deleteJob, handleSubmit, pristine, submitting, errorMessage }) => {
   return (
     <form onSubmit={handleSubmit}>
+      <button onClick={deleteJob}>Delete This Job</button>
       <div>
         <Field name="title" component={renderTextField} type="text" label="Job Title" required></Field>
       </div>
