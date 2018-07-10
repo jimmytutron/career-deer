@@ -4,7 +4,6 @@ import SearchResults from '../../components/SearchResults';
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
 import { getSearchJobs, postSaveJob, getAllSavedJobs } from './actions';
 
 import Bounce from 'react-reveal/Bounce';

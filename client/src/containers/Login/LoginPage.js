@@ -4,7 +4,6 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 import { Container, Col, Row } from '../../components/Grid';
  
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
 import { login } from './actions';
 import './Login.css';
 
