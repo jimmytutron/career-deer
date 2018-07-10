@@ -8,17 +8,13 @@ export default function viewJobsReducer(state = initialState, { type, payload })
       return {
         ...state,
         ...payload,
-        viewJobs: {
-          edit: null
-        }
+        edit: null
       }
     case VIEWJOBS_RESET:
       return {
         ...state,
-        viewJobs: {
-          edit: null,
-          data: []
-        }
+        edit: null,
+        data: []
       }
     case VIEWJOBS_EDIT:
       return {
