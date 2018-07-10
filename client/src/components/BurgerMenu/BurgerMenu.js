@@ -7,7 +7,7 @@ class BurgerMenu extends React.Component {
     render () {
         return (
             <ReduxBurgerMenu isOpen={ this.props.isOpen }>
-            	<img width="50px" className="text-center my-3" src="/imgs/logo-white.svg" />
+            	<img width="50px" className="text-center my-3" src="/imgs/logo-white.svg" alt="menu logo"/>
                 <a id="home" className="menu-item" href="/">Home</a>
                 <a id="about" className="menu-item" href="/addjob">Add a Job</a>
                 <a id="contact" className="menu-item" href="/search">Search for Jobs</a>

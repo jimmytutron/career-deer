@@ -1,8 +1,12 @@
 import React from 'react';
 // Redux stuff
 import { Field, reduxForm, FieldArray, reset } from 'redux-form';
+import { Col, Row } from '../Grid';
 import { TextField } from 'redux-form-material-ui';
-import { validate } from './validate'
+import { validate } from './validate';
+import Paper from '@material-ui/core/Paper';
+import './UpdateJobForm.css';
+
 
 const renderTextField = (
   {
@@ -34,12 +38,16 @@ const renderNote = (
     fields
   }) => (
     <React.Fragment>
-    <button type="button" onClick={()=>fields.push()}>Add Note</button>
+    <button className="btn btn-success" type="button" onClick={()=>fields.push()}>Add Note</button>
     <ul className="mt-3">
       {fields.map((note, index) => (
         <li key={index}>
-          <button title="Remove Note" className="btn btn-danger mr-3" onClick={() => fields.remove(index)}>X</button>
-          <Field
+        <Row className="justify-content-center">
+        <Col size="2 md-2">
+          <button title="Remove Note" className="btn btn-danger mt-4" onClick={() => fields.remove(index)}><i className="fas fa-trash"></i></button>
+        </Col>
+        <Col size="8 md-10">
+          <Field className="text-input"
             floatingLabelText={`Note #${index + 1}`}
             floatingLabelFixed={true}
             name={note}
@@ -51,7 +59,10 @@ const renderNote = (
             type='text'
             component={TextField}
           />
+        </Col>
+        </Row>
         </li>
+
       ))}
     </ul>
     </React.Fragment>
@@ -61,26 +72,26 @@ let UpdateJobForm = ({ handleSubmit, pristine, submitting, errorMessage }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <Field name="title" component={renderTextField} type="text" label="Job Title" required></Field>
+        <Field className="text-input" name="title" component={renderTextField} type="text" label="Job Title" required></Field>
       </div>
       <div>
-        <Field name="company_name" component={renderTextField} type="text" label="Company" required></Field>
+        <Field className="text-input" name="company_name" component={renderTextField} type="text" label="Company" required></Field>
       </div>
       <div>
-        <Field name="location" component={renderTextField} type="text" label="Location"></Field>
+        <Field className="text-input" name="location" component={renderTextField} type="text" label="Location"></Field>
       </div>
       <div>
-        <Field name="url" component={renderTextField} type="text" label="Link URL"></Field>
+        <Field className="text-input" name="url" component={renderTextField} type="text" label="Link URL"></Field>
       </div>
       <div>
-        <Field name="post_date" component={renderTextField} type="date" label="Job Post Date" dateField></Field>
+        <Field className="text-input" name="post_date" component={renderTextField} type="date" label="Job Post Date" dateField></Field>
       </div>
       <div>
-        <FieldArray name="note" component={renderNote} type="text" label="note" textArea></FieldArray>
+        <FieldArray className="text-input" name="note" component={renderNote} type="text" label="note" textArea></FieldArray>
       </div>
       <div>
         <h6>{errorMessage}</h6>
-        <button type="submit" disabled={submitting}>
+        <button className="btn btn-info" type="submit" disabled={submitting}>
           Submit
         </button>
         <p>* indicates a required field.</p>

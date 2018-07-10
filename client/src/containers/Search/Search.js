@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux';
 import { getSearchJobs, postSaveJob, getAllSavedJobs } from './actions';
 
 import Bounce from 'react-reveal/Bounce';
+import Fade from 'react-reveal/Fade';
 
 class Search extends Component {
 
@@ -61,6 +62,26 @@ class Search extends Component {
             })}
           </Col>
         </Row>
+        <Row className="justify-content-center">
+        <Col size="12 md-4">
+        <Fade delay={1000}>
+        <img width="40px" className="mt-5" src="/imgs/icons/footprint.svg" alt="deer footprint" />
+        </Fade>
+        <Fade delay={1600}>
+        <img width="40px" className="mb-4" src="/imgs/icons/footprint.svg" alt="deer footprint" />
+        </Fade>
+        <Fade delay={2000}>
+        <img width="40px" className="mt-4" src="/imgs/icons/footprint.svg" alt="deer footprint" />
+        </Fade>
+        <Fade delay={2600}>
+        <img width="40px" className="mb-4" src="/imgs/icons/footprint.svg" alt="deer footprint" />
+        </Fade>
+        <Fade delay={3000}>
+        <img width="40px" className="mt-3" src="/imgs/icons/footprint.svg" alt="deer footprint" />
+        </Fade>
+        </Col>
+        </Row>
+
       </Container>
     )
   }
