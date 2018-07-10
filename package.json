@@ -24,6 +24,7 @@
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "chart.js": "^2.7.2",
+    "chartjs-plugin-datalabels": "^0.3.0",
     "cheerio": "^1.0.0-rc.2",
     "connect-mongo": "^2.0.1",
     "cors": "^2.8.4",
