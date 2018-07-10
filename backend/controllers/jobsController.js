@@ -71,7 +71,7 @@ module.exports = {
     if (req.user) {
       try {
         let query = {
-          _id: req.body._id,
+          _id: req.params.id,
           user: req.user._id
         }
         let removed = await db.Job.remove(query);

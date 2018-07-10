@@ -5,6 +5,7 @@ export default function searchReducer(state = initialState, { type, payload }) {
 
   switch (type) {
     case SEARCH_SUCCESS:
+      console.log("-------------------------SEARCH SUCCESS----------------------")
       return {
         ...state,
         ...payload

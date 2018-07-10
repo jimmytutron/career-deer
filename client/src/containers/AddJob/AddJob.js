@@ -15,10 +15,13 @@ class AddJob extends Component {
    this.props.addjob(values);
   }
 
+  componentWillMount() {
+    this.props.resetaddjob();
+  }
+
   resetaddjob = () => this.props.resetaddjob();
   render() {
     if (this.props.addJob.status) {
-      this.props.resetaddjob();
       return <Redirect to='/' />;
     };
 

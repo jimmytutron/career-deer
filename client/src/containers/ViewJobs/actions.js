@@ -26,6 +26,7 @@ export function editJob(job) {
 }
 
 export function resetViewJobs(){
+
   return {
     type: VIEWJOBS_RESET,
     payload: {
