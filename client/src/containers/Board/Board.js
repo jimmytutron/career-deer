@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
-import TestBoard from '../../components/TestBoard/TestBoard';
+import ProgressTiles from '../../components/ProgressTiles/ProgressTiles';
 
 // Redux Stuff
 import { connect } from 'react-redux';
@@ -108,7 +108,7 @@ class Board extends Component {
     return (
       <React.Fragment>
       <DragDropContext onDragEnd={this.onDragEnd} >
-        <TestBoard
+        <ProgressTiles
           items={this.props.allJobs}
           selected={this.props.boards.selected}
         />
