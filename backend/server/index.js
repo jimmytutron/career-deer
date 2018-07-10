@@ -28,9 +28,12 @@ app.use(logger('dev'));
 morganBody(app, {
   logReqDateTime: false,
   logReqUserAgent: false
-})
+});
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/career-deer", { promiseLibrary: bluebird })
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/career-deer",
+  { promiseLibrary: bluebird }
+);
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'career deer',
