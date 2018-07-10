@@ -12,11 +12,11 @@ export const UPDATEJOB_SELECT = 'UPDATEJOB_SELECT';
 // what part of the async process something is happening. This can be useful for transitional
 // rendering, such as having a spinning loading wheel while awaiting some data to be received from
 // a DB query etc.
-export function updateJob(jobInfo) {
+export function executeUpdateJob(jobInfo) {
   // return an asynchronous function
   return async (dispatch, getState) => {
     try {
-      await updateJobById(jobInfo);
+      await updateJobById(jobInfo._id, jobInfo);
       // dispatch the action only after the database call has finished
       dispatch(successUpdateJob());
     } catch (err) {
@@ -39,8 +39,10 @@ export function deleteJob(jobInfo) {
 };
 
 export function selectUpdateJob(job) {
+  console.log("...........updating job.............")
+  console.log(job)
   return {
-    UPDATEJOB_SELECT,
+    type: UPDATEJOB_SELECT,
     payload: {
       job: job
     }
@@ -54,7 +56,11 @@ export function resetUpdateJob() {
 export function successUpdateJob() {
   return {
     type: UPDATEJOB_SUCCESS,
-    payload: {}
+    payload: {
+      job: null,
+      error: null,
+      status: true
+    }
   };
 };
 

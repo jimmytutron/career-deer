@@ -50,6 +50,7 @@ module.exports = {
   },
   update: async (req, res) => {
     console.log(req.user);
+    console.log(req.body);
     if (req.user) {
       try {
         let query = {

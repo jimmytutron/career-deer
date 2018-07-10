@@ -9,16 +9,12 @@ import { editJob, resetViewJobs, getAllSavedJobs, updateViewJobs } from './actio
 class ViewJobs extends Component {
 
   componentWillMount() {
+    this.props.resetViewJobs();
     this.props.getAllSavedJobs();
   }
 
-  componentWillUnmount() {
-    this.props.resetViewJobs();
-  }
-
   render() {
-    if (this.props.viewJobs.status) {
-      this.props.resetViewJobs();
+    if (this.props.viewJobs.edit) {
       return <Redirect to='/updateJob' />
     };
     return (
@@ -31,7 +27,7 @@ class ViewJobs extends Component {
         <Row className="justify-content-center mt-5">
           <Col size="12 card">
             {this.props.viewJobs.data.map((job, i) => (
-              <div className="my-3">
+              <div className="my-3" key={`viewjob-${i}`}>
                 <h4>{job.title}</h4>
                 <p>{job.company}</p>
                 <p>{job.post_date}</p>

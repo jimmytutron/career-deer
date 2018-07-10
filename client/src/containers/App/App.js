@@ -36,13 +36,10 @@ class App extends Component {
         <Route exact path ="/addjob" component={AddJob} />
         <Route exact path ="/search" component={Search} />
         <Route exact path ="/test-drag" component={ TestContainer } />
-<<<<<<< HEAD
         <Route exact path ="/updatejob" component={UpdateJob} />
         <Route exact path ="/viewjobs" component={ViewJobs} />
-=======
         <Route path ="/updatejob" component={UpdateJob} />
         <Route path="/burger" component={BurgerMenuTest} />
->>>>>>> 79732ce0fb65c8cad9bf516d66bb6cf475e08f1f
         <Route component={NoMatch} />
       </Switch>
       <StickyFooter />
