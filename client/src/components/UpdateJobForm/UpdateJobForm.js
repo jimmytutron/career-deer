@@ -7,7 +7,6 @@ import { validate } from './validate';
 import Paper from '@material-ui/core/Paper';
 import './UpdateJobForm.css';
 
-
 const renderTextField = (
   {
     input,
@@ -68,9 +67,10 @@ const renderNote = (
     </React.Fragment>
   )
 
-let UpdateJobForm = ({ handleSubmit, pristine, submitting, errorMessage }) => {
+let UpdateJobForm = ({ deleteJob, handleSubmit, pristine, submitting, errorMessage }) => {
   return (
     <form onSubmit={handleSubmit}>
+      <button onClick={deleteJob}>Delete This Job</button>
       <div>
         <Field className="text-input" name="title" component={renderTextField} type="text" label="Job Title" required></Field>
       </div>

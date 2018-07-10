@@ -26,11 +26,11 @@ export function executeUpdateJob(jobInfo) {
   };
 };
 
-export function deleteJob(jobInfo) {
+export function executeDeleteJob(jobInfo) {
   // return an asynchronous function
   return async (dispatch, getState) => {
     try {
-      await deleteJobById(jobInfo._id, jobInfo);
+      await deleteJobById(jobInfo._id);
       // dispatch the action only after the database call has finished
       dispatch(successUpdateJob());
     } catch (err) {

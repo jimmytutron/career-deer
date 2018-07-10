@@ -14,6 +14,7 @@ export default function updateJobReducer(state = initialState, { type, payload }
         status: false
       }
     case UPDATEJOB_SUCCESS:
+      console.log("------------UPDATING JOBS--------------")
       return {
         ...state,
         status: true,

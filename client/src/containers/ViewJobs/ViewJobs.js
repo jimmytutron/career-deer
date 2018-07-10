@@ -9,12 +9,12 @@ import { editJob, resetViewJobs, getAllSavedJobs, updateViewJobs } from './actio
 class ViewJobs extends Component {
 
   componentWillMount() {
-    this.props.resetViewJobs();
     this.props.getAllSavedJobs();
   }
 
   render() {
     if (this.props.viewJobs.edit) {
+      this.props.resetViewJobs();
       return <Redirect to='/updateJob' />
     };
     return (
