@@ -24,10 +24,11 @@ const getListStyle = isDraggingOver => ({
   width: 250
 });
 // banana
-const TestBoard = ({ items, selected }) => (
+const ProgressTiles = ({ items, selected }) => (
   <React.Fragment>
-    <h1>Hello</h1>
-    {/* <Droppable droppableId="droppable">
+    {console.log(selected,'SELECTED!!!')}
+    <h1>Hello, Render multiple Droppables here. We need 5</h1>
+    <Droppable droppableId="droppable">
       {(provided, snapshot) => (
         <div
           ref={provided.innerRef}
@@ -60,11 +61,11 @@ const TestBoard = ({ items, selected }) => (
           {provided.placeholder}
         </div>
       )}
-    </Droppable> */}
+    </Droppable>
 
     {/* {console.log(selected)} */}
 
-    {/* <Droppable droppableId="droppable2">
+    <Droppable droppableId="droppable2">
       {(provided, snapshot) => (
         <div
           ref={provided.innerRef}
@@ -91,8 +92,8 @@ const TestBoard = ({ items, selected }) => (
           {provided.placeholder}
         </div>
       )}
-    </Droppable> */}
+    </Droppable>
   </React.Fragment>
 )
 
-export default TestBoard;
+export default ProgressTiles;

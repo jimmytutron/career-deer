@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
-import TestBoard from '../../components/TestBoard/TestBoard';
+import ProgressTiles from '../../components/ProgressTiles/ProgressTiles';
 
 // Redux Stuff
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  defaultLocation,
-  newLocation,
+  // defaultLocation,
+  // newLocation,
   grabJobs
 } from './actions';
 
@@ -46,7 +46,7 @@ const move = (source, destination, droppableSource, droppableDestination) => {
   return result;
 };
 
-class TestContainer extends Component {
+class Board extends Component {
 
   componentWillMount() {
     console.log('Grabbing Jobs..');
@@ -62,8 +62,8 @@ class TestContainer extends Component {
     droppable2: 'selected'
   };
 
-  // this.props.testDrag[this.id2list[id]]
-  getList = id => this.props.testDrag[this.id2List[id]];
+  // this.props.boards[this.id2list[id]]
+  getList = id => this.props.boards[this.id2List[id]];
 
   onDragEnd = result => {
     const { source, destination } = result;
@@ -105,13 +105,12 @@ class TestContainer extends Component {
   // Normally you would want to split things out into separate components.
   // But in this example everything is just done in one place for simplicity
   render() {
-    console.log(this.props.allJobs);
     return (
       <React.Fragment>
       <DragDropContext onDragEnd={this.onDragEnd} >
-        <TestBoard
+        <ProgressTiles
           items={this.props.allJobs}
-          selected={this.props.testDrag.selected}
+          selected={this.props.boards.selected}
         />
       </DragDropContext>
       </React.Fragment>
@@ -121,18 +120,18 @@ class TestContainer extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    testDrag: state.testDrag,
-    allJobs: state.allJobs
+    boards: state.boards,
+    allJobs: state.allJobs.jobs
   }
 }
 
 const mapActionsToProps = (dispatch, props) => {
   return bindActionCreators({
-    defaultLocation,
-    newLocation,
+    // defaultLocation,
+    // newLocation,
     grabJobs
   }, dispatch)
 }
 
 // Put the things into the DOM!
-export default connect(mapStateToProps, mapActionsToProps)(TestContainer);
+export default connect(mapStateToProps, mapActionsToProps)(Board);
