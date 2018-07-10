@@ -106,13 +106,14 @@ class Board extends Component {
   // But in this example everything is just done in one place for simplicity
   render() {
     return (
-
+      <React.Fragment>
       <DragDropContext onDragEnd={this.onDragEnd} >
         <TestBoard
           items={this.props.allJobs}
           selected={this.props.boards.selected}
         />
       </DragDropContext>
+      </React.Fragment>
     );
   }
 }

@@ -10,8 +10,6 @@ import { authThunk } from './actions';
 
 import Rotate from 'react-reveal/Rotate';
 
-import { StickyFooter } from '../../components/Footer';
-
 class SignUp extends Component {
   signup = values => {
     // This calls the signup action creator, passing the form values to it 
@@ -30,7 +28,7 @@ class SignUp extends Component {
  
     return (
       <React.Fragment>
-      <Container className="my-5">
+      <Container className="pb-5">
       <Row className="justify-content-center">
       <Col size="12 md-6 lg-4">
       <Rotate>
@@ -50,8 +48,7 @@ class SignUp extends Component {
           </Col>
           <Col />
         </Row>
-      </Container>,
-      <StickyFooter />
+      </Container>
       <div>{this.props.renderMaterial}</div>
       </React.Fragment>
     );

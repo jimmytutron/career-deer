@@ -4,17 +4,7 @@ import React from 'react';
 import { Field, reduxForm, reset } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { Col, Row } from '../Grid';
-
-const validate = values => {
-  const errors = {}
-  if (!values.keywords) {
-    errors.keywords = 'Please enter a field or skill'
-  }
-  if (!values.location) {
-    errors.location = 'Please enter a location'
-  }
-  return errors
-}
+import { validate } from './validate';
 
 const renderTextField = (
   {
@@ -30,33 +20,32 @@ const renderTextField = (
       {...input}
       {...custom}
     />
-  )
+  );
 
 
 
 let SearchForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
   return (
-    <div className="justify-content-center">
-      <Row className="">
-        <h2 className="col-12 col-md-10 col-lg-10 text-center">Lets go hunting!</h2>
-      </Row>
+    <Col size="12 col-md-12 lg-5">
+        <h2 className="text-center mt-5 pt-4 montserrat font-weight-bold">Time to start the hunt!</h2>
+        <h6 className="text-center">Let's hunt for some jobs! Use our job hunter to add jobs to your tracker</h6>
       <form onSubmit={handleSubmit}>
-        <Row className="">
-          <Col size="12 md-12 lg-6">
-            <Field name="keywords" component={renderTextField} type="text" label="What are you hunting for?"></Field>
-          </Col>
-          <Col size="12 md-12 lg-6">
-            <Field name="location" component={renderTextField} type="text" label="Where shall we look?"></Field>
-          </Col>
-        </Row>
+          <Row>
+            <Field className="px-2 text-input" name="keywords" component={renderTextField} type="text" label="What are you hunting for?"></Field>
+          </Row>
+          <Row>
+            <Field className="px-2 text-input" name="location" component={renderTextField} type="text" label="Where shall we look?"></Field>
+          </Row>
         <h6>{errorMessage}</h6>
-        <button type="submit" disabled={pristine || submitting}>
-          Submit
+        <Row className="justify-content-end">
+        <button className="btn btn-info my-3" type="submit" disabled={pristine || submitting}>
+          Search <i className="fas fa-bullseye"></i>
         </button>
+        </Row>
       </form>
-    </div>
-  )
-}
+      </Col>
+  );
+};
 
 SearchForm = reduxForm({
   form: 'search',
