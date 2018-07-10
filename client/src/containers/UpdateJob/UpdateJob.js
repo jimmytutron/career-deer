@@ -46,7 +46,7 @@ class UpdateJob extends Component {
         <Row>
           <Col />
           <Col size="12 md-8 lg-6">
-            <UpdateJobForm onSubmit={this.updateJobValues} />
+            <UpdateJobForm onSubmit={this.updateJobValues} initialValues={this.props.updateJob.job} />
           </Col>
           <Col />
         </Row>
