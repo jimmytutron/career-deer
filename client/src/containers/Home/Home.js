@@ -4,8 +4,8 @@ import { HomePageJumbo } from '../../components/HomePageJumbo';
 
 
 // Redux stuff
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+// import { connect } from 'react-redux';
+// import { bindActionCreators } from 'redux';
 import './Home.css';
 
 import Rotate from 'react-reveal/Rotate';

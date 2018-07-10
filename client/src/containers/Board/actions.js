@@ -1,7 +1,7 @@
 import { getAllJobs } from '../../utils/API';
 
-export const NEW_LOC = "NEW_LOC";
-export const DEFAULT_LOC = "DEFAULT_LOC";
+// export const NEW_LOC = "NEW_LOC";
+// export const DEFAULT_LOC = "DEFAULT_LOC";
 export const JOBS_SUCCESS = "JOBS_SUCCESS";
 export const JOBS_FAIL = "JOBS_FAIL";
 
@@ -17,19 +17,19 @@ export function grabJobs() {
 	}
 } 
 
-export function defaultLocation(data){
-	return {
-		type: DEFAULT_LOC,
-		payload: data
-	}
-}
+// export function defaultLocation(data){
+// 	return {
+// 		type: DEFAULT_LOC,
+// 		payload: data
+// 	}
+// }
 
-export function newLocation(data){
-	return {
-		type: NEW_LOC,
-		payload: data
-	}
-}
+// export function newLocation(data){
+// 	return {
+// 		type: NEW_LOC,
+// 		payload: data
+// 	}
+// }
 
 export function grabJobsSuccess(data){
 	return{

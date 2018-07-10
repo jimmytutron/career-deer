@@ -19,74 +19,7 @@ import configureStore from './configureStore';
 
 // We need to determine what we want the initial state of
 // the application to be.
-const initialState = {
-  loggedIn: {
-    status: false,
-    error: null
-  },
-  signedUp: {
-    status: false,
-    error: null
-  },
-  addJob: {
-    status: false,
-    error: null
-  },
-  updateJob: {
-    status: false,
-    error: null,
-    job: null
-  },
-  searchData: {
-    data: [],
-    saved: []
-  },
-  chartData: {
-    sample: {
-      title: ' (SAMPLE)'
-    },
-    all: {
-      labels: [
-        'Saved', 'Applied', 'Phone Interview', 'On-site Interview', 'Offer'
-      ],
-      data: [50, 30, 20, 10, 5]
-    },
-    user: {
-      labels: [
-        'Saved', 'Applied', 'Phone Interview', 'On-site Interview', 'Offer'
-      ],
-      data: [50, 30, 20, 10, 5]
-    }
-  },
-  testDrag: {
-    items: [],
-    selected: [
-      {
-        id: '0',
-        val: 'chicken'
-      },
-      {
-        id: '0',
-        val: 'chicken'
-      },
-      {
-        id: '0',
-        val: 'chicken'
-      },
-      {
-        id: '0',
-        val: 'chicken'
-      },
-      {
-        id: '0',
-        val: 'chicken'
-      }
-    ]
-  },
-  allJobs: {
-    jobs: []
-  }
-};
+import initialState from './initialState';
 
 const store = configureStore(initialState);
 const MOUNT_NODE = document.querySelector('#root');

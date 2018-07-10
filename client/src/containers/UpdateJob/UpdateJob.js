@@ -5,18 +5,29 @@ import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { updateJob, resetUpdateJob } from './actions';
+import { executeUpdateJob, resetUpdateJob, selectUpdateJob } from './actions';
 
 class UpdateJob extends Component {
-  updateJob = values => {
-   this.props.updateJob(values);
-  };
+  updateJobValues = values => {
+    const newJob = {
+      ...this.props.updateJob.job,
+      ...values
+    }
+    this.props.executeUpdateJob(newJob);
+  }
 
   resetUpdateJob = () => this.props.resetUpdateJob();
+
+  componentWillMount() {
+    if (this.props.viewJobs.edit)
+      this.props.selectUpdateJob(this.props.viewJobs.edit)
+    // this.props.selectUpdateJob(this.props.viewJobs.edit)
+  }
+
   render() {
-    if (this.props.updateJob.status) {
+    if (this.props.updateJob.status || !this.props.viewJobs.edit) {
       this.props.resetUpdateJob();
-      return <Redirect to='/' />
+      return <Redirect to='/viewjobs' />
     };
 
     return (
@@ -29,7 +40,7 @@ class UpdateJob extends Component {
         <Row>
           <Col />
           <Col size="12 md-8 lg-6">
-            <UpdateJobForm onSubmit={this.updateJob} />
+            <UpdateJobForm onSubmit={this.updateJobValues} initialValues={this.props.updateJob.job} />
           </Col>
           <Col />
         </Row>
@@ -40,14 +51,16 @@ class UpdateJob extends Component {
 
 const mapStateToProps = (state,props) => {
   return { 
-    updateJob: state.updateJob
+    updateJob: state.updateJob,
+    viewJobs: state.viewJobs
   };
 };
 
 const mapActionsToProps = (dispatch,props) => {
   return bindActionCreators({
-    updateJob,
-    resetUpdateJob
+    executeUpdateJob,
+    resetUpdateJob,
+    selectUpdateJob
   }, dispatch);
 };
 

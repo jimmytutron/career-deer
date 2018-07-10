@@ -7,23 +7,25 @@ import thunk from 'redux-thunk';
 import loginReducer from './containers/Login/reducer';
 import { signUpReducer, authTestReducer } from './containers/SignUp/reducer';
 import chartReducer from './containers/Chart/reducer';
-import searchReducer from './containers/Search/reducer';
 import addJobReducer from './containers/AddJob/reducer';
+import { grabJobsReducer } from './containers/Board/reducer';
 import updateJobReducer from './containers/UpdateJob/reducer';
-import { testDragReducer, grabJobsReducer } from './containers/TestContainer/reducer';
+import viewJobsReducer from './containers/ViewJobs/reducer';
+import { reducer as burgerMenuReducer } from 'redux-burger-menu';
+import searchReducer from './containers/Search/reducer';
 
 const allReducers = combineReducers({
   form: formReducer,
   loggedIn: loginReducer,
   signedUp: signUpReducer,
+  auth: authTestReducer,
   chartData: chartReducer,
   addJob: addJobReducer,
-  auth: authTestReducer,
-  searchData: searchReducer,
-  addJob: addJobReducer,
+  viewJobs: viewJobsReducer,
+  boards: grabJobsReducer,
   updateJob: updateJobReducer,
-  testDrag: testDragReducer,
-  allJobs: grabJobsReducer
+  burgerMenu: burgerMenuReducer,
+  searchData: searchReducer
 });
 
 export default function configureStore(initialState = {}) {

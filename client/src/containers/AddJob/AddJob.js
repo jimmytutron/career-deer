@@ -24,7 +24,7 @@ class AddJob extends Component {
 
     return (
       <Container className="mt-5">
-        <Row className="justify-content-center my-5 pt-5 text-center">
+        <Row className="justify-content-center text-center">
         <Col size = "12 lg-10">
         <RubberBand>
         <img width="80%" src="/imgs/icons/walking.svg" alt="hunt the deer"/>
@@ -33,7 +33,7 @@ class AddJob extends Component {
         </Row>
         <Row>
           <Col className="text-center">
-            <h3 className="montserrat font-weight-bold">Track a New Job</h3>
+            <h3 className="montserrat font-weight-bold mt-3">Track a New Job</h3>
             <h6>Found a job from somewhere else? Import it here and you'll be able to track your progress!</h6>
           </Col>
         </Row>

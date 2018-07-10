@@ -1,8 +1,7 @@
 import React from 'react';
 // Redux stuff
 import { Field, reduxForm, FieldArray, reset } from 'redux-form';
-import { TextField, renderField } from 'redux-form-material-ui';
-import { Badge } from '../Badge'
+import { TextField } from 'redux-form-material-ui';
 import { validate } from './validate'
 
 const renderTextField = (
@@ -32,9 +31,7 @@ const renderTextField = (
 
 const renderNote = (
   {
-    fields, 
-    meta,
-    ... custom
+    fields
   }) => (
     <React.Fragment>
     <button type="button" onClick={()=>fields.push()}>Add Note</button>
@@ -60,7 +57,7 @@ const renderNote = (
     </React.Fragment>
   )
 
-let UpdateJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
+let UpdateJobForm = ({ handleSubmit, pristine, submitting, errorMessage }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -83,7 +80,7 @@ let UpdateJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }
       </div>
       <div>
         <h6>{errorMessage}</h6>
-        <button type="submit" disabled={pristine || submitting}>
+        <button type="submit" disabled={submitting}>
           Submit
         </button>
         <p>* indicates a required field.</p>
