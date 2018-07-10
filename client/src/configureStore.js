@@ -11,7 +11,11 @@ import searchReducer from './containers/Search/reducer';
 import addJobReducer from './containers/AddJob/reducer';
 import updateJobReducer from './containers/UpdateJob/reducer';
 import { testDragReducer, grabJobsReducer } from './containers/TestContainer/reducer';
+<<<<<<< HEAD
 import viewJobsReducer from './containers/ViewJobs/reducer';
+=======
+import { reducer as burgerMenuReducer } from 'redux-burger-menu';
+>>>>>>> 79732ce0fb65c8cad9bf516d66bb6cf475e08f1f
 
 const allReducers = combineReducers({
   form: formReducer,
@@ -25,7 +29,8 @@ const allReducers = combineReducers({
   viewJobs: viewJobsReducer,
   updateJob: updateJobReducer,
   testDrag: testDragReducer,
-  allJobs: grabJobsReducer
+  allJobs: grabJobsReducer,
+  burgerMenu: burgerMenuReducer
 });
 
 export default function configureStore(initialState = {}) {
