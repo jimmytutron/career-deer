@@ -28,6 +28,7 @@ class App extends Component {
       <Router>
         <React.Fragment>
           <Nav />
+          <BurgerMenuTest />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={LoginPage} />
