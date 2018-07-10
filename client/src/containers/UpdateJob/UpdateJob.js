@@ -38,12 +38,12 @@ class UpdateJob extends Component {
       <Container>
         <Row>
           <Col className="text-center">
-            <h3>Update this job</h3>
+            <h1 className="montserrat font-weight-bold mt-5"><i className="fas fa-edit"></i> Update this job</h1>
           </Col>
         </Row>
-        <Row>
+        <Row className="justify-content-center">
           <Col />
-          <Col size="12 md-8 lg-6">
+          <Col size="12 md-12 lg-10">
             <UpdateJobForm 
               onSubmit={this.updateJobValues} 
               initialValues={this.props.updateJob.job} 
