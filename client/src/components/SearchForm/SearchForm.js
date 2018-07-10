@@ -1,7 +1,7 @@
 import React from 'react';
 
 //Redux Form
-import { Field, reduxForm, reset } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { Col, Row } from '../Grid';
 import { validate } from './validate';
@@ -24,7 +24,7 @@ const renderTextField = (
 
 
 
-let SearchForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
+let SearchForm = ({ handleSubmit, pristine, submitting, errorMessage }) => {
   return (
     <Col size="12 col-md-12 lg-5">
         <h2 className="text-center mt-5 pt-4 montserrat font-weight-bold">Time to start the hunt!</h2>

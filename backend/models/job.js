@@ -23,7 +23,7 @@ const jobSchema = new Schema({
   },
   post_date: {
     type: Date,
-    required: false,
+    required: true,
     default: Date.now
   },
   logo_url: {
@@ -48,7 +48,8 @@ const jobSchema = new Schema({
   },
   last_update: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    required: true
   },
   note: {
     type: [String],

@@ -33,5 +33,5 @@ export default function addJobReducer(state = initialState, { type, payload }) {
       }
     default:
       return state
-  };
+  }
 };

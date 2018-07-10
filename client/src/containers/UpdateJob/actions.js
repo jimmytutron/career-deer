@@ -1,4 +1,5 @@
 import { deleteJobById, updateJobById } from '../../utils/API';
+import { convertDate } from '../../utils/dateConverter';
  
 export const UPDATEJOB_FAILED = 'UPDATEJOB_FAILED';
 export const UPDATEJOB_SUCCESS = 'UPDATEJOB_SUCCESS';
@@ -39,8 +40,7 @@ export function deleteJob(jobInfo) {
 };
 
 export function selectUpdateJob(job) {
-  console.log("...........updating job.............")
-  console.log(job)
+  job.post_date = convertDate(job.post_date)
   return {
     type: UPDATEJOB_SELECT,
     payload: {
