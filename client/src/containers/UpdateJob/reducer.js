@@ -1,10 +1,11 @@
 import { UPDATEJOB_FAILED, UPDATEJOB_SUCCESS, UPDATEJOB_CLEAR, UPDATEJOB_SELECT } from './actions';
+import initialState from '../../initialState';
 
 // There's only a case for failed signup here, because a sucessful signup dispatches
 // an action of a type LOGIN_SUCCESS. The loginReducer will pick up on this dispatched
 // LOGIN_SUCCESS, and log them in. Basically the signUpReducer is only responsible for
 // listening to dispatched errors for unsuccessful logins.
-export default function updateJobReducer(state = '', { type, payload }) {
+export default function updateJobReducer(state = initialState, { type, payload }) {
   switch(type) {
     case UPDATEJOB_FAILED:
       return {
