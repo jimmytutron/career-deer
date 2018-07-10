@@ -22,10 +22,9 @@ const getItems = (count, offset = 0) =>
 
 // a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
+  const result = [...list];
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
-
   return result;
 };
 
@@ -33,8 +32,8 @@ const reorder = (list, startIndex, endIndex) => {
  * Moves an item from one list to another list.
  */
 const move = (source, destination, droppableSource, droppableDestination) => {
-  const sourceClone = Array.from(source);
-  const destClone = Array.from(destination);
+  const sourceClone = [...source];
+  const destClone = [...destination];
   const [removed] = sourceClone.splice(droppableSource.index, 1);
 
   destClone.splice(droppableDestination.index, 0, removed);
@@ -63,16 +62,29 @@ class Board extends Component {
   };
 
   // this.props.boards[this.id2list[id]]
+  // can be either..
+  // this.props.boards['items']
+  // this.props.boards['selected']
   getList = id => this.props.boards[this.id2List[id]];
 
-  onDragEnd = result => {
-    const { source, destination } = result;
-
-    // dropped outside the list
+  
+  /**
+   * Handles logic for draggables.
+   * @param  {Object} result is an object with a bunch of properties, we only care about source & destination
+   *         result ->  { 
+   *              ** droppableId references the droppable you've moved a draggable to.**
+   *              ** index references the numerical index within the droppable that you've moved a draggable to.
+   *             source: { droppableId: <string>, index: <number> },
+   *             destination: { droppableId: <string>, index: <number> }
+   *           } 
+   */
+  onDragEnd = ({ source, destination }) => {
+    // note: source looks like this { droppableId: <string>, index: <number> }
+    // dropped outside the lists
     if (!destination) {
       return;
     }
-
+    // If dropped back in place, but a new positon..
     if (source.droppableId === destination.droppableId) {
       const items = reorder(
         this.getList(source.droppableId),
@@ -82,6 +94,7 @@ class Board extends Component {
 
       let status = { items };
 
+      // Make this into a dynamic check for all droppables
       if (source.droppableId === 'droppable2') {
         status = { selected: items };
       }
