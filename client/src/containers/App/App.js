@@ -9,7 +9,7 @@ import SignUp from "../SignUp/SignUp";
 import AddJob from "../AddJob/AddJob";
 import Chart from '../Chart/Chart';
 import Search from '../Search/Search';
-import TestContainer from '../TestContainer/TestContainer';
+import Board from '../Board/Board';
 import "./App.css";
 
 
@@ -31,7 +31,7 @@ class App extends Component {
         <Route exact path ="/chart" component={Chart} />
         <Route exact path ="/addjob" component={AddJob} />
         <Route exact path ="/search" component={Search} />
-        <Route exact path ="/test-drag" component={ TestContainer } />
+        <Route exact path ="/test-drag" component={ Board } />
         <Route component={NoMatch} />
       </Switch>
       </React.Fragment>

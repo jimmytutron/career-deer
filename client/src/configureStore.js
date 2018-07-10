@@ -9,7 +9,7 @@ import { signUpReducer, authTestReducer } from './containers/SignUp/reducer';
 import chartReducer from './containers/Chart/reducer';
 import searchReducer from './containers/Search/reducer';
 import addJobReducer from './containers/AddJob/reducer';
-import { testDragReducer, grabJobsReducer } from './containers/TestContainer/reducer';
+import { boardsReducer, grabJobsReducer } from './containers/Board/reducer';
 
 const allReducers = combineReducers({
   form: formReducer,
@@ -20,8 +20,7 @@ const allReducers = combineReducers({
   auth: authTestReducer,
   searchData: searchReducer,
   addJob: addJobReducer,
-  testDrag: testDragReducer,
-  allJobs: grabJobsReducer
+  boards: boardsReducer
 });
 
 export default function configureStore(initialState = {}) {
