@@ -6,8 +6,8 @@ import ProgressTiles from '../../components/ProgressTiles/ProgressTiles';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
-  defaultLocation,
-  newLocation,
+  // defaultLocation,
+  // newLocation,
   grabJobs
 } from './actions';
 
@@ -127,8 +127,8 @@ const mapStateToProps = (state, props) => {
 
 const mapActionsToProps = (dispatch, props) => {
   return bindActionCreators({
-    defaultLocation,
-    newLocation,
+    // defaultLocation,
+    // newLocation,
     grabJobs
   }, dispatch)
 }

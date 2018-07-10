@@ -8,7 +8,7 @@ import loginReducer from './containers/Login/reducer';
 import { signUpReducer, authTestReducer } from './containers/SignUp/reducer';
 import chartReducer from './containers/Chart/reducer';
 import addJobReducer from './containers/AddJob/reducer';
-import { boardsReducer, grabJobsReducer } from './containers/Board/reducer';
+import { grabJobsReducer } from './containers/Board/reducer';
 import updateJobReducer from './containers/UpdateJob/reducer';
 import { reducer as burgerMenuReducer } from 'redux-burger-menu';
 import searchReducer from './containers/Search/reducer';
@@ -20,7 +20,7 @@ const allReducers = combineReducers({
   auth: authTestReducer,
   chartData: chartReducer,
   addJob: addJobReducer,
-  boards: boardsReducer,
+  boards: grabJobsReducer,
   updateJob: updateJobReducer,
   burgerMenu: burgerMenuReducer,
   searchData: searchReducer
