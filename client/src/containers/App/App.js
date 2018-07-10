@@ -11,6 +11,7 @@ import UpdateJob from '../UpdateJob/UpdateJob';
 import Chart from '../Chart/Chart';
 import Search from '../Search/Search';
 import TestContainer from '../TestContainer/TestContainer';
+import BurgerMenuTest from '../BurgerMenuTest/BurgerMenuTest';
 
 import "./App.css";
 import { StickyFooter } from '../../components/Footer';
@@ -35,6 +36,7 @@ class App extends Component {
         <Route exact path ="/search" component={Search} />
         <Route exact path ="/test-drag" component={ TestContainer } />
         <Route path ="/updatejob" component={UpdateJob} />
+        <Route path="/burger" component={BurgerMenuTest} />
         <Route component={NoMatch} />
       </Switch>
       <StickyFooter />

@@ -98,6 +98,9 @@ const initialState = {
   },
   allJobs: {
     jobs: []
+  },
+  burgerMenu: {
+    isOpen: false
   }
 };
 
