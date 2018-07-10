@@ -33,7 +33,7 @@ class Search extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getAllSavedJobs();
   }
 

@@ -4,7 +4,7 @@ import ProgressTiles from '../../components/ProgressTiles/ProgressTiles';
 
 // Redux Stuff
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import {
   // defaultLocation,
   // newLocation,
@@ -48,7 +48,7 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 
 class Board extends Component {
 
-  componentWillMount() {
+  componentDidMount() {
     console.log('Grabbing Jobs..');
     this.props.grabJobs();
   };
@@ -107,12 +107,13 @@ class Board extends Component {
   render() {
     return (
       <React.Fragment>
-      <DragDropContext onDragEnd={this.onDragEnd} >
+        <div>Hell World!</div>
+      {/* <DragDropContext onDragEnd={this.onDragEnd} >
         <ProgressTiles
           items={this.props.allJobs}
           selected={this.props.boards.selected}
         />
-      </DragDropContext>
+      </DragDropContext> */}
       </React.Fragment>
     );
   }
@@ -120,18 +121,19 @@ class Board extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    boards: state.boards,
-    allJobs: state.allJobs.jobs
+    boards: state.boards
   }
 }
 
-const mapActionsToProps = (dispatch, props) => {
-  return bindActionCreators({
-    // defaultLocation,
-    // newLocation,
-    grabJobs
-  }, dispatch)
-}
+// const mapActionsToProps = (dispatch, props) => {
+//   return bindActionCreators({
+//     grabJobs
+//   }, dispatch)
+// }
+
+const mapActionsToProps = () => ({
+  grabJobs
+});
 
 // Put the things into the DOM!
-export default connect(mapStateToProps, mapActionsToProps)(Board);
+export default connect(mapStateToProps, mapActionsToProps())(Board);
