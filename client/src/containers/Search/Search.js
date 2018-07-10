@@ -43,7 +43,7 @@ class Search extends Component {
         <Row className="justify-content-center">
           <Col size="12 md-12 lg-5">
           <Bounce>
-          <img src="/imgs/icons/hunt.svg" alt="hunt the deer"/>
+          <img className="mx-auto" src="/imgs/icons/hunt.svg" alt="hunt the deer"/>
           </Bounce>
           </Col>
           <SearchForm onSubmit={this.searchJobs} />
