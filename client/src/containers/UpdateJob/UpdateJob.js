@@ -9,24 +9,18 @@ import { executeUpdateJob, resetUpdateJob, selectUpdateJob } from './actions';
 
 class UpdateJob extends Component {
   updateJobValues = values => {
-    console.log("--------------------------")
-    console.log(this.props.updateJob)
-    console.log(this.props.updateJob.job)
     const newJob = {
       ...this.props.updateJob.job,
       ...values
     }
-    console.log("+++++++++++++++++++++++++++")
-    console.log(newJob)
-    console.log("---------------------------")
     this.props.executeUpdateJob(newJob);
   }
 
   resetUpdateJob = () => this.props.resetUpdateJob();
 
   componentWillMount() {
-    console.log(this.props.viewJobs)
-    this.props.selectUpdateJob(this.props.viewJobs.edit)
+    if (this.props.viewJobs.edit)
+      this.props.selectUpdateJob(this.props.viewJobs.edit)
     // this.props.selectUpdateJob(this.props.viewJobs.edit)
   }
 

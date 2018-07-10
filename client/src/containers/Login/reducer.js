@@ -15,5 +15,5 @@ export default function loginReducer(state = initialState, { type, payload }) {
       }
     default:
       return state
-  };
+  }
 };

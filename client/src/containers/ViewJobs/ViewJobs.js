@@ -29,9 +29,9 @@ class ViewJobs extends Component {
             {this.props.viewJobs.data.map((job, i) => (
               <div className="my-3" key={`viewjob-${i}`}>
                 <h4>{job.title}</h4>
-                <p>{job.company}</p>
+                <p>{`company: ${job.company_name}`}</p>
                 <p>{job.post_date}</p>
-                <p>{job.location}</p>
+                <p>{`location: ${job.location}`}</p>
                 <button className="btn btn-light" onClick={() => this.props.editJob(this.props.viewJobs.data[i])}>{job._id}</button>
               </div>
             ))}

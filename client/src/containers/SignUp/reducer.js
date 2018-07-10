@@ -15,7 +15,7 @@ export function signUpReducer(state = initialState, { type, payload }) {
       }
     default:
       return state;
-  };
+  }
 };
 
 export function authTestReducer(state = initialState, { type, payload }) {
@@ -27,5 +27,5 @@ export function authTestReducer(state = initialState, { type, payload }) {
       }
     default:
       return state;
-  };
+  }
 };

@@ -32,8 +32,6 @@ module.exports = {
     }
   },
   findOne: async (req, res) => {
-    console.log(req.user,'Req.user');
-    console.log(req.params.id,'Req.params.id');
     if (req.user) {
       try {
         let query = {
@@ -49,15 +47,18 @@ module.exports = {
     }
   },
   update: async (req, res) => {
-    console.log(req.user);
-    console.log(req.body);
     if (req.user) {
       try {
         let query = {
           _id: req.body._id,
           user: req.user._id
         }
-        res.json(await db.Job.findOneAndUpdate(query, {$set: {...req.body}}))
+        const newJob = {
+          ...req.body,
+          post_date : new Date(req.body.post_date),
+          last_update: new Date(Date.now())
+        }
+        res.json(await db.Job.findOneAndUpdate(query, {$set: newJob}))
       } catch (err) {
         res.status(422).json(err)
       }
@@ -67,7 +68,6 @@ module.exports = {
   },
   // Should also delete all the notes for the deleted job
   delete: async (req, res) => {
-    console.log(req.user);
     if (req.user) {
       try {
         let query = {
