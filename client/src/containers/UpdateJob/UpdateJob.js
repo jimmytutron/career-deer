@@ -4,7 +4,6 @@ import UpdateJobForm from '../../components/UpdateJobForm/UpdateJobForm';
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { executeDeleteJob, executeUpdateJob, resetUpdateJob, selectUpdateJob } from './actions';
 
 class UpdateJob extends Component {
@@ -65,10 +64,10 @@ const mapStateToProps = (state,props) => {
 };
 
 const mapActionsToProps = (dispatch,props) => ({
-    executeDeleteJob,
-    executeUpdateJob,
-    resetUpdateJob,
-    selectUpdateJob
-  })
+  executeDeleteJob,
+  executeUpdateJob,
+  resetUpdateJob,
+  selectUpdateJob
+})
 
 export default connect(mapStateToProps,mapActionsToProps())(UpdateJob);

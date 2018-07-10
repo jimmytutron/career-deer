@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Nav } from "../../components/Nav";
@@ -20,7 +21,6 @@ import { StickyFooter } from '../../components/Footer';
 
 // Redux stuff
 // import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
 
 class App extends Component {
   render() {
@@ -48,29 +48,20 @@ class App extends Component {
   }
 }
 
-// Just to be safe, I'm mapping all actions and all props to state.
-// Not sure why. I might remove this later. The current idea is to give
-// App access to everything, and then each individual component
-// will only have the actions and states mapped to them which they should
-// be concered about.
-// const mapStateToProps = state => ({
-//   app: state.app,
-//   test: state.test,
-//   form: state.form,
-//   loggedIn: state.loggedIn,
-//   addJob: state.addJob
-// });
+// The nav bar needs to know whether we're logged in
+const mapStateToProps = state => ({
+  app: state.app,
+  loggedIn: state.loggedIn,
+});
 
 
-// TODO remove these test reducers off of here, as well as the test reducer folders.
-// const mapActionsToProps = (dispatch, props) => {
-//   return bindActionCreators({
+// We don't have to use BindActionCreators because this is a smart component
+const mapActionsToProps = (dispatch, props) => ({
 
-//   }, dispatch)
+})
 // };
 // Connect can take 3 arguments
 // 1) mapStateToProps
 // 2) mapActionsToProps 
 // 3) 
-// export default connect(mapStateToProps,mapActionsToProps)(App);
-export default App;
+export default connect(mapStateToProps,mapActionsToProps())(App);
