@@ -107,13 +107,14 @@ class TestContainer extends Component {
   render() {
     console.log(this.props.allJobs);
     return (
-
+      <React.Fragment>
       <DragDropContext onDragEnd={this.onDragEnd} >
         <TestBoard
           items={this.props.allJobs}
           selected={this.props.testDrag.selected}
         />
       </DragDropContext>
+      </React.Fragment>
     );
   }
 }
