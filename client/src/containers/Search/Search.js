@@ -4,7 +4,6 @@ import SearchResults from '../../components/SearchResults';
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { getSearchJobs, postSaveJob, getAllSavedJobs } from './actions';
 
 import Bounce from 'react-reveal/Bounce';
@@ -74,10 +73,10 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapActionsToProps = (dispatch, props) => ({
-    getSearchJobs,
-    postSaveJob,
-    getAllSavedJobs
-  })
+  getSearchJobs,
+  postSaveJob,
+  getAllSavedJobs
+})
 
 export default connect(mapStateToProps, mapActionsToProps())(Search);
 

@@ -4,7 +4,6 @@ import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { signup } from './actions';
 import { authThunk } from './actions';
 
@@ -78,11 +77,9 @@ const mapStateToProps = (state,props) => {
   };
 };
 
-const mapActionsToProps = (dispatch,props) => {
-  return bindActionCreators({
-    signup,
-    authThunk
-  }, dispatch);
-};
+const mapActionsToProps = (dispatch,props) => ({
+  signup,
+  authThunk
+});
 
-export default connect(mapStateToProps,mapActionsToProps)(SignUp);
+export default connect(mapStateToProps,mapActionsToProps())(SignUp);
