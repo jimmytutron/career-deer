@@ -14,7 +14,6 @@ class ViewJobs extends Component {
 
   render() {
     if (this.props.viewJobs.edit) {
-      this.props.resetViewJobs();
       return <Redirect to='/updateJob' />
     };
     return (
@@ -50,14 +49,12 @@ const mapStateToProps = (state, props) => {
   }
 };
 
-const mapActionsToProps = (dispatch, props) => {
-  return bindActionCreators({
+const mapActionsToProps = (dispatch, props) => ({
     resetViewJobs,
     updateViewJobs,
     getAllSavedJobs,
     editJob
-  }, dispatch);
-}
+  })
 
-export default connect(mapStateToProps, mapActionsToProps)(ViewJobs);
+export default connect(mapStateToProps, mapActionsToProps())(ViewJobs);
 

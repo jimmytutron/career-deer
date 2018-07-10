@@ -20,7 +20,7 @@ class UpdateJob extends Component {
     this.props.executeDeleteJob(this.props.updateJob.job);
   }
 
-  resetUpdateJob = () => this.props.resetUpdateJob();
+  // resetUpdateJob = () => this.props.resetUpdateJob();
 
   componentWillMount() {
     if (this.props.viewJobs.edit)
@@ -30,7 +30,7 @@ class UpdateJob extends Component {
 
   render() {
     if (this.props.updateJob.status || !this.props.viewJobs.edit) {
-      this.props.resetViewJobs();
+      this.props.resetUpdateJob();
       return <Redirect to='/viewjobs' />
     };
 
@@ -64,13 +64,11 @@ const mapStateToProps = (state,props) => {
   };
 };
 
-const mapActionsToProps = (dispatch,props) => {
-  return bindActionCreators({
+const mapActionsToProps = (dispatch,props) => ({
     executeDeleteJob,
     executeUpdateJob,
     resetUpdateJob,
     selectUpdateJob
-  }, dispatch);
-};
+  })
 
-export default connect(mapStateToProps,mapActionsToProps)(UpdateJob);
+export default connect(mapStateToProps,mapActionsToProps())(UpdateJob);
