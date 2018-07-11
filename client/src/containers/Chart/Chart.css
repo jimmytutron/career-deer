@@ -1,9 +1,12 @@
 .chart {
   position: relative;
-  height: 30vh;
+  height: 35vh;
   width: 100%;
 }
 
-.chart-50 {
-  width: 50%!important;
+.doughnut-inner {
+  position: absolute;
+  top: 47%;
+  left: -1%;
 }
+
