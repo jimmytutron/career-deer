@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Nav, NavMain } from "../../components/Nav";
@@ -20,9 +19,19 @@ import { StickyFooter } from '../../components/Footer';
 
 
 // Redux stuff
-// import { connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { appLoginUpdate, appLogoutUpdate } from './actions';
 
 class App extends Component {
+
+  loginAction = user => {
+    this.props.appLoginUpdate(user);
+  }
+
+  logoutAction = () => {
+    this.props.appLogoutUpdate();
+  }
+
   render() {
     return (
       <Router>
@@ -33,8 +42,8 @@ class App extends Component {
           <main id="page-wrap">
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={LoginPage} />
-            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/login" component={LoginPage} loginaction={this.loginAction} />
+            <Route exact path="/signup" component={SignUp} loginaction={this.loginAction} />
             <Route exact path="/chart" component={Chart} />
             <Route exact path="/addjob" component={AddJob} />
             <Route exact path="/search" component={Search} />
@@ -54,13 +63,14 @@ class App extends Component {
 // The nav bar needs to know whether we're logged in
 const mapStateToProps = state => ({
   app: state.app,
-  loggedIn: state.loggedIn,
+  signedUp: state,
 });
 
 
 // We don't have to use BindActionCreators because this is a smart component
 const mapActionsToProps = (dispatch, props) => ({
-
+  appLoginUpdate,
+  appLogoutUpdate
 })
 // };
 // Connect can take 3 arguments

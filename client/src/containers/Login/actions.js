@@ -1,7 +1,10 @@
 import { signIn } from '../../utils/API';
 
+import { appLoginUpdate } from '../App/actions'
+
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const FAILED_LOGIN = 'FAILED_LOGIN';
+export const LOGIN_RESET = 'LOGIN_RESET'
 
 // Using Redux thunk middleware https://github.com/reduxjs/redux-thunk
 // our action creator returns a function instead of an action. This function can
@@ -16,7 +19,13 @@ export function login(userInfo) {
     try {
       const apiResponse = await (signIn(userInfo));
       // dispatch here
-      dispatch(signedIn(apiResponse.data));
+      const createdUser = {
+        firstName: apiResponse.data.firstName,
+        lastName: apiResponse.data.lastName,
+        email: apiResponse.data.email
+      }
+      dispatch(appLoginUpdate(createdUser))
+      dispatch(signedIn(createdUser));
     } catch (err) {
       // and here
       dispatch(failedSignIn(err));
@@ -24,16 +33,23 @@ export function login(userInfo) {
   };
 };
 
-export function signedIn(data) {
+export function resetLoginState() {
+  return {
+    type: LOGIN_RESET,
+    payload: {
+      error: null,
+      status: false
+    }
+  }
+}
+
+export function signedIn(user) {
   return {
     type: LOGIN_SUCCESS,
     payload: {
-      status: {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        email: data.email
-      },
-      error: null
+      error: null,
+      user: user,
+      status: true,
     }
   };
 };
@@ -42,8 +58,9 @@ export function failedSignIn(err) {
   return {
     type: FAILED_LOGIN,
     payload: {
+      error: err,
+      user: null,
       status: false,
-      error: err   
     }
   };
 };
