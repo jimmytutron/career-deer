@@ -1,4 +1,4 @@
-import { getJobDataAll, getJobDataUser } from '../../utils/API';
+import { getJobDataAll, getJobDataUser, getUserPercentile } from '../../utils/API';
 
 export const CHART_ALL = 'CHART_ALL';
 
@@ -6,9 +6,16 @@ export function getChartAllData() {
   return async (dispatch, getState) => {
     try {
       const data = await getDBData();
- 
+
       const apiResAll = data[0];
       const apiResUser = data[1];
+
+      // console.log(apiResUser.data);
+
+      //TODO: correct chartController before enabling.
+      // const percentile = await getPercentile(apiResUser.data);
+
+      // console.log("percentile data", percentile.data);
 
       dispatch(jobData(apiResAll.data, apiResUser.data));
 
@@ -61,7 +68,7 @@ export function jobData(dataAll, dataUser) {
   }
 }
 
-function valuesToArray(obj){
+function valuesToArray(obj) {
   const dataArray = [];
   for (let keys in obj) {
     dataArray.push(obj[keys])
@@ -125,6 +132,16 @@ function percentages(countDataObj) {
 
   return percentObj;
 }
+
+function getPercentile(dataUser) {
+  const organizedDataUser = organizeData(dataUser);
+
+  const percData = getUserPercentile(organizedDataUser["Saved"], organizedDataUser["Applied"], organizedDataUser["Phone Interview"], organizedDataUser["On-site Interview"], organizedDataUser["Offer"], );
+
+  return Promise.all([percData])
+}
+
+
 
 export function noData(err) {
   console.log("error no data")

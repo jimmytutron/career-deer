@@ -42,7 +42,11 @@ module.exports = {
   userPercentile: async (req, res) => {
     if (req.user) {
       try {
+        console.log("backend", req.query);
         const percentiles = await getPercentiles(req);
+        console.log("================================");
+        console.log(percentiles.data);
+        console.log("================================");
         res.json(percentiles.data);
       } catch (err) {
         res.status(422).json(err);
@@ -75,6 +79,9 @@ function getPercentiles(req) {
   const userGtPopOffer = getGtData("offer", offer);
   const userLtPopOffer = getLtData("offer", offer);
 
+  // return Promise.all([userGtPopSaved]);
+
+
   return Promise.all([
     userGtPopSaved, userLtPopSaved,
     userGtPopApplied, userLtPopApplied,
@@ -86,56 +93,67 @@ function getPercentiles(req) {
 }
 
 //Takes in a progress stage and a count for comparison against each user. Returns the number of unique users less than count.
-function getGtData(stage, stageCount) {
-  const data = db.jobs.aggregate([
+async function getGtData(stage, stageCount) {
+
+  console.log("getGtData: ", stage, stageCount);
+
+  const data = await db.jobs.aggregate([
     {
       $group: {
         _id: {
           "progress_stage": "$progress_stage",
           "user": "$user"
         },
-        count: { $sum: 1 }
+        count: { "$sum": 1 }
       }
-    }, {
+    }
+    , {
       "$match": {
         "_id.progress_stage": stage,
-        count: { "$lt": stageCount }
+        count: { "$lt": parseInt(stageCount) }
       }
     }, {
-      $group: {
+      "$group": {
         _id: "$_id.progress_stage",
-        "uniqueUsers": { $sum: 1 }
+        "uniqueUsers": { "$sum": 1 }
       }
     }]
   )
 
+  console.log("=============================")
+  console.log("gtDATA: ", data);
+  console.log("=============================")
   return data;
 }
 
 //Takes in a progress stage and a count for comparison against each user. Returns the number of unique users greater than count.
-function getLtData(stage, stageCount) {
-  const data = db.jobs.aggregate([
+async function getLtData(stage, stageCount) {
+
+  console.log("getLtData: ", stage, stageCount);
+
+  const data = await db.jobs.aggregate([
     {
       $group: {
         _id: {
           "progress_stage": "$progress_stage",
           "user": "$user"
         },
-        count: { $sum: 1 }
+        count: { "$sum": 1 }
       }
     }, {
       "$match": {
         "_id.progress_stage": stage,
-        count: { "$gt": stageCount }
+        count: { "$gt": parseInt(stageCount) }
       }
     }, {
-      $group: {
+      "$group": {
         _id: "$_id.progress_stage",
-        "uniqueUsers": { $sum: 1 }
+        "uniqueUsers": { "$sum": 1 }
       }
     }]
   )
 
+  console.log("ltDATA: ", data);
   return data;
 }
 
