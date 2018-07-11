@@ -4,6 +4,7 @@ import { LOGIN_SUCCESS } from '../Login/actions';
  
 export const FAILED_SIGNUP = 'FAILED_SIGNUP';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
+export const RESET_SIGNUP = 'RESET_SIGNUP'
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 
 // Using Redux thunk middleware https://github.com/reduxjs/redux-thunk
@@ -87,3 +88,13 @@ export function failedSignUp(err) {
     } 
   };
 };
+
+export function resetSignUp() {
+  return {
+    type: RESET_SIGNUP,
+    payload: {
+      status: false,
+      error: null
+    }
+  }
+}

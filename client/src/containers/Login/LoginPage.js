@@ -4,7 +4,7 @@ import LoginForm from '../../components/LoginForm/LoginForm';
 import { Container, Col, Row } from '../../components/Grid';
  
 import { connect } from 'react-redux';
-import { login } from './actions';
+import { login, resetLoginState } from './actions';
 import './Login.css';
 
 import Bounce from 'react-reveal/Bounce';
@@ -14,10 +14,16 @@ class LoginPage extends Component {
     // This calls the login action creator, passing the form values to it
     this.props.login(values);
   };
+
+  reset() {
+    this.props.resetLoginState();
+  };
+
   render() {
 
-    if (this.props.loggedIn.status) {
-      return <Redirect to='/' />
+    if (this.props.app.user && !this.props.loggedIn.error) {
+      this.reset();
+      return <Redirect to='/viewjobs' />
     };
 
     return (
@@ -36,7 +42,7 @@ class LoginPage extends Component {
           <Col size="12 md-6 lg-6" className="log-in">
           <h1 className="text-center mt-5 montserrat font-weight-bold">Welcome Back!</h1>
           <h2 className="text-center mt-2 montserrat">Let's get you on track</h2>
-            <LoginForm onSubmit={this.login} errorMessage={renderError(this.props.loggedIn)} />
+            <LoginForm onSubmit={this.login} errorMessage={renderError(this.props.loggedIn, this.props.app)} />
           </Col>
         </Row>
       </Container>
@@ -45,8 +51,8 @@ class LoginPage extends Component {
   };
 };
 
-const renderError = (loggedIn) => {
-  if (!loggedIn.status && loggedIn.error)
+const renderError = (loggedInState, appState) => {
+  if (!appState.user && loggedInState.error)
       return "Incorrect email or password.";
   else
     return "";
@@ -56,12 +62,13 @@ const renderError = (loggedIn) => {
 const mapStateToProps = (state, props) => {
   return {
     loggedIn: state.loggedIn,
-    signedUp: state.signedUp
+    app: state.app
   };
 };
 
 const mapActionsToProps = (dispatch, props) => ({
-  login
+  login,
+  resetLoginState
 });
 
 export default connect(mapStateToProps, mapActionsToProps())(LoginPage);
