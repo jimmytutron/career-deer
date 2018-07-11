@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
 import { HomePageJumbo } from '../../components/HomePageJumbo';
 import { StickyFooter } from '../../components/Footer/';
-
+import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom";
 
 // Redux stuff
 // import { connect } from 'react-redux';
@@ -15,6 +16,8 @@ import LightSpeed from 'react-reveal/LightSpeed';
 import Slide from 'react-reveal/Slide';
 import Pulse from 'react-reveal/Pulse';
 
+
+
 class Home extends Component {
 
   onUpdateTest = () => {
@@ -23,12 +26,12 @@ class Home extends Component {
 
   render() {
     return (
-      <div id="top" className="hide-overflow">
+      <div className="hide-overflow">
         <HomePageJumbo />
         <Slide bottom>
         <Row className="justify-content-center mt-5 mb-3">
             <Col size="12">
-            <h1  id="about" className="display-4 text-center montserrat">Makin' it Rein...</h1>
+            <h1 className="display-4 text-center montserrat pt-5">Makin' it Rein...</h1>
             </Col>
         </Row>
         <Row className="justify-content-center welcome-msg">
@@ -148,8 +151,8 @@ class Home extends Component {
                 </Col>
             </Row>
           </Container>
-          <section id="sign-up" className="section-4">
-            <Row className="justify-content-center text-center mt-5 pt-5">
+          <section id="sign-up" className="section-4 mb-5">
+            <Row className="justify-content-center text-center my-5 py-5">
                 <Col size="12 md-8">
                 <Pulse>
                 <img width="250px" src="/imgs/logo-symbol.svg" alt="logo"/>
@@ -158,7 +161,12 @@ class Home extends Component {
                  <p className=" mt-1">
                 Your dream job is just a couple hooves away.
                 </p>
-                <a className="btn sign-up-btn btn-info mb-5" href="/signup">Get Started!</a>
+                <Button 
+                variant="extendedFab" 
+                color="secondary"
+                component={Link} to="/signup">
+                <span className="big-btn">Get Started!</span>
+                </Button>
                 </Col>
             </Row>          
           </section>
