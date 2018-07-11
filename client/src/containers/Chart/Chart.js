@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Bar, Line, Pie, } from 'react-chartjs-2';
-import { getChartAllData, getChartUserData } from './actions';
+import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2';
+import { getChartAllData } from './actions';
 // import 'chartjs-plugin-datalabels';
 
 import './Chart.css';
@@ -16,6 +16,7 @@ class Chart extends Component {
     if (!this.props.chartData) {
       return <div><button type="button" onClick={() => this.props.getChartData()}> Test Me! </button> No job was selected.</div>
     }
+
 
     return (
       <div className="col-12 col-md-10 col-lg-7 mx-auto d-flex flex-wrap">
@@ -226,7 +227,7 @@ class Chart extends Component {
         </div>
 
         <div className="chart">
-          <Pie
+          <Doughnut
             data={{
               labels: this.props.chartData.user.labels,
               datasets: [{
@@ -239,10 +240,12 @@ class Chart extends Component {
                   'rgba(255,255,0, 0.7)',
                   'rgba(40,40,40, 0.7)'
                 ]
-              }]
+              }],
+              text: '25%'
             }}
             options={{
-              showDatapoints: true,
+              
+              
               title: {
                 display: true,
                 text: 'Current Employment Progress' + this.props.chartData.sample.title,
