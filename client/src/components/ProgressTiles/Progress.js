@@ -9,7 +9,7 @@ const getListStyle = isDraggingOver => ({
   width: 250
 });
 
-const Progress = (boards, boardKeys) => (
+const Progress = () => (
   (provided, snapshot) => (
     <div
       ref={provided.innerRef}
