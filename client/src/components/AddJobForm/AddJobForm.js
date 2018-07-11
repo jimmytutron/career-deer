@@ -4,6 +4,7 @@ import { Field, reduxForm, reset } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { validate, warn } from './validate';
 import { Col, Row } from '../Grid';
+import Button from '@material-ui/core/Button';
 
 
 
@@ -83,9 +84,9 @@ let AddJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) =
     </Col>
       <Col size="12 md-12 lg-5">
         <h6>{errorMessage}</h6>
-        <button className="btn btn-info my-1" type="submit" disabled={pristine || submitting}>
+        <Button variant="contained" color="primary" className="btn btn-info my-1" type="submit" disabled={pristine || submitting}>
           Track It!
-        </button>
+        </Button>
         <p className="text-right">* indicates a required field.</p>
       </Col>
     </Row>

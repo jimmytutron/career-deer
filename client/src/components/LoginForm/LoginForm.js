@@ -3,6 +3,7 @@ import React from 'react';
 import { Field, reduxForm, reset } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { validate } from './validate';
+import Button from '@material-ui/core/Button';
 // import { googleSignIn } from '../../utils/API';
 
 
@@ -23,7 +24,7 @@ const renderTextField = ({
     />
   )
 
-let LoginForm = ({ handleSubmit, pristine, submitting, errorMessage }) => {
+let LoginForm = ({ handleSubmit, pristine, submitting, errorMessage, auth }) => {
   return (
     <form className="text-center" onSubmit={handleSubmit}>
       <div>
@@ -35,12 +36,12 @@ let LoginForm = ({ handleSubmit, pristine, submitting, errorMessage }) => {
       <div className="mt-3">
         <h6>{errorMessage}</h6>
         <div className="text-right">
-        <button className="roboto login-btn btn btn-info" type="submit" disabled={pristine || submitting}>
-          Login <i className="fas fa-sign-in-alt"></i>
-        </button>&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href='/auth/google' className="roboto login-btn btn btn-light">
-           Login with <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo" />
-          </a>
+        <Button variant="contained" color="primary" className="roboto login-btn btn" type="submit" disabled={pristine || submitting}>
+          Login &nbsp; <i className="fas fa-sign-in-alt"></i>
+        </Button>&nbsp;&nbsp;
+        <Button onClick={auth} className="roboto login-btn btn btn-light">
+        Login with <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
+        </Button>
         </div>
       </div>
     </form>

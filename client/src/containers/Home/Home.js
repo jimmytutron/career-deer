@@ -22,12 +22,12 @@ class Home extends Component {
 
   render() {
     return (
-      <div className="hide-overflow">
+      <div id="top" className="hide-overflow">
         <HomePageJumbo />
         <Slide bottom>
         <Row className="justify-content-center mt-5 mb-3">
             <Col size="12">
-            <h1 className="display-4 text-center montserrat">Makin' it Rein...</h1>
+            <h1  id="about" className="display-4 text-center montserrat">Makin' it Rein...</h1>
             </Col>
         </Row>
         <Row className="justify-content-center welcome-msg">
@@ -69,7 +69,7 @@ class Home extends Component {
             </Row>
           </Container>
           </Slide>
-          <div className="section-2">
+          <section id="foreal" className="section-2">
             <Row className="justify-content-center mt-5 mb-3 pt-5">
                 <Col size="12">
                 <h1 className="display-4 text-center montserrat">For real doe?</h1>
@@ -87,8 +87,8 @@ class Home extends Component {
                 </p>
                 </Col>
             </Row>
-          </div>
-          <Container className="section-3">
+          </section>
+        <Container className="section-3">
           <Row className="justify-content-end">
           <LightSpeed right>
           <img className="deer-guy" src="/imgs/icons/deer-guy.svg" alt="deer guy"/>
@@ -147,8 +147,7 @@ class Home extends Component {
                 </Col>
             </Row>
           </Container>
-
-          <div className="section-4">
+          <section id="sign-up" className="section-4">
             <Row className="justify-content-center text-center mt-5 pt-5">
                 <Col size="12 md-8">
                 <Pulse>
@@ -161,7 +160,7 @@ class Home extends Component {
                 <a className="btn sign-up-btn btn-info mb-5" href="/signup">Get Started!</a>
                 </Col>
             </Row>          
-          </div>
+          </section>
       </div>
     );
   }
