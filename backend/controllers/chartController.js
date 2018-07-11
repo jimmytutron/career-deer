@@ -59,24 +59,24 @@ module.exports = {
 
 }
 
-function getPercentiles(req) {
+async function getPercentiles(req) {
   //gt = Greater Than, lt = Less Than.
   //gtSaved provides the number of users if less than current user
   const { saved, applied, phone, onSite, offer } = req.query
 
-  const userGtPopSaved = getGtData("saved", saved);
+  const userGtPopSaved = await getGtData("saved", saved);
   const userLtPopSaved = getLtData("saved", saved);
 
-  const userGtPopApplied = getGtData("applied", applied);
+  const userGtPopApplied = await getGtData("applied", applied);
   const userLtPopApplied = getLtData("applied", applied);
 
-  const userGtPopPhone = getGtData("phone", phone);
+  const userGtPopPhone = await getGtData("phone", phone);
   const userLtPopPhone = getLtData("phone", phone);
 
-  const userGtPopSite = getGtData("on-site", onSite);
+  const userGtPopSite = await getGtData("on-site", onSite);
   const userLtPopSite = getLtData("on-site", onSite);
 
-  const userGtPopOffer = getGtData("offer", offer);
+  const userGtPopOffer = await getGtData("offer", offer);
   const userLtPopOffer = getLtData("offer", offer);
 
   // return Promise.all([userGtPopSaved]);
@@ -96,32 +96,37 @@ function getPercentiles(req) {
 async function getGtData(stage, stageCount) {
 
   console.log("getGtData: ", stage, stageCount);
+  console.log(db.Job,'JOBS HERE');
+  try {
+    const data = await db.jobs.aggregate([
+      {
+        $group: {
+          _id: {
+            "progress_stage": "$progress_stage",
+            "user": "$user"
+          },
+          count: { "$sum": 1 }
+        }
+      }
+      , {
+        "$match": {
+          "_id.progress_stage": stage,
+          count: { "$lt": parseInt(stageCount) }
+        }
+      }, {
+        "$group": {
+          _id: "$_id.progress_stage",
+          "uniqueUsers": { "$sum": 1 }
+        }
+      }]
+    )
+  } catch(err) {
+    console.log(err);
+  }
 
-  const data = await db.jobs.aggregate([
-    {
-      $group: {
-        _id: {
-          "progress_stage": "$progress_stage",
-          "user": "$user"
-        },
-        count: { "$sum": 1 }
-      }
-    }
-    , {
-      "$match": {
-        "_id.progress_stage": stage,
-        count: { "$lt": parseInt(stageCount) }
-      }
-    }, {
-      "$group": {
-        _id: "$_id.progress_stage",
-        "uniqueUsers": { "$sum": 1 }
-      }
-    }]
-  )
 
   console.log("=============================")
-  console.log("gtDATA: ", data);
+  console.log("gtDATACHIKCIHCHCICCICK: ", data);
   console.log("=============================")
   return data;
 }
@@ -130,28 +135,31 @@ async function getGtData(stage, stageCount) {
 async function getLtData(stage, stageCount) {
 
   console.log("getLtData: ", stage, stageCount);
-
-  const data = await db.jobs.aggregate([
-    {
-      $group: {
-        _id: {
-          "progress_stage": "$progress_stage",
-          "user": "$user"
-        },
-        count: { "$sum": 1 }
-      }
-    }, {
-      "$match": {
-        "_id.progress_stage": stage,
-        count: { "$gt": parseInt(stageCount) }
-      }
-    }, {
-      "$group": {
-        _id: "$_id.progress_stage",
-        "uniqueUsers": { "$sum": 1 }
-      }
-    }]
-  )
+   try {
+    const data = await db.jobs.aggregate([
+      {
+        $group: {
+          _id: {
+            "progress_stage": "$progress_stage",
+            "user": "$user"
+          },
+          count: { "$sum": 1 }
+        }
+      }, {
+        "$match": {
+          "_id.progress_stage": stage,
+          count: { "$gt": parseInt(stageCount) }
+        }
+      }, {
+        "$group": {
+          _id: "$_id.progress_stage",
+          "uniqueUsers": { "$sum": 1 }
+        }
+      }]
+    )
+  } catch(err) {
+    console.log(err);
+  }
 
   console.log("ltDATA: ", data);
   return data;

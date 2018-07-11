@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { Droppable } from 'react-beautiful-dnd';
-import Progress from './Progress';
+import JobTile  from './JobTile';
 
 const grid = 8;
 
@@ -11,40 +10,27 @@ const getListStyle = isDraggingOver => ({
   width: 250
 });
 
-/**
- * Returns a collection of dynamically gernerated droppables using map
- * @param  {Aray} {boardKeys}
- * @param {Object} {boards}
- */
-class ProgressTiles extends Component {
-
-  render() {
-    return (
-      <React.Fragment>
+const ProgressTile = (key, jobs) => (
+  <Droppable droppableId={key} key={key}>
+    {(provided, snapshot) => (
+      <div
+        ref={provided.innerRef}
+        style={getListStyle(snapshot.isDraggingOver)}>
         {
-          // array of tuples looks like [ [key,val], [key, val] ]
-          // key: is the string representing the job status which matches the board's key names
-          // e.g. 'saved', 'applied', 'on_site' ...
-
-          // val: is the array of job objects corresponding to that status
-          Object.entries({ ...this.props.boards }).map(([key, val]) => (
-            <Droppable droppableId={key} key={key}>
-              {
-                Progress(val)
-              }
-            </Droppable>
-          ))
+          Object.entries({ ...jobs }).map(([key, val], idx) => {
+            // return (
+            //   <div key={key}>{val.company_name}</div>
+            // )
+            return (
+                // Another "component creator"
+                JobTile(key, val, idx)
+            )
+          })
         }
-      </React.Fragment>
-    )
-  }
-}
+        {provided.placeholder}
+      </div>
+    )}
+  </Droppable>
+)
 
-const mapStateToProps = (state, ownProps) => {
-  const { boards } = ownProps;
-  return {
-    boards
-  }
-};
-
-export default connect(mapStateToProps)(ProgressTiles);
+export default ProgressTile;
