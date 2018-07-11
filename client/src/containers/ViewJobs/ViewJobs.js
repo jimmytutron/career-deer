@@ -74,6 +74,7 @@ class ViewJobs extends Component {
                 <Button size="small" variant="contained" color="primary" onClick={() => this.props.editJob(this.props.viewJobs.data[i])} data-id={job._id}>
                 <i className="fas fa-pen-square"></i> &nbsp; Edit
                 </Button>
+                <Button size="small" variant="contained" color="secondary">View on Tracker</Button>
             </CardActions>
         </Card>
         </Zoom>

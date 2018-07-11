@@ -1,12 +1,13 @@
 // this is in a seperate file both for accessibility and to make the index.js much cleaner
 export default {
+  app: {
+    user: null
+  },
   loggedIn: {
-    status: false,
-    error: null
+    error: null,
   },
   signedUp: {
-    status: false,
-    error: null
+    error: null,
   },
   addJob: {
     status: false,

@@ -1,22 +1,17 @@
-import { LOGIN_SUCCESS, FAILED_LOGIN, LOGIN_RESET } from './actions';
+import { APP_LOGIN, APP_LOGOUT } from './actions';
 import initialState from '../../initialState';
 
 export default function loginReducer(state = initialState, { type, payload }) {
   switch(type) {
-    case LOGIN_SUCCESS:
-      return {
-        ...state,
-        error: null
-      }
-    case FAILED_LOGIN:
+    case APP_LOGIN:
       return {
         ...state,
         ...payload
       }
-    case LOGIN_RESET:
+    case APP_LOGOUT:
       return {
         ...state,
-        error: null
+        user: null
       }
     default:
       return state

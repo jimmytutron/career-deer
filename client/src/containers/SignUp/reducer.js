@@ -1,4 +1,4 @@
-import { FAILED_SIGNUP, SIGNUP_SUCCESS, AUTH_SUCCESS } from './actions';
+import { FAILED_SIGNUP, SIGNUP_SUCCESS, RESET_SIGNUP, AUTH_SUCCESS } from './actions';
 import initialState from '../../initialState';
 
 export function signUpReducer(state = initialState, { type, payload }) {
@@ -12,6 +12,11 @@ export function signUpReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         ...payload
+      }
+    case RESET_SIGNUP:
+      return {
+        ...state,
+        error: null
       }
     default:
       return state;
