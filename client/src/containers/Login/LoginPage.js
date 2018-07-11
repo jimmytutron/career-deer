@@ -22,7 +22,7 @@ class LoginPage extends Component {
 
     return (
       <React.Fragment>
-      <Container className="mt-5 pb-5">
+      <Container className="pt-5 pb-5">
       <Row className="justify-content-center">
       <Col size="12 md-8">
       </Col>

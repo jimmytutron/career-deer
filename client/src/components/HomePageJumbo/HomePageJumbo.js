@@ -4,7 +4,7 @@ import {Col, Row} from "../Grid";
 import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
 import Rotate from 'react-reveal/Rotate';
-import { Link } from "react-router-dom";
+import Scrollchor from 'react-scrollchor';
 
 const HomePageJumbo = () => (
   <Fade duration={2000}>
@@ -20,7 +20,12 @@ const HomePageJumbo = () => (
     </p>
 
     <p className="lead">
-      <Link className="btn btn-danger btn-lg" to="/" role="button">Learn More</Link>
+      <Scrollchor 
+      className="btn btn-danger btn-lg" 
+      to="#foreal" 
+      role="button">
+      Learn More
+      </Scrollchor>
     </p>
   </Col>
   <Col size="12 md-4" >

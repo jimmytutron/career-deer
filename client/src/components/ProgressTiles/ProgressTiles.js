@@ -1,99 +1,98 @@
-import React from 'react';
-import { Droppable, Draggable } from 'react-beautiful-dnd';
-import { connect } from 'react-redux';
+// import React from 'react';
+// // Remove Draggable from here!
+// import { Droppable, Draggable } from 'react-beautiful-dnd';
+// import Progress from './Progress';
 
+// const grid = 8;
 
-const grid = 8;
+// const getListStyle = isDraggingOver => ({
+//   background: isDraggingOver ? 'lightblue' : 'lightgrey',
+//   padding: grid,
+//   width: 250
+// });
 
-const getItemStyle = (isDragging, draggableStyle) => ({
-  // some basic styles to make the items look a bit nicer
-  userSelect: 'none',
-  padding: grid * 2,
-  margin: `0 0 ${grid}px 0`,
+// /**
+//  * Returns a collection of dynamically gernerated droppables using map
+//  * @param  {Aray} {boardKeys}
+//  * @param {Object} {boards}
+//  */
+// const ProgressTiles = ({ boards, boardKeys }) => {
+//   return (
+//     <React.Fragment>
+//       {
+//         Array.from(boards).map(key => (
+//           <Droppable droppableId={key} key={key}>
+//             {
+//               Progress()
+//             }
+//           </Droppable>
+//         ))
+//       }
+//       {/* <Droppable droppableId="droppable">
+//       {(provided, snapshot) => (
+//         <div
+//           ref={provided.innerRef}
+//           style={getListStyle(snapshot.isDraggingOver)}>
+//           {
+//             items.map((item, index) => (
 
-  // change background colour if dragging
-  background: isDragging ? 'lightgreen' : 'grey',
+//               <Draggable
+//                 key={item.id}
+//                 draggableId={item.id}
+//                 index={index}>
+//                 {
+//                   (provided, snapshot) => (
+//                     <div
+//                       ref={provided.innerRef}
+//                       {...provided.draggableProps}
+//                       {...provided.dragHandleProps}
+//                       style={getItemStyle(
+//                         snapshot.isDragging,
+//                         provided.draggableProps.style
+//                       )}>
+//                       {item.content}
+//                     </div>
+//                   )
+//                 }
+//               </Draggable>
 
-  // styles we need to apply on draggables
-  ...draggableStyle
-});
+//             ))
+//           }
+//           {provided.placeholder}
+//         </div>
+//       )}
+//     </Droppable> */}
 
-const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? 'lightblue' : 'lightgrey',
-  padding: grid,
-  width: 250
-});
-// banana
-const ProgressTiles = ({ items, selected }) => (
-  <React.Fragment>
-    {console.log(selected,'SELECTED!!!')}
-    <h1>Hello, Render multiple Droppables here. We need 5</h1>
-    <Droppable droppableId="droppable">
-      {(provided, snapshot) => (
-        <div
-          ref={provided.innerRef}
-          style={getListStyle(snapshot.isDraggingOver)}>
-          {
-            items.map((item, index) => (
+//       {/* <Droppable droppableId="droppable2">
+//       {(provided, snapshot) => (
+//         <div
+//           ref={provided.innerRef}
+//           style={getListStyle(snapshot.isDraggingOver)}>
+//           {selected.map((item, index) => (
+//             <Draggable
+//               key={item.id}
+//               draggableId={item.id}
+//               index={index}>
+//               {(provided, snapshot) => (
+//                 <div
+//                   ref={provided.innerRef}
+//                   {...provided.draggableProps}
+//                   {...provided.dragHandleProps}
+//                   style={getItemStyle(
+//                     snapshot.isDragging,
+//                     provided.draggableProps.style
+//                   )}>
+//                   {item.content}
+//                 </div>
+//               )}
+//             </Draggable>
+//           ))}
+//           {provided.placeholder}
+//         </div>
+//       )}
+//     </Droppable> */}
+//     </React.Fragment>
+//   )
+// }
 
-              <Draggable
-                key={item.id}
-                draggableId={item.id}
-                index={index}>
-                {
-                  (provided, snapshot) => (
-                    <div
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      style={getItemStyle(
-                        snapshot.isDragging,
-                        provided.draggableProps.style
-                      )}>
-                      {item.content}
-                    </div>
-                  )
-                }
-              </Draggable>
-
-            ))
-          }
-          {provided.placeholder}
-        </div>
-      )}
-    </Droppable>
-
-    {/* {console.log(selected)} */}
-
-    <Droppable droppableId="droppable2">
-      {(provided, snapshot) => (
-        <div
-          ref={provided.innerRef}
-          style={getListStyle(snapshot.isDraggingOver)}>
-          {selected.map((item, index) => (
-            <Draggable
-              key={item.id}
-              draggableId={item.id}
-              index={index}>
-              {(provided, snapshot) => (
-                <div
-                  ref={provided.innerRef}
-                  {...provided.draggableProps}
-                  {...provided.dragHandleProps}
-                  style={getItemStyle(
-                    snapshot.isDragging,
-                    provided.draggableProps.style
-                  )}>
-                  {item.content}
-                </div>
-              )}
-            </Draggable>
-          ))}
-          {provided.placeholder}
-        </div>
-      )}
-    </Droppable>
-  </React.Fragment>
-)
-
-export default ProgressTiles;
+// export default ProgressTiles;
