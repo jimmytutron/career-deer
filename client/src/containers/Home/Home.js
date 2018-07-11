@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row, Container } from '../../components/Grid';
 import { HomePageJumbo } from '../../components/HomePageJumbo';
+import { StickyFooter } from '../../components/Footer/';
 
 
 // Redux stuff
@@ -161,6 +162,7 @@ class Home extends Component {
                 </Col>
             </Row>          
           </section>
+          <StickyFooter />
       </div>
     );
   }
