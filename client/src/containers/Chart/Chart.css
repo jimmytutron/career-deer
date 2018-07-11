@@ -7,7 +7,6 @@
 .doughnut-inner {
   position: absolute;
   top: 47%;
-  width: 100%;
-  /* left: 40%; */
+  left: -1%;
 }
 

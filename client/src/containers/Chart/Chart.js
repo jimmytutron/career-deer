@@ -14,10 +14,6 @@ class Chart extends Component {
   }
 
   render() {
-    if (!this.props.chartData) {
-      return <div><button type="button" onClick={() => this.props.getChartData()}> Test Me! </button> No job was selected.</div>
-    }
-
     return (
       <div className="col-12 col-md-10 col-lg-7 mx-auto d-flex flex-wrap">
         <div className="chart mb-5">
@@ -90,8 +86,8 @@ class Chart extends Component {
                 maintainAspectRatio: false
               }}
             />
-            <div className="doughnut-inner ">
-              <h4 className="text-center ">{this.props.chartData.user.percentile.applied}</h4>
+            <div className="doughnut-inner col-12">
+              <h4 className="text-center">{this.props.chartData.user.percentile.applied}</h4>
             </div>
           </div>
 
@@ -121,7 +117,7 @@ class Chart extends Component {
                 maintainAspectRatio: false
               }}
             />
-            <div className="doughnut-inner">
+            <div className="doughnut-inner col-12">
               <h4 className="text-center">{this.props.chartData.user.percentile.phone}</h4>
             </div>
           </div>
@@ -152,14 +148,14 @@ class Chart extends Component {
                 maintainAspectRatio: false
               }}
             />
-            <div className="doughnut-inner">
+            <div className="doughnut-inner col-12">
               <h4 className="text-center">{this.props.chartData.user.percentile.onSite}</h4>
             </div>
           </div>
         </div>
 
         <div className="row col-12 mb-5">
-          <div className="chart col-6">
+          <div className="chart col-sm-12 col-md-6">
             <Bar
               data={{
                 labels: this.props.chartData.all.labels,
@@ -180,7 +176,7 @@ class Chart extends Component {
                   yAxes: [{
                     scaleLabel: {
                       display: true,
-                      labelString: 'Count'
+                      labelString: 'Number of Jobs'
                     },
                     ticks: {
                       beginAtZero: true,
@@ -209,7 +205,7 @@ class Chart extends Component {
             />
           </div>
 
-          <div className="chart col-6">
+          <div className="chart col-sm-12 col-md-6">
             <Bar
               data={{
                 labels: this.props.chartData.all.labels,
@@ -231,7 +227,7 @@ class Chart extends Component {
                   yAxes: [{
                     scaleLabel: {
                       display: true,
-                      labelString: 'Count'
+                      labelString: 'Number of Jobs'
                     },
                     ticks: {
                       beginAtZero: true,
