@@ -15,7 +15,7 @@ class Chart extends Component {
 
   render() {
     return (
-      <div className="col-12 col-md-10 col-lg-7 mx-auto d-flex flex-wrap">
+      <div className="col-12 col-md-10 col-lg-7 mt-5 mx-auto d-flex flex-wrap">
         <div className="chart mb-5">
           <Line
             data={{
