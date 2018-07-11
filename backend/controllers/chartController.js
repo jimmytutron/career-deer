@@ -43,12 +43,6 @@ module.exports = {
     if (req.user) {
       try {
         const percentiles = await getPercentiles(req);
-
-        console.log("=========================");
-        console.log("console logging the percentiles from backend")
-        console.log(percentiles);
-        // console.log(percentiles.data);
-
         res.json(percentiles);
       } catch (err) {
         res.status(422).json(err);
