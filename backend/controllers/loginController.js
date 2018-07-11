@@ -32,10 +32,9 @@ module.exports = {
   logout: (req, res) => {
     try {
       if (req.user) {
-        req.session.destroy(err => {
-          res.clearCookie('connect.sid')
-          req.logout();
-        })
+        res.clearCookie('connect.sid')
+        req.logout();
+        res.redirect('/')
       }
     } catch (err) {
       res.status(422).json(err);

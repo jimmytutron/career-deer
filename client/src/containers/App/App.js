@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Nav, NavMain } from "../../components/Nav";
+import { Nav } from "../../components/Nav";
 import Home from "../Home/Home";
 import LoginPage from "../Login/LoginPage";
 import NoMatch from "../NoMatch/NoMatch";
@@ -15,7 +15,7 @@ import Board from '../Board/Board';
 import BurgerMenu from '../../components/BurgerMenu/BurgerMenu';
 
 // import "./App.css";
-import { StickyFooter } from '../../components/Footer';
+// import { StickyFooter } from '../../components/Footer';
 
 
 // Redux stuff
@@ -85,7 +85,8 @@ class App extends Component {
 // The nav bar needs to know whether we're logged in
 const mapStateToProps = state => ({
   app: state.app,
-  signedUp: state,
+  loggedIn: state.loggedIn,
+  signedUp: state.signedUp
 });
 
 
