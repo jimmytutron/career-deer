@@ -5,14 +5,25 @@ export const CHART_ALL = 'CHART_ALL';
 export function getChartAllData() {
   return async (dispatch, getState) => {
     try {
-      const apiResponseAll = await (getJobDataAll());
-      const apiResponseUser = await (getJobDataUser());
-      dispatch(jobData(apiResponseAll.data, apiResponseUser.data));
+      const data = await getDBData();
+ 
+      const apiResAll = data[0];
+      const apiResUser = data[1];
+
+      dispatch(jobData(apiResAll.data, apiResUser.data));
 
     } catch (err) {
       dispatch(noData(err))
     }
   }
+}
+
+//Get all database info and return as an array.
+function getDBData() {
+  const dataAll = getJobDataAll();
+  const dataUser = getJobDataUser();
+
+  return Promise.all([dataAll, dataUser])
 }
 
 export function jobData(dataAll, dataUser) {
