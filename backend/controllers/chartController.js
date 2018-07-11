@@ -58,7 +58,7 @@ module.exports = {
 function getPercentiles(req) {
   //gt = Greater Than, lt = Less Than.
   //gtSaved provides the number of users if less than current user
-  const { saved, applied, phone, on_site, offer } = req.query
+  const { saved, applied, phone, onSite, offer } = req.query
 
   const userGtPopSaved = getGtData("saved", saved);
   const userLtPopSaved = getLtData("saved", saved);
@@ -69,8 +69,8 @@ function getPercentiles(req) {
   const userGtPopPhone = getGtData("phone", phone);
   const userLtPopPhone = getLtData("phone", phone);
 
-  const userGtPopSite = getGtData("on-site", on_site);
-  const userLtPopSite = getLtData("on-site", on_site);
+  const userGtPopSite = getGtData("on-site", onSite);
+  const userLtPopSite = getLtData("on-site", onSite);
 
   const userGtPopOffer = getGtData("offer", offer);
   const userLtPopOffer = getLtData("offer", offer);
