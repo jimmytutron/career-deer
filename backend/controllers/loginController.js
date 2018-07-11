@@ -21,6 +21,7 @@ module.exports = {
   },
 
   login: async (req, res) => {
+    console.log("-------------------login-------------------")
     user = await db.User.findOne({email: req.body.email});
     res.json({
       email: user.email,
@@ -29,15 +30,15 @@ module.exports = {
     });
   },
 
-  logout: (req, res) => {
-    try {
-      if (req.user) {
-        res.clearCookie('connect.sid')
-        req.logout();
-        res.redirect('/')
-      }
-    } catch (err) {
-      res.status(422).json(err);
+  logout: (req, res, next) => {
+    if (req.user) {
+      // Get rid of the session token. Then call `logout`; it does no harm.
+      req.logout();
+      req.session.destroy(function (err) {
+        if (err) { return next(err); }
+        // The response should indicate that the user is no longer authenticated.
+        return res.send({ authenticated: req.isAuthenticated() });
+      });
     }
   }
 };

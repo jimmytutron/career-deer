@@ -19,10 +19,14 @@ class LoginPage extends Component {
     this.props.resetLoginState();
   };
 
+  componentWillUnmount() {
+    this.reset();
+  }
+
   render() {
 
     if (this.props.app.user && !this.props.loggedIn.error) {
-      this.reset();
+
       return <Redirect to='/viewjobs' />
     };
 
