@@ -10,15 +10,9 @@ export function getChartAllData() {
       const apiResAll = data[0];
       const apiResUser = data[1];
 
-      // console.log(apiResUser.data);
-
-
       const percentile = await getPercentile(apiResUser.data);
 
-      //TODO: to be sent to jobData function.
-      // console.log("percentile data", percentile[0].data);
-
-      dispatch(jobData(apiResAll.data, apiResUser.data));
+      dispatch(jobData(apiResAll.data, apiResUser.data, percentile[0].data));
 
     } catch (err) {
       dispatch(noData(err))
@@ -34,20 +28,42 @@ function getDBData() {
   return Promise.all([dataAll, dataUser])
 }
 
-export function jobData(dataAll, dataUser) {
-  const organizedDataAll = organizeData(dataAll);
+function getPercentile(dataUser) {
   const organizedDataUser = organizeData(dataUser);
 
+  const percData = getUserPercentile(organizedDataUser["Saved"],
+    organizedDataUser["Applied"],
+    organizedDataUser["Phone Interview"],
+    organizedDataUser["On-site Interview"],
+    organizedDataUser["Offer"]
+  );
+
+  return Promise.all([percData])
+}
+
+export function jobData(dataAll, dataUser, percentile) {
+  const organizedDataAll = organizeData(dataAll);
+  const organizedDataUser = organizeData(dataUser);
+  const percentileStage = organizePercentile(percentile);
+
+  console.log(percentileStage);
   //Getting percentages for each category.
   const percentAll = percentages(organizedDataAll);
   const percentUser = percentages(organizedDataUser);
 
+  //The below variables for updating state.
   const labels = Object.keys(organizedDataAll);
   const dataArrAll = valuesToArray(organizedDataAll);
   const dataArrUser = valuesToArray(organizedDataUser);
 
   const percArrAll = valuesToArray(percentAll);
   const percArrUser = valuesToArray(percentUser);
+
+  const percentileSavedArr = valuesToArray(percentileStage.saved);
+  const percentileAppliedArr = valuesToArray(percentileStage.applied);
+  const percentilePhoneArr = valuesToArray(percentileStage.phone);
+  const percentileOnSiteArr = valuesToArray(percentileStage.onSite);
+  const percentileOfferArr = valuesToArray(percentileStage.offer);
 
   return {
     type: CHART_ALL,
@@ -63,10 +79,71 @@ export function jobData(dataAll, dataUser) {
       user: {
         labels: labels,
         data: dataArrUser,
-        percentage: percArrUser
+        percentage: percArrUser,
+        percentile: {
+          saved: percentileSavedArr,
+          applied: percentileAppliedArr,
+          phone: percentilePhoneArr,
+          onSite: percentileOnSiteArr,
+          offer: percentileOfferArr
+        }
       }
     }
   }
+}
+
+//Converts list of document objects to an organized object by progress stage.
+function organizePercentile(percentile) {
+  //Example of how data should be returned.
+  const objData = {
+    "saved": {
+      "aboveUser": 0,
+      "belowUser": 0
+    },
+    "applied": {
+      "aboveUser": 0,
+      "belowUser": 0
+    },
+    "phone": {
+      "aboveUser": 0,
+      "belowUser": 0
+    },
+    "onSite": {
+      "aboveUser": 0,
+      "belowUser": 0
+    },
+    "offer": {
+      "aboveUser": 0,
+      "belowUser": 0
+    },
+  }
+
+  //Assigning values to objData from percentile
+  for (let i = 0; i < percentile.length; i++) {
+    for (let aboveBelowKey in percentile[i]) {
+      switch (percentile[i][aboveBelowKey]['_id']) {
+        case 'saved':
+          objData['saved'][aboveBelowKey] = percentile[i][aboveBelowKey].uniqueUsers;
+          break;
+        case 'applied':
+          objData['applied'][aboveBelowKey] = percentile[i][aboveBelowKey].uniqueUsers;
+          break;
+        case 'phone':
+          objData['phone'][aboveBelowKey] = percentile[i][aboveBelowKey].uniqueUsers;
+          break;
+        case 'onSite':
+          objData['onSite'][aboveBelowKey] = percentile[i][aboveBelowKey].uniqueUsers;
+          break;
+        case 'offer':
+          objData['offer'][aboveBelowKey] = percentile[i][aboveBelowKey].uniqueUsers;
+          break;
+        default:
+          break;
+      }
+    }
+  }
+
+  return objData;
 }
 
 function valuesToArray(obj) {
@@ -126,22 +203,12 @@ function percentages(countDataObj) {
   for (let keys in countDataObj) {
     sumCount += countDataObj[keys];
   }
-
   for (let keys in countDataObj) {
     percentObj[keys] = Math.round((countDataObj[keys] / sumCount) * 100);
   }
 
   return percentObj;
 }
-
-function getPercentile(dataUser) {
-  const organizedDataUser = organizeData(dataUser);
-
-  const percData = getUserPercentile(organizedDataUser["Saved"], organizedDataUser["Applied"], organizedDataUser["Phone Interview"], organizedDataUser["On-site Interview"], organizedDataUser["Offer"], );
-
-  return Promise.all([percData])
-}
-
 
 
 export function noData(err) {
