@@ -6,6 +6,7 @@ import { TextField } from 'redux-form-material-ui';
 import { validate } from './validate';
 import Paper from '@material-ui/core/Paper';
 import './UpdateJobForm.css';
+import Button from '@material-ui/core/Button';
 
 const renderTextField = (
   {
@@ -41,7 +42,7 @@ const renderNote = (
     <Col size="12 lg-6">
     </Col>
     <Col size="12 lg-6">
-    <button className="btn btn-success" type="button" onClick={()=>fields.push()}><i className="fas fa-pencil-alt"></i> Add Note</button>
+    <Button variant="extendedFab" className="add-btn" type="Button" onClick={()=>fields.push()}><i className="fas fa-plus"></i></Button>
     </Col>
     </Row>
     <ul className="mt-3">
@@ -50,7 +51,7 @@ const renderNote = (
         <Paper>
         <Row className="justify-content-center px-3 my-3">
         <Col size="2 md-1" className="text-center">
-          <button title="Remove Note" className="btn btn-danger mt-4 mx-auto" onClick={() => fields.remove(index)}><i className="fas fa-trash"></i></button>
+          <Button variant="fab" color="secondary" title="Remove Note" className="btn btn-danger mt-4 mx-auto" onClick={() => fields.remove(index)}><i className="fas fa-trash"></i></Button>
         </Col>
         <Col size="8 md-11">
           <Field className="text-input"
@@ -107,10 +108,10 @@ let UpdateJobForm = ({ deleteJob, handleSubmit, pristine, submitting, errorMessa
         </Col>        
         <Col size="12 md-12 lg-6">
         <h6>{errorMessage}</h6>
-        <button className="btn btn-info" type="submit" disabled={submitting}>
-          <i className="fas fa-cloud"></i> Save
-        </button> &nbsp;
-        <button className="btn btn-danger" onClick={deleteJob}> <i className="fas fa-eraser"></i> Remove Job</button>
+        <Button variant="contained" color="primary" type="submit" disabled={submitting}>
+          <i className="fas fa-cloud"></i>&nbsp; Save
+        </Button> &nbsp;
+        <Button variant="contained" color="secondary" onClick={deleteJob}> <i className="fas fa-eraser"></i>&nbsp; Remove Job</Button>
         <p>* indicates a required field.</p>
         </Col>
         </Row>

@@ -5,9 +5,25 @@ import Fade from 'react-reveal/Fade';
 
 const FOOTPRINT_DELAY = 800;
 
+
 class NoMatch extends Component {
 
+  messageDisplay() {
+    if (window.location.pathname === "/unauthorized") {
+      return {
+        title: 'Unauthorized',
+        message: "You've gone off the trail... Please Login or Sign Up"}
+    }
+    else {
+      return {
+        title: '404 Page Not Found',
+        message: "Oh, deer... Looks like you've made a wrong turn!"
+      }
+    }
+  }
+
   render() {
+    const message = this.messageDisplay();
     return (
       <React.Fragment>
 
@@ -31,8 +47,8 @@ class NoMatch extends Component {
         </div>
           <Row>
             <Col className="ml-5 mt-4">
-              <h1 className="display-4 font-weight-bold">404 - Page not found</h1>
-              <h4 className="font-italic">Oh, deer! You've gone off the trail!</h4>
+              <h1 className="display-4 font-weight-bold">{message.title}</h1>
+              <h4 className="font-italic">{message.message}</h4>
               
               <p className="mt-3">Maybe one of the links at the top of the page will help?</p>
             </Col>
