@@ -48,8 +48,15 @@
 }
 
 .section-2 {
-    background-color: #ededed;
-    overflow-x: hidden;
+    background: linear-gradient(#6673A3,#368FCC);
+    background-color: #368FCC;
+    overflow: hidden;
+    transform: skewY(-3deg);
+}
+
+.section-2 .row {
+    color: #fff;
+    transform: skewY(3deg);
 }
 
 .section-3 {
@@ -64,10 +71,10 @@
     overflow-x: hidden;
 }
 
-.sign-up-btn {
-    font-size: 30px;
-    line-height: 55px;
+.big-btn {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    line-height: 67px;
     height: 70px;
     width: 250px;
-    box-shadow: 0px 0px 1px #888888;
 }

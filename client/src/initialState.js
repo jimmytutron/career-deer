@@ -23,6 +23,7 @@ export default {
     edit: null
   },
   searchData: {
+    loading: false,
     data: [],
     saved: []
   },
@@ -40,30 +41,42 @@ export default {
       labels: [
         'Saved', 'Applied', 'Phone Interview', 'On-site Interview', 'Offer'
       ],
-      data: [50, 30, 20, 10, 5]
+      data: [50, 30, 20, 10, 5],
+      percentile: {
+        saved: 50,
+        savedArr: [1, 1],
+        applied: 50,
+        appliedArr: [1, 1],
+        phone: 50,
+        phoneArr: [1, 1],
+        onSite: 50,
+        onSiteArr: [1, 1],
+        offer: 50,
+        offerArr: [1, 1]
+      }
     }
   },
   boards: {
-      // Think of progress_stage as an id here.
-      saved: {
-        jobs: []
-      },
+    // Think of progress_stage as an id here.
+    saved: {
+      jobs: []
+    },
 
-      applied: {
-        jobs: []
-      },
+    applied: {
+      jobs: []
+    },
 
-      on_phone: {
-        jobs: []
-      },
+    on_phone: {
+      jobs: []
+    },
 
-      on_site: {
-        jobs: []
-      },
+    on_site: {
+      jobs: []
+    },
 
-      offer: {
-        jobs: []
-      }
+    offer: {
+      jobs: []
+    }
   },
   burgerMenu: {
     isOpen: false

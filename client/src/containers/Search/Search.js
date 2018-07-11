@@ -5,8 +5,16 @@ import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
 import { getSearchJobs, postSaveJob, getAllSavedJobs } from './actions';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 import Bounce from 'react-reveal/Bounce';
+
+const huntStyle = {
+  display: 'block',
+  marginLeft: 'auto',
+  marginRight: 'auto',
+  marginTop: '10px'
+}
 
 
 class Search extends Component {
@@ -43,11 +51,13 @@ class Search extends Component {
         <Row className="justify-content-center">
           <Col size="12 md-12 lg-5">
           <Bounce>
-          <img className="mx-auto" src="/imgs/icons/hunt.svg" alt="hunt the deer"/>
+          <img style={huntStyle} src="/imgs/icons/hunt.svg" alt="hunt the deer"/>
           </Bounce>
           </Col>
           <SearchForm onSubmit={this.searchJobs} />
         </Row>
+        <br/>
+        {this.props.searchData.loading ? <LinearProgress /> : null}
         <Row className="justify-content-center mt-5">
           <Col size="12 card">
             {this.props.searchData.data.map((result, i) => {

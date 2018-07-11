@@ -1,4 +1,4 @@
-import { SEARCH_SUCCESS, SEARCH_SAVED_UPDATE } from './actions';
+import { SEARCH_SUCCESS, SEARCH_SAVED_UPDATE, SEARCH_LOADING } from './actions';
 import initialState from '../../initialState';
 
 export default function searchReducer(state = initialState, { type, payload }) {
@@ -10,6 +10,11 @@ export default function searchReducer(state = initialState, { type, payload }) {
         ...payload
       }
     case SEARCH_SAVED_UPDATE:
+      return {
+        ...state,
+        ...payload
+      }
+    case SEARCH_LOADING:
       return {
         ...state,
         ...payload

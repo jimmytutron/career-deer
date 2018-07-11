@@ -1,7 +1,8 @@
 .home-jumbotron {
     color: #fff;
     width: 100%;
-    background: linear-gradient(#368FCC,#6673A3);
+    background: linear-gradient(-45deg, #CE6565, #5D92B5, #6673A3, #368FCC);
+    background-size: 400% 400%;
     background-color: #368FCC;
     height: 58vh;
     display: flex;
@@ -9,6 +10,45 @@
     margin: 0px;
     overflow: hidden;
     word-break: normal;
+    -webkit-animation: Gradient 15s ease infinite;
+    -moz-animation: Gradient 15s ease infinite;
+    animation: Gradient 15s ease infinite;
+}
+
+@-webkit-keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
 }
 
 .home-jumbotron-small {
