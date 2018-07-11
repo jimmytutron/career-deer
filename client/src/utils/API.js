@@ -3,7 +3,6 @@ const axios = require('axios');
 
 // Basic Login/Sign up
 export function signIn(data) {
-  console.log("hitting signin")
   return axios.post('/api/user/login', data);
 };
 
@@ -12,7 +11,6 @@ export function signUp(data) {
 };
 
 export function logOut() {
-  console.log("hitting logout")
   return axios.get('/api/user/logout')
 }
 
