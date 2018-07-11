@@ -19,10 +19,13 @@ class SignUp extends Component {
     this.props.authThunk();
   };
 
+  componentWillUnmount() {
+    this.props.resetSignUp();
+  }
+
   render() {
 
     if (this.props.app.user) {
-      this.props.resetSignUp();
       return <Redirect to='/viewjobs' />;
     };
  
