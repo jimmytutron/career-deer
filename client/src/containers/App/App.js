@@ -30,23 +30,20 @@ class App extends Component {
     this.props.appLogoutUpdate();
   }
 
-  renderNav = () => {
-    if (window.location.pathname === "/chart" ||
-        window.location.pathname === "/addjob" ||
-        window.location.pathname === "/search" ||
-        window.location.pathname === "/board" ||
-        window.location.pathname === "/updatejob" ||
-        window.location.pathname === "/viewjobs")
-      return <BurgerMenu logoutaction={this.logoutAction}/>;
-    else
-      return <Nav />;
-  }
-
   render() {
     return (
       <Router>
         <div id="outer-container">
-          {this.renderNav()}
+          {(window.location.pathname === "/chart" ||
+        window.location.pathname === "/addjob" ||
+        window.location.pathname === "/search" ||
+        window.location.pathname === "/board" ||
+        window.location.pathname === "/updatejob" ||
+        window.location.pathname === "/viewjobs"
+        ? 
+          <BurgerMenu logoutaction={this.logoutAction}/>
+        : 
+          <Nav />)}
           <main id="page-wrap">
           <Switch>
             <Route exact path="/" component={Home} />
