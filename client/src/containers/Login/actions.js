@@ -18,14 +18,14 @@ export function login(userInfo) {
   return async (dispatch, getState) => {
     try {
       const apiResponse = await (signIn(userInfo));
-      // dispatch here
-      const createdUser = {
+      const loginUser = {
         firstName: apiResponse.data.firstName,
         lastName: apiResponse.data.lastName,
         email: apiResponse.data.email
       }
-      dispatch(appLoginUpdate(createdUser))
-      dispatch(signedIn(createdUser));
+      // dispatch here
+      dispatch(appLoginUpdate(loginUser))
+      dispatch(signedIn());
     } catch (err) {
       // and here
       dispatch(failedSignIn(err));
@@ -36,21 +36,14 @@ export function login(userInfo) {
 export function resetLoginState() {
   return {
     type: LOGIN_RESET,
-    payload: {
-      error: null,
-      status: false
-    }
+    payload: {}
   }
 }
 
-export function signedIn(user) {
+export function signedIn() {
   return {
     type: LOGIN_SUCCESS,
-    payload: {
-      error: null,
-      user: user,
-      status: true,
-    }
+    payload: {}
   };
 };
 
@@ -59,8 +52,6 @@ export function failedSignIn(err) {
     type: FAILED_LOGIN,
     payload: {
       error: err,
-      user: null,
-      status: false,
     }
   };
 };

@@ -21,9 +21,9 @@ class SignUp extends Component {
 
   render() {
 
-    if (this.props.signedUp.status) {
+    if (this.props.app.user) {
       this.props.resetSignUp();
-      return <Redirect to='/' />;
+      return <Redirect to='/viewjobs' />;
     };
  
     return (
@@ -44,7 +44,7 @@ class SignUp extends Component {
         <Row className="justify-content-center">
           <Col />
           <Col size="12 md-8 lg-8" className="banana">
-            <SignUpForm onSubmit={this.signup} errorMessage={renderError(this.props.signedUp)} auth={this.auth} />
+            <SignUpForm onSubmit={this.signup} errorMessage={renderError(this.props.signedUp, this.props.app)} auth={this.auth} />
           </Col>
           <Col />
         </Row>
@@ -55,15 +55,15 @@ class SignUp extends Component {
   };
 };
 
-const renderError = (signedUp) => {
-  if (!signedUp.status && signedUp.error) {
-    if (signedUp.error.response)
-      if (signedUp.error.response.data){
-        if (signedUp.error.response.data.name === "ValidationError")
+const renderError = (signedUpState, appState) => {
+  if (!appState.user && signedUpState.error) {
+    if (signedUpState.error.response)
+      if (signedUpState.error.response.data){
+        if (signedUpState.error.response.data.name === "ValidationError")
           return "You must enter a first name, last name, and an email.";
-        if (signedUp.error.response.data.name === "MissingPasswordError")
+        if (signedUpState.error.response.data.name === "MissingPasswordError")
           return "You must enter a password.";
-        if (signedUp.error.response.data.code === 11000)
+        if (signedUpState.error.response.data.code === 11000)
           return "An account with that email already exists. Please choose another email.";
       };
   };
@@ -74,6 +74,7 @@ const renderError = (signedUp) => {
 const mapStateToProps = (state,props) => {
   return { 
     signedUp: state.signedUp,
+    app: state.app,
     renderMaterial: state.auth.renderMaterial
   };
 };

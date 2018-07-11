@@ -5,12 +5,9 @@ export default {
   },
   loggedIn: {
     error: null,
-    status: false,
-    user: null
   },
   signedUp: {
     error: null,
-    status: false,
   },
   addJob: {
     status: false,
