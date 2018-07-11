@@ -6,7 +6,7 @@ export default function loginReducer(state = initialState, { type, payload }) {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        ...payload
+        error: null
       }
     case FAILED_LOGIN:
       return {
@@ -16,7 +16,7 @@ export default function loginReducer(state = initialState, { type, payload }) {
     case LOGIN_RESET:
       return {
         ...state,
-        ...payload
+        error: null
       }
     default:
       return state
