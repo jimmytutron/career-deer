@@ -4,7 +4,7 @@ import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
-import { signup } from './actions';
+import { signup, resetSignUp } from './actions';
 import { authThunk } from './actions';
 
 import Rotate from 'react-reveal/Rotate';
@@ -22,6 +22,7 @@ class SignUp extends Component {
   render() {
 
     if (this.props.signedUp.status) {
+      this.props.resetSignUp();
       return <Redirect to='/' />;
     };
  
@@ -79,6 +80,7 @@ const mapStateToProps = (state,props) => {
 
 const mapActionsToProps = (dispatch,props) => ({
   signup,
+  resetSignUp,
   authThunk
 });
 

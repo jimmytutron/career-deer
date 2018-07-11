@@ -4,6 +4,7 @@ import { reducer as formReducer } from 'redux-form';
 import thunk from 'redux-thunk';
 
 // Reducers
+import appReducer from './containers/App/reducer';
 import loginReducer from './containers/Login/reducer';
 import { signUpReducer, authTestReducer } from './containers/SignUp/reducer';
 import chartReducer from './containers/Chart/reducer';
@@ -15,6 +16,7 @@ import { reducer as burgerMenuReducer } from 'redux-burger-menu';
 import searchReducer from './containers/Search/reducer';
 
 const allReducers = combineReducers({
+  app: appReducer,
   form: formReducer,
   loggedIn: loginReducer,
   signedUp: signUpReducer,
@@ -25,7 +27,7 @@ const allReducers = combineReducers({
   boards: grabJobsReducer,
   updateJob: updateJobReducer,
   burgerMenu: burgerMenuReducer,
-  searchData: searchReducer
+  searchData: searchReducer,
 });
 
 export default function configureStore(initialState = {}) {
