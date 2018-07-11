@@ -1,5 +1,6 @@
 import React from 'react';
 import ReduxBurgerMenu from './Menu';
+import { Link } from "react-router-dom";
 import './BurgerMenu.css';
 
 class BurgerMenu extends React.Component {
@@ -7,13 +8,44 @@ class BurgerMenu extends React.Component {
     render () {
         return (
             <ReduxBurgerMenu isOpen={ this.props.isOpen }>
-            	<img width="50px" className="text-center my-3" src="/imgs/logo-white.svg" />
-                <a id="home" className="menu-item" href="/">Home</a>
-                <a id="about" className="menu-item" href="/addjob">Add a Job</a>
-                <a id="contact" className="menu-item" href="/search">Search for Jobs</a>
-                <a id="contact" className="menu-item" href="/chart">View Charts</a>
+                <img width="50px" className="text-center my-3" src="/imgs/logo-white.svg" alt="menu logo"/>
+
+                <h3>Hello [USERNAME]!</h3>
+                <a
+                href="/"
+                className="menu-item">
+                Home
+                </a>
+                <Link 
+                to="/addjob"
+                className="menu-item">
+                Add a Job
+                </Link>
+                <Link 
+                to="/search"
+                className="menu-item">
+                Search for Jobs</Link>
+                <Link
+                to="/viewjobs" 
+                className="menu-item">
+                Tracked Jobs
+                </Link>
+                <Link 
+                to="/board"
+                className="menu-item">
+                Tracker Board
+                </Link>
+                <Link 
+                to="/chart"
+                className="menu-item">
+                View Charts
+                </Link>
                 <br/>
-                <a id="contact" className="menu-item" href="/">Logout</a>
+                <Link
+                to="/" 
+                className="menu-item">
+                Logout
+                </Link>
 
             </ReduxBurgerMenu>
         );

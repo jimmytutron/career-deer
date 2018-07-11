@@ -8,6 +8,7 @@ import { getSearchJobs, postSaveJob, getAllSavedJobs } from './actions';
 
 import Bounce from 'react-reveal/Bounce';
 
+
 class Search extends Component {
 
   searchJobs = values => {
@@ -38,11 +39,11 @@ class Search extends Component {
 
   render() {
     return (
-      <Container className="mt-5">
+      <Container className="pt-5">
         <Row className="justify-content-center">
           <Col size="12 md-12 lg-5">
           <Bounce>
-          <img src="/imgs/icons/hunt.svg" alt="hunt the deer"/>
+          <img className="mx-auto" src="/imgs/icons/hunt.svg" alt="hunt the deer"/>
           </Bounce>
           </Col>
           <SearchForm onSubmit={this.searchJobs} />
