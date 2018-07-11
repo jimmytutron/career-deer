@@ -19,19 +19,24 @@ const getListStyle = isDraggingOver => ({
 class ProgressTiles extends Component {
 
   render() {
-    console.log(this.props.boards,"BOARDS");
+    // console.log(this.props.boards,"BOARDS");
     return (
       <React.Fragment>
         {
+          // console.log(Object.entries({...this.props.boards}),"BOARDS")
           // Convert the object into an array of tuples so we can use the Array method
           // "map" on it. Don't forget to spread it too, so we aren't mutating
           // array of tuples looks like [ [key,val], [key, val] ]
-          [...Object.entries(...this.props.boards)].map((tuple) => (
+          Object.entries({...this.props.boards}).map( ([ key , val ]) => (
+            // console.log(key, val);
+            // return (
             <Droppable droppableId={key} key={key}>
               {
                 Progress()
               }
             </Droppable>
+            // )
+
           ))
         }
         {/* <Droppable droppableId="droppable">
