@@ -1,8 +1,11 @@
 import React from 'react';
 // Redux stuff
 import { Field, reduxForm, FieldArray, reset } from 'redux-form';
+import { Col, Row } from '../Grid';
 import { TextField } from 'redux-form-material-ui';
 import { validate } from './validate';
+import Paper from '@material-ui/core/Paper';
+import './UpdateJobForm.css';
 
 const renderTextField = (
   {
@@ -34,12 +37,23 @@ const renderNote = (
     fields
   }) => (
     <React.Fragment>
-    <button type="button" onClick={()=>fields.push()}>Add Note</button>
+    <Row className="justify-content-center text-right">
+    <Col size="12 lg-6">
+    </Col>
+    <Col size="12 lg-6">
+    <button className="btn btn-success" type="button" onClick={()=>fields.push()}><i className="fas fa-pencil-alt"></i> Add Note</button>
+    </Col>
+    </Row>
     <ul className="mt-3">
       {fields.map((note, index) => (
         <li key={index}>
-          <button title="Remove Note" className="btn btn-danger mr-3" onClick={() => fields.remove(index)}>X</button>
-          <Field
+        <Paper>
+        <Row className="justify-content-center px-3 my-3">
+        <Col size="2 md-1" className="text-center">
+          <button title="Remove Note" className="btn btn-danger mt-4 mx-auto" onClick={() => fields.remove(index)}><i className="fas fa-trash"></i></button>
+        </Col>
+        <Col size="8 md-11">
+          <Field className="text-input"
             floatingLabelText={`Note #${index + 1}`}
             floatingLabelFixed={true}
             name={note}
@@ -51,7 +65,11 @@ const renderNote = (
             type='text'
             component={TextField}
           />
+        </Col>
+        </Row>
+        </Paper>
         </li>
+
       ))}
     </ul>
     </React.Fragment>
@@ -60,32 +78,42 @@ const renderNote = (
 let UpdateJobForm = ({ deleteJob, handleSubmit, pristine, submitting, errorMessage }) => {
   return (
     <form onSubmit={handleSubmit}>
-      <button onClick={deleteJob}>Delete This Job</button>
-      <div>
-        <Field name="title" component={renderTextField} type="text" label="Job Title" required></Field>
-      </div>
-      <div>
-        <Field name="company_name" component={renderTextField} type="text" label="Company" required></Field>
-      </div>
-      <div>
-        <Field name="location" component={renderTextField} type="text" label="Location"></Field>
-      </div>
-      <div>
-        <Field name="url" component={renderTextField} type="text" label="Link URL"></Field>
-      </div>
-      <div>
-        <Field name="post_date" component={renderTextField} type="date" label="Job Post Date" dateField></Field>
-      </div>
-      <div>
-        <FieldArray name="note" component={renderNote} type="text" label="note" textArea></FieldArray>
-      </div>
-      <div>
+    <Row className="justify-content-center">
+    <Col size="12 md-12 lg-6">
+        <Field className="text-input" name="title" component={renderTextField} type="text" label="Job Title" required></Field>
+    </Col>
+    <Col size="12 md-12 lg-6">
+        <Field className="text-input" name="company_name" component={renderTextField} type="text" label="Company" required></Field>
+    </Col>
+    </Row>
+    <Row className="justify-content-center">
+      <Col size="12 md-12 lg-6">
+        <Field className="text-input" name="location" component={renderTextField} type="text" label="Location"></Field>
+      </Col>
+      <Col size="12 md-12 lg-6">
+        <Field className="text-input" name="url" component={renderTextField} type="text" label="Link URL"></Field>
+      </Col>
+      </Row>
+      <Row className="justify-content-center">
+      <Col size="12 md-12 lg-6">
+        <Field className="text-input" name="post_date" component={renderTextField} type="date" label="Job Post Date" dateField></Field>
+      </Col>
+      <Col size="12 md-12 lg-6">
+      </Col>
+      </Row>
+        <FieldArray className="text-input" name="note" component={renderNote} type="text" label="note" textArea></FieldArray>
+        <Row className="justify-content-center text-right">
+        <Col size="12 md-12 lg-6">
+        </Col>        
+        <Col size="12 md-12 lg-6">
         <h6>{errorMessage}</h6>
-        <button type="submit" disabled={submitting}>
-          Submit
-        </button>
+        <button className="btn btn-info" type="submit" disabled={submitting}>
+          <i className="fas fa-cloud"></i> Save
+        </button> &nbsp;
+        <button className="btn btn-danger" onClick={deleteJob}> <i className="fas fa-eraser"></i> Remove Job</button>
         <p>* indicates a required field.</p>
-      </div>
+        </Col>
+        </Row>
     </form>
   );
 };

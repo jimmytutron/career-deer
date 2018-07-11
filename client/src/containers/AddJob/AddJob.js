@@ -22,7 +22,7 @@ class AddJob extends Component {
     };
 
     return (
-      <Container className="mt-5">
+      <Container className="pt-5">
         <Row className="justify-content-center text-center">
         <Col size = "12 lg-10">
         <RubberBand>
