@@ -46,7 +46,6 @@ export function jobData(dataAll, dataUser, percentile) {
   const organizedDataUser = organizeData(dataUser);
   const percentileStage = organizePercentile(percentile);
 
-  console.log(percentileStage);
   //Getting percentages for each category.
   const percentAll = percentages(organizedDataAll);
   const percentUser = percentages(organizedDataUser);
@@ -65,6 +64,12 @@ export function jobData(dataAll, dataUser, percentile) {
   const percentileOnSiteArr = valuesToArray(percentileStage.onSite);
   const percentileOfferArr = valuesToArray(percentileStage.offer);
 
+  const percentileSaved = calcPercentile(percentileSavedArr);
+  const percentileApplied = calcPercentile(percentileAppliedArr);
+  const percentilePhone = calcPercentile(percentilePhoneArr);
+  const percentileOnSite = calcPercentile(percentileOnSiteArr);
+  const percentileOffer = calcPercentile(percentileOfferArr);
+
   return {
     type: CHART_ALL,
     payload: {
@@ -81,11 +86,16 @@ export function jobData(dataAll, dataUser, percentile) {
         data: dataArrUser,
         percentage: percArrUser,
         percentile: {
-          saved: percentileSavedArr,
-          applied: percentileAppliedArr,
-          phone: percentilePhoneArr,
-          onSite: percentileOnSiteArr,
-          offer: percentileOfferArr
+          saved: percentileSaved,
+          savedArr: percentileSavedArr,
+          applied: percentileApplied,
+          appliedArr: percentileAppliedArr,
+          phone: percentilePhone,
+          phoneArr: percentilePhoneArr,
+          onSite: percentileOnSite,
+          onSiteArr: percentileOnSiteArr,
+          offer: percentileOffer,
+          offerArr: percentileOfferArr
         }
       }
     }
@@ -131,7 +141,7 @@ function organizePercentile(percentile) {
         case 'phone':
           objData['phone'][aboveBelowKey] = percentile[i][aboveBelowKey].uniqueUsers;
           break;
-        case 'onSite':
+        case 'on-site':
           objData['onSite'][aboveBelowKey] = percentile[i][aboveBelowKey].uniqueUsers;
           break;
         case 'offer':
@@ -208,6 +218,12 @@ function percentages(countDataObj) {
   }
 
   return percentObj;
+}
+
+function calcPercentile(array) {
+  //NOTE: array index 0 = aboveUser, index 1 = belowUser 
+  const percentile = (array[1] / (array[0] + array[1])) * 100;
+  return percentile;
 }
 
 
