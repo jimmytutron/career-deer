@@ -1,8 +1,12 @@
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
+
 body {
-  margin-bottom: 100px;
-  font-family: 'Roboto', sans-serif; 
+    font-family: 'Roboto', sans-serif;
+}
+
+*:focus {
+    outline: none !important;
 }
