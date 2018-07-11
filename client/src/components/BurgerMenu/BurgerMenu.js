@@ -3,7 +3,13 @@ import ReduxBurgerMenu from './Menu';
 import { Link } from "react-router-dom";
 import './BurgerMenu.css';
 
+import { connect } from 'react-redux';
+import { logout } from './actions';
+
 class BurgerMenu extends React.Component {
+    logout () {
+        this.props.logout()
+    }
 
     render () {
         return (
@@ -43,7 +49,8 @@ class BurgerMenu extends React.Component {
                 <br/>
                 <Link
                 to="/" 
-                className="menu-item">
+                className="menu-item"
+                onClick={this.logout}>
                 Logout
                 </Link>
 
@@ -52,4 +59,14 @@ class BurgerMenu extends React.Component {
     }
 }
 
-export default BurgerMenu;
+const mapStateToProps = state => ({
+    app: state.app,
+  });
+  
+  
+  // We don't have to use BindActionCreators because this is a smart component
+const mapActionsToProps = (dispatch, props) => ({
+    logout
+})
+
+export default connect(mapStateToProps,mapActionsToProps())(BurgerMenu);

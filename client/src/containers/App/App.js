@@ -13,8 +13,6 @@ import Chart from '../Chart/Chart';
 import Search from '../Search/Search';
 import Board from '../Board/Board';
 import BurgerMenu from '../../components/BurgerMenu/BurgerMenu';
-
-// import "./App.css";
 import { StickyFooter } from '../../components/Footer';
 
 
@@ -82,10 +80,9 @@ class App extends Component {
   }
 }
 
-// The nav bar needs to know whether we're logged in
+// The nav bar and other containers need to know whether we're logged in
 const mapStateToProps = state => ({
   app: state.app,
-  signedUp: state,
 });
 
 
