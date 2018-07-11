@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Nav, NavMain } from "../../components/Nav";
+import { Nav } from "../../components/Nav";
 import Home from "../Home/Home";
 import LoginPage from "../Login/LoginPage";
 import NoMatch from "../NoMatch/NoMatch";
@@ -13,7 +13,7 @@ import Chart from '../Chart/Chart';
 import Search from '../Search/Search';
 import Board from '../Board/Board';
 import BurgerMenu from '../../components/BurgerMenu/BurgerMenu';
-import { StickyFooter } from '../../components/Footer';
+// import { StickyFooter } from '../../components/Footer';
 
 
 // Redux stuff
@@ -31,28 +31,15 @@ class App extends Component {
   }
 
   renderNav = () => {
-    switch (window.location.pathname) {
-      // case "/":
-      //   return <Nav />;
-      // case "/login":
-      //   return <Nav />;
-      // case "/signup":
-      //   return <NavMain />;
-      case "/chart":
-        return <BurgerMenu />;
-      case "/addjob":
-        return <BurgerMenu />;
-      case "/search":
-        return <BurgerMenu />;
-      case "/board":
-        return <BurgerMenu />;
-      case "/updatejob":
-        return <BurgerMenu />;
-      case "/viewjobs":
-        return <BurgerMenu />;
-      default:
-        return <Nav />;
-    }
+    if (window.location.pathname === "/chart" ||
+        window.location.pathname === "/addjob" ||
+        window.location.pathname === "/search" ||
+        window.location.pathname === "/board" ||
+        window.location.pathname === "/updatejob" ||
+        window.location.pathname === "/viewjobs")
+      return <BurgerMenu logoutaction={this.logoutAction}/>;
+    else
+      return <Nav />;
   }
 
   render() {
