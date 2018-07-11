@@ -12,7 +12,7 @@ import ViewJobs from '../ViewJobs/ViewJobs';
 import Chart from '../Chart/Chart';
 import Search from '../Search/Search';
 import Board from '../Board/Board';
-import BurgerMenuTest from '../BurgerMenuTest/BurgerMenuTest';
+import BurgerMenu from '../../components/BurgerMenu/BurgerMenu';
 
 // import "./App.css";
 import { StickyFooter } from '../../components/Footer';
@@ -32,13 +32,36 @@ class App extends Component {
     this.props.appLogoutUpdate();
   }
 
+  renderNav = () => {
+    switch (window.location.pathname) {
+      // case "/":
+      //   return <Nav />;
+      // case "/login":
+      //   return <Nav />;
+      // case "/signup":
+      //   return <NavMain />;
+      case "/chart":
+        return <BurgerMenu />;
+      case "/addjob":
+        return <BurgerMenu />;
+      case "/search":
+        return <BurgerMenu />;
+      case "/board":
+        return <BurgerMenu />;
+      case "/updatejob":
+        return <BurgerMenu />;
+      case "/viewjobs":
+        return <BurgerMenu />;
+      default:
+        return <Nav />;
+    }
+  }
+
   render() {
     return (
       <Router>
         <div id="outer-container">
-          { window.location.pathname === "/" ? <Nav />
-          : <NavMain /> }
-          <BurgerMenuTest />
+          {this.renderNav()}
           <main id="page-wrap">
           <Switch>
             <Route exact path="/" component={Home} />
@@ -50,7 +73,6 @@ class App extends Component {
             <Route exact path="/board" component={Board} />
             <Route exact path="/updatejob" component={UpdateJob} />
             <Route exact path ="/viewjobs" component={ViewJobs} />
-            <Route path="/burger" component={BurgerMenuTest} />
             <Route component={NoMatch} />
           </Switch>
           </main>
