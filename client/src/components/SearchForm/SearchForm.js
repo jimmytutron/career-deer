@@ -6,6 +6,8 @@ import { TextField } from 'redux-form-material-ui';
 import { Col, Row } from '../Grid';
 import { validate } from './validate';
 
+import Button from '@material-ui/core/Button';
+
 const renderTextField = (
   {
     input,
@@ -38,9 +40,9 @@ let SearchForm = ({ handleSubmit, pristine, submitting, errorMessage }) => {
           </Row>
         <h6>{errorMessage}</h6>
         <Row className="justify-content-end">
-        <button className="btn btn-info my-3" type="submit" disabled={pristine || submitting}>
-          Search <i className="fas fa-bullseye"></i>
-        </button>
+        <Button variant="contained" color="primary" className="btn btn-info my-3" type="submit" disabled={pristine || submitting}>
+          Search &nbsp;<i className="fas fa-bullseye"></i>
+        </Button>
         </Row>
       </form>
       </Col>

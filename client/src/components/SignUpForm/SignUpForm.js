@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { Col, Row } from '../Grid';
 import { validate } from './validate';
+import Button from '@material-ui/core/Button';
 
 
 const renderTextField = ({
@@ -51,12 +52,12 @@ let SignUpForm = ({ handleSubmit, pristine, reset, submitting, errorMessage, aut
       <Col size="12 lg-6">
       </Col>
       <Col size="10 md-10 lg-6" className="text-right">
-        <button className="btn btn-info" type="submit" disabled={pristine || submitting}>
+        <Button variant="contained" color="primary" className="btn btn-info" type="submit" disabled={pristine || submitting}>
           Sign Up
-        </button> &nbsp;&nbsp;
-        <button onClick={auth} className="roboto login-btn btn btn-light">
-        Login with <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
-        </button>
+        </Button> &nbsp;&nbsp;
+        <Button onClick={auth} className="roboto login-btn btn btn-light">
+        Sign Up with&nbsp; <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
+        </Button>
       </Col>
       </Row>
 
