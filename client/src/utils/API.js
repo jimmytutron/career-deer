@@ -53,6 +53,10 @@ export function getJobDataUser(){
   return axios.get('/api/jobs/chart/user');
 };
 
+export function getUserPercentile(saved, applied, phone, onSite, offer){
+  return axios.get(`/api/jobs/chart/user/percentile/?saved=${saved}&applied=${applied}&phone=${phone}&onSite=${onSite}&offer=${offer}`);
+};
+
 // ======================================================
 // Search
 export function getSearchResults(keywords, location){
