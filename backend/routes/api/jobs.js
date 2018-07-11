@@ -27,5 +27,8 @@ router.route('/chart/all')
 router.route('/chart/user')
   .get(chartController.findUser)
 
+router.route('/chart/user/percentile/?')
+  .get(chartController.userPercentile)
+
 module.exports = router;
 
