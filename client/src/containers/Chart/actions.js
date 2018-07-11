@@ -12,10 +12,11 @@ export function getChartAllData() {
 
       // console.log(apiResUser.data);
 
-      //TODO: correct chartController before enabling.
-      // const percentile = await getPercentile(apiResUser.data);
 
-      // console.log("percentile data", percentile.data);
+      const percentile = await getPercentile(apiResUser.data);
+
+      //TODO: to be sent to jobData function.
+      // console.log("percentile data", percentile[0].data);
 
       dispatch(jobData(apiResAll.data, apiResUser.data));
 
