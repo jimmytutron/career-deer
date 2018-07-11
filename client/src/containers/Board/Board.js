@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
-// import ProgressTiles from '../../components/ProgressTiles/ProgressTiles';
-import ProgressTiles from './ProgressTiles';
+// import ProgressTile from './ProgressTile';
+import ProgressTile from '../../components/ProgressTile/ProgressTile';
 
 // Redux Stuff
 import { connect } from 'react-redux';
@@ -118,15 +118,12 @@ class Board extends Component {
     }
   };
 
-  // Normally you would want to split things out into separate components.
-  // But in this example everything is just done in one place for simplicity
   render() {
     return (
       <React.Fragment>
         <div>Hey man!</div>
         <DragDropContext onDragEnd={this.onDragEnd} >
-          <ProgressTiles
-            boardKeys={Object.keys(this.props.boards)}
+          <ProgressTile
             boards={this.props.boards}
           />
         </DragDropContext>
