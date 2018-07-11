@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
-import ProgressTiles from '../../components/ProgressTiles/ProgressTiles';
+// import ProgressTiles from '../../components/ProgressTiles/ProgressTiles';
+import ProgressTiles from './ProgressTiles';
 
 // Redux Stuff
 import { connect } from 'react-redux';
@@ -51,6 +52,8 @@ class Board extends Component {
     console.log('Grabbing Jobs..');
     this.props.grabJobs();
   };
+
+
   /**
    * A semi-generic way to handle multiple lists. Matches
    * the IDs of the droppable container to the names of the
@@ -67,7 +70,7 @@ class Board extends Component {
   // this.props.boards['selected']
   getList = id => this.props.boards[this.id2List[id]];
 
-  
+
   /**
    * Handles logic for draggables.
    * @param  {Object} result is an object with a bunch of properties, we only care about source & destination
@@ -79,12 +82,12 @@ class Board extends Component {
    *           } 
    */
   onDragEnd = ({ source, destination }) => {
-    // note: source looks like this { droppableId: <string>, index: <number> }
+
     // dropped outside the lists
     if (!destination) {
       return;
     }
-    // If dropped back in place, but a new positon..
+    // If dropped back into its originating column/droppable, it will reorder if needed.
     if (source.droppableId === destination.droppableId) {
       const items = reorder(
         this.getList(source.droppableId),
@@ -92,7 +95,7 @@ class Board extends Component {
         destination.index
       );
 
-      let status = { items };
+      let status = { items }; // looks like { items: [ { id: <string?>, content: <string?> }, {} .. ] }
 
       // Make this into a dynamic check for all droppables
       if (source.droppableId === 'droppable2') {
@@ -120,13 +123,13 @@ class Board extends Component {
   render() {
     return (
       <React.Fragment>
-        <div>Hell World!</div>
-      {/* <DragDropContext onDragEnd={this.onDragEnd} >
-        <ProgressTiles
-          items={this.props.allJobs}
-          selected={this.props.boards.selected}
-        />
-      </DragDropContext> */}
+        <div>Hey man!</div>
+        <DragDropContext onDragEnd={this.onDragEnd} >
+          <ProgressTiles
+            boardKeys={Object.keys(this.props.boards)}
+            boards={this.props.boards}
+          />
+        </DragDropContext>
       </React.Fragment>
     );
   }
@@ -137,12 +140,6 @@ const mapStateToProps = (state, props) => {
     boards: state.boards
   }
 }
-
-// const mapActionsToProps = (dispatch, props) => {
-//   return bindActionCreators({
-//     grabJobs
-//   }, dispatch)
-// }
 
 const mapActionsToProps = () => ({
   grabJobs
