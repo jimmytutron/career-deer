@@ -16,7 +16,8 @@ class Chart extends Component {
   render() {
     return (
       <div className="col-12 col-md-10 col-lg-7 mt-5 mx-auto d-flex flex-wrap">
-        <div className="chart mb-5">
+        <h1 className="text-center font-weight-bold w-100">Your Activity Dashboard</h1>
+        <div className="chart mx-auto mb-5">
           <Line
             data={{
               labels: this.props.chartData.all.labels,
@@ -58,12 +59,12 @@ class Chart extends Component {
         </div>
 
 
-        <div className="row mb-5">
+        <div className="row mx-auto mb-5">
           <h3 className="col-12 text-center font-weight-bold">Percentile Rating</h3>
           <div className="chart col-md-4 col-sm-12">
             <Doughnut
               data={{
-                labels: ["Above User", "Below User"],
+                labels: ["# Above You", "# Below You"],
                 datasets: [
                   {
                     data: this.props.chartData.user.percentile.appliedArr,
@@ -94,7 +95,7 @@ class Chart extends Component {
           <div className="chart col-md-4 col-sm-12">
             <Doughnut
               data={{
-                labels: ["Above User", "Below User"],
+                labels: ["# Above You", "# Below You"],
                 datasets: [
                   {
                     data: this.props.chartData.user.percentile.phoneArr,
@@ -125,7 +126,7 @@ class Chart extends Component {
           <div className="chart col-md-4 col-sm-12">
             <Doughnut
               data={{
-                labels: ["Above User", "Below User"],
+                labels: ["# Above You", "# Below You"],
                 datasets: [
                   {
                     data: this.props.chartData.user.percentile.onSiteArr,
@@ -154,7 +155,7 @@ class Chart extends Component {
           </div>
         </div>
 
-        <div className="row col-12 mb-5">
+        <div className="row col-12 mx-auto mb-5">
           <div className="chart col-sm-12 col-md-6">
             <Bar
               data={{
@@ -193,7 +194,7 @@ class Chart extends Component {
                 },
                 title: {
                   display: true,
-                  text: 'Employment Progress (Database)' + this.props.chartData.sample.title,
+                  text: 'Userbase Employment Progress' + this.props.chartData.sample.title,
                   fontSize: 20
                 },
                 legend: {
@@ -244,7 +245,7 @@ class Chart extends Component {
                 },
                 title: {
                   display: true,
-                  text: 'Employment Progress (User)' + this.props.chartData.sample.title,
+                  text: 'Your Employment Progress' + this.props.chartData.sample.title,
                   fontSize: 20
                 },
                 legend: {
@@ -257,7 +258,7 @@ class Chart extends Component {
           </div>
         </div>
 
-        <div className="chart mb-5">
+        <div className="chart mx-auto mb-5">
           <Bar
             data={{
               labels: this.props.chartData.all.labels,
@@ -301,7 +302,7 @@ class Chart extends Component {
               },
               title: {
                 display: true,
-                text: 'User Comparison' + this.props.chartData.sample.title,
+                text: 'Your Comparison with Userbase' + this.props.chartData.sample.title,
                 fontSize: 20
               },
               legend: {
