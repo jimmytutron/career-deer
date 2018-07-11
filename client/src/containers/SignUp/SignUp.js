@@ -28,7 +28,7 @@ class SignUp extends Component {
  
     return (
       <React.Fragment>
-      <Container className="pb-5">
+      <Container className="pt-5 pb-5">
       <Row className="justify-content-center">
       <Col size="12 md-6 lg-4">
       <Rotate>

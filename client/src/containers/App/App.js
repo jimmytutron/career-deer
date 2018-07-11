@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Nav } from "../../components/Nav";
+import { Nav, NavMain } from "../../components/Nav";
 import Home from "../Home/Home";
 import LoginPage from "../Login/LoginPage";
 import NoMatch from "../NoMatch/NoMatch";
@@ -35,8 +35,11 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <React.Fragment>
-          <Nav loggedin={this.props.app.user} />
+        <div id="outer-container">
+          { window.location.pathname === "/" ? <Nav />
+          : <NavMain /> }
+          <BurgerMenuTest />
+          <main id="page-wrap">
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={LoginPage} loginaction={this.loginAction} />
@@ -50,8 +53,9 @@ class App extends Component {
             <Route path="/burger" component={BurgerMenuTest} />
             <Route component={NoMatch} />
           </Switch>
+          </main>
           <StickyFooter />
-        </React.Fragment>
+        </div>
       </Router>
     );
   }
