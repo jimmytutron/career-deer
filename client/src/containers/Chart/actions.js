@@ -13,7 +13,7 @@ export function getChartAllData() {
       // console.log(apiResUser.data);
 
       //TODO: correct chartController before enabling.
-      // const percentile = await getPercentile(apiResUser.data);
+      const percentile = await getPercentile(apiResUser.data);
 
       // console.log("percentile data", percentile.data);
 

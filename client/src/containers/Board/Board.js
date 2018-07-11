@@ -119,15 +119,24 @@ class Board extends Component {
   };
 
   render() {
+    console.log(Object.entries({...this.props.boards}))
     return (
-      <React.Fragment>
-        <div>Hey man!</div>
         <DragDropContext onDragEnd={this.onDragEnd} >
-          <ProgressTile
+        <React.Fragment>
+          {
+            Object.entries({...this.props.boards}).map(([ key, val ]) => (
+              // returns a library's premade component --don't want each of the
+              // library components nested in a component wrapper. This is what I'll call a
+              // "component creator". It returns a component with different attributes, so we don't 
+              // unnecessarily nest it in a pointless component wrapper.
+              ProgressTile(key, val)
+            ))
+          }
+        </React.Fragment>
+          {/* <ProgressTile
             boards={this.props.boards}
-          />
+          /> */}
         </DragDropContext>
-      </React.Fragment>
     );
   }
 }
