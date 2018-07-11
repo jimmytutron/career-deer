@@ -23,6 +23,7 @@ export default {
     edit: null
   },
   searchData: {
+    loading: false,
     data: [],
     saved: []
   },
