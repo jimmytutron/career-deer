@@ -5,7 +5,7 @@ module.exports = {
   signUp: async (req, res, next) => {
     try {
       const user = new db.User({
-        email: req.body.email.toLowerCase(),
+        email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName
       });
