@@ -36,7 +36,7 @@ class App extends Component {
     this.props.appLogoutUpdate();
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const firstName = this.cookies.get("firstName");
     const lastName = this.cookies.get("lastName");
     const email = this.cookies.get("email");
@@ -61,7 +61,10 @@ class App extends Component {
             window.location.pathname === "/updatejob" ||
             window.location.pathname === "/viewjobs"
             ? 
-              <BurgerMenu logoutaction={this.logoutAction}/>
+              <BurgerMenu 
+              firstName={this.props.app.user ? this.props.app.user.firstName : "Stray"} 
+              lastName={this.props.app.user ? this.props.app.user.lastName : "Deer"} 
+              logoutaction={this.logoutAction}/>
             : 
               <Nav />)}
           <main id="page-wrap">
