@@ -13,9 +13,9 @@ module.exports = {
       await user.setPassword(req.body.password);
       await user.save();
 
-      const emailData = getSignUpText(req.body.email, req.body.firstName, req.body.lastName);
+      // const emailData = getSignUpText(req.body.email, req.body.firstName, req.body.lastName);
 
-      nodemailer(emailData);
+      // nodemailer(emailData);
 
 
       // log in after signing up
@@ -66,17 +66,19 @@ function getSignUpText(email, firstName, lastName) {
 
   emailObj.emailText = `Hi ${firstName}, thanks for joining us in your adventure to track down a new job. Let us help you keep track of your job applications and provide analytics to help you find and improve areas of concern.`;
 
-  emailObj.emailHtml = `
-  <div style="text-align: center; font-family:Open Sans,Helvetica;">
-  <div style="width: 600px; margin-left: auto; margin-right: auto;">
-    <h2>Welcome to Career Deer!</h2>
-    <div style="text-align: left;">
-      <p>Hello ${firstName}</p>
-      <p>Thanks for joining us in your adventure to track down a new job.</p>
-      <p>Let us help you keep track of your job applications and provide analytics to help you find and improve areas of concern.</p>
-    </div>
-  </div>
-</div>`;
+  emailObj.emailHtml = `<div>Hello it meeeee</div>`;
+
+  // emailObj.emailHtml = `
+  //   <div style="text-align: center; font-family:Open Sans,Helvetica;">
+  //     <div style="width: 600px; margin-left: auto; margin-right: auto;">
+  //       <h2>Welcome to Career Deer!</h2>
+  //       <div style="text-align: left;">
+  //         <p>Hello ${firstName}</p>
+  //         <p>Thanks for joining us in your adventure to track down a new job.</p>
+  //         <p>Let us help you keep track of your job applications and provide analytics to help you find and improve areas of concern.</p>
+  //       </div>
+  //     </div>
+  //   </div>`;
 
   return emailObj;
 
