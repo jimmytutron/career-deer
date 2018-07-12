@@ -3,6 +3,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import { updateJobById } from '../../utils/API';
 import { Row, Col } from '../../components/Grid';
 import ProgressTile from '../../components/ProgressTile/ProgressTile';
+import { Cookies } from 'react-cookie';
 
 import Jump from 'react-reveal/Jump';
 
@@ -38,6 +39,8 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 };
 
 class Board extends Component {
+  
+  cookies = new Cookies();
 
   componentDidMount() {
     console.log('Grabbing Jobs..');
