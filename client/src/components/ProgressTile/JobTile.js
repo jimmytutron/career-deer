@@ -1,20 +1,28 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
-const grid = 8;
+const cardStyles = {
+  width: '250px',
+  minHeight: '250px'
+}
 
-const getItemStyle = (isDragging, draggableStyle) => ({
-  // some basic styles to make the items look a bit nicer
-  userSelect: 'none',
-  padding: grid * 2,
-  margin: `0 0 ${grid}px 0`,
+const cardHeadingStyle = {
+  color: '#5869A7'
+}
 
-  // change background colour if dragging
-  background: isDragging ? 'lightgreen' : 'grey',
+// const getItemStyle = (isDragging, draggableStyle) => ({
+//   // some basic styles to make the items look a bit nicer
+//   // change background colour if dragging
+//   background: isDragging ? 'lightgreen' : 'white',
 
-  // styles we need to apply on draggables
-  ...draggableStyle
-});
+//   // styles we need to apply on draggables
+//   ...draggableStyle
+// });
 
 const JobTile = (key, job, idx) => {
   // const {
@@ -34,22 +42,37 @@ const JobTile = (key, job, idx) => {
   return (
     <Draggable key={key} draggableId={job._id} index={idx}>
       {(provided, snapshot) => (
-        <div
+      <div
           ref={provided.innerRef}
           {...provided.draggableProps}
-          {...provided.dragHandleProps}
-          style={getItemStyle(
-            snapshot.isDragging,
-            provided.draggableProps.style
-          )}>
-          <p key={job._key} progress={job.progress_stage}>
-            Company Name: {job.company_name}
-            Job Title: {job.title}
-            Job Website: <a href={job.url}>{job.url}</a>
-            Location: {job.location}
-            Posted on: {job.post_date}
-          </p>
-        </div>
+          {...provided.dragHandleProps}>
+        <Card 
+        key={job._key} 
+        progress={job.progress_stage}
+        className="mb-2 mx-auto" 
+        style={cardStyles}>
+            <CardContent>
+                <Typography className="pt-2" color="textSecondary">
+                {job.company_name}
+                </Typography>
+                <Typography variant="headline" component="h2" style={cardHeadingStyle}>
+                {job.title}
+                </Typography>
+                <Typography color="textSecondary">
+                {job.post_date}
+                </Typography>
+                <Typography component="p">
+                {job.location}
+                </Typography>
+            </CardContent>
+            <CardActions>
+                  <Button size="small" variant="contained" color="primary">
+                  <i className="fas fa-pen-square"></i> &nbsp; Edit
+                  </Button>
+                <Button size="small" variant="contained" color="secondary">Delete</Button>
+            </CardActions>
+        </Card>
+      </div>
       )}
     </Draggable>
   )

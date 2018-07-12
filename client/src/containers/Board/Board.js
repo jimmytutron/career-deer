@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 <<<<<<< Updated upstream
 // import ProgressTile from './ProgressTile';
+<<<<<<< HEAD
 =======
-import { Row, Col } from '../../components/Grid'; 
+import { Row, Col } from '../../components/Grid';
 import { updateJobById } from '../../utils/API';
 >>>>>>> Stashed changes
+=======
+import { Row, Col } from '../../components/Grid';
+>>>>>>> 05560016ae0a54b2f2cc65fd4adf2adba1678a18
 import ProgressTile from '../../components/ProgressTile/ProgressTile';
+
+import Jump from 'react-reveal/Jump';
 
 // Redux Stuff
 import { connect } from 'react-redux';
@@ -109,7 +115,7 @@ class Board extends Component {
       //   }
 
       // });
-      
+
       // console.log('On Drag End: result', result);
       // this.props.moveJob(null,null,result)
     }
@@ -118,21 +124,17 @@ class Board extends Component {
 
   render() {
     return (
-<<<<<<< Updated upstream
-      <DragDropContext onDragStart={this.onDragStart} onDragEnd={this.onDragEnd} >
-        <React.Fragment>
-=======
       <DragDropContext onDragEnd={this.onDragEnd} >
-      <Row className="justify-content-center text-center pt-5">
-      <Col size="12 md-12 lg-6">
-      <h1 className="montserrat font-weight-bold">Job Tracker Board</h1>
-      <Jump>
-      <img width="60%" src="/imgs/icons/houses.svg" alt="houses" />
-      </Jump>
-      </Col>
-      </Row>
+        <Row className="justify-content-center text-center pt-5">
+          <Col size="12 md-12 lg-6">
+            <h1 className="montserrat font-weight-bold">Job Tracker Board</h1>
+            <Jump>
+              <img width="60%" src="/imgs/icons/houses.svg" alt="houses" />
+            </Jump>
+          </Col>
+        </Row>
         <Row className="justify-content-center">
->>>>>>> Stashed changes
+
           {
             Object.entries({ ...this.props.boards }).map(([key, val]) => (
               // returns a library's premade component --don't want each of the
@@ -142,7 +144,7 @@ class Board extends Component {
               ProgressTile(key, val)
             ))
           }
-        </React.Fragment>
+        </Row>
       </DragDropContext>
     );
   }

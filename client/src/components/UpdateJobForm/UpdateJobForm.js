@@ -7,6 +7,7 @@ import { validate } from './validate';
 import Paper from '@material-ui/core/Paper';
 import './UpdateJobForm.css';
 import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const renderTextField = (
   {
@@ -42,7 +43,9 @@ const renderNote = (
     <Col size="12 lg-6">
     </Col>
     <Col size="12 lg-6">
+    <Tooltip id="tooltip-icon" title="Add A Note" placement="top">
     <Button variant="extendedFab" className="add-btn" type="Button" onClick={()=>fields.push()}><i className="fas fa-plus"></i></Button>
+    </Tooltip>
     </Col>
     </Row>
     <ul className="mt-3">
@@ -51,7 +54,9 @@ const renderNote = (
         <Paper>
         <Row className="justify-content-center px-3 my-3">
         <Col size="2 md-1" className="text-center">
-          <Button variant="fab" color="secondary" title="Remove Note" className="btn btn-danger mt-4 mx-auto" onClick={() => fields.remove(index)}><i className="fas fa-trash"></i></Button>
+        <Tooltip id="tooltip-delete-icon" title="Delete" placement="top">
+          <Button variant="fab" color="secondary" className="btn btn-danger mt-4 mx-auto" onClick={() => fields.remove(index)}><i className="fas fa-trash"></i></Button>
+        </Tooltip>
         </Col>
         <Col size="8 md-11">
           <Field className="text-input"

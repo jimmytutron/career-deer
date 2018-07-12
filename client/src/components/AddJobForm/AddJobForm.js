@@ -15,6 +15,12 @@ const styles = {
   }
 };
 
+const FormStyle = {
+  background: '#fff',
+  borderRadius: '15px',
+  boxShadow: '0px 0px 1px #5B5B5B'
+}
+
 const renderTextField = (
   {
     input,
@@ -50,7 +56,7 @@ const renderTextField = (
 
 let AddJobForm = ({ handleSubmit, pristine, reset, submitting, errorMessage }) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <form style={FormStyle} onSubmit={handleSubmit}>
     <Row className="justify-content-center">
       <Col size="12 md-12 lg-5">
         <Field className="text-input" name="title" component={renderTextField} type="text" label="Job Title" required></Field>
