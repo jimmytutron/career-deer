@@ -4,9 +4,13 @@ import UpdateJobForm from '../../components/UpdateJobForm/UpdateJobForm';
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
+import { Cookies } from 'react-cookie';
 import { executeDeleteJob, executeUpdateJob, resetUpdateJob, selectUpdateJob } from './actions';
 
 class UpdateJob extends Component {
+
+  cookies = new Cookies
+
   updateJobValues = values => {
     const newJob = {
       ...this.props.updateJob.job,
@@ -33,7 +37,7 @@ class UpdateJob extends Component {
       return <Redirect to='/viewjobs' />
     };
 
-    if (!this.props.app.user){
+    if (!this.cookies.get("email")){
       window.location.pathname="/unauthorized";
       return null;
     };
