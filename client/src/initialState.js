@@ -66,11 +66,11 @@ export default {
       jobs: []
     },
 
-    on_phone: {
+    phone: {
       jobs: []
     },
 
-    on_site: {
+    ['on-site']: {
       jobs: []
     },
 

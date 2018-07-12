@@ -16,20 +16,20 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   ...draggableStyle
 });
 
-const JobTile = (key, val, idx) => {
-  const {
-    _id,
-    location,
-    url,
-    logo_url,
-    description,
-    progress_stage,
-    note,
-    title,
-    company_name,
-    post_date,
-    last_update
-  } = val;
+const JobTile = (key, job, idx) => {
+  // const {
+  //   _id,
+  //   location,
+  //   url,
+  //   logo_url,
+  //   description,
+  //   progress_stage,
+  //   note,
+  //   title,
+  //   company_name,
+  //   post_date,
+  //   last_update
+  // } = job;
 
   return (
     <Draggable key={key} draggableId={key} index={idx}>
@@ -42,27 +42,13 @@ const JobTile = (key, val, idx) => {
             snapshot.isDragging,
             provided.draggableProps.style
           )}>
-          {
-            Object.entries({ ...val })
-              .filter((tupe) => (
-                (tupe[0] !== 'note') || (tupe[0] !== 'logo_url') ||
-                (tupe[0] !== 'description') || (tupe[0] !== 'last_update')
-              ))
-              .map(([ key, val ]) => {
-                const data = { [key]: val }
-                console.log(data);
-                console.log('========');
-                return (
-                  <p key={key} id={data._id} progress={data.progress_stage}>
-                    Company Name: {data.company_name}
-                    Job Title: {data.title}
-                    Job Website: <a href={data.url}>{data.url}</a>
-                    Location: {data.location}
-                    Posted on: {data.post_date}
-                  </p>
-                )
-              })
-          }
+          <p key={job._key} progress={job.progress_stage}>
+            Company Name: {job.company_name}
+            Job Title: {job.title}
+            Job Website: <a href={job.url}>{job.url}</a>
+            Location: {job.location}
+            Posted on: {job.post_date}
+          </p>
         </div>
       )}
     </Draggable>
