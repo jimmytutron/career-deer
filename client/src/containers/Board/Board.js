@@ -7,21 +7,11 @@ import ProgressTile from '../../components/ProgressTile/ProgressTile';
 import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 import {
-  // defaultLocation,
-  // newLocation,
-  grabJobs
+  grabJobs,
+  moveJob
 } from './actions';
 
 
-
-// fake data generator
-const getItems = (count, offset = 0) =>
-  Array.from({ length: count }, (v, k) => k).map(k => ({
-    id: `item-${k + offset}`,
-    content: `item ${k + offset}`
-  }));
-
-// a little function to help us with reordering the result
 const reorder = (list, startIndex, endIndex) => {
   const result = [...list];
   const [removed] = result.splice(startIndex, 1);
@@ -51,25 +41,17 @@ class Board extends Component {
   componentDidMount() {
     console.log('Grabbing Jobs..');
     this.props.grabJobs();
+    // this.props.boards;
   };
 
 
-  /**
-   * A semi-generic way to handle multiple lists. Matches
-   * the IDs of the droppable container to the names of the
-   * source arrays stored in the state.
-   */
-  id2List = {
-    droppable: 'items',
-    droppable2: 'selected'
-  };
+  getList = id => {
+    return this.props.boards[id];
+  }
 
-  // this.props.boards[this.id2list[id]]
-  // can be either..
-  // this.props.boards['items']
-  // this.props.boards['selected']
-  getList = id => this.props.boards[this.id2List[id]];
-
+  onDragStart = ({ source }) => {
+    // console.log(source,'start:source');
+  }
 
   /**
    * Handles logic for draggables.
@@ -82,52 +64,58 @@ class Board extends Component {
    *           } 
    */
   onDragEnd = ({ source, destination }) => {
-
+    // console.log(source, 'end:source');
+    // console.log(destination, 'end:destination');
     // dropped outside the lists
     if (!destination) {
       return;
     }
     // If dropped back into its originating column/droppable, it will reorder if needed.
-    if (source.droppableId === destination.droppableId) {
+    if (
+      source.droppableId === destination.droppableId &&
+      source.index !== destination.index
+    ) {
       const items = reorder(
         this.getList(source.droppableId),
         source.index,
         destination.index
       );
-
-      let status = { items }; // looks like { items: [ { id: <string?>, content: <string?> }, {} .. ] }
-
-      // Make this into a dynamic check for all droppables
-      if (source.droppableId === 'droppable2') {
-        status = { selected: items };
-      }
-      //this may or may not be the default
-      this.props.defaultLocation(status);
-    } else {
-      const result = move(
-        this.getList(source.droppableId),
-        this.getList(destination.droppableId),
-        source,
-        destination
-      );
-
-      this.props.newLocation({
-        items: result.droppable,
-        selected: result.droppable2
-      });
+      console.log(items,'I AM THE NEW STATE TO BE DISPATCH');
+      this.props.moveJob(items,source.droppableId);
     }
+    // If 
+    if (
+      source.index !== destination.index ||
+      source.droppableId !== destination.droppableId
+    ) {
+      const items = reorder(
+        this.getList(source.droppableId),
+        source.index,
+        destination.index
+      );
+    }
+
   };
 
   render() {
+    // console.log(Object.entries({...this.props.boards}))
     return (
-      <React.Fragment>
-        <div>Hey man!</div>
-        <DragDropContext onDragEnd={this.onDragEnd} >
-          <ProgressTile
+      <DragDropContext onDragStart={this.onDragStart} onDragEnd={this.onDragEnd} >
+        <React.Fragment>
+          {
+            Object.entries({ ...this.props.boards }).map(([key, val]) => (
+              // returns a library's premade component --don't want each of the
+              // library components nested in a component wrapper. This is what I'll call a
+              // "component creator". It returns a component with different attributes, so we don't 
+              // unnecessarily nest it in a pointless component wrapper.
+              ProgressTile(key, val)
+            ))
+          }
+        </React.Fragment>
+        {/* <ProgressTile
             boards={this.props.boards}
-          />
-        </DragDropContext>
-      </React.Fragment>
+          /> */}
+      </DragDropContext>
     );
   }
 }
@@ -139,7 +127,8 @@ const mapStateToProps = (state, props) => {
 }
 
 const mapActionsToProps = () => ({
-  grabJobs
+  grabJobs,
+  moveJob
 });
 
 // Put the things into the DOM!

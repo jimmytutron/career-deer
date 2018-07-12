@@ -94,15 +94,9 @@ const mapStateToProps = state => ({
   signedUp: state.signedUp
 });
 
-
-// We don't have to use BindActionCreators because this is a smart component
 const mapActionsToProps = (dispatch, props) => ({
   appLoginUpdate,
   appLogoutUpdate
 })
-// };
-// Connect can take 3 arguments
-// 1) mapStateToProps
-// 2) mapActionsToProps 
-// 3) 
+
 export default connect(mapStateToProps,mapActionsToProps())(App);
