@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Cookies } from 'react-cookie';
 import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2';
 import { getChartAllData } from './actions';
 // import 'chartjs-plugin-datalabels';
@@ -8,6 +9,8 @@ import './Chart.css';
 
 
 class Chart extends Component {
+  
+  cookies = new Cookies;
 
   componentDidMount() {
     this.props.getChartAllData();
@@ -15,7 +18,7 @@ class Chart extends Component {
 
   render() {
 
-    if (!this.props.app.user){
+    if (!this.cookies.get("email")){
       window.location.pathname="/unauthorized";
       return null;
     };

@@ -28,7 +28,7 @@ class SignUp extends Component {
     if (this.props.app.user) {
       return <Redirect to='/viewjobs' />;
     };
-
+    
  
     return (
       <React.Fragment>
