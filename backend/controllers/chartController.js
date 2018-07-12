@@ -55,7 +55,7 @@ module.exports = {
 
 }
 
-async function getPercentiles(req) {
+function getPercentiles(req) {
   //gt = Greater Than, lt = Less Than.
   //gtData provides the number of users above current user
   const { saved, applied, phone, onSite, offer } = req.query
