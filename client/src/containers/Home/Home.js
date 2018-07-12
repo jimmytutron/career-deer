@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 // Redux stuff
 // import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
+import { Cookies } from 'react-cookie';
+
 import './Home.css';
 
 import Rotate from 'react-reveal/Rotate';
@@ -20,11 +22,17 @@ import Pulse from 'react-reveal/Pulse';
 
 class Home extends Component {
 
-  onUpdateTest = () => {
-    this.props.onUpdateTest('Test results!');
-  }
+    cookies = new Cookies();
+
+    onUpdateTest = () => {
+        this.props.onUpdateTest('Test results!');
+    }
 
   render() {
+    if (this.cookies.get("email")){
+        window.location.pathname="/board";
+        return null;
+    };
     return (
       <div className="hide-overflow">
         <HomePageJumbo />
