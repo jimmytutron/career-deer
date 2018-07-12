@@ -18,6 +18,7 @@ export function signup(userInfo) {
   // return a fn
   return async (dispatch, getState) => {
     try {
+      userInfo.email = userInfo.email.toLowerCase()
       const apiResponse = await (signUp(userInfo));
       const createdUser = {
         firstName: apiResponse.data.firstName,

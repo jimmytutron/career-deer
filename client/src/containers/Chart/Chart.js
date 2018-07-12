@@ -14,6 +14,12 @@ class Chart extends Component {
   }
 
   render() {
+
+    if (!this.props.app.user){
+      window.location.pathname="/unauthorized";
+      return null;
+    };
+
     return (
       <div className="col-12 col-md-10 col-lg-7 mt-5 mx-auto d-flex flex-wrap">
         <h1 className="text-center font-weight-bold w-100">Your Activity Dashboard</h1>
@@ -321,7 +327,8 @@ class Chart extends Component {
 
 function mapStateToProps(state) {
   return {
-    chartData: state.chartData
+    chartData: state.chartData,
+    app: state.app
   }
 }
 

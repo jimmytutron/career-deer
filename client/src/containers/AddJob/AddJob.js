@@ -21,6 +21,11 @@ class AddJob extends Component {
       return <Redirect to='/viewjobs' />;
     };
 
+    if (!this.props.app.user){
+      window.location.pathname="/unauthorized";
+      return null;
+    };
+
     return (
       <Container className="pt-5">
         <Row className="justify-content-center text-center">
@@ -45,7 +50,8 @@ class AddJob extends Component {
 
 const mapStateToProps = (state,props) => {
   return { 
-    addJob: state.addJob
+    addJob: state.addJob,
+    app: state.app
   }
 };
 
