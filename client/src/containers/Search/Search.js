@@ -73,6 +73,7 @@ class Search extends Component {
                   key={i}
                   results={result}
                   save={() => this.saveJob(i)}
+                  
                 />
               )
             })}

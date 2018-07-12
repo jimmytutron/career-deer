@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2';
 import { getChartAllData } from './actions';
+import { Col, Row, Container } from '../../components/Grid';
 // import 'chartjs-plugin-datalabels';
 
 import './Chart.css';
+import Tada from 'react-reveal/Tada';
 
 
 class Chart extends Component {
@@ -21,8 +23,15 @@ class Chart extends Component {
     };
 
     return (
-      <div className="col-12 col-md-10 col-lg-7 mt-5 mx-auto d-flex flex-wrap">
-        <h1 className="text-center font-weight-bold w-100">Your Activity Dashboard</h1>
+      <Container className="pt-5">
+      <Row className="justify-content-center">
+      <Col size="12 md-12 lg-4" className="mt-5 pt-5">
+      <Tada>
+      <img src="/imgs/icons/charts.svg" alt="deer chart"/>
+      </Tada>
+      </Col>
+      <Col size="12 md-12 lg-8" className="pt-5 mx-auto d-flex flex-wrap">
+        <h1 className="montserrat text-center font-weight-bold w-100">Your Activity Dashboard</h1>
         <div className="chart mx-auto mb-5">
           <Line
             data={{
@@ -63,11 +72,17 @@ class Chart extends Component {
             }}
           />
         </div>
+        </Col>
+        </Row>
 
 
-        <div className="row mx-auto mb-5">
-          <h3 className="col-12 text-center font-weight-bold">Percentile Rating</h3>
-          <div className="chart col-md-4 col-sm-12">
+        <Row className="mx-auto mb-5 justify-content-center">
+        <Col size="12 md-10">
+          <h2 className="montserrat text-center font-weight-bold">Percentile Rating</h2>
+        </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col size="12 md-6 lg-4" className="chart text-center">
             <Doughnut
               data={{
                 labels: ["# Above You", "# Below You"],
@@ -93,12 +108,12 @@ class Chart extends Component {
                 maintainAspectRatio: false
               }}
             />
-            <div className="doughnut-inner col-12">
+            <Col size="12" className="doughnut-inner">
               <h4 className="text-center">{this.props.chartData.user.percentile.applied}</h4>
-            </div>
-          </div>
+            </Col>
+          </Col>
 
-          <div className="chart col-md-4 col-sm-12">
+          <Col size="12 md-6 lg-4" className="chart">
             <Doughnut
               data={{
                 labels: ["# Above You", "# Below You"],
@@ -124,12 +139,12 @@ class Chart extends Component {
                 maintainAspectRatio: false
               }}
             />
-            <div className="doughnut-inner col-12">
+            <Col size="12" className="doughnut-inner">
               <h4 className="text-center">{this.props.chartData.user.percentile.phone}</h4>
-            </div>
-          </div>
+            </Col>
+          </Col>
 
-          <div className="chart col-md-4 col-sm-12">
+          <Col size="12 md-6 lg-4" className="chart">
             <Doughnut
               data={{
                 labels: ["# Above You", "# Below You"],
@@ -155,14 +170,19 @@ class Chart extends Component {
                 maintainAspectRatio: false
               }}
             />
-            <div className="doughnut-inner col-12">
+            <Col size="12" className="doughnut-inner">
               <h4 className="text-center">{this.props.chartData.user.percentile.onSite}</h4>
-            </div>
-          </div>
-        </div>
+            </Col>
+          </Col>
+        </Row>
 
-        <div className="row col-12 mx-auto mb-5">
-          <div className="chart col-sm-12 col-md-6">
+        <Row className="justify-content-center mx-auto my-5">
+        <Col size="12 md-10">
+        <h2 className="text-center montserrat font-weight-bold">Employment Progress</h2>
+        </Col>
+        </Row>
+        <Row className="justify-content-center">
+          <Col size="12 md-6 lg-5" className="chart">
             <Bar
               data={{
                 labels: this.props.chartData.all.labels,
@@ -200,7 +220,7 @@ class Chart extends Component {
                 },
                 title: {
                   display: true,
-                  text: 'Userbase Employment Progress' + this.props.chartData.sample.title,
+                  text: 'Userbase' + this.props.chartData.sample.title,
                   fontSize: 20
                 },
                 legend: {
@@ -210,9 +230,9 @@ class Chart extends Component {
                 maintainAspectRatio: false
               }}
             />
-          </div>
+          </Col>
 
-          <div className="chart col-sm-12 col-md-6">
+          <Col size="12 md-6 lg-5" className="chart">
             <Bar
               data={{
                 labels: this.props.chartData.all.labels,
@@ -251,7 +271,7 @@ class Chart extends Component {
                 },
                 title: {
                   display: true,
-                  text: 'Your Employment Progress' + this.props.chartData.sample.title,
+                  text: 'Your Progress' + this.props.chartData.sample.title,
                   fontSize: 20
                 },
                 legend: {
@@ -261,10 +281,11 @@ class Chart extends Component {
                 maintainAspectRatio: false
               }}
             />
-          </div>
-        </div>
+          </Col>
+        </Row>
 
-        <div className="chart mx-auto mb-5">
+        <Row className="justify-content-center">
+        <Col size="12 md-10" className="chart mx-auto mb-5">
           <Bar
             data={{
               labels: this.props.chartData.all.labels,
@@ -318,9 +339,11 @@ class Chart extends Component {
               maintainAspectRatio: false
             }}
           />
-        </div>
+        </Col>
+        </Row>
 
-      </div>
+      </Container>
+
     )
   }
 }

@@ -8,12 +8,12 @@
  * @returns {Object} An object of the job objects sorted into their correct places
  */
 const mapData = jobs => {
-  const positions = ['saved', 'applied', 'on_phone', 'on_site', 'offer'];
+  const positions = ['saved', 'applied', 'phone', 'on-site', 'offer'];
   const mappedData = {
     saved: [],
     applied: [],
-    on_phone: [],
-    on_site: [],
+    phone: [],
+    ['on-site']: [],
     offer: [],
   };
   // This is same amount of possible operations as my original
