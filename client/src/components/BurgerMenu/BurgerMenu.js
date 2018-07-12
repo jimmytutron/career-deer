@@ -11,47 +11,43 @@ const BurgerMenu = (props) => {
         logOut();
         props.logoutaction();
 
+
     }
     return (
         <ReduxBurgerMenu>
             <img width="50px" className="text-center my-3" src="/imgs/logo-white.svg" alt="menu logo"/>
 
-            <h3>Hello [USERNAME]!</h3>
-            <a
-            href="/"
+            <h3>Hello {`${props.firstName} ${props.lastName}`}!</h3>
+            <Link 
+            to="/board"
             className="menu-item">
-            Home
-            </a>
+            <i className="fab fa-trello"></i> &nbsp; &nbsp; Job Tracker Board
+            </Link>
             <Link 
             to="/addjob"
             className="menu-item">
-            Add a Job
+            <i className="fas fa-plus-circle"></i> &nbsp; &nbsp; Track new Job
             </Link>
             <Link 
             to="/search"
             className="menu-item">
-            Search for Jobs</Link>
-            <Link
-            to="/viewjobs" 
-            className="menu-item">
-            Tracked Jobs
-            </Link>
-            <Link 
-            to="/board"
-            className="menu-item">
-            Tracker Board
-            </Link>
+            <i className="fas fa-search"></i> &nbsp; &nbsp; Search for Jobs</Link>
             <Link 
             to="/chart"
             className="menu-item">
-            View Charts
+            <i className="fas fa-chart-bar"></i> &nbsp; &nbsp; Progress Charts
+            </Link>
+            <Link
+            to="/viewjobs" 
+            className="menu-item">
+            <i className="far fa-eye"></i> &nbsp; &nbsp; View Tracked Jobs
             </Link>
             <br/>
             <Link
             to="/" 
             className="menu-item"
             onClick={executeLogout}>
-            Logout
+            Logout &nbsp; <i className="fas fa-sign-out-alt"></i> 
 
             </Link>
 
