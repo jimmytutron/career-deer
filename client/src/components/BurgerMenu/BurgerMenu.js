@@ -36,11 +36,6 @@ const BurgerMenu = (props) => {
             className="menu-item">
             <i className="fas fa-chart-bar"></i> &nbsp; &nbsp; Progress Charts
             </Link>
-            <Link
-            to="/viewjobs" 
-            className="menu-item">
-            <i className="far fa-eye"></i> &nbsp; &nbsp; View Tracked Jobs
-            </Link>
             <br/>
             <Link
             to="/" 

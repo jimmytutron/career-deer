@@ -9,8 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import { Link } from "react-router-dom";
 
 const cardStyles = {
-  width: '250px',
-  minHeight: '250px'
+  width: '250px'
 }
 
 const cardHeadingStyle = {
@@ -60,20 +59,31 @@ const JobTile = (key, job, idx, selectUpdateJob) => {
                 <Typography variant="headline" component="h2" style={cardHeadingStyle}>
                 {job.title}
                 </Typography>
-                <Typography color="textSecondary">
-                {job.post_date}
-                </Typography>
-                <Typography component="p">
+                <Typography color="primary">
                 {job.location}
                 </Typography>
+                <Typography className="my-1" color="textSecondary">
+                Notes
+                <br />
+                </Typography>
+                
+                {job.note 
+                  ? job.note.map((element, i) => {
+                      return (
+                        <Typography key={'note-' + i} className="note my-2" component="p">
+                        {element || 'no notes yet...'}
+                        </Typography>
+                        )
+                    }) 
+                  : null}
+                
             </CardContent>
-            <CardActions>
+            <CardActions className="float-right button-margin">
                 <Link to="/updatejob">
-                  <Button size="small" variant="contained" color="primary" onClick={() => selectUpdateJob(job)}>
-                  <i className="fas fa-pen-square"></i> &nbsp; Edit
+                  <Button size="small" variant="contained" color="secondary" onClick={() => selectUpdateJob(job)}>
+                  <i className="fas fa-pen-square"></i> &nbsp; Edit Job
                   </Button>
                 </Link>
-                <Button size="small" variant="contained" color="secondary">Delete</Button>
             </CardActions>
         </Card>
       </div>

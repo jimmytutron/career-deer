@@ -127,6 +127,12 @@ class Board extends Component {
   };
 
   render() {
+    
+    if (!this.cookies.get("email")){
+      window.location.pathname="/unauthorized";
+      return null;
+    };
+
     return (
       <DragDropContext onDragEnd={this.onDragEnd} >
         <Row className="justify-content-center text-center pt-5">

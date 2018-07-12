@@ -26,7 +26,7 @@ class SignUp extends Component {
   render() {
 
     if (this.props.app.user) {
-      return <Redirect to='/viewjobs' />;
+      return <Redirect to='/board' />;
     };
     
  
