@@ -42,27 +42,13 @@ const JobTile = (key, val, idx) => {
             snapshot.isDragging,
             provided.draggableProps.style
           )}>
-          {
-            Object.entries({ ...val })
-              .filter((tupe) => (
-                (tupe[0] !== 'note') || (tupe[0] !== 'logo_url') ||
-                (tupe[0] !== 'description') || (tupe[0] !== 'last_update')
-              ))
-              .map(([ key, val ]) => {
-                const data = { [key]: val }
-                console.log(data);
-                console.log('========');
-                return (
-                  <p key={key} id={data._id} progress={data.progress_stage}>
-                    Company Name: {data.company_name}
-                    Job Title: {data.title}
-                    Job Website: <a href={data.url}>{data.url}</a>
-                    Location: {data.location}
-                    Posted on: {data.post_date}
-                  </p>
-                )
-              })
-          }
+          <p key={val._key} progress={val.progress_stage}>
+            Company Name: {val.company_name}
+            Job Title: {val.title}
+            Job Website: <a href={val.url}>{val.url}</a>
+            Location: {val.location}
+            Posted on: {val.post_date}
+          </p>
         </div>
       )}
     </Draggable>
