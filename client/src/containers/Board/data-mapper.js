@@ -10,7 +10,7 @@
 const mapData = jobs => {
   const positions = ['saved', 'applied', 'phone', 'on-site', 'offer'];
   const mappedData = {
-    saved: [],
+    saved: [], 
     applied: [],
     phone: [],
     ['on-site']: [],
@@ -22,6 +22,10 @@ const mapData = jobs => {
   jobs.forEach( el => {
     for (let i = 0; i < positions.length; i++) {
       if (el.progress_stage === positions[i]) {
+        // push [ el._id, el ] instead and then change it across all 
+        // steps of the logic. This will make updating data by id easier in the 
+        // move logic for the drag-n-drop, since we don't have access to the 
+        // objects values, only its unique ID within the onDragEnd functionality.
         mappedData[positions[i]].push(el);
         break;
       }
