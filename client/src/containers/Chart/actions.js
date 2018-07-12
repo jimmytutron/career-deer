@@ -222,7 +222,7 @@ function percentages(countDataObj) {
 
 function calcPercentile(array) {
   //NOTE: array index 0 = aboveUser, index 1 = belowUser 
-  const percentile = (array[1] / (array[0] + array[1])) * 100;
+  const percentile = parseFloat((array[1] / (array[0] + array[1])) * 100).toFixed(1);
   return percentile;
 }
 

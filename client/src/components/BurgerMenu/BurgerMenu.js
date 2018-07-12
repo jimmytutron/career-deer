@@ -1,18 +1,17 @@
 import React from 'react';
 import ReduxBurgerMenu from './Menu';
 import { Link } from "react-router-dom";
-import { logOut } from "../../utils/API"
 import './BurgerMenu.css';
+import { logOut } from '../../utils/API'
 
 
 const BurgerMenu = (props) => {
-    const executeLogout = () => {
-
-        logOut();
-        props.logoutaction();
-
-
+    const executeLogout = async () => {
+        // await props.logoutaction();
+        await logOut();
+        window.location.pathname="/";
     }
+
     return (
         <ReduxBurgerMenu>
             <img width="50px" className="text-center my-3" src="/imgs/logo-white.svg" alt="menu logo"/>

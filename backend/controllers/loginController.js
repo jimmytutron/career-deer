@@ -36,20 +36,18 @@ module.exports = {
   },
 
   logout: (req, res, next) => {
-    if (req.user) {
-      req.logOut();
-      req.session.destroy(function (err) {
-        if (err) {
-          return next(err);
-        }
-        res.clearCookie("connect.sid");
-        res.clearCookie("firstName");
-        res.clearCookie("lastName");
-        res.clearCookie("email");
-        res.redirect('/');
-        // return res.send({ authenticated: req.isAuthenticated() });
-      });
-    }
+    req.logOut();
+    req.session.destroy(function (err) {
+      if (err) {
+        return next(err);
+      }
+      res.clearCookie("connect.sid");
+      res.clearCookie("firstName");
+      res.clearCookie("lastName");
+      res.clearCookie("email");
+      res.redirect('/');
+      // return res.send({ authenticated: req.isAuthenticated() });
+    });
   }
 };
 
