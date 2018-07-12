@@ -1,5 +1,6 @@
 const db = require('../models');
 const passport = require('../config/');
+const nodemailer = require('../services/nodemailer');
 
 module.exports = {
   signUp: async (req, res, next) => {
@@ -11,6 +12,11 @@ module.exports = {
       });
       await user.setPassword(req.body.password);
       await user.save();
+
+      // const emailData = getSignUpText(req.body.email, req.body.firstName, req.body.lastName);
+
+      // nodemailer(emailData);
+
 
       // log in after signing up
       passport.authenticate('local')(req, res, next)
@@ -35,8 +41,8 @@ module.exports = {
     if (req.user) {
       req.logOut();
       req.session.destroy(function (err) {
-        if (err) { 
-          return next(err); 
+        if (err) {
+          return next(err);
         }
         res.clearCookie("connect.sid");
         res.clearCookie("firstName");
@@ -48,3 +54,35 @@ module.exports = {
     }
   }
 };
+
+function getSignUpText(email, firstName, lastName) {
+  const emailObj = {
+    emailTo: email,
+    firstName: firstName,
+    lastName: lastName
+  }
+
+  emailObj.emailSubject = `Welcome to Career Deer!`;
+
+  emailObj.emailText = `Hi ${firstName}, thanks for joining us in your adventure to track down a new job. Let us help you keep track of your job applications and provide analytics to help you find and improve areas of concern.`;
+
+  emailObj.emailHtml = `<div>Hello it meeeee</div>`;
+
+  // emailObj.emailHtml = `
+  //   <div style="text-align: center; font-family:Open Sans,Helvetica;">
+  //     <div style="width: 600px; margin-left: auto; margin-right: auto;">
+  //       <h2>Welcome to Career Deer!</h2>
+  //       <div style="text-align: left;">
+  //         <p>Hello ${firstName}</p>
+  //         <p>Thanks for joining us in your adventure to track down a new job.</p>
+  //         <p>Let us help you keep track of your job applications and provide analytics to help you find and improve areas of concern.</p>
+  //       </div>
+  //     </div>
+  //   </div>`;
+
+  return emailObj;
+
+}
+
+
+
