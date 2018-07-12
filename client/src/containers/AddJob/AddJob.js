@@ -20,7 +20,7 @@ class AddJob extends Component {
   render() {
     if (this.props.addJob.status) {
       this.props.resetaddjob();
-      return <Redirect to='/viewjobs' />;
+      return <Redirect to='/board' />;
     };
 
     if (!this.cookies.get("email")){

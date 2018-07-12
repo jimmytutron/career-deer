@@ -8,6 +8,7 @@ import Jump from 'react-reveal/Jump';
 
 // Redux Stuff
 import { connect } from 'react-redux';
+import { selectUpdateJob } from '../../containers/UpdateJob/actions';
 
 import {
   grabJobs,
@@ -126,6 +127,12 @@ class Board extends Component {
   };
 
   render() {
+    
+    if (!this.cookies.get("email")){
+      window.location.pathname="/unauthorized";
+      return null;
+    };
+
     return (
       <DragDropContext onDragEnd={this.onDragEnd} >
         <Row className="justify-content-center text-center pt-5">
@@ -144,7 +151,7 @@ class Board extends Component {
               // library components nested in a component wrapper. This is what I'll call a
               // "component creator". It returns a component with different attributes, so we don't 
               // unnecessarily nest it in a pointless component wrapper.
-              ProgressTile(key, val)
+              ProgressTile(key, val, this.props.selectUpdateJob)
             ))
           }
         </Row>
@@ -161,7 +168,8 @@ const mapStateToProps = (state, props) => {
 
 const mapActionsToProps = () => ({
   grabJobs,
-  moveJob
+  moveJob,
+  selectUpdateJob
 });
 
 // Put the things into the DOM!

@@ -27,7 +27,7 @@ class LoginPage extends Component {
 
     if (this.props.app.user && !this.props.loggedIn.error) {
 
-      return <Redirect to='/viewjobs' />
+      return <Redirect to='/board' />
     };
 
     return (
