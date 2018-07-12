@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 // import ProgressTile from './ProgressTile';
+import { Row, Col } from '../../components/Grid'; 
 import ProgressTile from '../../components/ProgressTile/ProgressTile';
+
+import Jump from 'react-reveal/Jump';
 
 // Redux Stuff
 import { connect } from 'react-redux';
@@ -92,7 +95,15 @@ class Board extends Component {
   render() {
     return (
       <DragDropContext onDragStart={this.onDragStart} onDragEnd={this.onDragEnd} >
-        <React.Fragment>
+      <Row className="justify-content-center text-center pt-5">
+      <Col size="12 md-12 lg-6">
+      <h1 className="montserrat font-weight-bold">Job Tracker Board</h1>
+      <Jump>
+      <img width="60%" src="/imgs/icons/houses.svg" alt="houses" />
+      </Jump>
+      </Col>
+      </Row>
+        <Row className="justify-content-center">
           {
             Object.entries({ ...this.props.boards }).map(([key, val]) => (
               // returns a library's premade component --don't want each of the
@@ -102,7 +113,7 @@ class Board extends Component {
               ProgressTile(key, val)
             ))
           }
-        </React.Fragment>
+        </Row>
       </DragDropContext>
     );
   }
