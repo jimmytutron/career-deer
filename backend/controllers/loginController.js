@@ -21,9 +21,9 @@ module.exports = {
 
   login: async (req, res) => {
     user = await db.User.findOne({email: req.body.email});
-    res.cookie("firstName", user.firstName)
-    res.cookie("lastName", user.lastName)
-    res.cookie("email", user.email)
+    res.cookie("firstName", user.firstName);
+    res.cookie("lastName", user.lastName);
+    res.cookie("email", user.email);
     res.json({
       email: user.email,
       firstName: user.firstName,
@@ -39,10 +39,10 @@ module.exports = {
           return next(err); 
         }
         res.clearCookie("connect.sid");
-        res.clearCookie("firstName")
-        res.clearCookie("lastName")
-        res.clearCookie("email")
-        res.redirect('/')
+        res.clearCookie("firstName");
+        res.clearCookie("lastName");
+        res.clearCookie("email");
+        res.redirect('/');
         // return res.send({ authenticated: req.isAuthenticated() });
       });
     }

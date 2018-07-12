@@ -16,6 +16,12 @@ class Chart extends Component {
   }
 
   render() {
+
+    if (!this.props.app.user){
+      window.location.pathname="/unauthorized";
+      return null;
+    };
+
     return (
       <Container className="pt-5">
       <Row className="justify-content-center">
@@ -344,7 +350,8 @@ class Chart extends Component {
 
 function mapStateToProps(state) {
   return {
-    chartData: state.chartData
+    chartData: state.chartData,
+    app: state.app
   }
 }
 

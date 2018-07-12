@@ -46,6 +46,13 @@ class Search extends Component {
   }
 
   render() {
+
+    if (!this.props.app.user){
+      window.location.pathname="/unauthorized";
+      return null;
+    };
+
+
     return (
       <Container className="pt-5">
         <Row className="justify-content-center">
@@ -80,7 +87,8 @@ class Search extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    searchData: state.searchData
+    searchData: state.searchData,
+    app: state.app
   }
 };
 

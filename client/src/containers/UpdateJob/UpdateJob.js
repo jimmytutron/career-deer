@@ -33,6 +33,11 @@ class UpdateJob extends Component {
       return <Redirect to='/viewjobs' />
     };
 
+    if (!this.props.app.user){
+      window.location.pathname="/unauthorized";
+      return null;
+    };
+
     return (
       <Container>
         <Row>
@@ -59,7 +64,8 @@ class UpdateJob extends Component {
 const mapStateToProps = (state,props) => {
   return { 
     updateJob: state.updateJob,
-    viewJobs: state.viewJobs
+    viewJobs: state.viewJobs,
+    app: state.app
   };
 };
 
