@@ -1,6 +1,5 @@
 const db = require('../models');
 const passport = require('../config/');
-// Banana
 
 module.exports = {
   signUp: async (req, res, next) => {
@@ -22,6 +21,9 @@ module.exports = {
 
   login: async (req, res) => {
     user = await db.User.findOne({email: req.body.email});
+    res.cookie("firstName", user.firstName)
+    res.cookie("lastName", user.lastName)
+    res.cookie("email", user.email)
     res.json({
       email: user.email,
       firstName: user.firstName,
@@ -31,12 +33,17 @@ module.exports = {
 
   logout: (req, res, next) => {
     if (req.user) {
-      req.logout();
+      req.logOut();
       req.session.destroy(function (err) {
         if (err) { 
           return next(err); 
         }
-        return res.send({ authenticated: req.isAuthenticated() });
+        res.clearCookie("connect.sid");
+        res.clearCookie("firstName")
+        res.clearCookie("lastName")
+        res.clearCookie("email")
+        res.redirect('/')
+        // return res.send({ authenticated: req.isAuthenticated() });
       });
     }
   }
