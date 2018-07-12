@@ -23,16 +23,8 @@ class UpdateJob extends Component {
     this.props.executeDeleteJob(this.props.updateJob.job);
   }
 
-  // resetUpdateJob = () => this.props.resetUpdateJob();
-
-  componentWillMount() {
-    if (this.props.viewJobs.edit)
-      this.props.selectUpdateJob(this.props.viewJobs.edit)
-
-  }
-
   render() {
-    if (this.props.updateJob.status || !this.props.viewJobs.edit) {
+    if (this.props.updateJob.status || !this.props.updateJob.job) {
       this.props.resetUpdateJob();
       return <Redirect to='/viewjobs' />
     };
