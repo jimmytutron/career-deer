@@ -69,7 +69,7 @@ const JobTile = (key, job, idx) => {
                   <Button size="small" variant="contained" color="primary">
                   <i className="fas fa-pen-square"></i> &nbsp; Edit
                   </Button>
-                <Button size="small" variant="contained" color="secondary">View on Tracker</Button>
+                <Button size="small" variant="contained" color="secondary">Delete</Button>
             </CardActions>
         </Card>
       </div>
