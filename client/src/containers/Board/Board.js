@@ -109,7 +109,7 @@ class Board extends Component {
       // });
 
       // console.log('On Drag End: result', result);
-      // this.props.moveJob(null,null,result)
+      this.props.moveJob(null,null,result)
     }
 
   };
