@@ -89,7 +89,8 @@ class Board extends Component {
         destination
       );
 
-      // TODO: If there's time, implement the stuff commented below.
+      // TODO: If there's time, implement the non hacky way.
+      // NON HACKY ============================================================================
       // reference the data-mapper.js for how we can optimize updating stuff in the DB
       // Essentially, we won't have to iterate the 
       // result array of objects and check for the specific thing we just dragged.
@@ -97,16 +98,26 @@ class Board extends Component {
       // This is important, since our updateJobById call needs an id AND an object 
       // representative of the job.
       // console.log(draggableId); 
+      // ======================================================================================
 
-      // HACKY VERSION
-      // let job;
+      // HACKY VERSION================================
+      let job;
+      // el is representative of a job object
+      Object.entries({...result})[1][1].forEach(el => {
+        let copy = {...el};
+        if (copy._id === draggableId) {
+          copy.progress_stage = destination.droppableId;
+          job = copy;
+        }
+      });
+      // console.log(job);
+      updateJobById(draggableId,job)
+        // .then(data => console.log(data));
+        // note: non-hacky version won't have to iterate the result to find the thing
+        // we would already have access to if the draggableId was mapped to the job Object containing
+        // the matching ID.
+      // ===============================================
 
-      // Object.entries({...result})[1][1].forEach(el => {
-      //   if (el._id === droppableId) {
-
-      //   }
-
-      // });
 
       // console.log('On Drag End: result', result);
       this.props.moveJob(null,null,result)
