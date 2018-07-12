@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 const FormStyle = {
   background: '#fff',
   borderRadius: '15px',
+  marginTop: '10px',
   padding: '10px',
   boxShadow: '0px 0px 1px #5B5B5B'
 }
