@@ -6,7 +6,7 @@ import './ProgessTile.css';
 
 
 const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? 'lightblue' : 'white',
+  background: isDraggingOver ? 'lightblue' : '#E7EAF2',
   width: '300px',
   boxShadow: '0px 0px 1px #5B5B5B',
   padding: '10px',

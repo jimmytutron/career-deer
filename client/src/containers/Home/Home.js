@@ -20,6 +20,8 @@ import Pulse from 'react-reveal/Pulse';
 
 
 
+
+
 class Home extends Component {
 
     cookies = new Cookies();
