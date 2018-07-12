@@ -34,6 +34,12 @@ class ViewJobs extends Component {
     if (this.props.viewJobs.edit) {
       return <Redirect to='/updateJob' />
     };
+
+    if (!this.props.app.user){
+      window.location.pathname="/unauthorized";
+      return null;
+    };
+
     return (
       <React.Fragment>
       <Container className="py-5 pb-4">
@@ -90,7 +96,8 @@ class ViewJobs extends Component {
 const mapStateToProps = (state, props) => {
   return {
     viewJobs: state.viewJobs,
-    updateJob: state.updateJob
+    updateJob: state.updateJob,
+    app: state.app
   }
 };
 
