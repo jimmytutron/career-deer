@@ -10,9 +10,9 @@ const nodemailer = require('nodemailer');
 
 // const test = async(req) => {
 
-module.exports = async (req, res) => {
+module.exports = async (emailData) => {
 
-  const { emailTo, emailSubject, emailText, emailHtml } = req.query;
+  const { emailTo, emailSubject, emailText, emailHtml, firstName, lastName } = emailData;
 
   try {
 

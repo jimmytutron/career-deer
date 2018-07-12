@@ -35,13 +35,15 @@ export default {
       labels: [
         'Saved', 'Applied', 'Phone Interview', 'On-site Interview', 'Offer'
       ],
-      data: [50, 30, 20, 10, 5]
+      data: [50, 30, 20, 10, 5],
+      percentage: [44, 26, 17, 9, 4]
     },
     user: {
       labels: [
         'Saved', 'Applied', 'Phone Interview', 'On-site Interview', 'Offer'
       ],
       data: [50, 30, 20, 10, 5],
+      percentage: [44, 26, 17, 9, 4],
       percentile: {
         saved: 50,
         savedArr: [1, 1],
