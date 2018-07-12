@@ -167,7 +167,7 @@ class Home extends Component {
                 <Pulse>
                 <img width="250px" src="/imgs/logo-symbol.svg" alt="logo"/>
                 </Pulse>
-                <h1 className="display-6 text-center montserrat">kickstart your career hunt</h1>
+                <h1 className="display-6 text-center montserrat font-weight-bold">kickstart your career hunt</h1>
                  <p className=" mt-1">
                 Your dream job is just a couple hooves away.
                 </p>
@@ -175,7 +175,7 @@ class Home extends Component {
                 variant="extendedFab" 
                 color="secondary"
                 component={Link} to="/signup">
-                <span className="big-btn">Get Started!</span>
+                <span className="big-btn font-weight-bold">Get Started!</span>
                 </Button>
                 </Col>
             </Row>          

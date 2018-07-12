@@ -27,10 +27,10 @@ const renderHomeNav = () => (
         </Scrollchor>
       </li>
       <li className="nav-item">
-        <Scrollchor to="#sign-up"
+        <Link to="/signup"
           className="nav-link">
           Join Now
-        </Scrollchor>
+        </Link>
       </li>
       <li className="nav-item">
         <a

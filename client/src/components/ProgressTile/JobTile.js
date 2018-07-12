@@ -7,8 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 const cardStyles = {
-  width: '250px',
-  minHeight: '250px'
+  width: '250px'
 }
 
 const cardHeadingStyle = {
@@ -67,9 +66,8 @@ const JobTile = (key, job, idx) => {
             </CardContent>
             <CardActions>
                   <Button size="small" variant="contained" color="primary">
-                  <i className="fas fa-pen-square"></i> &nbsp; Edit
+                  <i className="fas fa-pen-square"></i> &nbsp; View Job
                   </Button>
-                <Button size="small" variant="contained" color="secondary">Delete</Button>
             </CardActions>
         </Card>
       </div>
