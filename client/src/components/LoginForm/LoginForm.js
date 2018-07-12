@@ -7,7 +7,12 @@ import Button from '@material-ui/core/Button';
 // import { googleSignIn } from '../../utils/API';
 
 
-
+const FormStyle = {
+  background: '#fff',
+  borderRadius: '15px',
+  padding: '15px',
+  boxShadow: '0px 0px 1px #5B5B5B'
+}
 
 const renderTextField = ({
   input,
@@ -26,7 +31,7 @@ const renderTextField = ({
 
 let LoginForm = ({ handleSubmit, pristine, submitting, errorMessage, auth }) => {
   return (
-    <form className="text-center" onSubmit={handleSubmit}>
+    <form style={FormStyle} className="text-center" onSubmit={handleSubmit}>
       <div>
         <Field className="text-input" name="email" component={renderTextField} type="email" label="Email" />
       </div>

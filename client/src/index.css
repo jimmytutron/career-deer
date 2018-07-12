@@ -5,6 +5,7 @@ html {
 
 body {
     font-family: 'Roboto', sans-serif;
+    background: url(/imgs/playstation-pattern.png) fixed;
 }
 
 *:focus {
