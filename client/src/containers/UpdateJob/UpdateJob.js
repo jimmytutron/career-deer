@@ -26,7 +26,7 @@ class UpdateJob extends Component {
   render() {
     if (this.props.updateJob.status || !this.props.updateJob.job) {
       this.props.resetUpdateJob();
-      return <Redirect to='/viewjobs' />
+      return <Redirect to='/board' />
     };
 
     if (!this.cookies.get("email")){

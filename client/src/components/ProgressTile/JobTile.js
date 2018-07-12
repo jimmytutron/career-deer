@@ -6,6 +6,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import { Link } from "react-router-dom";
+
 const cardStyles = {
   width: '250px',
   minHeight: '250px'
@@ -24,7 +26,7 @@ const cardHeadingStyle = {
 //   ...draggableStyle
 // });
 
-const JobTile = (key, job, idx) => {
+const JobTile = (key, job, idx, selectUpdateJob) => {
   // const {
   //   _id,
   //   location,
@@ -66,9 +68,11 @@ const JobTile = (key, job, idx) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                  <Button size="small" variant="contained" color="primary">
+                <Link to="/updatejob">
+                  <Button size="small" variant="contained" color="primary" onClick={() => selectUpdateJob(job)}>
                   <i className="fas fa-pen-square"></i> &nbsp; Edit
                   </Button>
+                </Link>
                 <Button size="small" variant="contained" color="secondary">Delete</Button>
             </CardActions>
         </Card>

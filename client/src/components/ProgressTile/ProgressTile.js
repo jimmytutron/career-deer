@@ -14,7 +14,7 @@ const getListStyle = isDraggingOver => ({
   overflow: 'scroll'
 });
 
-const ProgressTile = (key, jobs) => {
+const ProgressTile = (key, jobs, selectUpdateJob) => {
   // console.log(key,'PDROPPABrogress Tile Keys');
   // console.log(jobs, 'Progress tile jobs');
   return (
@@ -28,7 +28,7 @@ const ProgressTile = (key, jobs) => {
           {
             Object.entries({ ...jobs }).map(([key, val], idx) => {
               return (
-                JobTile(key, val, idx)
+                JobTile(key, val, idx, selectUpdateJob)
               )
             })
           }
