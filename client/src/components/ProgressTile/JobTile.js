@@ -32,7 +32,7 @@ const JobTile = (key, job, idx) => {
   // } = job;
 
   return (
-    <Draggable key={key} draggableId={key} index={idx}>
+    <Draggable key={key} draggableId={job._id} index={idx}>
       {(provided, snapshot) => (
         <div
           ref={provided.innerRef}

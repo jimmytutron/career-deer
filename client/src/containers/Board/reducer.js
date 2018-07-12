@@ -12,7 +12,6 @@ export function grabJobsReducer(state = initialState, { type, payload }) {
     case JOBS_FAIL:
       return {
         ...state,
-
       }
     case MOVE_JOB:
       return {

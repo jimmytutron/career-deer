@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
+<<<<<<< Updated upstream
 // import ProgressTile from './ProgressTile';
+=======
+import { Row, Col } from '../../components/Grid'; 
+import { updateJobById } from '../../utils/API';
+>>>>>>> Stashed changes
 import ProgressTile from '../../components/ProgressTile/ProgressTile';
 
 // Redux Stuff
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
+
 import {
   grabJobs,
   moveJob
@@ -38,9 +43,7 @@ class Board extends Component {
   componentDidMount() {
     console.log('Grabbing Jobs..');
     this.props.grabJobs();
-    // this.props.boards;
   };
-
 
   getList = id => {
     return this.props.boards[id];
@@ -56,7 +59,7 @@ class Board extends Component {
    *             destination: { droppableId: <string>, index: <number> }
    *           } 
    */
-  onDragEnd = ({ source, destination }) => {
+  onDragEnd = ({ source, destination, draggableId }) => {
     // dropped outside the lists
     if (!destination) {
       return;
@@ -71,7 +74,10 @@ class Board extends Component {
         source.index,
         destination.index
       );
+      console.log('On Drag End: `items', items);
+      // updateJobById()
       this.props.moveJob(items, source.droppableId);
+      return;
     }
     // Move across status columns
     if (
@@ -84,15 +90,49 @@ class Board extends Component {
         source,
         destination
       );
-      this.props.moveJob(null,null,result)
+
+      // TODO: If there's time, implement the stuff commented below.
+      // reference the data-mapper.js for how we can optimize updating stuff in the DB
+      // Essentially, we won't have to iterate the 
+      // result array of objects and check for the specific thing we just dragged.
+      // we will have reference to it by draggableId mapping to the job object
+      // This is important, since our updateJobById call needs an id AND an object 
+      // representative of the job.
+      // console.log(draggableId); 
+
+      // HACKY VERSION
+      // let job;
+
+      // Object.entries({...result})[1][1].forEach(el => {
+      //   if (el._id === droppableId) {
+
+      //   }
+
+      // });
+      
+      // console.log('On Drag End: result', result);
+      // this.props.moveJob(null,null,result)
     }
 
   };
 
   render() {
     return (
+<<<<<<< Updated upstream
       <DragDropContext onDragStart={this.onDragStart} onDragEnd={this.onDragEnd} >
         <React.Fragment>
+=======
+      <DragDropContext onDragEnd={this.onDragEnd} >
+      <Row className="justify-content-center text-center pt-5">
+      <Col size="12 md-12 lg-6">
+      <h1 className="montserrat font-weight-bold">Job Tracker Board</h1>
+      <Jump>
+      <img width="60%" src="/imgs/icons/houses.svg" alt="houses" />
+      </Jump>
+      </Col>
+      </Row>
+        <Row className="justify-content-center">
+>>>>>>> Stashed changes
           {
             Object.entries({ ...this.props.boards }).map(([key, val]) => (
               // returns a library's premade component --don't want each of the

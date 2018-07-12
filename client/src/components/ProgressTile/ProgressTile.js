@@ -10,7 +10,10 @@ const getListStyle = isDraggingOver => ({
   width: 250
 });
 
-const ProgressTile = (key, jobs) => (
+const ProgressTile = (key, jobs) => {
+  // console.log(key,'PDROPPABrogress Tile Keys');
+  // console.log(jobs, 'Progress tile jobs');
+  return (
   <Droppable droppableId={key} key={key}>
     {(provided, snapshot) => (
       <div>
@@ -30,6 +33,7 @@ const ProgressTile = (key, jobs) => (
       </div>
     )}
   </Droppable>
-)
+  )
+}
 
 export default ProgressTile;

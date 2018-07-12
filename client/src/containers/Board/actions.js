@@ -22,7 +22,7 @@ export function grabJobs() {
  * @param  {Object} crossMoved (optional) is an object of the following format
  *                  { source: [{job},{job},..], destination: [{job},{job}..]  }
  */
-export function moveJob(jobs,key,crossMoved) {
+export function moveJob(jobs,key,crossMoved = undefined) {
   return {
     type: MOVE_JOB,
     payload: crossMoved || {
