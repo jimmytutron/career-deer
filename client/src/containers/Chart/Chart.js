@@ -12,7 +12,7 @@ import Tada from 'react-reveal/Tada';
 
 class Chart extends Component {
   
-  cookies = new Cookies;
+  cookies = new Cookies();
 
   componentDidMount() {
     this.props.getChartAllData();

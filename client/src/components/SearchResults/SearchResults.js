@@ -12,12 +12,16 @@ const SearchResults = props => {
       <div className="card-header">
         <a href={props.results.url} target="_blank" className="title border-0"><Button>
           <span className="font-weight-bold my-2">
-           {props.results.title}
+           {link}
           </span>
         </Button>
         </a>
-        <Button variant="contained" type="button" className="track-btn float-right" onClick={props.save}>Track
-        </Button>
+        {
+          props.alreadySaved
+          ? <Button variant="contained" type="button" onClick={props.save} className="float-right" disabled>Already Tracked</Button>
+          : <Button variant="contained" type="button" onClick={props.save} className="float-right track-btn" >Track</Button>
+        }
+        
       </div>
       <Row className="col-12 my-3">
         <Col size="12 md-6 lg-6"><i className="fas fa-file-contract"></i> &nbsp; {props.results.company_name}</Col>

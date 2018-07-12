@@ -10,7 +10,7 @@ import { addjob, resetaddjob } from './actions';
 import RubberBand from 'react-reveal/RubberBand';
 
 class AddJob extends Component {
-  cookies = new Cookies;
+  cookies = new Cookies() ;
   
   addjob = values => {
     // This calls the addjob action creator, passing the form values to it
