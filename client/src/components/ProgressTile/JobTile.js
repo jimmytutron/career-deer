@@ -16,20 +16,20 @@ const getItemStyle = (isDragging, draggableStyle) => ({
   ...draggableStyle
 });
 
-const JobTile = (key, val, idx) => {
-  const {
-    _id,
-    location,
-    url,
-    logo_url,
-    description,
-    progress_stage,
-    note,
-    title,
-    company_name,
-    post_date,
-    last_update
-  } = val;
+const JobTile = (key, job, idx) => {
+  // const {
+  //   _id,
+  //   location,
+  //   url,
+  //   logo_url,
+  //   description,
+  //   progress_stage,
+  //   note,
+  //   title,
+  //   company_name,
+  //   post_date,
+  //   last_update
+  // } = job;
 
   return (
     <Draggable key={key} draggableId={key} index={idx}>
@@ -42,12 +42,12 @@ const JobTile = (key, val, idx) => {
             snapshot.isDragging,
             provided.draggableProps.style
           )}>
-          <p key={val._key} progress={val.progress_stage}>
-            Company Name: {val.company_name}
-            Job Title: {val.title}
-            Job Website: <a href={val.url}>{val.url}</a>
-            Location: {val.location}
-            Posted on: {val.post_date}
+          <p key={job._key} progress={job.progress_stage}>
+            Company Name: {job.company_name}
+            Job Title: {job.title}
+            Job Website: <a href={job.url}>{job.url}</a>
+            Location: {job.location}
+            Posted on: {job.post_date}
           </p>
         </div>
       )}

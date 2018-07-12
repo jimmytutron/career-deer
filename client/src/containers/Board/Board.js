@@ -19,9 +19,6 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-/**
- * Moves an item from one list to another list.
- */
 const move = (source, destination, droppableSource, droppableDestination) => {
   const sourceClone = [...source];
   const destClone = [...destination];
@@ -49,10 +46,6 @@ class Board extends Component {
     return this.props.boards[id];
   }
 
-  onDragStart = ({ source }) => {
-    // console.log(source,'start:source');
-  }
-
   /**
    * Handles logic for draggables.
    * @param  {Object} result is an object with a bunch of properties, we only care about source & destination
@@ -64,8 +57,6 @@ class Board extends Component {
    *           } 
    */
   onDragEnd = ({ source, destination }) => {
-    // console.log(source, 'end:source');
-    // console.log(destination, 'end:destination');
     // dropped outside the lists
     if (!destination) {
       return;
@@ -80,25 +71,25 @@ class Board extends Component {
         source.index,
         destination.index
       );
-      console.log(items,'I AM THE NEW STATE TO BE DISPATCH');
-      this.props.moveJob(items,source.droppableId);
+      this.props.moveJob(items, source.droppableId);
     }
-    // If 
+    // Move across status columns
     if (
       source.index !== destination.index ||
       source.droppableId !== destination.droppableId
     ) {
-      const items = reorder(
+      const result = move(
         this.getList(source.droppableId),
-        source.index,
-        destination.index
+        this.getList(destination.droppableId),
+        source,
+        destination
       );
+      this.props.moveJob(null,null,result)
     }
 
   };
 
   render() {
-    // console.log(Object.entries({...this.props.boards}))
     return (
       <DragDropContext onDragStart={this.onDragStart} onDragEnd={this.onDragEnd} >
         <React.Fragment>
@@ -112,9 +103,6 @@ class Board extends Component {
             ))
           }
         </React.Fragment>
-        {/* <ProgressTile
-            boards={this.props.boards}
-          /> */}
       </DragDropContext>
     );
   }
