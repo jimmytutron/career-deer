@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
-<<<<<<< Updated upstream
-// import ProgressTile from './ProgressTile';
-<<<<<<< HEAD
-=======
-import { Row, Col } from '../../components/Grid';
 import { updateJobById } from '../../utils/API';
->>>>>>> Stashed changes
-=======
 import { Row, Col } from '../../components/Grid';
->>>>>>> 05560016ae0a54b2f2cc65fd4adf2adba1678a18
 import ProgressTile from '../../components/ProgressTile/ProgressTile';
 
 import Jump from 'react-reveal/Jump';
