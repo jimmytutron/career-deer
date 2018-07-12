@@ -1,5 +1,6 @@
 const db = require('../models');
 const passport = require('../config/');
+const nodemailer = require('../services/nodemailer');
 
 module.exports = {
   signUp: async (req, res, next) => {
@@ -13,7 +14,10 @@ module.exports = {
       await user.save();
 
       const emailData = getSignUpText(req.body.email, req.body.firstName, req.body.lastName);
-      
+
+      nodemailer(emailData);
+
+
       // log in after signing up
       passport.authenticate('local')(req, res, next)
     } catch (err) {
@@ -22,10 +26,10 @@ module.exports = {
   },
 
   login: async (req, res) => {
-    user = await db.User.findOne({ email: req.body.email });
-    res.cookie("firstName", user.firstName)
-    res.cookie("lastName", user.lastName)
-    res.cookie("email", user.email)
+    user = await db.User.findOne({email: req.body.email});
+    res.cookie("firstName", user.firstName);
+    res.cookie("lastName", user.lastName);
+    res.cookie("email", user.email);
     res.json({
       email: user.email,
       firstName: user.firstName,
@@ -41,10 +45,10 @@ module.exports = {
           return next(err);
         }
         res.clearCookie("connect.sid");
-        res.clearCookie("firstName")
-        res.clearCookie("lastName")
-        res.clearCookie("email")
-        res.redirect('/')
+        res.clearCookie("firstName");
+        res.clearCookie("lastName");
+        res.clearCookie("email");
+        res.redirect('/');
         // return res.send({ authenticated: req.isAuthenticated() });
       });
     }
