@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+import { Cookies } from 'react-cookie';
+
 import { Nav } from "../../components/Nav";
 import Home from "../Home/Home";
 import LoginPage from "../Login/LoginPage";
@@ -23,6 +26,7 @@ import { connect } from 'react-redux';
 import { appLoginUpdate, appLogoutUpdate } from './actions';
 
 class App extends Component {
+  cookies = new Cookies()
 
   loginAction = user => {
     this.props.appLoginUpdate(user);
@@ -33,8 +37,17 @@ class App extends Component {
   }
 
   componentWillMount() {
-    user = {}
-    console.log(document.cookie)
+    const firstName = this.cookies.get("firstName");
+    const lastName = this.cookies.get("lastName");
+    const email = this.cookies.get("email");
+    if (firstName && lastName && email) {
+      const user = {
+        firstName,
+        lastName,
+        email
+      }
+      this.loginAction(user)
+    }
   }
 
   render() {
