@@ -58,14 +58,4 @@ const mapStateToProps = state => ({
   loggedIn: state.loggedIn,
 });
 
-
-// We don't have to use BindActionCreators because this is a smart component
-const mapActionsToProps = (dispatch, props) => ({
-
-})
-// };
-// Connect can take 3 arguments
-// 1) mapStateToProps
-// 2) mapActionsToProps 
-// 3) 
-export default connect(mapStateToProps,mapActionsToProps())(App);
+export default connect(mapStateToProps)(App);

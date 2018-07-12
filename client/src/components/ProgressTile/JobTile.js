@@ -42,8 +42,8 @@ const JobTile = (key, val, idx) => {
             snapshot.isDragging,
             provided.draggableProps.style
           )}>
-          {val.company_name}
-          chicken
+          {/* <li>{val.company_name}</li> */}
+          <li>{val.location}</li>
         </div>
       )}
     </Draggable>

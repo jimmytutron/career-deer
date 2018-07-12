@@ -25,7 +25,7 @@ const allReducers = combineReducers({
   boards: grabJobsReducer,
   updateJob: updateJobReducer,
   burgerMenu: burgerMenuReducer,
-  searchData: searchReducer
+  searchData: searchReducer,
 });
 
 export default function configureStore(initialState = {}) {

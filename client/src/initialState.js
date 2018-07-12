@@ -43,7 +43,6 @@ export default {
     }
   },
   boards: {
-      // Think of progress_stage as an id here.
       saved: {
         jobs: []
       },
@@ -52,11 +51,11 @@ export default {
         jobs: []
       },
 
-      on_phone: {
+      phone: {
         jobs: []
       },
 
-      on_site: {
+      ['on-site']: {
         jobs: []
       },
 
