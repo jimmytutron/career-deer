@@ -29,16 +29,15 @@ module.exports = {
     });
   },
 
-  logout: (req, res) => {
-    try {
-      if (req.user) {
-        req.session.destroy(err => {
-          res.clearCookie('connect.sid')
-          req.logout();
-        })
-      }
-    } catch (err) {
-      res.status(422).json(err);
+  logout: (req, res, next) => {
+    if (req.user) {
+      req.logout();
+      req.session.destroy(function (err) {
+        if (err) { 
+          return next(err); 
+        }
+        return res.send({ authenticated: req.isAuthenticated() });
+      });
     }
   }
 };

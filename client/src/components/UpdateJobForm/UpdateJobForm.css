@@ -2,3 +2,8 @@ ul {
     list-style-type: none;
     padding: 0;
 }
+
+.add-btn {
+	color: #fff !important;
+	background-color: #3AAEDF !important;
+}

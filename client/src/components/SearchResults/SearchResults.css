@@ -6,3 +6,8 @@ a.title {
 a:hover {
 	color: #CE6565;
 }
+
+.track-btn {
+	color: #fff !important;
+	background-color: #168CF1 !important;
+}

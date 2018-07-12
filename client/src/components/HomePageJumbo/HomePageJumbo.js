@@ -5,10 +5,12 @@ import Fade from 'react-reveal/Fade';
 import Zoom from 'react-reveal/Zoom';
 import Rotate from 'react-reveal/Rotate';
 import Scrollchor from 'react-scrollchor';
+import Button from '@material-ui/core/Button';
+
 
 const HomePageJumbo = () => (
   <Fade duration={2000}>
-  <Row className="justify-content-center home-jumbotron p-0">
+  <Row id="top" className="justify-content-center home-jumbotron p-0">
 
   <Col size="12 md-6" className="pl-5 mt-5">
     <Zoom cascade>
@@ -18,15 +20,12 @@ const HomePageJumbo = () => (
     
     <p className="heading-lead roboto">We’ll turn you from the hunted into the hunter and help you track down the job of your dreams. The job hunt is a challenging and scary process. There’s a lot of names to keep track of and even more dates. We provide you with a single location to organize and schedule your progress. There's even job search functionality so you can look at job listings without leaving our site and get reminders when your interviews are coming up.
     </p>
-
-    <p className="lead">
-      <Scrollchor 
-      className="btn btn-danger btn-lg" 
-      to="#foreal" 
-      role="button">
-      Learn More
-      </Scrollchor>
-    </p>
+    <Scrollchor 
+    to="#foreal">
+    <Button variant="extendedFab" color="secondary">
+      <span className="montserrat">Learn More</span>
+    </Button>
+    </Scrollchor>
   </Col>
   <Col size="12 md-4" >
   <Rotate top right duration={1700}>
@@ -44,6 +43,7 @@ const HomePageJumbo = () => (
   <img className="main-deer" src="/imgs/logo-white.svg" alt="career deer logo white"/>
   </Col>
   </Row>
+  <span id="about"></span>
   </Fade>
 );
 

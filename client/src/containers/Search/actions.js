@@ -4,10 +4,12 @@ export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
 export const SEARCH_FAILED = 'SEARCH_FAILED';
 export const SEARCH_SAVED_UPDATE = 'SEARCH_SAVED_UPDATE';
 export const SEARCH_SAVED_FAILED = 'SEARCH_SAVED_FAILED';
+export const SEARCH_LOADING = 'SEARCH_LOADING';
 
 export function getSearchJobs(searchInfo){
   return async (dispatch, getState) => {
     try {
+      dispatch(startSearch());
       const apiResponse = await getSearchResults(searchInfo.keywords, searchInfo.location);
       dispatch(successSearch(apiResponse.data))
 
@@ -41,10 +43,22 @@ export function getAllSavedJobs(){
   }
 }
 
+export function startSearch(){
+  return {
+    type: SEARCH_LOADING,
+    payload: {
+      loading: true
+    }
+  }
+}
+
 export function successSearch(data){
   return {
     type: SEARCH_SUCCESS,
-    payload: {data: data}
+    payload: {
+      data: data,
+      loading: false
+    }
   }
 }
 

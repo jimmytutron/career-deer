@@ -18,7 +18,7 @@ class AddJob extends Component {
   render() {
     if (this.props.addJob.status) {
       this.props.resetaddjob();
-      return <Redirect to='/' />;
+      return <Redirect to='/viewjobs' />;
     };
 
     return (

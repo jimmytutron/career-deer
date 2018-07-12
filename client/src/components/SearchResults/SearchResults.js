@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Row } from '../Grid';
+import Button from '@material-ui/core/Button';
 import './SearchResults.css';
 
 const SearchResults = props => {
@@ -7,13 +8,14 @@ const SearchResults = props => {
   return (
     <div className="card border-0 mb-3">
       <div className="card-header">
-        <a href={props.results.url} className="title border-0">
+        <Button><a href={props.results.url} target="_blank" className="title border-0">
           <span className="font-weight-bold my-2">
            {props.results.title}
           </span>
         </a>
-        <button type="button" className="btn btn-success float-right" onClick={props.save}>Track
-        </button>
+        </Button>
+        <Button variant="contained" type="button" className="track-btn float-right" onClick={props.save}>Track
+        </Button>
       </div>
       <Row className="col-12 my-3">
         <Col size="12 md-6 lg-6"><i className="fas fa-file-contract"></i> &nbsp; {props.results.company_name}</Col>

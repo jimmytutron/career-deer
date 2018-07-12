@@ -1,12 +1,13 @@
 // this is in a seperate file both for accessibility and to make the index.js much cleaner
 export default {
+  app: {
+    user: null
+  },
   loggedIn: {
-    status: false,
-    error: null
+    error: null,
   },
   signedUp: {
-    status: false,
-    error: null
+    error: null,
   },
   addJob: {
     status: false,
@@ -22,6 +23,7 @@ export default {
     edit: null
   },
   searchData: {
+    loading: false,
     data: [],
     saved: []
   },
@@ -39,29 +41,42 @@ export default {
       labels: [
         'Saved', 'Applied', 'Phone Interview', 'On-site Interview', 'Offer'
       ],
-      data: [50, 30, 20, 10, 5]
+      data: [50, 30, 20, 10, 5],
+      percentile: {
+        saved: 50,
+        savedArr: [1, 1],
+        applied: 50,
+        appliedArr: [1, 1],
+        phone: 50,
+        phoneArr: [1, 1],
+        onSite: 50,
+        onSiteArr: [1, 1],
+        offer: 50,
+        offerArr: [1, 1]
+      }
     }
   },
   boards: {
-      saved: {
-        jobs: []
-      },
+    // Think of progress_stage as an id here.
+    saved: {
+      jobs: []
+    },
 
-      applied: {
-        jobs: []
-      },
+    applied: {
+      jobs: []
+    },
 
-      phone: {
-        jobs: []
-      },
+    on_phone: {
+      jobs: []
+    },
 
-      ['on-site']: {
-        jobs: []
-      },
+    on_site: {
+      jobs: []
+    },
 
-      offer: {
-        jobs: []
-      }
+    offer: {
+      jobs: []
+    }
   },
   burgerMenu: {
     isOpen: false
