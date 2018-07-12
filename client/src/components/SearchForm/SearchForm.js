@@ -24,6 +24,13 @@ const renderTextField = (
     />
   );
 
+const FormStyle = {
+  background: '#fff',
+  borderRadius: '15px',
+  paddingLeft: '50px',
+  paddingRight: '50px',
+  boxShadow: '0px 0px 1px #5B5B5B'
+}
 
 
 let SearchForm = ({ handleSubmit, pristine, submitting, errorMessage }) => {
@@ -31,12 +38,12 @@ let SearchForm = ({ handleSubmit, pristine, submitting, errorMessage }) => {
     <Col size="12 col-md-12 lg-5">
         <h2 className="text-center mt-5 pt-4 montserrat font-weight-bold">Time to start the hunt!</h2>
         <h6 className="text-center">Let's hunt for some jobs! Add jobs to your progress tracker</h6>
-      <form onSubmit={handleSubmit}>
+      <form style={FormStyle} onSubmit={handleSubmit}>
           <Row>
-            <Field className="px-2 text-input" name="keywords" component={renderTextField} type="text" label="What are you hunting for?"></Field>
+            <Field className="text-input" name="keywords" component={renderTextField} type="text" label="What are you hunting for?"></Field>
           </Row>
           <Row>
-            <Field className="px-2 text-input" name="location" component={renderTextField} type="text" label="Where shall we look?"></Field>
+            <Field className="text-input" name="location" component={renderTextField} type="text" label="Where shall we look?"></Field>
           </Row>
         <h6>{errorMessage}</h6>
         <Row className="justify-content-end">

@@ -15,10 +15,17 @@ export function grabJobs() {
 	}
 } 
 
-export function moveJob(jobs,key) {
+/**
+ * @param  {Array} jobs is an array of job objects
+ * @param  {string} key is a string that references a coresponding tile position
+ *                  name on our intial state object.
+ * @param  {Object} crossMoved (optional) is an object of the following format
+ *                  { source: [{job},{job},..], destination: [{job},{job}..]  }
+ */
+export function moveJob(jobs,key,crossMoved = undefined) {
   return {
     type: MOVE_JOB,
-    payload: {
+    payload: crossMoved || {
       [key]: jobs
     }
   }

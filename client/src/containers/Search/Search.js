@@ -4,6 +4,7 @@ import SearchResults from '../../components/SearchResults';
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
+import { Cookies } from 'react-cookie';
 import { getSearchJobs, postSaveJob, getAllSavedJobs } from './actions';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
@@ -16,8 +17,9 @@ const huntStyle = {
   marginTop: '10px'
 }
 
-
 class Search extends Component {
+
+  cookies = new Cookies();
 
   searchJobs = values => {
     // Calling the search job action.
@@ -38,7 +40,17 @@ class Search extends Component {
 
     if (unique === true) {
       this.props.postSaveJob(this.props.searchData.data[index])
+      this.props.getAllSavedJobs();
     }
+  }
+
+  alreadySaved = (index) => {
+    const savedData = this.props.searchData.saved
+    const saveJob_url = this.props.searchData.data[index].url
+    const alreadySaved = savedData.filter(elem => {
+      return (elem.url === saveJob_url)
+    })
+    return (alreadySaved.length != 0);
   }
 
   componentDidMount() {
@@ -47,7 +59,7 @@ class Search extends Component {
 
   render() {
 
-    if (!this.props.app.user){
+    if (!this.cookies.get("email")){
       window.location.pathname="/unauthorized";
       return null;
     };
@@ -73,7 +85,7 @@ class Search extends Component {
                   key={i}
                   results={result}
                   save={() => this.saveJob(i)}
-                  
+                  alreadySaved={this.alreadySaved(i)}
                 />
               )
             })}

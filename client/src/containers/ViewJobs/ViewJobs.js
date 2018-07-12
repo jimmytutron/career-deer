@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Container, Col, Row } from '../../components/Grid';
 
 import Card from '@material-ui/core/Card';
@@ -12,7 +12,9 @@ import Zoom from 'react-reveal/Zoom';
 import Jump from 'react-reveal/Jump';
 
 import { connect } from 'react-redux';
-import { editJob, resetViewJobs, getAllSavedJobs, updateViewJobs } from './actions';
+import { Cookies } from 'react-cookie';
+import { resetViewJobs, getAllSavedJobs, updateViewJobs } from './actions';
+import { selectUpdateJob } from '../UpdateJob/actions';
 
 const cardStyles = {
   width: '250px',
@@ -25,17 +27,15 @@ const cardHeadingStyle = {
 
 
 class ViewJobs extends Component {
+  cookies = new Cookies();
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getAllSavedJobs();
   }
 
   render() {
-    if (this.props.viewJobs.edit) {
-      return <Redirect to='/updateJob' />
-    };
 
-    if (!this.props.app.user){
+    if (!this.cookies.get("email")){
       window.location.pathname="/unauthorized";
       return null;
     };
@@ -77,9 +77,11 @@ class ViewJobs extends Component {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small" variant="contained" color="primary" onClick={() => this.props.editJob(this.props.viewJobs.data[i])} data-id={job._id}>
-                <i className="fas fa-pen-square"></i> &nbsp; Edit
-                </Button>
+                <Link to="/updatejob">
+                  <Button size="small" variant="contained" color="primary" onClick={() => this.props.selectUpdateJob(this.props.viewJobs.data[i])} data-id={job._id}>
+                  <i className="fas fa-pen-square"></i> &nbsp; Edit
+                  </Button>
+                </Link>
                 <Button size="small" variant="contained" color="secondary">View on Tracker</Button>
             </CardActions>
         </Card>
@@ -105,7 +107,7 @@ const mapActionsToProps = (dispatch, props) => ({
   resetViewJobs,
   updateViewJobs,
   getAllSavedJobs,
-  editJob
+  selectUpdateJob
 })
 
 export default connect(mapStateToProps, mapActionsToProps())(ViewJobs);

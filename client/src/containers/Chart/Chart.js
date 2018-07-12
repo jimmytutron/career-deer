@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2';
+import { Cookies } from 'react-cookie';
+import { Bar, Line, Doughnut } from 'react-chartjs-2';
 import { getChartAllData } from './actions';
 import { Col, Row, Container } from '../../components/Grid';
 // import 'chartjs-plugin-datalabels';
@@ -10,6 +11,8 @@ import Tada from 'react-reveal/Tada';
 
 
 class Chart extends Component {
+  
+  cookies = new Cookies();
 
   componentDidMount() {
     this.props.getChartAllData();
@@ -17,7 +20,7 @@ class Chart extends Component {
 
   render() {
 
-    if (!this.props.app.user){
+    if (!this.cookies.get("email")){
       window.location.pathname="/unauthorized";
       return null;
     };
@@ -35,11 +38,11 @@ class Chart extends Component {
         <div className="chart mx-auto mb-5">
           <Line
             data={{
-              labels: this.props.chartData.all.labels,
+              labels: this.props.chartData.all.labels || [],
               datasets: [{
                 label: 'User',
                 fill: false,
-                data: this.props.chartData.user.percentage,
+                data: this.props.chartData.user.percentage || [],
                 backgroundColor: [
                   'rgba(0,255,0, 0.7)'
                 ]
@@ -88,7 +91,7 @@ class Chart extends Component {
                 labels: ["# Above You", "# Below You"],
                 datasets: [
                   {
-                    data: this.props.chartData.user.percentile.appliedArr,
+                    data: this.props.chartData.user.percentile.appliedArr  || [],
                     backgroundColor: [
                       'rgba(225,225,225, 1)',
                       'rgba(255,0,0, 1)'
@@ -119,7 +122,7 @@ class Chart extends Component {
                 labels: ["# Above You", "# Below You"],
                 datasets: [
                   {
-                    data: this.props.chartData.user.percentile.phoneArr,
+                    data: this.props.chartData.user.percentile.phoneArr  || [],
                     backgroundColor: [
                       'rgba(225,225,225, 1)',
                       'rgba(0,255,0, 1)'
@@ -150,7 +153,7 @@ class Chart extends Component {
                 labels: ["# Above You", "# Below You"],
                 datasets: [
                   {
-                    data: this.props.chartData.user.percentile.onSiteArr,
+                    data: this.props.chartData.user.percentile.onSiteArr  || [],
                     backgroundColor: [
                       'rgba(225,225,225, 1)',
                       'rgba(255,255,0, 1)'
@@ -185,10 +188,10 @@ class Chart extends Component {
           <Col size="12 md-6 lg-5" className="chart">
             <Bar
               data={{
-                labels: this.props.chartData.all.labels,
+                labels: this.props.chartData.all.labels || [],
                 datasets: [{
                   label: 'Database',
-                  data: this.props.chartData.all.data,
+                  data: this.props.chartData.all.data || [],
                   backgroundColor: [
                     'rgba(0,47,178, 0.7)',
                     'rgba(255,0,0, 0.7)',
@@ -207,9 +210,9 @@ class Chart extends Component {
                     },
                     ticks: {
                       beginAtZero: true,
-                      callback: function (value, index, values) {
+                      callback: function (value, index, values, radix) {
                         //converting y-axis number to include commas.
-                        if (parseInt(value) >= 1000) {
+                        if (parseInt(value, radix) >= 1000) {
                           return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                         } else {
                           return value;
@@ -235,11 +238,11 @@ class Chart extends Component {
           <Col size="12 md-6 lg-5" className="chart">
             <Bar
               data={{
-                labels: this.props.chartData.all.labels,
+                labels: this.props.chartData.all.labels || [],
                 datasets: [
                   {
                     // label: 'Users',
-                    data: this.props.chartData.user.data,
+                    data: this.props.chartData.user.data || [],
                     backgroundColor: [
                       'rgba(0,47,178, 0.7)',
                       'rgba(255,0,0, 0.7)',
@@ -258,9 +261,9 @@ class Chart extends Component {
                     },
                     ticks: {
                       beginAtZero: true,
-                      callback: function (value, index, values) {
+                      callback: function (value, index, values, radix) {
                         //converting y-axis number to include commas.
-                        if (parseInt(value) >= 1000) {
+                        if (parseInt(value, radix) >= 1000) {
                           return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                         } else {
                           return value;
@@ -288,11 +291,11 @@ class Chart extends Component {
         <Col size="12 md-10" className="chart mx-auto mb-5">
           <Bar
             data={{
-              labels: this.props.chartData.all.labels,
+              labels: this.props.chartData.all.labels || [],
               datasets: [
                 {
                   label: 'Database',
-                  data: this.props.chartData.all.percentage,
+                  data: this.props.chartData.all.percentage || [],
                   backgroundColor: [
                     'rgba(0,47,178, 0.7)',
                     'rgba(0,47,178, 0.7)',
@@ -303,7 +306,7 @@ class Chart extends Component {
                 },
                 {
                   label: 'User',
-                  data: this.props.chartData.user.percentage,
+                  data: this.props.chartData.user.percentage || [],
                   backgroundColor: [
                     'rgba(0,255,0, 0.7)',
                     'rgba(0,255,0, 0.7)',
