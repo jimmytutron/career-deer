@@ -37,7 +37,7 @@ class Home extends Component {
         <Row className="justify-content-center welcome-msg">
             <Col size="12 md-6">
             <p className="px-5">
-            YOLO vice plaid messenger bag, af palo santo poutine offal fixie you probably haven't heard of them. Etsy scenester kinfolk forage asymmetrical meh paleo. Cred scenester next level neutra raclette. Scenester succulents leggings portland, air plant raw denim swag four dollar toast health goth. Lorem ipsum dolor amet keytar wolf post-ironic swag franzen lyft. Vinyl tattooed tumeric shabby chic, adaptogen cliche meh disrupt snackwave. Cred ailoi scenester next level neutra raclette. Scenester succulents leggings portland, air plant raw denim swag four dollar toast health goth.
+                The job search can be scary. Sometimes you truly do feel like a deer in headlights. Don't get hit with anxiety! We're here to help! Applications can pile up and you can get lost in the woods of job hunting. Don't be the hunted! Be the hunter! Find and track the progress of any and all current job applications. From finding the job to submitting the application and even getting the offer, we're here to make managing that proccess easier. And when you get that offer proudly show off your newly grown antlers! You're no ordinary job seeker anymore. You're a Career Deer.
             </p>
             </Col>
         </Row>
@@ -49,7 +49,7 @@ class Home extends Component {
                     </Rotate>
                     <h2 className="text-center montserrat">Hunt down the job</h2>
                     <p className="px-5  text-center">
-                    YOLO vice plaid messenger bag, af palo santo poutine offal fixie you probably haven't heard of them. Etsy scenester kinfolk forage asymmetrical meh paleo. Cred scenester next level neutra raclette. Scenester succulents leggings portland, air plant raw denim swag four dollar toast health goth.
+                    No need to go anywhere else to hunt down a job! We have job search functionality built in! Easily track and apply to any jobs that you find through our search. Found a job from another site or through a personal connection? We've got you covered on that too! Simply add it to your tracked jobs.
                     </p>
                 </Col>
                 <Col size="12 md-6 lg-4">
@@ -58,7 +58,7 @@ class Home extends Component {
                     </Zoom>
                     <h2 className="text-center montserrat">Track your progress</h2>
                     <p className="px-5  text-center">
-                    Lorem ipsum dolor amet keytar wolf post-ironic swag franzen lyft. Vinyl tattooed tumeric shabby chic, adaptogen cliche meh disrupt snackwave. Cred ailoi scenester next level neutra raclette. Scenester succulents leggings portland, air plant raw denim swag four dollar toast health goth.
+                    Monitor and track every step of the application proccess. Using our job tracker board you can see where you are in the application for each job you've applied for. Once you've moved on to the next step of the application proccess move those jobs to the next panels and easily track your applications.
                     </p>
                 </Col>
                 <Col size="12 md-6 lg-4">
@@ -67,7 +67,7 @@ class Home extends Component {
                     </LightSpeed>
                     <h2 className="text-center montserrat">Hit your target</h2>
                     <p className="px-5  text-center">
-                    You probably haven't heard of them scenester cloud bread, vape disrupt trust fund food truck pok pok. Cred scenester next level neutra raclette. Scenester succulents leggings portland, air plant raw denim swag four dollar toast health goth.
+                    You're the hunter now, hunt down that job and hit your mark! No matter if your application experience went well or not we'll keep track of that for you. That data can help you prepare for future applications. You can also view your progression and how well you compare to other users on the site. 
                     </p>
                 </Col>
             </Row>
@@ -87,7 +87,7 @@ class Home extends Component {
                 </Col>
                 <Col size="12 md-12 lg-4">
                 <p className="px-3">
-                Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. Activated charcoal chambray jianbing, gastropub man braid blog skateboard aesthetic actually hell of vice prism. Cred iPhone ugh, ennui forage poutine drinking vinegar biodiesel occupy viral raw denim glossier. Paleo pitchfork irony banh mi, roof party whatever selvage ramps crucifix dreamcatcher hella kogi.
+                Become a Career Deer and get organized with your job search. We'll help you every step of the way! Tracking your progress not only allows you to organize your job applications it can help you see which jobs are worth pursuing and how far along you are into the proccess. Ease your mind and ease your life knowing you're on the right track. Compare your data to others and see how <span className="strike"> much better you are </span> you rank up against the rest. Track your application activity too! The more you apply the more activity and the better your chances. Career Deer is easy to use and we'll think you'll <span className="font-italic">deerly</span> love it!
                 </p>
                 </Col>
             </Row>

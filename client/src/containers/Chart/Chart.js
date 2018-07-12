@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Cookies } from 'react-cookie';
-import { Bar, Line, Pie, Doughnut } from 'react-chartjs-2';
+import { Bar, Line, Doughnut } from 'react-chartjs-2';
 import { getChartAllData } from './actions';
 import { Col, Row, Container } from '../../components/Grid';
 // import 'chartjs-plugin-datalabels';
@@ -210,9 +210,9 @@ class Chart extends Component {
                     },
                     ticks: {
                       beginAtZero: true,
-                      callback: function (value, index, values) {
+                      callback: function (value, index, values, radix) {
                         //converting y-axis number to include commas.
-                        if (parseInt(value) >= 1000) {
+                        if (parseInt(value, radix) >= 1000) {
                           return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                         } else {
                           return value;
@@ -261,9 +261,9 @@ class Chart extends Component {
                     },
                     ticks: {
                       beginAtZero: true,
-                      callback: function (value, index, values) {
+                      callback: function (value, index, values, radix) {
                         //converting y-axis number to include commas.
-                        if (parseInt(value) >= 1000) {
+                        if (parseInt(value, radix) >= 1000) {
                           return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
                         } else {
                           return value;

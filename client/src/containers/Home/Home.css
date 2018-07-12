@@ -47,6 +47,10 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.strike {
+    text-decoration: line-through;
+}
+
 .section-2 {
     background: linear-gradient(#6673A3,#368FCC);
     background-color: #368FCC;
