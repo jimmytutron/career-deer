@@ -17,7 +17,7 @@ const getListStyle = isDraggingOver => ({
 const ProgressTile = (key, jobs) => (
   <Droppable droppableId={key} key={key}>
     {(provided, snapshot) => (
-      <Col size="12 md-4 lg-2" className="mb-5">
+      <div className="mb-5 mx-2">
         <h1 className="text-center text-uppercase montserrat">{key}</h1>
         <div
           ref={provided.innerRef}
@@ -31,7 +31,7 @@ const ProgressTile = (key, jobs) => (
           }
            {provided.placeholder}
         </div>
-      </Col>
+      </div>
     )}
   </Droppable>
 )

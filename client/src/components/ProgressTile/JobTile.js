@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 const cardStyles = {
   width: '250px',
-  minHeight: '250px',
+  minHeight: '250px'
 }
 
 const cardHeadingStyle = {
