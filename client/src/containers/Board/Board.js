@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 // import ProgressTile from './ProgressTile';
+import { Row, Col } from '../../components/Grid'; 
 import ProgressTile from '../../components/ProgressTile/ProgressTile';
+
+import Jump from 'react-reveal/Jump';
 
 // Redux Stuff
 import { connect } from 'react-redux';
@@ -19,9 +22,6 @@ const reorder = (list, startIndex, endIndex) => {
   return result;
 };
 
-/**
- * Moves an item from one list to another list.
- */
 const move = (source, destination, droppableSource, droppableDestination) => {
   const sourceClone = [...source];
   const destClone = [...destination];
@@ -49,10 +49,6 @@ class Board extends Component {
     return this.props.boards[id];
   }
 
-  onDragStart = ({ source }) => {
-    // console.log(source,'start:source');
-  }
-
   /**
    * Handles logic for draggables.
    * @param  {Object} result is an object with a bunch of properties, we only care about source & destination
@@ -64,8 +60,6 @@ class Board extends Component {
    *           } 
    */
   onDragEnd = ({ source, destination }) => {
-    // console.log(source, 'end:source');
-    // console.log(destination, 'end:destination');
     // dropped outside the lists
     if (!destination) {
       return;
@@ -80,28 +74,36 @@ class Board extends Component {
         source.index,
         destination.index
       );
-      console.log(items,'I AM THE NEW STATE TO BE DISPATCH');
-      this.props.moveJob(items,source.droppableId);
+      this.props.moveJob(items, source.droppableId);
     }
-    // If 
+    // Move across status columns
     if (
       source.index !== destination.index ||
       source.droppableId !== destination.droppableId
     ) {
-      const items = reorder(
+      const result = move(
         this.getList(source.droppableId),
-        source.index,
-        destination.index
+        this.getList(destination.droppableId),
+        source,
+        destination
       );
+      this.props.moveJob(null,null,result)
     }
 
   };
 
   render() {
-    // console.log(Object.entries({...this.props.boards}))
     return (
       <DragDropContext onDragStart={this.onDragStart} onDragEnd={this.onDragEnd} >
-        <React.Fragment>
+      <Row className="justify-content-center text-center pt-5">
+      <Col size="12 md-12 lg-6">
+      <h1 className="montserrat font-weight-bold">Job Tracker Board</h1>
+      <Jump>
+      <img width="60%" src="/imgs/icons/houses.svg" alt="houses" />
+      </Jump>
+      </Col>
+      </Row>
+        <Row className="justify-content-center">
           {
             Object.entries({ ...this.props.boards }).map(([key, val]) => (
               // returns a library's premade component --don't want each of the
@@ -111,10 +113,7 @@ class Board extends Component {
               ProgressTile(key, val)
             ))
           }
-        </React.Fragment>
-        {/* <ProgressTile
-            boards={this.props.boards}
-          /> */}
+        </Row>
       </DragDropContext>
     );
   }
