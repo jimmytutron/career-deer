@@ -9,7 +9,7 @@ import { executeDeleteJob, executeUpdateJob, resetUpdateJob, selectUpdateJob } f
 
 class UpdateJob extends Component {
 
-  cookies = new Cookies
+  cookies = new Cookies();
 
   updateJobValues = values => {
     const newJob = {
