@@ -20,7 +20,7 @@ const huntStyle = {
 
 class Search extends Component {
 
-  cookies = new Cookies;
+  cookies = new Cookies();
 
   searchJobs = values => {
     // Calling the search job action.

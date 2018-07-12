@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Container, Col, Row } from '../../components/Grid';
 
 import Card from '@material-ui/core/Card';
@@ -27,7 +27,7 @@ const cardHeadingStyle = {
 
 
 class ViewJobs extends Component {
-  cookies = new Cookies;
+  cookies = new Cookies();
 
   componentDidMount() {
     this.props.getAllSavedJobs();
