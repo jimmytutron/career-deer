@@ -32,29 +32,9 @@ class App extends Component {
     this.props.appLogoutUpdate();
   }
 
-  renderNav = () => {
-    switch (window.location.pathname) {
-      // case "/":
-      //   return <Nav />;
-      // case "/login":
-      //   return <Nav />;
-      // case "/signup":
-      //   return <NavMain />;
-      case "/chart":
-        return <BurgerMenu />;
-      case "/addjob":
-        return <BurgerMenu />;
-      case "/search":
-        return <BurgerMenu />;
-      case "/board":
-        return <BurgerMenu />;
-      case "/updatejob":
-        return <BurgerMenu />;
-      case "/viewjobs":
-        return <BurgerMenu />;
-      default:
-        return <Nav />;
-    }
+  componentWillMount() {
+    user = {}
+    console.log(document.cookie)
   }
 
   render() {

@@ -4,10 +4,13 @@ import { Link } from "react-router-dom";
 import { logOut } from "../../utils/API"
 import './BurgerMenu.css';
 
+
 const BurgerMenu = (props) => {
     const executeLogout = () => {
+
         logOut();
         props.logoutaction();
+
     }
     return (
         <ReduxBurgerMenu>
