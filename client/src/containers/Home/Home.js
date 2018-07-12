@@ -115,7 +115,7 @@ class Home extends Component {
                 <Col size="12 md-6">
                 <h4 className="montserrat mt-4">Finding Jobs</h4>
                 <p className=" mt-1 px-1">
-                Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. 
+                Use our built in job search to find and manage new applications! Just add what you industry or topic you are looking for and a location and our search will do the rest!  
                 </p>
                 </Col>
             </Row>
@@ -128,7 +128,7 @@ class Home extends Component {
                 <Col size="12 md-6">
                 <h4 className="montserrat mt-4">Manage your notes and data</h4>
                 <p className=" mt-1 px-1">
-                Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. 
+                Keep notes and track all your job progress. Each job allows for notes and tracks progress, names, numbers, anything you want really! The more you note and track, the more organized you become!
                 </p>
                 </Col>
             </Row>
@@ -141,7 +141,7 @@ class Home extends Component {
                 <Col size="12 md-6">
                 <h4 className="montserrat mt-4">Set reminders and schedules</h4>
                 <p className=" mt-1 px-1">
-                Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. 
+                Give yourself reminders and view schedules in the jobs notes themself! Email and text reminders are coming in the future so sit tight while we work out these features!
                 </p>
                 </Col>
             </Row>
@@ -154,7 +154,7 @@ class Home extends Component {
                 <Col size="12 md-6">
                 <h4 className="montserrat mt-4">Ace that interview!</h4>
                 <p className=" mt-1 px-1">
-                Lorem ipsum dolor amet paleo ugh pug man braid, skateboard ramps everyday carry single-origin coffee tote bag master cleanse dreamcatcher occupy irony prism. 
+                With all the tools and all your progress you're ready to ace the interview! We hope our application has helped you in your journey. Good luck from the CareerDeer team! 
                 </p>
                 </Col>
             </Row>

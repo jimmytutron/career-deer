@@ -6,6 +6,12 @@ import { Col, Row } from '../Grid';
 import { validate } from './validate';
 import Button from '@material-ui/core/Button';
 
+const FormStyle = {
+  background: '#fff',
+  borderRadius: '15px',
+  padding: '10px',
+  boxShadow: '0px 0px 1px #5B5B5B'
+}
 
 const renderTextField = ({
   input,
@@ -24,7 +30,7 @@ const renderTextField = ({
 
 let SignUpForm = ({ handleSubmit, pristine, reset, submitting, errorMessage, auth }) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <form style={FormStyle} onSubmit={handleSubmit}>
       <Row className="justify-content-center">
       <Col size="12 md-12 lg-6">
         <Field className="text-input" name="firstName" component={renderTextField} type="text" label="First Name"></Field>
