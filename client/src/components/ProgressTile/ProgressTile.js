@@ -20,16 +20,12 @@ const ProgressTile = (key, jobs) => (
           style={getListStyle(snapshot.isDraggingOver)}>
           {
             Object.entries({ ...jobs }).map(([key, val], idx) => {
-              // return (
-              //   <div key={key}>{val.company_name}</div>
-              // )
               return (
-                // Another "component creator"
                 JobTile(key, val, idx)
               )
             })
           }
-          {provided.placeholder}
+          {/* {provided.placeholder} */}
         </div>
       </div>
     )}

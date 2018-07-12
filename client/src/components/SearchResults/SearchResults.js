@@ -18,8 +18,8 @@ const SearchResults = props => {
         </a>
         {
           props.alreadySaved
-          ? <Button variant="contained" type="button" onClick={props.save} className="float-right" disabled>Track</Button>
-          : <Button variant="contained" type="button" onClick={props.save} className="float-right track-btn">Track</Button>
+          ? <Button variant="contained" type="button" onClick={props.save} className="float-right" disabled>Already Tracked</Button>
+          : <Button variant="contained" type="button" onClick={props.save} className="float-right track-btn" >Track</Button>
         }
         
       </div>
