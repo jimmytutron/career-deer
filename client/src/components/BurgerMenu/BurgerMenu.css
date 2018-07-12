@@ -59,3 +59,10 @@
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
+
+.bm-menu h3 {
+  font-size: 1.3em;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  padding-bottom: 20px;
+}

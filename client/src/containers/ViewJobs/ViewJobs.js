@@ -12,6 +12,7 @@ import Zoom from 'react-reveal/Zoom';
 import Jump from 'react-reveal/Jump';
 
 import { connect } from 'react-redux';
+import { Cookies } from 'react-cookie';
 import { editJob, resetViewJobs, getAllSavedJobs, updateViewJobs } from './actions';
 
 const cardStyles = {
@@ -25,6 +26,7 @@ const cardHeadingStyle = {
 
 
 class ViewJobs extends Component {
+  cookies = new Cookies;
 
   componentWillMount() {
     this.props.getAllSavedJobs();
@@ -35,7 +37,7 @@ class ViewJobs extends Component {
       return <Redirect to='/updateJob' />
     };
 
-    if (!this.props.app.user){
+    if (!this.cookies.get("email")){
       window.location.pathname="/unauthorized";
       return null;
     };

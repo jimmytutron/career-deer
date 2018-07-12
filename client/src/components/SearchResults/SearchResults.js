@@ -5,15 +5,17 @@ import './SearchResults.css';
 
 const SearchResults = props => {
 
+  const link = props.results.title;
+
   return (
     <div className="card border-0 mb-3">
       <div className="card-header">
-        <Button><a href={props.results.url} target="_blank" className="title border-0">
+        <a href={props.results.url} target="_blank" className="title border-0"><Button>
           <span className="font-weight-bold my-2">
            {props.results.title}
           </span>
-        </a>
         </Button>
+        </a>
         <Button variant="contained" type="button" className="track-btn float-right" onClick={props.save}>Track
         </Button>
       </div>
