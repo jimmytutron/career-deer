@@ -65,6 +65,7 @@ function getSignUpText(email, firstName, lastName) {
   emailObj.emailHtml = `
     <div style="text-align: center; font-family:Open Sans,Helvetica;">
       <div style="width: 600px; margin-left: auto; margin-right: auto;">
+        <img src="https://i.imgur.com/DxHFy4x.png" width="60%" alt="Career Deer Logo">
         <h2>Welcome to Career Deer!</h2>
         <div style="text-align: left;">
           <p>Hello ${firstName}</p>
