@@ -21,7 +21,7 @@ const ProgressTile = (key, jobs, selectUpdateJob) => {
   return (
   <Droppable droppableId={key} key={key}>
     {(provided, snapshot) => (
-      <div className="mb-5 mx-2">
+      <div className="mb-5 mx-2 inline">
         <h1 className="text-center text-uppercase montserrat">{key}</h1>
         <div
           ref={provided.innerRef}
