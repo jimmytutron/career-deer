@@ -6,6 +6,8 @@ import { Container, Col, Row } from '../../components/Grid';
 import { connect } from 'react-redux';
 import { Cookies } from 'react-cookie';
 import { executeDeleteJob, executeUpdateJob, resetUpdateJob, selectUpdateJob } from './actions';
+import { grabJobs } from '../Board/actions'
+
 
 class UpdateJob extends Component {
 
@@ -13,9 +15,10 @@ class UpdateJob extends Component {
 
   updateJobValues = values => {
     const newJob = {
-      ...this.props.updateJob.job,
+      ...this.props.updateJob._id,
       ...values
     }
+    delete newJob['progress_stage'];
     this.props.executeUpdateJob(newJob);
   }
 
@@ -26,7 +29,7 @@ class UpdateJob extends Component {
   render() {
     if (this.props.updateJob.status || !this.props.updateJob.job) {
       this.props.resetUpdateJob();
-      return <Redirect to='/board' />
+      window.location.pathname="/board";
     };
 
     if (!this.cookies.get("email")){
@@ -69,7 +72,8 @@ const mapActionsToProps = (dispatch,props) => ({
   executeDeleteJob,
   executeUpdateJob,
   resetUpdateJob,
-  selectUpdateJob
+  selectUpdateJob,
+  grabJobs
 })
 
 export default connect(mapStateToProps,mapActionsToProps())(UpdateJob);
