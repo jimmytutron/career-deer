@@ -38,6 +38,7 @@ const move = (source, destination, droppableSource, droppableDestination) => {
   return result;
 };
 
+
 class Board extends Component {
   
   cookies = new Cookies();
@@ -45,6 +46,7 @@ class Board extends Component {
   componentDidMount() {
     console.log('Grabbing Jobs..');
     this.props.grabJobs();
+    console.log(this.props.jobs);
   };
 
   getList = id => {
@@ -129,6 +131,7 @@ class Board extends Component {
 
   };
 
+
   render() {
     
     if (!this.cookies.get("email")){
@@ -136,7 +139,31 @@ class Board extends Component {
       return null;
     };
 
+    console.log(this.props.boards);
+
+    if (this.props.boards.saved.length === 0 && 
+        this.props.boards.applied.length === 0 &&
+        this.props.boards.offer.length === 0 &&
+        this.props.boards['on-site'].length === 0 &&
+        this.props.boards.phone.length === 0
+        ) {
+      return (
+
+      <Row className="justify-content-center text-center pt-5">
+      <Col size="12 md-10">
+        <Jump>
+          <img className="my-5" width="60%" src="/imgs/icons/houses.svg" alt="houses" />
+        </Jump>
+      <h1 className="montserrat font-weight-bold">Job Tracker Board</h1>
+      <h2 className="montserrat text-center pb-5">It looks like you have nothing tracked yet!</h2>
+      <h4>Start <a className="text-info" href="/search">searching</a> for a job or <a className="text-info" href="/addjob">add one yourself</a></h4>
+      </Col>
+      </Row>
+      )
+    }
+
     return (
+      <div className="board">
       <DragDropContext onDragEnd={this.onDragEnd} >
         <Row className="justify-content-center text-center pt-5">
           <Col size="12 md-12 lg-6">
@@ -147,7 +174,6 @@ class Board extends Component {
           </Col>
         </Row>
         <Row className="justify-content-center">
-
           {
             Object.entries({ ...this.props.boards }).map(([key, val]) => (
               // returns a library's premade component --don't want each of the
@@ -159,6 +185,7 @@ class Board extends Component {
           }
         </Row>
       </DragDropContext>
+      </div>
     );
   }
 }
