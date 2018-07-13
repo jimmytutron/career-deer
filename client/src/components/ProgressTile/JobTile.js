@@ -82,7 +82,7 @@ const JobTile = (key, job, idx, selectUpdateJob) => {
             <CardActions className="float-right button-margin">
                 <Link to="/updatejob">
                   <Button size="small" variant="contained" color="secondary" onClick={() => selectUpdateJob(job)}>
-                  <i className="fas fa-pen-square"></i> &nbsp; Edit Job
+                    <i className="fas fa-pen-square"></i> &nbsp; Edit Job
                   </Button>
                 </Link>
             </CardActions>
