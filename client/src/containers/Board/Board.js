@@ -163,7 +163,7 @@ class Board extends Component {
     }
 
     return (
-      <div className="board">
+      <div>
       <DragDropContext onDragEnd={this.onDragEnd} >
         <Row className="justify-content-center text-center pt-5">
           <Col size="12 md-12 lg-6">
@@ -173,7 +173,7 @@ class Board extends Component {
             </Jump>
           </Col>
         </Row>
-        <Row className="justify-content-center">
+        <Row className="justify-content-center board">
           {
             Object.entries({ ...this.props.boards }).map(([key, val]) => (
               // returns a library's premade component --don't want each of the
