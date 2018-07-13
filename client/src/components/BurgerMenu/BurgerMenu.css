@@ -30,13 +30,14 @@
   font-size: 1.15em;
 }
 
-.bm-menu a {
+.bm-menu a, .bm-menu p {
   color: #fff;
 }
 
-.bm-menu a:hover {
+.bm-menu a:hover, .bm-menu p:hover {
   color: #F4C6C6;
   text-decoration: none;
+  cursor: pointer;
 }
 
 /* Morph shape necessary with bubble or elastic */
