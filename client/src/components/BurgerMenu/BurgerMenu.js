@@ -7,7 +7,6 @@ import { logOut } from '../../utils/API'
 
 const BurgerMenu = (props) => {
     const executeLogout = async () => {
-        // await props.logoutaction();
         await logOut();
         window.location.pathname="/";
     }
@@ -36,13 +35,11 @@ const BurgerMenu = (props) => {
             className="menu-item mb-3">
             <i className="fas fa-chart-bar"></i> &nbsp; &nbsp; Progress Charts
             </Link>
-            <Link
-            to="/" 
+            <p
             className="menu-item mt-5"
             onClick={executeLogout}>
             <i className="fas fa-sign-out-alt"></i> &nbsp; &nbsp; Logout 
-
-            </Link>
+            </p>
 
         </ReduxBurgerMenu>
     );

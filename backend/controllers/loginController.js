@@ -37,6 +37,10 @@ module.exports = {
 
   logout: (req, res, next) => {
     req.logOut();
+    res.clearCookie("connect.sid");
+    res.clearCookie("firstName");
+    res.clearCookie("lastName");
+    res.clearCookie("email");
     req.session.destroy(function (err) {
       if (err) {
         return next(err);
@@ -45,8 +49,8 @@ module.exports = {
       res.clearCookie("firstName");
       res.clearCookie("lastName");
       res.clearCookie("email");
-      res.redirect('/');
-      // return res.send({ authenticated: req.isAuthenticated() });
+      // res.redirect('/');
+      return res.send({ authenticated: req.isAuthenticated() });
     });
   }
 };
