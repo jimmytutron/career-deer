@@ -37,7 +37,7 @@ module.exports = async (emailData) => {
     to: emailTo, // list of receivers
     bcc: `careerdeer@gmail.com`, // Sending hidden email to self for reference.
     subject: emailSubject, // Subject line
-    // text: `${emailText}`, // plain text body
+    text: emailText, // plain text body
     html: emailHtml // html body
   };
 
