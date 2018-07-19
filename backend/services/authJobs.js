@@ -45,13 +45,6 @@ module.exports = async (req, res) => {
     })
 
     // Storing the results array from authentic jobs api.
-    console.log('++++++++++++++++++++++++++')
-    console.log(data_authJobs);
-    console.log('++++++++++++++++++++++++++')
-    console.log(data_authJobs.data);
-    console.log('++++++++++++++++++++++++++')
-    console.log(data_authJobs);
-    console.log('++++++++++++++++++++++++++')
     const res_authJobs = data_authJobs.data.listings.listing;
 
     // console.log(res_authJobs)

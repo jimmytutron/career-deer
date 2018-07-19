@@ -5,7 +5,6 @@ import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
 import { signup, resetSignUp } from './actions';
-import { authThunk } from './actions';
 
 import Rotate from 'react-reveal/Rotate';
 
@@ -15,12 +14,9 @@ class SignUp extends Component {
    this.props.signup(values);
   };
 
-  auth = () => {
-    this.props.authThunk();
-  };
-
   componentWillUnmount() {
     this.props.resetSignUp();
+    console.log('ComponentWillMount: this.props.renderMaterial', this.props.renderMaterial);
   }
 
   render() {
@@ -53,7 +49,7 @@ class SignUp extends Component {
           <Col />
         </Row>
       </Container>
-      <div>{this.props.renderMaterial}</div>
+      {/* <div>{this.props.renderMaterial}</div> */}
       </React.Fragment>
     );
   };
@@ -78,15 +74,14 @@ const renderError = (signedUpState, appState) => {
 const mapStateToProps = (state,props) => {
   return { 
     signedUp: state.signedUp,
-    app: state.app,
-    renderMaterial: state.auth.renderMaterial
+    app: state.app
+    // renderMaterial: state.auth.renderMaterial
   };
 };
 
 const mapActionsToProps = (dispatch,props) => ({
   signup,
-  resetSignUp,
-  authThunk
+  resetSignUp
 });
 
 export default connect(mapStateToProps,mapActionsToProps())(SignUp);

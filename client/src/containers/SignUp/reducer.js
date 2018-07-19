@@ -23,14 +23,14 @@ export function signUpReducer(state = initialState, { type, payload }) {
   }
 };
 
-export function authTestReducer(state = initialState, { type, payload }) {
-  switch(type) {
-    case AUTH_SUCCESS:
-      return  {
-        ...state,
-        ...payload
-      }
-    default:
-      return state;
-  }
-};
+// export function authTestReducer(state = initialState, { type, payload }) {
+//   switch(type) {
+//     case AUTH_SUCCESS:
+//       return  {
+//         ...state,
+//         ...payload
+//       }
+//     default:
+//       return state;
+//   }
+// };

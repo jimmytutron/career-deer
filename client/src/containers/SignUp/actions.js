@@ -1,5 +1,5 @@
 import { signUp } from '../../utils/API';
-import { googleSignIn } from '../../utils/API';
+// import { googleSignIn } from '../../utils/API';
 import { appLoginUpdate } from '../App/actions';
  
 export const FAILED_SIGNUP = 'FAILED_SIGNUP';
@@ -35,27 +35,14 @@ export function signup(userInfo) {
   };
 };
 
-// Testing an auth thunk
-export function authThunk() {
-  return async (dispatch, getState) => {
-    try {
-      const apiResponse = await (googleSignIn());
-      dispatch(testAuth(apiResponse.data));
-    } catch(err) {
-      dispatch(failedSignUp(err));
-    };
-  };
-};
-
-
-export function testAuth(data) {
-  return {
-    type: AUTH_SUCCESS,
-    payload: {
-      renderMaterial: data
-    }
-  };
-};
+// export function testAuth(data) {
+//   return {
+//     type: AUTH_SUCCESS,
+//     payload: {
+//       renderMaterial: data
+//     }
+//   };
+// };
 
 // We dispatch a type of SIGNUP_SUCCESS because we want to know 
 // clear any potential errors
