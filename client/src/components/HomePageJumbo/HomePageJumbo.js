@@ -21,7 +21,7 @@ const HomePageJumbo = () => (
     <p className="heading-lead roboto">We’ll turn you from the hunted into the hunter and help you track down the job of your dreams. The job hunt is a challenging and scary process. There’s a lot of names to keep track of and even more dates. We provide you with a single location to organize and schedule your progress. There's even job search functionality so you can look at job listings without leaving our site and get reminders when your interviews are coming up.
     </p>
     <Scrollchor 
-    to="#sign-up">
+    to="#about">
     <Button variant="extendedFab" color="secondary">
       <span className="montserrat">Learn More</span>
     </Button>
