@@ -203,4 +203,4 @@ const mapDispatchToProps = () => ({
 });
 
 // Put the things into the DOM!
-export default connect(mapStateToProps, mapDispatchProps())(Board);
+export default connect(mapStateToProps, mapDispatchToProps())(Board);

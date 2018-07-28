@@ -78,7 +78,7 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapDispatchProps = (dispatch, props) => ({
+const mapDispatchToProps = (dispatch, props) => ({
   login,
   resetLoginState
 });
