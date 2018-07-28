@@ -11,7 +11,7 @@ export function signUp(data) {
 };
 
 export function logOut() {
-  return axios.get('/api/user/logout')
+  return axios.get('/api/user/logout');
 }
 
 // ======================================================

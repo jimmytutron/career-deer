@@ -1,9 +1,9 @@
-import { FAILED_SIGNUP, SIGNUP_SUCCESS, RESET_SIGNUP, AUTH_SUCCESS } from './actions';
 import initialState from '../../initialState';
+import { SIGNUP_FAILED, SIGNUP_SUCCESS, SIGNUP_RESET, AUTH_SUCCESS, AUTH_FAILURE } from './actions';
 
 export function signUpReducer(state = initialState, { type, payload }) {
   switch(type) {
-    case FAILED_SIGNUP:
+    case SIGNUP_FAILED:
       return {
         ...state,
         ...payload
@@ -13,7 +13,7 @@ export function signUpReducer(state = initialState, { type, payload }) {
         ...state,
         ...payload
       }
-    case RESET_SIGNUP:
+    case SIGNUP_RESET:
       return {
         ...state,
         error: null
@@ -23,14 +23,14 @@ export function signUpReducer(state = initialState, { type, payload }) {
   }
 };
 
-// export function authTestReducer(state = initialState, { type, payload }) {
-//   switch(type) {
-//     case AUTH_SUCCESS:
-//       return  {
-//         ...state,
-//         ...payload
-//       }
-//     default:
-//       return state;
-//   }
-// };
+export function googleAuthReducer(state = initialState, { type, payload }) {
+  switch(type) {
+    case AUTH_SUCCESS:
+      return  {
+        ...state,
+        ...payload
+      }
+    default:
+      return state;
+  }
+};

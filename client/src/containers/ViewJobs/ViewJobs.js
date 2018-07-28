@@ -103,12 +103,12 @@ const mapStateToProps = (state, props) => {
   }
 };
 
-const mapActionsToProps = (dispatch, props) => ({
+const mapDispatchToProps = (dispatch, props) => ({
   resetViewJobs,
   updateViewJobs,
   getAllSavedJobs,
   selectUpdateJob
 })
 
-export default connect(mapStateToProps, mapActionsToProps())(ViewJobs);
+export default connect(mapStateToProps, mapDispatchToProps())(ViewJobs);
 

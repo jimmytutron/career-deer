@@ -2,10 +2,11 @@ import { signUp } from '../../utils/API';
 // import { googleSignIn } from '../../utils/API';
 import { appLoginUpdate } from '../App/actions';
  
-export const FAILED_SIGNUP = 'FAILED_SIGNUP';
+export const SIGNUP_FAILED = 'SIGNUP_FAILED';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
-export const RESET_SIGNUP = 'RESET_SIGNUP'
+export const SIGNUP_RESET = 'SIGNUP_RESET';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const AUTH_FAILURE = 'AUTH_FAILURE';
 
 // Using Redux thunk middleware https://github.com/reduxjs/redux-thunk
 // our action creator returns a function instead of an action. This function can
@@ -35,14 +36,25 @@ export function signup(userInfo) {
   };
 };
 
-// export function testAuth(data) {
-//   return {
-//     type: AUTH_SUCCESS,
-//     payload: {
-//       renderMaterial: data
-//     }
-//   };
-// };
+
+// Possibly combine the two auth action creators into a single one later.
+export function googleAuth(data) {
+  return {
+    type: AUTH_SUCCESS,
+    payload: {
+      renderMaterial: data
+    }
+  };
+};
+
+export function failedGoogleAuth(data) {
+  return {
+    type: AUTH_FAILURE,
+    payload: {
+      renderMaterial: data
+    }
+  }
+}
 
 // We dispatch a type of SIGNUP_SUCCESS because we want to know 
 // clear any potential errors
@@ -57,7 +69,7 @@ export function signedUp() {
 
 export function failedSignUp(err) {
   return {
-    type: FAILED_SIGNUP,
+    type: SIGNUP_FAILED,
     payload: {
       error: err
     } 
@@ -66,7 +78,7 @@ export function failedSignUp(err) {
 
 export function resetSignUp() {
   return {
-    type: RESET_SIGNUP,
+    type: SIGNUP_RESET,
     payload: {}
   }
 }

@@ -78,9 +78,9 @@ const mapStateToProps = (state, props) => {
   };
 };
 
-const mapActionsToProps = (dispatch, props) => ({
+const mapDispatchProps = (dispatch, props) => ({
   login,
   resetLoginState
 });
 
-export default connect(mapStateToProps, mapActionsToProps())(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps())(LoginPage);

@@ -4,11 +4,15 @@ import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
-import { signup, resetSignUp } from './actions';
+import { signup, resetSignUp, googleAuth } from './actions';
 
 import Rotate from 'react-reveal/Rotate';
 
 class SignUp extends Component {
+  googleAuth = () => {
+    this.props.googleAuth('test');
+  }
+
   signup = values => {
     // This calls the signup action creator, passing the form values to it 
    this.props.signup(values);
@@ -16,7 +20,8 @@ class SignUp extends Component {
 
   componentWillUnmount() {
     this.props.resetSignUp();
-    console.log('ComponentWillMount: this.props.renderMaterial', this.props.renderMaterial);
+    // console.log('ComponentWillMount: this.props.renderMaterial', this.props.renderMaterial);
+    console.log('componentWillMoubnt: this.props.googleAuth', this.props.googleAuth);
   }
 
   render() {
@@ -44,7 +49,7 @@ class SignUp extends Component {
         <Row className="justify-content-center">
           <Col />
           <Col size="12 md-8 lg-8" className="banana">
-            <SignUpForm onSubmit={this.signup} errorMessage={renderError(this.props.signedUp, this.props.app)} auth={this.auth} />
+            <SignUpForm onSubmit={this.signup} errorMessage={renderError(this.props.signedUp, this.props.app)} googleAuth={this.googleAuth} />
           </Col>
           <Col />
         </Row>
@@ -79,9 +84,10 @@ const mapStateToProps = (state,props) => {
   };
 };
 
-const mapActionsToProps = (dispatch,props) => ({
+const mapDispatchProps = (dispatch,props) => ({
   signup,
-  resetSignUp
+  resetSignUp,
+  googleAuth
 });
 
-export default connect(mapStateToProps,mapActionsToProps())(SignUp);
+export default connect(mapStateToProps,mapDispatchProps())(SignUp);
