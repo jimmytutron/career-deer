@@ -52,6 +52,16 @@ module.exports = {
       // res.redirect('/');
       return res.send({ authenticated: req.isAuthenticated() });
     });
+  },
+
+  resetPW: (req, res) => {
+    try {
+      console.log(req.body);
+      const email = req.body.email;
+      res.json(email);
+    } catch(err){
+      res.status(422).json(err);
+    }
   }
 };
 
