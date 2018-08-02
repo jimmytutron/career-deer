@@ -51,14 +51,14 @@ class NoMatch extends Component {
 //   test: state.test
 // });
 
-// const mapActionsToProps = (dispatch, props) => {
+// const mapDispatchToProps = (dispatch, props) => {
 //   return bindActionCreators({
 //   }, dispatch)
 // };
 
 // Connect can take 3 arguments
 // 1) mapStateToProps
-// 2) mapActionsToProps 
+// 2) mapDispatchToProps 
 // 3) 
-// export default connect(mapStateToProps,mapActionsToProps)(NoMatch);
+// export default connect(mapStateToProps,mapDispatchToProps)(NoMatch);
 export default NoMatch;

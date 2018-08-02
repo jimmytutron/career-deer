@@ -104,11 +104,11 @@ const mapStateToProps = (state, props) => {
   }
 };
 
-const mapActionsToProps = (dispatch, props) => ({
+const mapDispatchToProps = (dispatch, props) => ({
   getSearchJobs,
   postSaveJob,
   getAllSavedJobs
 })
 
-export default connect(mapStateToProps, mapActionsToProps())(Search);
+export default connect(mapStateToProps, mapDispatchToProps())(Search);
 

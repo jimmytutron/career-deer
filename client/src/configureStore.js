@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 // Reducers
 import appReducer from './containers/App/reducer';
 import loginReducer from './containers/Login/reducer';
-import { signUpReducer, authTestReducer } from './containers/SignUp/reducer';
+import { signUpReducer, googleAuthReducer } from './containers/SignUp/reducer';
 import chartReducer from './containers/Chart/reducer';
 import addJobReducer from './containers/AddJob/reducer';
 import { grabJobsReducer } from './containers/Board/reducer';
@@ -20,7 +20,7 @@ const allReducers = combineReducers({
   form: formReducer,
   loggedIn: loginReducer,
   signedUp: signUpReducer,
-  auth: authTestReducer,
+  googleAuth: googleAuthReducer,
   chartData: chartReducer,
   addJob: addJobReducer,
   viewJobs: viewJobsReducer,

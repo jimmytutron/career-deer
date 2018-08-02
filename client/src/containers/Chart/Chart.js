@@ -358,10 +358,10 @@ function mapStateToProps(state) {
   }
 }
 
-const mapActionsToProps = (dispatch, props) => ({
+const mapDispatchToProps = (dispatch, props) => ({
   getChartAllData
 })
 
-export default connect(mapStateToProps, mapActionsToProps())(Chart);
+export default connect(mapStateToProps, mapDispatchToProps())(Chart);
 
 

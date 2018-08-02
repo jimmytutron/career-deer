@@ -12,6 +12,7 @@ export function appLoginUpdate(loginData) {
   }
 }
 
+// Doesn't appear to currently be in use?
 export function appLogoutUpdate() {
   logOut();
   return {

@@ -11,7 +11,7 @@ export function signUp(data) {
 };
 
 export function logOut() {
-  return axios.get('/api/user/logout')
+  return axios.get('/api/user/logout');
 }
 
 // ======================================================
@@ -20,7 +20,7 @@ export function logOut() {
 export function googleSignUp(data) {
   return axios.post('/auth/google', data);
 };
-
+  
 export function googleSignIn() {
   return axios.get('/auth/google');
 };

@@ -196,11 +196,11 @@ const mapStateToProps = (state, props) => {
   }
 }
 
-const mapActionsToProps = () => ({
+const mapDispatchToProps = () => ({
   grabJobs,
   moveJob,
   selectUpdateJob
 });
 
 // Put the things into the DOM!
-export default connect(mapStateToProps, mapActionsToProps())(Board);
+export default connect(mapStateToProps, mapDispatchToProps())(Board);

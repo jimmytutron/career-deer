@@ -17,7 +17,7 @@ import Search from '../Search/Search';
 import Board from '../Board/Board';
 import BurgerMenu from '../../components/BurgerMenu/BurgerMenu';
 
-// import "./App.css";
+// Do we still need this?
 // import { StickyFooter } from '../../components/Footer';
 
 
@@ -32,6 +32,7 @@ class App extends Component {
     this.props.appLoginUpdate(user);
   }
 
+  // Doesn't appear to be in use?
   logoutAction = () => {
     this.props.appLogoutUpdate();
   }
@@ -64,14 +65,16 @@ class App extends Component {
               <BurgerMenu 
               firstName={this.props.app.user ? this.props.app.user.firstName : "Stray"} 
               lastName={this.props.app.user ? this.props.app.user.lastName : "Deer"} 
-              logoutaction={this.logoutAction}/>
+              logoutaction={this.logoutAction} />
             : 
               <Nav />)}
           <main id="page-wrap">
           <Switch>
             <Route exact path="/" component={Home} />
+            {/* Why are both the props being passed to these the same? logoutAction isn't being passed down? */}
             <Route exact path="/login" component={LoginPage} loginaction={this.loginAction} />
             <Route exact path="/signup" component={SignUp} loginaction={this.loginAction} />
+            {/* **************************************** */}
             <Route exact path="/chart" component={Chart} />
             <Route exact path="/addjob" component={AddJob} />
             <Route exact path="/search" component={Search} />
@@ -90,13 +93,13 @@ class App extends Component {
 // The nav bar needs to know whether we're logged in
 const mapStateToProps = state => ({
   app: state.app,
-  loggedIn: state.loggedIn,
-  signedUp: state.signedUp
+  // loggedIn: state.loggedIn,
+  // signedUp: state.signedUp
 });
 
-const mapActionsToProps = (dispatch, props) => ({
+const mapDispatchToProps = (dispatch, props) => ({
   appLoginUpdate,
   appLogoutUpdate
 })
 
-export default connect(mapStateToProps,mapActionsToProps())(App);
+export default connect(mapStateToProps,mapDispatchToProps())(App);
