@@ -194,16 +194,16 @@ class Home extends Component {
 //   }
 // };
 
-// const mapActionsToProps = (dispatch, props) => {
+// const mapDispatchToProps = (dispatch, props) => {
 //   return bindActionCreators({
 //   }, dispatch)
 // };
 
 // Connect can take 3 arguments
 // 1) mapStateToProps
-// 2) mapActionsToProps 
+// 2) mapDispatchToProps 
 // 3) mergeProps
 
 // bindActionCreators()
-// export default connect(mapStateToProps, mapActionsToProps)(Home);
+// export default connect(mapStateToProps, mapDispatchToProps)(Home);
 export default Home;

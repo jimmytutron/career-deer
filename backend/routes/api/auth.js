@@ -4,7 +4,7 @@ const passport = require('../../config');
 
 // prepended with /auth/
 router.route('/google')
-  .get(passport.authenticate('google', { scope: ['profile'] }))
+  .get(passport.authenticate('google', { scope: ['profile'] }, authController.authenticate))
 
 router.route('/google/redirect')
   .get(passport.authenticate('google', {

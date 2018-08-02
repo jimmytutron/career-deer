@@ -4,23 +4,24 @@ import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
-import { signup, resetSignUp } from './actions';
-import { authThunk } from './actions';
+import { signup, resetSignUp, googleAuth } from './actions';
 
 import Rotate from 'react-reveal/Rotate';
 
 class SignUp extends Component {
+  googleAuth = () => {
+    this.props.googleAuth('test');
+  }
+
   signup = values => {
     // This calls the signup action creator, passing the form values to it 
    this.props.signup(values);
   };
 
-  auth = () => {
-    this.props.authThunk();
-  };
-
   componentWillUnmount() {
     this.props.resetSignUp();
+    // console.log('ComponentWillMount: this.props.renderMaterial', this.props.renderMaterial);
+    console.log('componentWillMoubnt: this.props.googleAuth', this.props.googleAuth);
   }
 
   render() {
@@ -48,12 +49,12 @@ class SignUp extends Component {
         <Row className="justify-content-center">
           <Col />
           <Col size="12 md-8 lg-8" className="banana">
-            <SignUpForm onSubmit={this.signup} errorMessage={renderError(this.props.signedUp, this.props.app)} auth={this.auth} />
+            <SignUpForm onSubmit={this.signup} errorMessage={renderError(this.props.signedUp, this.props.app)} googleAuth={this.googleAuth} />
           </Col>
           <Col />
         </Row>
       </Container>
-      <div>{this.props.renderMaterial}</div>
+      {/* <div>{this.props.renderMaterial}</div> */}
       </React.Fragment>
     );
   };
@@ -78,15 +79,15 @@ const renderError = (signedUpState, appState) => {
 const mapStateToProps = (state,props) => {
   return { 
     signedUp: state.signedUp,
-    app: state.app,
-    renderMaterial: state.auth.renderMaterial
+    app: state.app
+    // renderMaterial: state.auth.renderMaterial
   };
 };
 
-const mapActionsToProps = (dispatch,props) => ({
+const mapDispatchProps = (dispatch,props) => ({
   signup,
   resetSignUp,
-  authThunk
+  googleAuth
 });
 
-export default connect(mapStateToProps,mapActionsToProps())(SignUp);
+export default connect(mapStateToProps,mapDispatchProps())(SignUp);

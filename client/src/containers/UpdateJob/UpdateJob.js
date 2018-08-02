@@ -69,7 +69,7 @@ const mapStateToProps = (state,props) => {
   };
 };
 
-const mapActionsToProps = (dispatch,props) => ({
+const mapDispatchToProps = (dispatch,props) => ({
   executeDeleteJob,
   executeUpdateJob,
   resetUpdateJob,
@@ -77,4 +77,4 @@ const mapActionsToProps = (dispatch,props) => ({
   grabJobs
 })
 
-export default connect(mapStateToProps,mapActionsToProps())(UpdateJob);
+export default connect(mapStateToProps,mapDispatchToProps())(UpdateJob);
