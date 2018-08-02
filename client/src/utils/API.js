@@ -14,6 +14,10 @@ export function logOut() {
   return axios.get('/api/user/logout');
 }
 
+export function resetPW(email){
+  return axios.post('/api/user/resetpw', email);
+}
+
 // ======================================================
 
 // TESTING OAuth Logins
