@@ -1,5 +1,4 @@
-import { signUp } from '../../utils/API';
-// import { googleSignIn } from '../../utils/API';
+import { signUp, googleSignUp } from '../../utils/API';
 import { appLoginUpdate } from '../App/actions';
  
 export const SIGNUP_FAILED = 'SIGNUP_FAILED';

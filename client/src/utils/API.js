@@ -20,10 +20,11 @@ export function logOut() {
 export function googleSignUp(data) {
   return axios.post('/auth/google', data);
 };
-  
-export function googleSignIn() {
-  return axios.get('/auth/google');
-};
+
+// Not sure this is in use..
+// export function googleSignIn() {
+//   return axios.get('/auth/google');
+// };
 
 // ======================================================
 // Jobs
