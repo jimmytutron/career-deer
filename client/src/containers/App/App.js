@@ -17,6 +17,8 @@ import Search from '../Search/Search';
 import Board from '../Board/Board';
 import BurgerMenu from '../../components/BurgerMenu/BurgerMenu';
 
+import ResetPW from '../ResetPW/ResetPW';
+
 // Do we still need this?
 // import { StickyFooter } from '../../components/Footer';
 
@@ -81,6 +83,7 @@ class App extends Component {
             <Route exact path="/board" component={Board} />
             <Route exact path="/updatejob" component={UpdateJob} />
             <Route exact path ="/viewjobs" component={ViewJobs} />
+            <Route exact path ="/forgotpw" component={ResetPW} />>
             <Route component={NoMatch} />
           </Switch>
           </main>
