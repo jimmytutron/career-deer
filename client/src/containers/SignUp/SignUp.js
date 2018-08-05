@@ -2,27 +2,37 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import { Container, Col, Row } from '../../components/Grid';
-import { googleSignUp } from '../../utils/API';
 
 import { connect } from 'react-redux';
-import { signup, resetSignUp, googleAuth } from './actions';
+import { signUpThunk, resetSignUp, googleSignUpThunk } from './actions';
 
 import Rotate from 'react-reveal/Rotate';
 
 class SignUp extends Component {
-  googleAuth = () => {
-    this.props.googleAuth('test');
+  googleSignUp = () => {
+    this.props.googleSignUpThunk('test');
   }
 
-  signup = values => {
-    // This calls the signup action creator, passing the form values to it 
-    this.props.signup(values);
+  signUp = (values,authType) => {
+    switch(authType) {
+      case 'local':
+        this.props.signUpThunk(values);
+        break;
+      // case 'google':
+        // this.props.googleSignUpThunk();
+        // break;
+      // case 'facebook':
+        // this.props.faceBookSignUpthunk();
+        // break;
+      // case 'github':
+        // this.props.githubSignUpThunk();
+        // break;
+    }
   };
 
   componentWillUnmount() {
     this.props.resetSignUp();
-    // console.log('ComponentWillMount: this.props.renderMaterial', this.props.renderMaterial);
-    console.log('componentWillMoubnt: this.props.googleAuth', this.props.googleAuth);
+    console.log('componentWillMount: this.props.googleSignUpThunk', this.props.googleSignUpThunk);
   }
 
   render() {
@@ -30,7 +40,6 @@ class SignUp extends Component {
     if (this.props.app.user) {
       return <Redirect to='/board' />;
     };
-
 
     return (
       <React.Fragment>
@@ -51,9 +60,9 @@ class SignUp extends Component {
             <Col />
             <Col size="12 md-8 lg-8" className="banana">
               <SignUpForm
-               onSubmit={this.signup}
+               onSubmit={this.signUp}
                errorMessage={renderError(this.props.signedUp, this.props.app)}
-               googleAuth={this.googleAuth}
+               googleSignUpThunk={this.googleSignUpThunk}
                
               />
             </Col>
@@ -91,9 +100,9 @@ const mapStateToProps = (state, props) => {
 };
 
 const mapDispatchProps = (dispatch, props) => ({
-  signup,
+  signUpThunk,
   resetSignUp,
-  googleAuth
+  googleSignUpThunk
 });
 
 export default connect(mapStateToProps, mapDispatchProps())(SignUp);

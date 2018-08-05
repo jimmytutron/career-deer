@@ -14,9 +14,12 @@ export const AUTH_FAILURE = 'AUTH_FAILURE';
 // what part of the async process something is happening. This can be useful for transitional
 // rendering, such as having a spinnging loading wheel while awaiting some data to be received from
 // a DB query etc.
-export function signup(userInfo) {
-  // return a fn
-  return async (dispatch, getState) => {
+
+// Thunks
+// ==========// ==========// ==========// ==========// ==========// ==========// ==========// ==========
+export function signUpThunk(userInfo) {
+  // note: this async function can also have a second parameter as getState - currently not being used.
+  return async (dispatch) => {
     try {
       userInfo.email = userInfo.email.toLowerCase()
       const apiResponse = await (signUp(userInfo));
@@ -25,39 +28,38 @@ export function signup(userInfo) {
         lastName: apiResponse.data.lastName,
         email: apiResponse.data.email
       }
-      // dispatch here
       dispatch(signedUp());
       dispatch(appLoginUpdate(createdUser));
-    } catch (err) {
-      // and here
+    } catch(err) {
       dispatch(failedSignUp(err));
     };
   };
 };
 
-
-// Possibly combine the two auth action creators into a single one later.
-export function googleAuth(data) {
-  return {
-    type: AUTH_SUCCESS,
-    payload: {
-      renderMaterial: data
-    }
-  };
-};
-
-export function failedGoogleAuth(data) {
-  return {
-    type: AUTH_FAILURE,
-    payload: {
-      renderMaterial: data
+export function googleSignUpThunk(/*data?*/) {
+  return async (dispatch) => {
+    try {
+      // Do Google login stuff here
+      // Will it be asynchronous? Will I used an API call?
+      const createdUser = /*
+        {
+          firstName: 'Chicken',
+          lastName: 'Farley',
+          email: 'bacon@gmail.com'
+        }'
+      */
+      dispatch(appLoginUpdate(createdUser))
+    } catch(err) {
+      dispatch(failedSignUp(err));
     }
   }
 }
+// ==========// ==========// ==========// ==========// ==========// ==========// ==========// ==========
 
-// We dispatch a type of SIGNUP_SUCCESS because we want to know 
-// clear any potential errors
-export function signedUp() {
+
+// Action Creators
+// ==========// ==========// ==========// ==========// ==========// ==========// ==========// ==========
+function signedUp() {
   return {
     type: SIGNUP_SUCCESS,
     payload: {
@@ -66,7 +68,7 @@ export function signedUp() {
   };
 };
 
-export function failedSignUp(err) {
+function failedSignUp(err) {
   return {
     type: SIGNUP_FAILED,
     payload: {
@@ -75,9 +77,11 @@ export function failedSignUp(err) {
   };
 };
 
+// *
 export function resetSignUp() {
   return {
     type: SIGNUP_RESET,
     payload: {}
   }
 }
+// ==========// ==========// ==========// ==========// ==========// ==========// ==========// ==========
