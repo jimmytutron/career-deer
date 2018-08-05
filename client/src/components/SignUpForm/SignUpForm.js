@@ -1,5 +1,4 @@
 import React from 'react';
-import {  } from '../../utils/API';
 import { Field, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { Col, Row } from '../Grid';
@@ -29,7 +28,8 @@ const renderTextField = ({
     />
   )
 
-let SignUpForm = ({ handleSubmit, pristine, submitting, errorMessage, googleAuth }) => {
+let SignUpForm = (props) => {
+  const { handleSubmit, pristine, submitting, errorMessage, googleAuth } = props;
   return (
     <form style={FormStyle} onSubmit={handleSubmit}>
       <Row className="justify-content-center">
@@ -80,7 +80,4 @@ SignUpForm = reduxForm({
   // we want the user to be able to edit what they already entered
 })(SignUpForm);
 
-// Inside this file, we wrapped our component inside the imported 'reduxForm' function
-// We can think of reduxForm() from redux-form behaving similar to connect() from react-redux in
-// terms of connecting a component to communicate with the store 
 export default SignUpForm

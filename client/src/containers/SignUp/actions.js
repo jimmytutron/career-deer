@@ -18,6 +18,7 @@ export const AUTH_FAILURE = 'AUTH_FAILURE';
 // Thunks
 // ==========// ==========// ==========// ==========// ==========// ==========// ==========// ==========
 export function signUpThunk(userInfo) {
+  console.log('thunk is called!');
   // note: this async function can also have a second parameter as getState - currently not being used.
   return async (dispatch) => {
     try {
