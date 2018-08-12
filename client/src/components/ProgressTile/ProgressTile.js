@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
-import { Col } from '../../components/Grid';
 import JobTile from './JobTile';
 import './ProgessTile.css';
 

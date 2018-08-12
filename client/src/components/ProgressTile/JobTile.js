@@ -3,8 +3,13 @@ import { Draggable } from 'react-beautiful-dnd';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip';
+
+import { executeDeleteJob } from "../../containers/UpdateJob/actions";
+
 
 import { Link } from "react-router-dom";
 import { selectUpdateJob } from '../../containers/UpdateJob/actions';
@@ -26,7 +31,7 @@ const cardHeadingStyle = {
 //   ...draggableStyle
 // });
 
-const JobTile = (key, job, idx, selectUpdateJob) => {
+const JobTile = (key, job, idx, selectUpdateJob, deleteJob) => {
   // const {
   //   _id,
   //   location,
@@ -54,11 +59,17 @@ const JobTile = (key, job, idx, selectUpdateJob) => {
         className="mb-2 mx-auto" 
         style={cardStyles}>
             <CardContent>
+            <IconButton
+            className="float-right delete-icon"
+            // onClick={() => selectUpdateJob(job)}
+            >
+            <i className="fas fa-times"></i>
+            </IconButton>
                 <Typography className="pt-2" color="textSecondary">
                 {job.company_name}
                 </Typography>
                 <Typography variant="headline" component="h2" style={cardHeadingStyle}>
-                {job.title}
+                {job.url ? <a className="job-link" href={job.url} target="_blank">{job.title}</a> : job.title}
                 </Typography>
                 <Typography color="primary">
                 {job.location}
@@ -81,9 +92,11 @@ const JobTile = (key, job, idx, selectUpdateJob) => {
             </CardContent>
             <CardActions className="float-right button-margin">
                 <Link to="/updatejob">
+                <Tooltip id="tooltip-icon" title="Edit this job" placement="left">
                   <Button size="small" variant="contained" color="secondary" onClick={() => selectUpdateJob(job)}>
-                    <i className="fas fa-pen-square"></i> &nbsp; Edit Job
+                  <i className="fas fa-pen"></i>
                   </Button>
+                </Tooltip>
                 </Link>
             </CardActions>
         </Card>
