@@ -5,6 +5,7 @@ import { Row, Col } from '../../components/Grid';
 import ProgressTile from '../../components/ProgressTile/ProgressTile';
 import { Cookies } from 'react-cookie';
 
+import Fade from 'react-reveal/Fade';
 import Jump from 'react-reveal/Jump';
 
 // Redux Stuff
@@ -162,14 +163,13 @@ class Board extends Component {
     }
 
     return (
+      <Fade top>
       <div>
       <DragDropContext onDragEnd={this.onDragEnd} >
         <Row className="justify-content-center text-center pt-5 mx-0 px-0">
           <Col size="12 md-12 lg-6">
             <h1 className="montserrat font-weight-bold">Job Tracker Board</h1>
-            <Jump>
               <img width="60%" src="/imgs/icons/houses.svg" alt="houses" />
-            </Jump>
           </Col>
         </Row>
         <Row className="justify-content-center board pt-4 mx-0 px-0">
@@ -185,6 +185,7 @@ class Board extends Component {
         </Row>
       </DragDropContext>
       </div>
+      </Fade>
     );
   }
 }

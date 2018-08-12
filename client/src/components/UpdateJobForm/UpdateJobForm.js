@@ -85,16 +85,6 @@ const renderNote = (
 let UpdateJobForm = ({ deleteJob, handleSubmit, pristine, submitting, errorMessage }) => {
   return (
     <form onSubmit={handleSubmit}>
-    <Row className="justify-content-end">
-    <Tooltip id="tooltip-icon" title="Delete this job" placement="bottom">
-    <IconButton
-            className="float-right"
-            onClick={deleteJob}
-            >
-            <i className="fas fa-times"></i>
-    </IconButton>
-    </Tooltip>
-    </Row>
     <Row className="justify-content-center">
     <Col size="12 md-12 lg-6">
         <Field className="text-input" name="title" component={renderTextField} type="text" label="Job Title" required></Field>
