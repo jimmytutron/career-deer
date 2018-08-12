@@ -4,11 +4,10 @@ import { HomePageJumbo } from '../../components/HomePageJumbo';
 import { StickyFooter } from '../../components/Footer/';
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 // Redux stuff
-// import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
-import { Cookies } from 'react-cookie';
+import { connect } from 'react-redux';
 
 import './Home.css';
 
@@ -24,16 +23,11 @@ import Pulse from 'react-reveal/Pulse';
 
 class Home extends Component {
 
-  cookies = new Cookies();
-
   render() {
-    const firstName = this.cookies.get("firstName");
-    const lastName = this.cookies.get("lastName");
-    const email = this.cookies.get("email");
-    if (firstName && lastName && email){
-        window.location.pathname="/board";
-        return null;
+    if (this.props.app.user){
+        return <Redirect to='/board' />
     };
+
     return (
       <div className="hide-overflow">
         <HomePageJumbo />
@@ -188,15 +182,14 @@ class Home extends Component {
 
 // If you want the component to have access to props passed from a parent
 // component, you need to pass them in to here;
-// const mapStateToProps = (state, props) => {
-//   return {
-//   }
-// };
+const mapStateToProps = (state, props) => {
+  return {
+      app: state.app
+  }
+};
 
-// const mapDispatchToProps = (dispatch, props) => {
-//   return bindActionCreators({
-//   }, dispatch)
-// };
+const mapDispatchToProps = () => ({
+});
 
 // Connect can take 3 arguments
 // 1) mapStateToProps
@@ -204,5 +197,5 @@ class Home extends Component {
 // 3) mergeProps
 
 // bindActionCreators()
-// export default connect(mapStateToProps, mapDispatchToProps)(Home);
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps())(Home);
+

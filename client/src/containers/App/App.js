@@ -11,7 +11,6 @@ import NoMatch from "../NoMatch/NoMatch";
 import SignUp from "../SignUp/SignUp";
 import AddJob from "../AddJob/AddJob";
 import UpdateJob from '../UpdateJob/UpdateJob';
-import ViewJobs from '../ViewJobs/ViewJobs';
 import Chart from '../Chart/Chart';
 import Search from '../Search/Search';
 import Board from '../Board/Board';
@@ -23,7 +22,7 @@ import ResetPW from '../ResetPW/ResetPW';
 
 // Redux stuff
 import { connect } from 'react-redux';
-import { appLoginUpdate, appLogoutUpdate } from './actions';
+import { appLoginUpdate, appLogoutUpdate, appInitialLoad } from './actions';
 
 class App extends Component {
   cookies = new Cookies()
@@ -37,37 +36,29 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // const session = this.cookies.get("connect.sid");
-    const firstName = this.cookies.get("firstName");
-    const lastName = this.cookies.get("lastName");
-    const email = this.cookies.get("email");
-    if (firstName && lastName && email) {
-      const user = {
-        firstName,
-        lastName,
-        email
-      }
-      this.loginAction(user)
-    }
+
+    this.props.appInitialLoad();
+
+  }
+
+  selectNav() {
+    if (this.props.app.loading)
+      return null;
+    if (this.props.app.user)
+      return (<BurgerMenu 
+        firstName={this.props.app.user ? this.props.app.user.firstName : "Stray"} 
+        lastName={this.props.app.user ? this.props.app.user.lastName : "Deer"} 
+        logoutaction={this.logoutAction} />);
+    else 
+      return (<Nav />)
   }
 
   render() {
     return (
+      this.props.app.loading ? <Loading /> :
       <Router>
         <div id="outer-container">
-          {(window.location.pathname === "/chart" ||
-            window.location.pathname === "/addjob" ||
-            window.location.pathname === "/search" ||
-            window.location.pathname === "/board" ||
-            window.location.pathname === "/updatejob" ||
-            window.location.pathname === "/viewjobs"
-            ? 
-              <BurgerMenu 
-              firstName={this.props.app.user ? this.props.app.user.firstName : "Stray"} 
-              lastName={this.props.app.user ? this.props.app.user.lastName : "Deer"} 
-              logoutaction={this.logoutAction} />
-            : 
-              <Nav />)}
+          {this.selectNav()}
           <main id="page-wrap">
           <Switch>
             <Route exact path="/" component={Home} />
@@ -78,7 +69,6 @@ class App extends Component {
             <Route exact path="/search" component={Search} />
             <Route exact path="/board" component={Board} />
             <Route exact path="/updatejob" component={UpdateJob} />
-            <Route exact path ="/viewjobs" component={ViewJobs} />
             <Route exact path ="/forgotpw" component={ResetPW} />
             <Route exact path ="/loading" component={Loading} />
             <Route component={NoMatch} />
@@ -86,7 +76,7 @@ class App extends Component {
           </main>
         </div>
       </Router>
-    );
+      );
   }
 }
 
@@ -97,7 +87,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, props) => ({
   appLoginUpdate,
-  appLogoutUpdate
+  appLogoutUpdate,
+  appInitialLoad
 })
 
 export default connect(mapStateToProps,mapDispatchToProps())(App);

@@ -44,9 +44,9 @@ let LoginForm = ({ handleSubmit, pristine, submitting, errorMessage, auth }) => 
         <Button variant="contained" color="primary" className="roboto login-btn btn" type="submit" disabled={pristine || submitting}>
           Login &nbsp; <i className="fas fa-sign-in-alt"></i>
         </Button>&nbsp;&nbsp;
-        <Button onClick={auth} className="roboto login-btn btn btn-light">
+        {/* <Button onClick={auth} className="roboto login-btn btn btn-light">
         Login with <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
-        </Button>
+        </Button> */}
         </div>
       </div>
     </form>
