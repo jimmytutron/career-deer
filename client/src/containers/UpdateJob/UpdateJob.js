@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import UpdateJobForm from '../../components/UpdateJobForm/UpdateJobForm';
 import { Container, Col, Row } from '../../components/Grid';
+import Fade from 'react-reveal/Fade';
 
 import { connect } from 'react-redux';
 import { Cookies } from 'react-cookie';
@@ -38,6 +39,7 @@ class UpdateJob extends Component {
 
 
     return (
+    <Fade bottom>
       <Container>
         <Row>
           <Col className="text-center">
@@ -56,6 +58,7 @@ class UpdateJob extends Component {
           <Col />
         </Row>
       </Container>
+    </Fade>
     );
   };
 };

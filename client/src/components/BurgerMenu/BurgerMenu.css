@@ -1,15 +1,17 @@
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
-  width: 36px;
+  width: 40px;
   height: 30px;
-  left: 36px;
-  top: 25px;
+  left: 40px;
+  top: 40px;
+  padding: 10px;
 }
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
   background: #5869A7;
+  border-radius: 10px;
 }
 
 /* Position and sizing of clickable cross button */
@@ -57,7 +59,7 @@
   display: inline-block;
 }
 
-/* Styling of overlay */
+Styling of overlay
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }

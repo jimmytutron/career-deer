@@ -5,5 +5,13 @@ ul {
 
 .add-btn {
 	color: #fff !important;
-	background-color: #3AAEDF !important;
+    background-color: #3AAEDF !important;
+    font-size: 25px !important;
+}
+
+.save-btn {
+	color: #fff !important;
+    background-color: #4c30db !important;
+    font-size: 25px !important;
+    margin-bottom: 5px !important;
 }
