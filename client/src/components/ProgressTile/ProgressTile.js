@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Droppable } from 'react-beautiful-dnd';
-import { Col } from '../../components/Grid';
+import Fade from 'react-reveal/Fade';
 import JobTile from './JobTile';
 import './ProgessTile.css';
 
@@ -20,6 +20,7 @@ const ProgressTile = (key, jobs, selectUpdateJob) => {
   // console.log(key,'PDROPPABrogress Tile Keys');
   // console.log(jobs, 'Progress tile jobs');
   return (
+  <Fade bottom> 
   <Droppable droppableId={key} key={key}>
     {(provided, snapshot) => (
       <div className="mb-5 mx-1 inline">
@@ -39,6 +40,7 @@ const ProgressTile = (key, jobs, selectUpdateJob) => {
       </div>
     )}
   </Droppable>
+  </Fade>
   )
 }
 

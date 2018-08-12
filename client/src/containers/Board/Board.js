@@ -182,7 +182,7 @@ class Board extends Component {
             </Jump>
           </Col>
         </Row>
-        <Row className="justify-content-center board pt-4">
+        <Row className="justify-content-center board pt-4 mx-0 px-0">
           {
             Object.entries({ ...this.props.boards }).map(([key, val]) => (
               // returns a library's premade component --don't want each of the

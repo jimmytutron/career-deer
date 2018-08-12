@@ -11,7 +11,7 @@
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
   background: #5869A7;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 /* Position and sizing of clickable cross button */

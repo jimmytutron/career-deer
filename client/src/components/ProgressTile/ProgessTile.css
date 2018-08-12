@@ -18,3 +18,17 @@
 
 	flex-wrap: nowrap;
 }
+
+.job-link {
+	color: rgb(88, 105, 167);
+}
+
+.job-link:hover {
+	color: #3c98ff;
+}
+
+.delete-icon {
+	margin-top: -20px !important;
+	margin-right: -25px !important;
+	font-size: 15px !important;
+}

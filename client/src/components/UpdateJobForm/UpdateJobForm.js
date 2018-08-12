@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import './UpdateJobForm.css';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
 
 const renderTextField = (
   {
@@ -44,7 +45,7 @@ const renderNote = (
     </Col>
     <Col size="12 lg-6">
     <Tooltip id="tooltip-icon" title="Add A Note" placement="top">
-    <Button variant="extendedFab" className="add-btn" type="Button" onClick={()=>fields.push()}><i className="fas fa-plus"></i></Button>
+    <IconButton className="add-btn" type="Button" onClick={()=>fields.push()}><i className="fas fa-plus"></i></IconButton>
     </Tooltip>
     </Col>
     </Row>
@@ -55,7 +56,7 @@ const renderNote = (
         <Row className="justify-content-center px-3 my-3">
         <Col size="2 md-1" className="text-center">
         <Tooltip id="tooltip-delete-icon" title="Delete" placement="top">
-          <Button variant="fab" color="secondary" className="btn btn-danger mt-4 mx-auto" onClick={() => fields.remove(index)}><i className="fas fa-trash"></i></Button>
+          <IconButton variant="fab" color="secondary" className="mt-4 mx-auto" onClick={() => fields.remove(index)}><i className="fas fa-trash"></i></IconButton>
         </Tooltip>
         </Col>
         <Col size="8 md-11">
@@ -84,6 +85,14 @@ const renderNote = (
 let UpdateJobForm = ({ deleteJob, handleSubmit, pristine, submitting, errorMessage }) => {
   return (
     <form onSubmit={handleSubmit}>
+    <Row className="justify-content-end">
+    <IconButton
+            className="float-right"
+            onClick={deleteJob}
+            >
+            <i className="fas fa-times"></i>
+    </IconButton>
+    </Row>
     <Row className="justify-content-center">
     <Col size="12 md-12 lg-6">
         <Field className="text-input" name="title" component={renderTextField} type="text" label="Job Title" required></Field>
@@ -115,9 +124,8 @@ let UpdateJobForm = ({ deleteJob, handleSubmit, pristine, submitting, errorMessa
         <h6>{errorMessage}</h6>
         <Button variant="contained" color="primary" type="submit" disabled={submitting}>
           <i className="fas fa-cloud"></i>&nbsp; Save
-        </Button> &nbsp;
-        <Button variant="contained" color="secondary" onClick={deleteJob}> <i className="fas fa-eraser"></i>&nbsp; Remove Job</Button>
-        <p>* indicates a required field.</p>
+        </Button> 
+        <p className="my-1">* indicates a required field.</p>
         </Col>
         </Row>
     </form>
