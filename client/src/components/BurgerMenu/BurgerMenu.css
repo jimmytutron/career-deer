@@ -8,6 +8,12 @@
   padding: 10px;
 }
 
+@media only screen and (min-width: 2048px) {
+  .bm-burger-button {
+    left: 11%;
+  }
+}
+
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
   background: #5869A7;
