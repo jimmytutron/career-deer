@@ -83,8 +83,8 @@ const renderError = (signedUpState, appState) => {
           return "You must enter a first name, last name, and an email.";
         if (signedUpState.error.response.data.name === "MissingPasswordError")
           return "You must enter a password.";
-        if (signedUpState.error.response.data.name === "MissingPasswordError")
-          return "You must enter a password.";
+        if (signedUpState.error.response.data.name === "UnmatchedPasswordError")
+          return "Your Passwords do not match.";
         if (signedUpState.error.response.data.code === 11000)
           return "An account with that email already exists. Please choose another email.";
       };

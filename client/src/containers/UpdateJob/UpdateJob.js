@@ -4,14 +4,11 @@ import UpdateJobForm from '../../components/UpdateJobForm/UpdateJobForm';
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
-import { Cookies } from 'react-cookie';
 import { executeDeleteJob, executeUpdateJob, resetUpdateJob, selectUpdateJob } from './actions';
 import { grabJobs } from '../Board/actions'
 
 
 class UpdateJob extends Component {
-
-  cookies = new Cookies();
 
   updateJobValues = values => {
     const newJob = {
