@@ -3,6 +3,21 @@ const passport = require('../config/');
 const nodemailer = require('../services/nodemailer');
 
 module.exports = {
+
+  initialLoad: (req, res) => {
+    let user = false;
+    console.log (req.user);
+    if (req.user) {
+      user = {
+        email: req.user.email,
+        firstName: req.user.firstName,
+        lastName: req.user.lastName
+      }  
+    }
+    res.json(user);
+
+  },
+
   signUp: async (req, res, next) => {
     try {
       const user = new db.User({
