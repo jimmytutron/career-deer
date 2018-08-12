@@ -16,6 +16,7 @@ import Chart from '../Chart/Chart';
 import Search from '../Search/Search';
 import Board from '../Board/Board';
 import BurgerMenu from '../../components/BurgerMenu/BurgerMenu';
+import Loading from "../../components/Loading/Loading";
 
 import ResetPW from '../ResetPW/ResetPW';
 
@@ -83,7 +84,8 @@ class App extends Component {
             <Route exact path="/board" component={Board} />
             <Route exact path="/updatejob" component={UpdateJob} />
             <Route exact path ="/viewjobs" component={ViewJobs} />
-            <Route exact path ="/forgotpw" component={ResetPW} />>
+            <Route exact path ="/forgotpw" component={ResetPW} />
+            <Route exact path ="/loading" component={Loading} />
             <Route component={NoMatch} />
           </Switch>
           </main>

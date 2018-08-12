@@ -6,13 +6,14 @@ import './ProgessTile.css';
 
 
 const getListStyle = isDraggingOver => ({
-  background: isDraggingOver ? 'lightblue' : '#E7EAF2',
+  background: isDraggingOver ? '#1670bd' : '#f2f2f2',
   width: '300px',
   minHeight: '300px',
-  boxShadow: '0px 0px 1px #5B5B5B',
+  maxHeight: '70vh',
+  boxShadow: '0px 0px 1px #fff',
   padding: '10px',
   borderRadius: '10px',
-  overflow: 'scroll'
+  overflow: 'auto'
 });
 
 const ProgressTile = (key, jobs, selectUpdateJob) => {
