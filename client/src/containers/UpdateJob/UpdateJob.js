@@ -63,7 +63,6 @@ class UpdateJob extends Component {
 const mapStateToProps = (state,props) => {
   return { 
     updateJob: state.updateJob,
-    viewJobs: state.viewJobs,
     app: state.app
   };
 };

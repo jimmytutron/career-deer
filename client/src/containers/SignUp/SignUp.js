@@ -58,7 +58,7 @@ class SignUp extends Component {
           </Row>
           <Row className="justify-content-center">
             <Col />
-            <Col size="12 md-8 lg-8" className="banana">
+            <Col size="12 md-8 lg-8" className="">
               <SignUpForm
                onSubmit={this.signUp}
                errorMessage={renderError(this.props.signedUp, this.props.app)}
@@ -69,7 +69,6 @@ class SignUp extends Component {
             <Col />
           </Row>
         </Container>
-        {/* <div>{this.props.renderMaterial}</div> */}
       </React.Fragment>
     );
   };
