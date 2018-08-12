@@ -163,7 +163,7 @@ class Board extends Component {
     }
 
     return (
-      <Fade top>
+      <Fade top duration={500}>
       <div>
       <DragDropContext onDragEnd={this.onDragEnd} >
         <Row className="justify-content-center text-center pt-5 mx-0 px-0">
