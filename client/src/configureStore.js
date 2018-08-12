@@ -12,7 +12,6 @@ import chartReducer from './containers/Chart/reducer';
 import addJobReducer from './containers/AddJob/reducer';
 import { grabJobsReducer } from './containers/Board/reducer';
 import updateJobReducer from './containers/UpdateJob/reducer';
-import viewJobsReducer from './containers/ViewJobs/reducer';
 import { reducer as burgerMenuReducer } from 'redux-burger-menu';
 import searchReducer from './containers/Search/reducer';
 
@@ -25,7 +24,6 @@ const allReducers = combineReducers({
   googleAuth: googleAuthReducer,
   chartData: chartReducer,
   addJob: addJobReducer,
-  viewJobs: viewJobsReducer,
   boards: grabJobsReducer,
   updateJob: updateJobReducer,
   burgerMenu: burgerMenuReducer,

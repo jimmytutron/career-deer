@@ -22,7 +22,6 @@ export function login(userInfo) {
       const loginUser = {
         firstName: apiResponse.data.firstName,
         lastName: apiResponse.data.lastName,
-        email: apiResponse.data.email
       }
       // dispatch here
       dispatch(appLoginUpdate(loginUser))

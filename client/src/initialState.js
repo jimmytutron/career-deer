@@ -23,10 +23,6 @@ export default {
     error: null,
     job: null
   },
-  viewJobs: {
-    data: [],
-    edit: null
-  },
   searchData: {
     loading: false,
     data: [],

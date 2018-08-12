@@ -50,6 +50,11 @@ let SignUpForm = (props) => {
           <Field className="text-input" name="password" component={renderTextField} type="password" label="Password"></Field>
         </Col>
       </Row>
+      <Row className="justify-content-center">
+        <Col size="12 md-12">
+          <Field className="text-input" name="passwordRepeat" component={renderTextField} type="password" label="Enter your password again"></Field>
+        </Col>
+      </Row>
       <Row className="justify-content-end">
         <Col size="12">
         <h6>{errorMessage}</h6>
