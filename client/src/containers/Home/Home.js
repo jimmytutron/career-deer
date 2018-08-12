@@ -24,14 +24,13 @@ import Pulse from 'react-reveal/Pulse';
 
 class Home extends Component {
 
-    cookies = new Cookies();
-
-    onUpdateTest = () => {
-        this.props.onUpdateTest('Test results!');
-    }
+  cookies = new Cookies();
 
   render() {
-    if (this.cookies.get("email")){
+    const firstName = this.cookies.get("firstName");
+    const lastName = this.cookies.get("lastName");
+    const email = this.cookies.get("email");
+    if (firstName && lastName && email){
         window.location.pathname="/board";
         return null;
     };
