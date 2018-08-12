@@ -2,6 +2,10 @@
 const axios = require('axios');
 
 // Basic Login/Sign up
+export function initialLoad() {
+  return axios.get('/api/user/load');
+}
+
 export function signIn(data) {
   return axios.post('/api/user/login', data);
 };

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
+
 import { DragDropContext } from 'react-beautiful-dnd';
 import { updateJobById } from '../../utils/API';
 import { Row, Col } from '../../components/Grid';
 import ProgressTile from '../../components/ProgressTile/ProgressTile';
-import { Cookies } from 'react-cookie';
+
 
 import Jump from 'react-reveal/Jump';
 
@@ -50,7 +52,6 @@ const houseStyle = {
 
 class Board extends Component {
   
-  cookies = new Cookies();
 
   componentDidMount() {
     console.log('Grabbing Jobs..');
@@ -143,9 +144,8 @@ class Board extends Component {
 
   render() {
     
-    if (!this.cookies.get("email")){
-      window.location.pathname="/unauthorized";
-      return null;
+    if (!this.props.app.user){
+      return <Redirect to='/unauthorized' />
     };
 
     console.log(this.props.boards);
@@ -201,7 +201,8 @@ class Board extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    boards: state.boards
+    boards: state.boards,
+    app: state.app
   }
 }
 

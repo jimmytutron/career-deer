@@ -15,4 +15,7 @@ router.route('/logout')
 router.route('/resetpw')
   .post(loginController.resetPW)
 
+router.route('/load') 
+  .get(loginController.initialLoad)
+
 module.exports = router;

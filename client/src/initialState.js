@@ -1,6 +1,7 @@
 // this is in a seperate file both for accessibility and to make the index.js much cleaner
 export default {
   app: {
+    loading: true,
     user: null
   },
   loggedIn: {
@@ -63,6 +64,7 @@ export default {
     }
   },
   boards: {
+
     // Think of progress_stage as an id here.
     saved: {
       jobs: []
