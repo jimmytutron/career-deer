@@ -16,7 +16,9 @@ module.exports = {
       const emailData = getSignUpText(req.body.email, req.body.firstName, req.body.lastName);
       nodemailer(emailData);
 
-      // log in after signing up
+      // log in after signing up.
+      // - Add a conditional check for what type of login is occurring
+      // - pass the corresponding string into the authenticate method. for the type of login occurring
       passport.authenticate('local')(req, res, next)
     } catch (err) {
       res.status(422).json(err);
@@ -52,6 +54,16 @@ module.exports = {
       // res.redirect('/');
       return res.send({ authenticated: req.isAuthenticated() });
     });
+  },
+
+  resetPW: (req, res) => {
+    try {
+      console.log(req.body);
+      const email = req.body.email;
+      res.json(email);
+    } catch(err){
+      res.status(422).json(err);
+    }
   }
 };
 

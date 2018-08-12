@@ -9,6 +9,10 @@ export default {
   signedUp: {
     error: null,
   },
+  pwReset: {
+    status: false,
+    error: null
+  },
   addJob: {
     status: false,
     error: null
