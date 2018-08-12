@@ -64,7 +64,7 @@ export default {
     }
   },
   boards: {
-    loading: true,
+
     // Think of progress_stage as an id here.
     saved: {
       jobs: []

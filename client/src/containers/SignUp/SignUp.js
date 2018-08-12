@@ -15,7 +15,7 @@ class SignUp extends Component {
 
   signUp = (values,authType) => {
     switch(authType) {
-      case 'local':
+      default:
         this.props.signUpThunk(values);
         break;
       // case 'google':
@@ -81,6 +81,8 @@ const renderError = (signedUpState, appState) => {
       if (signedUpState.error.response.data) {
         if (signedUpState.error.response.data.name === "ValidationError")
           return "You must enter a first name, last name, and an email.";
+        if (signedUpState.error.response.data.name === "MissingPasswordError")
+          return "You must enter a password.";
         if (signedUpState.error.response.data.name === "MissingPasswordError")
           return "You must enter a password.";
         if (signedUpState.error.response.data.code === 11000)

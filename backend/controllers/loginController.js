@@ -6,10 +6,8 @@ module.exports = {
 
   initialLoad: (req, res) => {
     let user = false;
-    console.log (req.user);
     if (req.user) {
       user = {
-        email: req.user.email,
         firstName: req.user.firstName,
         lastName: req.user.lastName
       }  
@@ -42,9 +40,6 @@ module.exports = {
 
   login: async (req, res) => {
     user = await db.User.findOne({email: req.body.email});
-    res.cookie("firstName", user.firstName);
-    res.cookie("lastName", user.lastName);
-    res.cookie("email", user.email);
     res.json({
       email: user.email,
       firstName: user.firstName,
@@ -55,18 +50,11 @@ module.exports = {
   logout: (req, res, next) => {
     req.logOut();
     res.clearCookie("connect.sid");
-    res.clearCookie("firstName");
-    res.clearCookie("lastName");
-    res.clearCookie("email");
     req.session.destroy(function (err) {
       if (err) {
         return next(err);
       }
       res.clearCookie("connect.sid");
-      res.clearCookie("firstName");
-      res.clearCookie("lastName");
-      res.clearCookie("email");
-      // res.redirect('/');
       return res.send({ authenticated: req.isAuthenticated() });
     });
   },

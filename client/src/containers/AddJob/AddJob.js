@@ -4,13 +4,11 @@ import AddJobForm from '../../components/AddJobForm/AddJobForm';
 import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
-import { Cookies } from 'react-cookie';
 import { addjob, resetaddjob } from './actions';
 
 import RubberBand from 'react-reveal/RubberBand';
 
 class AddJob extends Component {
-  cookies = new Cookies() ;
   
   addjob = values => {
     // This calls the addjob action creator, passing the form values to it
@@ -23,9 +21,8 @@ class AddJob extends Component {
       return <Redirect to='/board' />;
     };
 
-    if (!this.cookies.get("email")){
-      window.location.pathname="/unauthorized";
-      return null;
+    if (!this.props.app.user){
+      return <Redirect to='/unauthorized' />
     };
 
     return (
