@@ -17,15 +17,9 @@ import Search from '../Search/Search';
 import Board from '../Board/Board';
 import BurgerMenu from '../../components/BurgerMenu/BurgerMenu';
 
-<<<<<<< HEAD
-=======
 import ResetPW from '../ResetPW/ResetPW';
 
-// Do we still need this?
-// import { StickyFooter } from '../../components/Footer';
 
-
->>>>>>> 3e9cac43f017fadc44472e41dcef5f440cf917bd
 // Redux stuff
 import { connect } from 'react-redux';
 import { appLoginUpdate, appLogoutUpdate } from './actions';
@@ -46,7 +40,7 @@ class App extends Component {
     const firstName = this.cookies.get("firstName");
     const lastName = this.cookies.get("lastName");
     const email = this.cookies.get("email");
-    if (firstName && lastName && email && session) {
+    if (firstName && lastName && email) {
       const user = {
         firstName,
         lastName,
