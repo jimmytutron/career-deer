@@ -20,9 +20,6 @@ import Loading from "../../components/Loading/Loading";
 
 import ResetPW from '../ResetPW/ResetPW';
 
-// Do we still need this?
-// import { StickyFooter } from '../../components/Footer';
-
 
 // Redux stuff
 import { connect } from 'react-redux';
@@ -35,12 +32,12 @@ class App extends Component {
     this.props.appLoginUpdate(user);
   }
 
-  // Doesn't appear to be in use?
   logoutAction = () => {
     this.props.appLogoutUpdate();
   }
 
   componentDidMount() {
+    // const session = this.cookies.get("connect.sid");
     const firstName = this.cookies.get("firstName");
     const lastName = this.cookies.get("lastName");
     const email = this.cookies.get("email");
@@ -74,10 +71,8 @@ class App extends Component {
           <main id="page-wrap">
           <Switch>
             <Route exact path="/" component={Home} />
-            {/* Why are both the props being passed to these the same? logoutAction isn't being passed down? */}
-            <Route exact path="/login" component={LoginPage} loginaction={this.loginAction} />
-            <Route exact path="/signup" component={SignUp} loginaction={this.loginAction} />
-            {/* **************************************** */}
+            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/signup" component={SignUp} />
             <Route exact path="/chart" component={Chart} />
             <Route exact path="/addjob" component={AddJob} />
             <Route exact path="/search" component={Search} />
@@ -97,9 +92,7 @@ class App extends Component {
 
 // The nav bar needs to know whether we're logged in
 const mapStateToProps = state => ({
-  app: state.app,
-  // loggedIn: state.loggedIn,
-  // signedUp: state.signedUp
+  app: state.app
 });
 
 const mapDispatchToProps = (dispatch, props) => ({

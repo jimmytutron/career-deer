@@ -33,11 +33,11 @@ const renderHomeNav = () => (
         </Link>
       </li>
       <li className="nav-item">
-        <a
-          href="/login"
+        <Link
+          to="/login"
           className="nav-link">
           Login
-        </a>
+        </Link>
       </li>
     </ul>
   </div>
