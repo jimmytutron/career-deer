@@ -1,5 +1,4 @@
 import React from 'react';
-// Redux stuff
 import { Field, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { Col, Row } from '../Grid';
@@ -29,7 +28,8 @@ const renderTextField = ({
     />
   )
 
-let SignUpForm = ({ handleSubmit, pristine, reset, submitting, errorMessage, auth }) => {
+let SignUpForm = (props) => {
+  const { handleSubmit, pristine, submitting, errorMessage, googleAuth } = props;
   return (
     <form style={FormStyle} onSubmit={handleSubmit}>
       <Row className="justify-content-center">
@@ -62,7 +62,7 @@ let SignUpForm = ({ handleSubmit, pristine, reset, submitting, errorMessage, aut
         <Button variant="contained" color="primary" className="btn btn-info" type="submit" disabled={pristine || submitting}>
           Sign Up
         </Button> &nbsp;&nbsp;
-        <Button onClick={auth} className="roboto login-btn btn btn-light">
+        <Button onClick={googleAuth} className="roboto login-btn btn btn-light">
         Sign Up with&nbsp; <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
         </Button>
       </Col>
@@ -80,7 +80,4 @@ SignUpForm = reduxForm({
   // we want the user to be able to edit what they already entered
 })(SignUpForm);
 
-// Inside this file, we wrapped our component inside the imported 'reduxForm' function
-// We can think of reduxForm() from redux-form behaving similar to connect() from react-redux in
-// terms of connecting a component to communicate with the store 
 export default SignUpForm
