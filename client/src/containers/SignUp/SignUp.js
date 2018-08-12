@@ -9,34 +9,33 @@ import { signUpThunk, resetSignUp, googleSignUpThunk } from './actions';
 import Rotate from 'react-reveal/Rotate';
 
 class SignUp extends Component {
-  googleSignUp = () => {
-    this.props.googleSignUpThunk('test');
-  }
-
-  signUp = (values,authType) => {
-    switch(authType) {
-      case 'local':
-        this.props.signUpThunk(values);
-        break;
-      // case 'google':
-        // this.props.googleSignUpThunk();
-        // break;
-      // case 'facebook':
-        // this.props.faceBookSignUpthunk();
-        // break;
-      // case 'github':
-        // this.props.githubSignUpThunk();
-        // break;
+  signUp = (values, authType) => {
+    if (!(values === null)) {
+      this.props.signUpThunk(values);
+    } else {
+      switch (authType) {
+        case 'google':
+          console.log('Log in with Google');
+          this.props.googleSignUpThunk(values);
+          break;
+        case 'facebook':
+          console.log('Log in with Facebook');
+          // this.props.faceBookSignUpthunk(values);
+          break;
+        case 'github':
+          console.log('Log in with GitHub');
+          // this.props.githubSignUpThunk(values);
+          break;
+      }
     }
   };
 
   componentWillUnmount() {
     this.props.resetSignUp();
-    console.log('componentWillMount: this.props.googleSignUpThunk', this.props.googleSignUpThunk);
+    console.log('componentWillMount: this.props.resetSignUp invoked!');
   }
 
   render() {
-
     if (this.props.app.user) {
       return <Redirect to='/board' />;
     };
@@ -60,10 +59,8 @@ class SignUp extends Component {
             <Col />
             <Col size="12 md-8 lg-8" className="banana">
               <SignUpForm
-               onSubmit={this.signUp}
-               errorMessage={renderError(this.props.signedUp, this.props.app)}
-               googleSignUpThunk={this.googleSignUpThunk}
-               
+                onSubmit={this.signUp}
+                errorMessage={renderError(this.props.signedUp, this.props.app)}
               />
             </Col>
             <Col />

@@ -29,45 +29,50 @@ const renderTextField = ({
   )
 
 let SignUpForm = (props) => {
-  const { handleSubmit, pristine, submitting, errorMessage, googleAuth } = props;
+  const { handleSubmit, pristine, submitting, errorMessage } = props;
   return (
     <form style={FormStyle} onSubmit={handleSubmit}>
       <Row className="justify-content-center">
-      <Col size="12 md-12 lg-6">
-        <Field className="text-input" name="firstName" component={renderTextField} type="text" label="First Name"></Field>
-      </Col>
-      <Col size="12 md-12 lg-6">
-        <Field className="text-input" name="lastName" component={renderTextField} type="text" label="Last Name"></Field>
-      </Col>
+        <Col size="12 md-12 lg-6">
+          <Field className="text-input" name="firstName" component={renderTextField} type="text" label="First Name"></Field>
+        </Col>
+        <Col size="12 md-12 lg-6">
+          <Field className="text-input" name="lastName" component={renderTextField} type="text" label="Last Name"></Field>
+        </Col>
       </Row>
       <Row className="justify-content-center">
-      <Col size="12 md-12">
-        <Field className="text-input" name="email" component={renderTextField} type="email" label="Email"></Field>
-      </Col>
+        <Col size="12 md-12">
+          <Field className="text-input" name="email" component={renderTextField} type="email" label="Email"></Field>
+        </Col>
       </Row>
       <Row className="justify-content-center">
-      <Col size="12 md-12">
-        <Field className="text-input" name="password" component={renderTextField} type="password" label="Password"></Field>
-      </Col>
+        <Col size="12 md-12">
+          <Field className="text-input" name="password" component={renderTextField} type="password" label="Password"></Field>
+        </Col>
       </Row>
       <Row className="justify-content-end">
-      <Col size="12">
-      <h6>{errorMessage}</h6>
-      </Col>
+        <Col size="12">
+          <h6>{errorMessage}</h6>
+        </Col>
       </Row>
       <Row className="justify-content-end">
-      <Col size="12 lg-6">
-      </Col>
-      <Col size="10 md-10 lg-6" className="text-right">
+        <Col size="12 lg-6">
+        </Col>
+        <Col size="10 md-10 lg-6" className="text-right">
         <Button variant="contained" color="primary" className="btn btn-info" type="submit" disabled={pristine || submitting}>
           Sign Up
-        </Button> &nbsp;&nbsp;
-        <Button onClick={googleAuth} className="roboto login-btn btn btn-light">
-        Sign Up with&nbsp; <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
         </Button>
-      </Col>
+        <Button onClick={() => props.onSubmit(null,'google')} className="roboto login-btn btn btn-light" >
+          Sign Up with&nbsp; <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo" />
+        </Button>
+        <Button onClick={() => props.onSubmit(null,'facebook')} className="roboto login-btn btn btn-light">
+          Sign Up with&nbsp; <i className="fab fa-facebook-square"></i>
+        </Button>
+        <Button onClick={() => props.onSubmit(null,'github')} className="roboto login-btn btn btn-light" >
+          Sign Up with&nbsp; <i className="fab fa-github"></i>
+        </Button>
+        </Col>
       </Row>
-
     </form>
   );
 };
@@ -81,3 +86,17 @@ SignUpForm = reduxForm({
 })(SignUpForm);
 
 export default SignUpForm
+
+// function test() {
+//   return _this.listenToSubmit(
+//     handleSubmit(
+//       checkSubmit(onSubmit),
+//       _extends(
+//         {}, _this.props, bindActionCreators({ blur: blur, change: change }, dispatch)
+//       ),
+//       _this.props.validExceptSubmit,
+//       _this.asyncValidate,
+//       _this.getFieldList({ excludeFieldArray: true })
+//     )
+//   );
+// }
