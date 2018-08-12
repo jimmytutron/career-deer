@@ -38,6 +38,15 @@ const move = (source, destination, droppableSource, droppableDestination) => {
   return result;
 };
 
+const houseStyle = {
+  display: "block",
+  position: "fixed",
+  top: "50%",
+  left: "50%",
+  height: "300px",
+  marginLeft: "-150px"
+}
+
 
 class Board extends Component {
   
@@ -149,10 +158,10 @@ class Board extends Component {
         ) {
       return (
 
-      <Row className="justify-content-center text-center pt-5">
+      <Row className="justify-content-center text-center pt-5 mx-0 px-0">
       <Col size="12 md-10">
         <Jump>
-          <img className="my-5" width="60%" src="/imgs/icons/houses.svg" alt="houses" />
+          <img className="my-5 house-img" width="60%" src="/imgs/icons/houses.svg" alt="houses"/>
         </Jump>
       <h1 className="montserrat font-weight-bold">Job Tracker Board</h1>
       <h2 className="montserrat text-center pb-5">It looks like you have nothing tracked yet!</h2>
@@ -165,7 +174,7 @@ class Board extends Component {
     return (
       <div>
       <DragDropContext onDragEnd={this.onDragEnd} >
-        <Row className="justify-content-center text-center pt-5">
+        <Row className="justify-content-center text-center pt-5 mx-0 px-0">
           <Col size="12 md-12 lg-6">
             <h1 className="montserrat font-weight-bold">Job Tracker Board</h1>
             <Jump>

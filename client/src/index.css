@@ -1,6 +1,7 @@
 html {
     position: relative;
     min-height: 100%;
+    overflow: auto;
 }
 
 body {
@@ -13,5 +14,5 @@ body {
 }
 
 a:hover {
-	text-decoration: none !important;
+    text-decoration: none !important;
 }
