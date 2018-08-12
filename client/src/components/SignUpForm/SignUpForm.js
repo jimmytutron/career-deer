@@ -62,9 +62,9 @@ let SignUpForm = (props) => {
           <Button variant="contained" color="primary" className="btn btn-info" type="submit" disabled={pristine || submitting}>
             Sign Up
           </Button> &nbsp;&nbsp;
-          <Button onClick={googleAuth} className="roboto login-btn btn btn-light">
+          {/* <Button onClick={googleAuth} className="roboto login-btn btn btn-light">
           Sign Up with&nbsp; <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
-          </Button>
+          </Button> */}
         </Col>
       </Row>
 
