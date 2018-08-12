@@ -55,7 +55,7 @@ const renderNote = (
         <Paper>
         <Row className="justify-content-center px-3 my-3">
         <Col size="2 md-1" className="text-center">
-        <Tooltip id="tooltip-delete-icon" title="Delete" placement="top">
+        <Tooltip id="tooltip-delete-icon" title="Delete Note" placement="top">
           <IconButton variant="fab" color="secondary" className="mt-4 mx-auto" onClick={() => fields.remove(index)}><i className="fas fa-trash"></i></IconButton>
         </Tooltip>
         </Col>
@@ -86,12 +86,14 @@ let UpdateJobForm = ({ deleteJob, handleSubmit, pristine, submitting, errorMessa
   return (
     <form onSubmit={handleSubmit}>
     <Row className="justify-content-end">
+    <Tooltip id="tooltip-icon" title="Delete this job" placement="bottom">
     <IconButton
             className="float-right"
             onClick={deleteJob}
             >
             <i className="fas fa-times"></i>
     </IconButton>
+    </Tooltip>
     </Row>
     <Row className="justify-content-center">
     <Col size="12 md-12 lg-6">
@@ -122,9 +124,11 @@ let UpdateJobForm = ({ deleteJob, handleSubmit, pristine, submitting, errorMessa
         </Col>        
         <Col size="12 md-12 lg-6">
         <h6>{errorMessage}</h6>
-        <Button variant="contained" color="primary" type="submit" disabled={submitting}>
-          <i className="fas fa-cloud"></i>&nbsp; Save
-        </Button> 
+        <Tooltip id="tooltip-icon" title="Save changes" placement="left">
+        <IconButton className="save-btn" variant="contained" color="primary" type="submit" disabled={submitting}>
+          <i className="fas fa-save"></i>
+        </IconButton> 
+        </Tooltip>
         <p className="my-1">* indicates a required field.</p>
         </Col>
         </Row>

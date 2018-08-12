@@ -38,16 +38,6 @@ const move = (source, destination, droppableSource, droppableDestination) => {
   return result;
 };
 
-const houseStyle = {
-  display: "block",
-  position: "fixed",
-  top: "50%",
-  left: "50%",
-  height: "300px",
-  marginLeft: "-150px"
-}
-
-
 class Board extends Component {
   
   cookies = new Cookies();
