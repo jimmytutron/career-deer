@@ -1,7 +1,7 @@
 .note {
 	max-height: 100px;
 	padding: 5px 20px 5px 20px;
-	overflow: scroll;
+	overflow: auto;
 	border-radius: 5px;
 	background: #EEF2FF;
 }
@@ -15,6 +15,6 @@
     min-height: 100vh;
     min-width: 100vw;
     display: inline-flex;
-    overflow-anchor: none;
-    flex-wrap: nowrap;
+
+	flex-wrap: nowrap;
 }

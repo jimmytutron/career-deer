@@ -85,6 +85,6 @@ export default {
     }
   },
   burgerMenu: {
-    isOpen: false
+    isOpen: true
   }
 };
