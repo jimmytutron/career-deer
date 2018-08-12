@@ -33,39 +33,39 @@ let SignUpForm = (props) => {
   return (
     <form style={FormStyle} onSubmit={handleSubmit}>
       <Row className="justify-content-center">
-      <Col size="12 md-12 lg-6">
-        <Field className="text-input" name="firstName" component={renderTextField} type="text" label="First Name"></Field>
-      </Col>
-      <Col size="12 md-12 lg-6">
-        <Field className="text-input" name="lastName" component={renderTextField} type="text" label="Last Name"></Field>
-      </Col>
+        <Col size="12 md-12 lg-6">
+          <Field className="text-input" name="firstName" component={renderTextField} type="text" label="First Name"></Field>
+        </Col>
+        <Col size="12 md-12 lg-6">
+          <Field className="text-input" name="lastName" component={renderTextField} type="text" label="Last Name"></Field>
+        </Col>
       </Row>
       <Row className="justify-content-center">
-      <Col size="12 md-12">
-        <Field className="text-input" name="email" component={renderTextField} type="email" label="Email"></Field>
-      </Col>
+        <Col size="12 md-12">
+          <Field className="text-input" name="email" component={renderTextField} type="email" label="Email"></Field>
+        </Col>
       </Row>
       <Row className="justify-content-center">
-      <Col size="12 md-12">
-        <Field className="text-input" name="password" component={renderTextField} type="password" label="Password"></Field>
-      </Col>
+        <Col size="12 md-12">
+          <Field className="text-input" name="password" component={renderTextField} type="password" label="Password"></Field>
+        </Col>
       </Row>
       <Row className="justify-content-end">
-      <Col size="12">
-      <h6>{errorMessage}</h6>
-      </Col>
+        <Col size="12">
+        <h6>{errorMessage}</h6>
+        </Col>
       </Row>
       <Row className="justify-content-end">
-      <Col size="12 lg-6">
-      </Col>
-      <Col size="10 md-10 lg-6" className="text-right">
-        <Button variant="contained" color="primary" className="btn btn-info" type="submit" disabled={pristine || submitting}>
-          Sign Up
-        </Button> &nbsp;&nbsp;
-        <Button onClick={googleAuth} className="roboto login-btn btn btn-light">
-        Sign Up with&nbsp; <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
-        </Button>
-      </Col>
+        <Col size="12 lg-6">
+        </Col>
+        <Col size="10 md-10 lg-6" className="text-right">
+          <Button variant="contained" color="primary" className="btn btn-info" type="submit" disabled={pristine || submitting}>
+            Sign Up
+          </Button> &nbsp;&nbsp;
+          <Button onClick={googleAuth} className="roboto login-btn btn btn-light">
+          Sign Up with&nbsp; <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
+          </Button>
+        </Col>
       </Row>
 
     </form>
