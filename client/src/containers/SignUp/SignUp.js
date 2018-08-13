@@ -68,6 +68,11 @@ class SignUp extends Component {
             </Col>
             <Col />
           </Row>
+          <Row className="justify-content-center text-center">
+            <Col size="12 md-8 lg-8">
+            <h6 className="montserrat mt-3">A returning deerling? <a href="/login">Login Here!</a></h6>
+            </Col>
+          </Row>
         </Container>
       </React.Fragment>
     );

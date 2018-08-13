@@ -5,13 +5,16 @@
     background-size: 400% 400%;
     background-color: #368FCC;
     height: 58vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin: 0px;
     overflow: hidden;
     word-break: normal;
     -webkit-animation: Gradient 15s ease infinite;
-    -moz-animation: Gradient 15s ease infinite;
     animation: Gradient 15s ease infinite;
 }
 
@@ -27,7 +30,7 @@
     }
 }
 
-@-moz-keyframes Gradient {
+@-webkit-keyframes Gradient {
     0% {
         background-position: 0% 50%
     }
@@ -93,11 +96,16 @@
     }
     .home-jumbotron-small {
         color: #fff;
+        background: -webkit-gradient(linear,left top, left bottom,from(#368FCC),to(#6673A3));
         background: linear-gradient(#368FCC,#6673A3);
         background-color: #368FCC;
         height: 75vh;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         margin: 0px;
         overflow: hidden;
     }

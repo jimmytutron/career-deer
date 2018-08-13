@@ -1,6 +1,7 @@
-a.title {
+.job-title {
   text-decoration: none;
-  color: black;
+	color: #4c30db !important;
+	font-size: 1.3em !important;
 }
 
 a:hover {
@@ -8,6 +9,21 @@ a:hover {
 }
 
 .track-btn {
-	color: #fff !important;
-	background-color: #168CF1 !important;
+margin-top: 10px !important;
+}
+
+.dark-teal {
+	color: #474a50 !important;
+}
+
+.bg-light-blue {
+	background-color: #EEF2FF !important;
+}
+
+.card-header-bg {
+	background-color: #fdfdff !important;
+}
+
+.card-shadow {
+	box-shadow: 0px 0px 8px #dee5ff;
 }
