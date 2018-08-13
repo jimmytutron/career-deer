@@ -18,8 +18,12 @@ export function logOut() {
   return axios.get('/api/user/logout');
 }
 
-export function resetPW(email){
-  return axios.post('/api/user/resetpw', email);
+export function resetPW(data){
+  return axios.post('/api/user/resetpw', data);
+}
+
+export function updatePW(data){
+  return axios.post('/api/user/updatepw', data);
 }
 
 // ======================================================

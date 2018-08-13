@@ -16,7 +16,7 @@ import BurgerMenu from '../../components/BurgerMenu/BurgerMenu';
 import Loading from "../../components/Loading/Loading";
 
 import ResetPW from '../ResetPW/ResetPW';
-
+import UpdatePW from '../UpdatePW/UpdatePW';
 
 // Redux stuff
 import { connect } from 'react-redux';
@@ -67,6 +67,7 @@ class App extends Component {
             <Route exact path="/board" component={Board} />
             <Route exact path="/updatejob" component={UpdateJob} />
             <Route exact path ="/forgotpw" component={ResetPW} />
+            <Route path ="/updatepw" component={UpdatePW} />
             <Route exact path ="/loading" component={Loading} />
             <Route component={NoMatch} />
           </Switch>

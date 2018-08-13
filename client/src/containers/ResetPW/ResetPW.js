@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { postResetPassword } from './actions';
+import ResetPWForm from '../../components/ResetPWForm';
+
+import { Field, reduxForm } from 'redux-form';
 import { Col, Row, Container } from '../../components/Grid';
-import Button from '@material-ui/core/Button';
+
+
+
 
 class ResetPW extends Component {
 
@@ -10,29 +15,21 @@ class ResetPW extends Component {
 
     }
 
-    pwReset = values => {
+    requestPWReset = values => {
         this.props.postResetPassword(values);
     }
 
-render() {
-    return (
-        <Container>
-        <Row className="justify-content-center text-center">
-            <Col size="10">
-            <Button
-            variant="extendedFab" 
-            color="secondary"
-            onClick={this.pwReset}
-            >
-            Chicken</Button>
-            </Col>
-        </Row>  
-        </Container>
-    )
-}
+    render() {
+        return (
+            <Container>
+                <ResetPWForm onSubmit={this.requestPWReset} />
+            </Container>
+        )
+    }
 }
 
-function mapStateToProps(state){
+
+const mapStateToProps = (state, props) => {
     return {
         pwReset: state.pwReset,
         app: state.app

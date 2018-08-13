@@ -1,12 +1,15 @@
-import { resetPW } from '../../utils/API';
+import { updatePW } from '../../utils/API';
 
-export const PASSWORD_RESET = 'PASSWORD_RESET';
+export const PASSWORD_UPDATE = 'PASSWORD_UPDATE';
 
-export function postResetPassword(userInfo) {
+export function updatePassword(userInfo) {
     return async (dispatch, getState) => {
         try {
-            userInfo.email = userInfo.email.toLowerCase();
-            const apiResponse = await(resetPW(userInfo));
+            // userInfo.email = userInfo.email.toLowerCase();
+            console.log("entered updatePassword")
+            console.log("--------------------")
+            console.log(userInfo)
+            const apiResponse = await(updatePW(userInfo));
             dispatch(resetConfirmed('ok'));
         } catch(err){
             dispatch(noData(err))
@@ -16,7 +19,7 @@ export function postResetPassword(userInfo) {
 
 function resetConfirmed(){
     return {
-        type: PASSWORD_RESET,
+        type: PASSWORD_UPDATE,
         payload: {
             status: true,
             error: null

@@ -14,6 +14,10 @@ export default {
     status: false,
     error: null
   },
+  pwUpdate: {
+    status: false,
+    error: null
+  },
   addJob: {
     status: false,
     error: null

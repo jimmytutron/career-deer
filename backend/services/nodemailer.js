@@ -35,7 +35,6 @@ module.exports = async (emailData) => {
   let mailOptions = {
     from: '"Career Deer 🦌"careerdeer@gmail.com', // sender address
     to: emailTo, // list of receivers
-    bcc: `careerdeer@gmail.com`, // Sending hidden email to self for reference.
     subject: emailSubject, // Subject line
     text: emailText, // plain text body
     html: emailHtml // html body
