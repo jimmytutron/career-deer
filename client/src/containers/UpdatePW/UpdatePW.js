@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Redirect } from "react-router-dom";
+
 import queryString from 'query-string';
 
 import { updatePassword } from './actions';
 import UpdatePWForm from '../../components/UpdatePWForm';
 
-import { Field, reduxForm } from 'redux-form';
-import { Col, Row, Container } from '../../components/Grid';
+import { /*Col, Row,*/ Container } from '../../components/Grid';
 
 
 
@@ -25,18 +26,22 @@ class UpdatePW extends Component {
     }
 
     render() {
-        return (
-            <Container>
-                <UpdatePWForm onSubmit={this.requestUpdatePW} />
-            </Container>
-        )
+        if (this.props.pwUpdate.status) {
+            return <Redirect to='/login' />
+        } else {
+            return (
+                <Container>
+                    <UpdatePWForm onSubmit={this.requestUpdatePW} />
+                </Container>
+            )
+        }
     }
 }
 
 
 const mapStateToProps = (state, props) => {
     return {
-        pwReset: state.pwReset,
+        pwUpdate: state.pwUpdate,
         app: state.app
     }
 }

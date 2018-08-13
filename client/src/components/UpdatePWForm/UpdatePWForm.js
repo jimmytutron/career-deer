@@ -41,7 +41,7 @@ let UpdatePWForm = ({ handleSubmit, pristine, submitting, errorMessage }) => {
           <Row>
           <h2 className="text-left">Enter New Password.</h2>
             <Field className="text-input" name="password" component={renderTextField} type="password" label="Please enter a new password." />
-            {/* <Field className="text-input" name="email" component={renderTextField} type="email" label="Please re-enter password." /> */}
+            <Field className="text-input" name="passwordRepeat" component={renderTextField} type="password" label="Please enter your new password again." />
           </Row>
           <h6>{errorMessage}</h6>
           <Button

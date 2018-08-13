@@ -1,15 +1,26 @@
 import { resetPW } from '../../utils/API';
 
 export const PASSWORD_RESET = 'PASSWORD_RESET';
+export const RESET_PASSWORD_RESET = 'RESET_PASSWORD_RESET';
 
 export function postResetPassword(userInfo) {
     return async (dispatch, getState) => {
         try {
             userInfo.email = userInfo.email.toLowerCase();
-            const apiResponse = await(resetPW(userInfo));
+            await(resetPW(userInfo));
             dispatch(resetConfirmed('ok'));
         } catch(err){
             dispatch(noData(err))
+        }
+    }
+}
+
+export function resetPasswordReset() {
+    return {
+        type: RESET_PASSWORD_RESET,
+        payload: {
+            status: false,
+            error: null
         }
     }
 }

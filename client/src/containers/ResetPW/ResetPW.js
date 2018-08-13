@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { postResetPassword } from './actions';
+import { postResetPassword, resetPasswordReset } from './actions';
 import ResetPWForm from '../../components/ResetPWForm';
 
-import { Field, reduxForm } from 'redux-form';
 import { Col, Row, Container } from '../../components/Grid';
 
 
@@ -12,7 +11,7 @@ import { Col, Row, Container } from '../../components/Grid';
 class ResetPW extends Component {
 
     componentDidMount(){
-
+        this.props.resetPasswordReset();
     }
 
     requestPWReset = values => {
@@ -20,11 +19,25 @@ class ResetPW extends Component {
     }
 
     render() {
-        return (
-            <Container>
-                <ResetPWForm onSubmit={this.requestPWReset} />
-            </Container>
-        )
+        if (this.props.pwReset.status) {
+            return (
+                <Container>
+                    <Row>
+                        <Col />
+                        <Col>
+                            We've sent you an email with the link to reset your password.
+                        </Col>
+                        <Col />
+                    </Row>
+                </Container>
+            )
+        } else {
+            return (
+                <Container>
+                    <ResetPWForm onSubmit={this.requestPWReset} />
+                </Container>
+            )
+        }
     }
 }
 
@@ -37,7 +50,8 @@ const mapStateToProps = (state, props) => {
 }
 
 const mapDispatchToProps = (dispatch, props) => ({
-    postResetPassword
+    postResetPassword,
+    resetPasswordReset
 })
 
 export default connect(mapStateToProps, mapDispatchToProps())(ResetPW);
