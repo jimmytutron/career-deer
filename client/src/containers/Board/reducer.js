@@ -1,13 +1,13 @@
 import { MOVE_JOB, DELETE_JOB, JOBS_SUCCESS, JOBS_FAIL } from './actions';
 import initialState from '../../initialState';
-import mapData from './data-mapper';
+
 
 export function grabJobsReducer(state = initialState, { type, payload }) {
   switch (type) {
     case JOBS_SUCCESS:
       return {
         ...state,
-        ...mapData(payload)
+        ...payload
       }
     case JOBS_FAIL:
       return {

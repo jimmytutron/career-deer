@@ -16,8 +16,6 @@ const getListStyle = isDraggingOver => ({
 });
 
 class ProgressTile extends Component {
-  // console.log(key,'PDROPPABrogress Tile Keys');
-  // console.log(jobs, 'Progress tile jobs');
   render() {
     return (
       <Droppable droppableId={this.props.name} key={"board-" + this.props.name}>
@@ -28,10 +26,11 @@ class ProgressTile extends Component {
               ref={provided.innerRef}
               style={getListStyle(snapshot.isDraggingOver)}>
               {
-                Object.entries({ ...this.props.jobs }).map(([key, val], idx) => {
+                this.props.jobsList.map((val, idx) => {
                   return (
-                    JobTile(key, val, idx, this.props.updateJob, () => {
-                      this.props.deleteJob(val, this.props.jobs, idx)})
+                    JobTile(`${this.props.name}-job-${idx}`, val, idx, this.props.updateJob, () => {
+                      this.props.deleteJob(val._id, this.props.jobsList, this.props.name)
+                    })
                   )
                 })
               }

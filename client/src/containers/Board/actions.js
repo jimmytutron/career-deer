@@ -1,4 +1,5 @@
 import { getAllJobs, deleteJobById } from '../../utils/API';
+import mapData from './data-mapper';
 export const JOBS_SUCCESS = "JOBS_SUCCESS";
 export const JOBS_FAIL = "JOBS_FAIL";
 export const MOVE_JOB = "MOVE_JOB";
@@ -8,8 +9,9 @@ export const DELETE_JOB = "DELETE_JOB"
 export function grabJobs() {
 	return async (dispatch, getState) => {
 		try {
-      const apiResponse = await (getAllJobs());
-			dispatch(grabJobsSuccess(apiResponse.data));
+			const apiResponse = await (getAllJobs());
+			console.log(apiResponse.data)
+			dispatch(grabJobsSuccess(mapData(apiResponse.data)));
 		}
 		catch (err){
 			dispatch(grabJobsFail(err));
@@ -27,25 +29,21 @@ export function grabJobs() {
 export function moveJob(jobs,key,crossMoved = undefined) {
   return {
     type: MOVE_JOB,
-    payload: crossMoved || {
-      [key]: jobs
-    }
+    payload:	crossMoved || { [key]: jobs	}
   }
 };
 
-export function executeDeleteJob(job, jobs, index) {
+export function executeDeleteJob(id, jobs, progress_stage) {
 	return async (dispatch) => {
-		await deleteJobById(job._id);
-		dispatch(deleteJob(job.progress_stage, jobs.splice(index, 1)));
+		await deleteJobById(id);
+		dispatch(deleteJob(progress_stage, jobs.filter(elem => elem._id !== id)));
 	}
 }
 
 export function deleteJob(progress_stage, jobs) {
 		return {
 			type: DELETE_JOB,
-			payload: {
-				[progress_stage]: jobs
-			}
+			payload: {[progress_stage]: jobs}
 		}
 }
 

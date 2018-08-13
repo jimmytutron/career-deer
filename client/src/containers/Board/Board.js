@@ -136,8 +136,6 @@ class Board extends Component {
       return <Redirect to='/unauthorized' />
     };
 
-    console.log(this.props.boards);
-
     if (this.props.boards.saved.length === 0 && 
         this.props.boards.applied.length === 0 &&
         this.props.boards.offer.length === 0 &&
@@ -172,11 +170,7 @@ class Board extends Component {
         <Row className="justify-content-center board pt-4 mx-0 px-0">
           {
             Object.entries({ ...this.props.boards }).map(([key, val]) => (
-              // returns a library's premade component --don't want each of the
-              // library components nested in a component wrapper. This is what I'll call a
-              // "component creator". It returns a component with different attributes, so we don't 
-              // unnecessarily nest it in a pointless component wrapper.
-              <ProgressTile key={key} name={key} jobs={val} updateJob={this.props.selectUpdateJob} deleteJob={this.props.executeDeleteJob} />
+              <ProgressTile key={key} name={key} jobsList={val} updateJob={this.props.selectUpdateJob} deleteJob={this.props.executeDeleteJob} />
             ))
           }
         </Row>
