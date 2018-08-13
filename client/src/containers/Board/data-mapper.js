@@ -12,7 +12,7 @@ const mapData = jobs => {
     saved: [], 
     applied: [],
     phone: [],
-    ['on-site']: [],
+    'on-site': [],
     offer: [],
   };
 

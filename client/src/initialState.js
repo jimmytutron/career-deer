@@ -64,7 +64,7 @@ export default {
     saved: [],
     applied: [],
     phone: [],
-    ['on-site']: [],  
+    'on-site': [],  
     offer: [],   
   },
   burgerMenu: {

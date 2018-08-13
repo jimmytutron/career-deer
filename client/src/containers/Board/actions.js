@@ -10,7 +10,7 @@ export function grabJobs() {
 	return async (dispatch, getState) => {
 		try {
 			const apiResponse = await (getAllJobs());
-			console.log(apiResponse.data)
+			// console.log(apiResponse.data)
 			dispatch(grabJobsSuccess(mapData(apiResponse.data)));
 		}
 		catch (err){

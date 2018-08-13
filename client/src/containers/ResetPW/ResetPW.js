@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { cookies } from 'react-cookie';
 import { postResetPassword } from './actions';
 import { Col, Row, Container } from '../../components/Grid';
 import Button from '@material-ui/core/Button';

@@ -1,4 +1,4 @@
-import { signUp, googleSignUp } from '../../utils/API';
+import { signUp, /*googleSignUp*/ } from '../../utils/API';
 import { appLoginUpdate } from '../App/actions';
  
 export const SIGNUP_FAILED = 'SIGNUP_FAILED';
@@ -42,14 +42,15 @@ export function googleSignUpThunk(/*data?*/) {
     try {
       // Do Google login stuff here
       // Will it be asynchronous? Will I used an API call?
-      const createdUser = /*
+      // const createdUser; 
+      /*
         {
           firstName: 'Chicken',
           lastName: 'Farley',
           email: 'bacon@gmail.com'
         }'
       */
-      dispatch(appLoginUpdate(createdUser))
+      dispatch(appLoginUpdate(/*createdUser*/))
     } catch(err) {
       dispatch(failedSignUp(err));
     }
