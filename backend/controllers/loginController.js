@@ -65,10 +65,6 @@ module.exports = {
 
   resetPW: async (req, res) => {
     try {
-      // const email = req.body.email;
-
-      console.log("--------------------------");
-
       const randomHash = generateHash.generateHash({
         length: 64,
         charset: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_'
@@ -82,10 +78,12 @@ module.exports = {
         'resetPW_hash': randomHash
       }
 
-      await db.User.findOneAndUpdate(query, { $set: newPWResetHash })
+      user = await db.User.findOneAndUpdate(query, { $set: newPWResetHash })
 
+      const emailData = getResetPWText(user.email, user.firstName, user.lastName, randomHash);
+      nodemailer(emailData);
 
-      res.json(email);
+      res.json(query.email);
     } catch (err) {
       res.status(422).json(err);
     }
@@ -119,5 +117,34 @@ function getSignUpText(email, firstName, lastName) {
   return emailObj;
 }
 
+
+
+function getResetPWText(email, firstName, lastName, randomHash) {
+  const emailObj = {
+    emailTo: email,
+    firstName: firstName,
+    lastName: lastName
+  }
+
+  emailObj.emailSubject = `Password Reset Request for Career Deer`;
+
+  emailObj.emailText = `Hello ${firstName}, a password reset has been requested for your Career Deer account. To reset the password for your account, click the url below. Or you may copy and paste into your browser's address bar. https://careerdeer.herokuapp.com/updatepw?=${randomHash}`;
+
+  emailObj.emailHtml = `
+    <div style="text-align: center; font-family:Open Sans,Helvetica;">
+      <div style="width: 600px; margin-left: auto; margin-right: auto;">
+        <img src="https://i.imgur.com/DxHFy4x.png" width="60%" alt="Career Deer Logo">
+        <h2>Password Reset Requested.</h2>
+        <div style="text-align: left;">
+          <p>Hello ${firstName},</p>
+          <p>A password reset has been requested for your Career Deer account.</p>
+          <p>To reset the password for your account, click the url below. Or you may copy and paste into your browser's address bar.</p>
+          <a href="https://careerdeer.herokuapp.com/updatepw?=${randomHash}">https://careerdeer.herokuapp.com/updatepw?=${randomHash}</a>
+        </div>
+      </div>
+    </div>`;
+
+  return emailObj;
+}
 
 
