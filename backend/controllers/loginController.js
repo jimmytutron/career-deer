@@ -87,6 +87,36 @@ module.exports = {
     } catch (err) {
       res.status(422).json(err);
     }
+  },
+
+  updatepw: async (req, res) => {
+    if (req.body.code) {
+      try {
+
+        const query = {
+          resetPW_hash: req.body.code
+        }
+
+        const update = {
+          resetPW_hash: null
+        }
+        console.log("-------------------------")
+        user = await db.User.findOne(query)
+        console.log(user);
+        // user.resetPW_hash = null;
+        console.log("-------------------------")
+        await user.setPassword(req.body.password, () => { user.save() });
+
+        // await db.User.findOneAndUpdate(query)
+
+        const emailData = getUpdatePWText(user.email, user.firstName, user.lastName);
+        nodemailer(emailData);
+
+        res.json("ok");
+      } catch (err) {
+        res.status(422).json(err);
+      }
+    }
   }
 };
 
@@ -147,4 +177,34 @@ function getResetPWText(email, firstName, lastName, randomHash) {
   return emailObj;
 }
 
+
+function getUpdatePWText(email, firstName, lastName) {
+  const emailObj = {
+    emailTo: email,
+    firstName: firstName,
+    lastName: lastName
+  }
+
+  emailObj.emailSubject = `Password Reset Request for Career Deer`;
+
+  emailObj.emailText = `Hello ${firstName}, you have successfully changed your Career Deer account password. If you did not make this request, please reset your password immediately by visiting the link below. https://careerdeer.herokuapp.com/forgotpw  Sincerely, Your Friends at Career Deer`;
+
+  emailObj.emailHtml = `
+    <div style="text-align: center; font-family:Open Sans,Helvetica;">
+      <div style="width: 600px; margin-left: auto; margin-right: auto;">
+        <img src="https://i.imgur.com/DxHFy4x.png" width="60%" alt="Career Deer Logo">
+        <h2>Password Changed.</h2>
+        <div style="text-align: left;">
+          <p>Hello ${firstName},</p>
+          <p>You have successfully changed your Career Deer account password.</p>
+          <p>If you did not make this request, please reset your password immediately by visiting the link below.</p>
+          <a href="https://careerdeer.herokuapp.com/forgotpw">https://careerdeer.herokuapp.com/forgotpw</a>
+          <p>Sincerely,</p>
+          <p>Your Friends at Career Deer</p>
+        </div>
+      </div>
+    </div>`;
+
+  return emailObj;
+}
 

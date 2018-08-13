@@ -15,6 +15,9 @@ router.route('/logout')
 router.route('/resetpw')
   .post(loginController.resetPW)
 
+router.route('/updatepw')
+  .post(loginController.updatepw)
+
 router.route('/load') 
   .get(loginController.initialLoad)
 
