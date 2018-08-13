@@ -22,6 +22,10 @@ export function resetPW(data){
   return axios.post('/api/user/resetpw', data);
 }
 
+export function updatePW(data){
+  return axios.post('/api/user/updatepw', data);
+}
+
 // ======================================================
 
 // TESTING OAuth Logins

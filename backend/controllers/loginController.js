@@ -128,7 +128,7 @@ function getResetPWText(email, firstName, lastName, randomHash) {
 
   emailObj.emailSubject = `Password Reset Request for Career Deer`;
 
-  emailObj.emailText = `Hello ${firstName}, a password reset has been requested for your Career Deer account. To reset the password for your account, click the url below. Or you may copy and paste into your browser's address bar. https://careerdeer.herokuapp.com/updatepw?=${randomHash}`;
+  emailObj.emailText = `Hello ${firstName}, a password reset has been requested for your Career Deer account. To reset the password for your account, click the url below. Or you may copy and paste into your browser's address bar. https://careerdeer.herokuapp.com/updatepw?code=${randomHash}`;
 
   emailObj.emailHtml = `
     <div style="text-align: center; font-family:Open Sans,Helvetica;">
@@ -139,7 +139,7 @@ function getResetPWText(email, firstName, lastName, randomHash) {
           <p>Hello ${firstName},</p>
           <p>A password reset has been requested for your Career Deer account.</p>
           <p>To reset the password for your account, click the url below. Or you may copy and paste into your browser's address bar.</p>
-          <a href="https://careerdeer.herokuapp.com/updatepw?=${randomHash}">https://careerdeer.herokuapp.com/updatepw?=${randomHash}</a>
+          <a href="https://careerdeer.herokuapp.com/updatepw?code=${randomHash}">https://careerdeer.herokuapp.com/updatepw?code=${randomHash}</a>
         </div>
       </div>
     </div>`;
