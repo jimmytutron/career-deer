@@ -2,21 +2,21 @@
   color: #fff;
   width: 100%;
   background: url(/imgs/background.png) no-repeat center right fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
   height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0px;
   overflow: hidden;
 }
 
 .footprints {
   margin-top: -200px;
-  margin-left: 25px;
-  -ms-transform: rotate(-15deg); /* IE 9 */
+  margin-left: 25px; /* IE 9 */
   -webkit-transform: rotate(-15deg); /* Safari 3-8 */
   transform: rotate(-15deg);
 }
