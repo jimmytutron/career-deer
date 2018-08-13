@@ -7,7 +7,7 @@ export function postResetPassword(userInfo) {
     return async (dispatch, getState) => {
         try {
             userInfo.email = userInfo.email.toLowerCase();
-            const apiResponse = await(resetPW(userInfo));
+            await(resetPW(userInfo));
             dispatch(resetConfirmed('ok'));
         } catch(err){
             dispatch(noData(err))

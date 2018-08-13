@@ -17,7 +17,7 @@ export const validate = values => {
     errors.password = 'Your password must be at least 6 characters long'
   }
   if (values.password !== values.passwordRepeat){
-    errors.password = 'Your passwords do not match'
+    errors.passwordRepeat = 'Your passwords do not match'
   }
   return errors;
 };

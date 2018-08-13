@@ -6,10 +6,11 @@ export function updatePassword(userInfo) {
     return async (dispatch, getState) => {
         try {
             // userInfo.email = userInfo.email.toLowerCase();
-            console.log("entered updatePassword")
-            console.log("--------------------")
-            console.log(userInfo)
-            const apiResponse = await(updatePW(userInfo));
+            // console.log("entered updatePassword")
+            // console.log("--------------------")
+            // console.log(userInfo)
+            // const apiResponse = 
+            await(updatePW(userInfo));
             dispatch(resetConfirmed('ok'));
         } catch(err){
             dispatch(noData(err))
