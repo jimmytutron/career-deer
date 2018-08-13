@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import appReducer from './containers/App/reducer';
 import loginReducer from './containers/Login/reducer';
 import pwResetReducer from './containers/ResetPW/reducer';
+import pwUpdateReducer from './containers/UpdatePW/reducer';
 import { signUpReducer, googleAuthReducer } from './containers/SignUp/reducer';
 import chartReducer from './containers/Chart/reducer';
 import addJobReducer from './containers/AddJob/reducer';
@@ -21,6 +22,7 @@ const allReducers = combineReducers({
   loggedIn: loginReducer,
   signedUp: signUpReducer,
   pwReset: pwResetReducer,
+  pwUpdate: pwUpdateReducer,
   googleAuth: googleAuthReducer,
   chartData: chartReducer,
   addJob: addJobReducer,

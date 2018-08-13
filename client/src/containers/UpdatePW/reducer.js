@@ -1,10 +1,10 @@
-import { PASSWORD_RESET } from './actions';
+import { PASSWORD_UPDATE } from './actions';
 import intialState from '../../initialState';
 
-export default function pwResetReducer(state = intialState, { type, payload }) {
+export default function pwUpdateReducer(state = intialState, { type, payload }) {
 
     switch (type) {
-        case PASSWORD_RESET:
+        case PASSWORD_UPDATE:
             return {
                 ...state,
                 ...payload

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { cookies } from 'react-cookie';
+import queryString from 'query-string';
 
-import { postResetPassword } from './actions';
-import ResetPWForm from '../../components/ResetPWForm';
+import { updatePassword } from './actions';
+import UpdatePWForm from '../../components/UpdatePWForm';
 
 import { Field, reduxForm } from 'redux-form';
 import { Col, Row, Container } from '../../components/Grid';
@@ -11,20 +12,22 @@ import { Col, Row, Container } from '../../components/Grid';
 
 
 
-class ResetPW extends Component {
+class UpdatePW extends Component {
 
     componentDidMount(){
 
     }
 
-    requestPWReset = values => {
-        this.props.postResetPassword(values);
+    requestUpdatePW = values => {
+        const queryInfo = queryString.parse(this.props.location.search)
+        values["code"] = queryInfo.code;
+        this.props.updatePassword(values);
     }
 
     render() {
         return (
             <Container>
-                <ResetPWForm onSubmit={this.requestPWReset} />
+                <UpdatePWForm onSubmit={this.requestUpdatePW} />
             </Container>
         )
     }
@@ -39,7 +42,7 @@ const mapStateToProps = (state, props) => {
 }
 
 const mapDispatchToProps = (dispatch, props) => ({
-    postResetPassword
+    updatePassword
 })
 
-export default connect(mapStateToProps, mapDispatchToProps())(ResetPW);
+export default connect(mapStateToProps, mapDispatchToProps())(UpdatePW);
