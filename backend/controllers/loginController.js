@@ -82,20 +82,7 @@ module.exports = {
         'resetPW_hash': randomHash
       }
 
-      console.log(newPWResetHash);
-
-      // res.json(await db.User.find(query))
-      console.log("-----------1---------------");
-      await db.User.findOneAndUpdate(query, { $set: newPWResetHash }, { new: true }, function (err, doc) {
-        //using callback for testing.
-        if (err) {
-          console.log("Something wrong when updating data!");
-        }
-
-        console.log(doc);
-      })
-
-      console.log("-----------2---------------");
+      await db.User.findOneAndUpdate(query, { $set: newPWResetHash })
 
 
       res.json(email);
@@ -130,7 +117,6 @@ function getSignUpText(email, firstName, lastName) {
     </div>`;
 
   return emailObj;
-
 }
 
 

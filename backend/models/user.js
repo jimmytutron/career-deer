@@ -19,6 +19,11 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: false
+  },
+  resetPW_hash:{
+    type: String,
+    require: false,
+    default: null
   }
 })
 
