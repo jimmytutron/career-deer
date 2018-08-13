@@ -18,10 +18,11 @@ export function postResetPassword(userInfo) {
 }
 
 function resetConfirmed(){
+    console.log('entered resetConfirmed function');
     return {
         type: PASSWORD_RESET,
         payload: {
-            status: true,
+            status: false,
             error: null
         }
     }
