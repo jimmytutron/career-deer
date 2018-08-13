@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import LoginForm from '../../components/LoginForm/LoginForm';
 import { Container, Col, Row } from '../../components/Grid';
+import { Link } from "react-router-dom";
 
 import { connect } from 'react-redux';
 import { login, resetLoginState } from './actions';
@@ -52,7 +53,7 @@ class LoginPage extends Component {
               <h1 className="text-center mt-5 montserrat font-weight-bold">Welcome Back!</h1>
               <h2 className="text-center mt-2 montserrat">Let's get you on track</h2>
               <LoginForm onSubmit={this.login} errorMessage={renderError(this.props.loggedIn, this.props.app)} />
-              <h6 className="montserrat mt-3 text-center">Not apart of our herd yet? <a href="/login">Sign Up Here!</a></h6>
+              <h6 className="montserrat mt-3 text-center">Not apart of our herd yet? <Link to="/signup">Sign Up Here!</Link></h6>
             </Col>
           </Row>
         </Container>

@@ -70,7 +70,7 @@ class Home extends Component {
                     </LightSpeed>
                     <h2 className="text-center montserrat">Hit your target</h2>
                     <p className="px-5  text-center">
-                    You're the hunter now, hunt down that job and hit your mark! No matter if your application experience went well or not we'll keep track of that for you. That data can help you prepare for future applications. You can also view your progression and how well you compare to other users on the site. 
+                    You're the hunter now, hunt down that job and hit your mark! No matter if your application experience went well or not we'll keep track of that for you. That data can help you prepare for future applications. You can also view your progression and how well you're doing or set goals for yourself'. 
                     </p>
                 </Col>
             </Row>
@@ -90,7 +90,7 @@ class Home extends Component {
                 </Col>
                 <Col size="12 md-12 lg-4">
                 <p className="px-3">
-                Become a Career Deer and get organized with your job search. We'll help you every step of the way! Tracking your progress not only allows you to organize your job applications it can help you see which jobs are worth pursuing and how far along you are into the proccess. Ease your mind and ease your life knowing you're on the right track. Compare your data to others and see how <span className="strike"> much better you are </span> you rank up against the rest. Track your application activity too! The more you apply the more activity and the better your chances. Career Deer is easy to use and we'll think you'll <span className="font-italic">deerly</span> love it!
+                Become a Career Deer and get organized with your job search. We'll help you every step of the way! Tracking your progress not only allows you to organize your job applications it can help you see which jobs are worth pursuing and how far along you are into the proccess. Ease your mind and ease your life knowing you're on the right track. Compare your data to others and see how <span className="strike"> much better you are </span> you rank up against the rest. Track your application activity too! The more you apply the better your chances. Career Deer is easy to use and we'll think you'll <span className="font-italic">deerly</span> love it!
                 </p>
                 </Col>
             </Row>
@@ -110,7 +110,7 @@ class Home extends Component {
                 <Col size="12 md-6">
                 <h4 className="montserrat mt-4">Finding Jobs</h4>
                 <p className=" mt-1 px-1">
-                Use our built in job search to find and manage new applications! Just add what you industry or topic you are looking for and a location and our search will do the rest!  
+                Use our built in job search to find and manage new applications! Just add what industry or topic you are looking for and a location and our search will do the rest!  
                 </p>
                 </Col>
             </Row>
