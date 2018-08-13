@@ -4,6 +4,7 @@ import { Field, reduxForm, reset } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { validate } from './validate';
 import Button from '@material-ui/core/Button';
+import { Link } from "react-router-dom";
 // import { googleSignIn } from '../../utils/API';
 
 
@@ -43,7 +44,8 @@ let LoginForm = ({ handleSubmit, pristine, submitting, errorMessage, auth }) => 
         <div className="text-right">
         <Button variant="contained" color="primary" className="roboto login-btn btn" type="submit" disabled={pristine || submitting}>
           Login &nbsp; <i className="fas fa-sign-in-alt"></i>
-        </Button>&nbsp;&nbsp;
+        </Button><br/>
+        <h6 className="montserrat mt-3 text-right"><Link to="/resetpw">Forgot Your Password?</Link></h6>
         {/* <Button onClick={auth} className="roboto login-btn btn btn-light">
         Login with <img className="ml-1" height="20px" src="/imgs/icons/google-logo.svg" alt="google logo"/>
         </Button> */}
