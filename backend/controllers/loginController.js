@@ -1,6 +1,10 @@
+const generateHash = require('random-hash');
+// import generateHash from 'random-hash';
+
 const db = require('../models');
 const passport = require('../config/');
 const nodemailer = require('../services/nodemailer');
+
 
 module.exports = {
 
@@ -10,7 +14,7 @@ module.exports = {
       user = {
         firstName: req.user.firstName,
         lastName: req.user.lastName
-      }  
+      }
     }
     res.json(user);
 
@@ -39,7 +43,7 @@ module.exports = {
   },
 
   login: async (req, res) => {
-    user = await db.User.findOne({email: req.body.email});
+    user = await db.User.findOne({ email: req.body.email });
     res.json({
       email: user.email,
       firstName: user.firstName,
@@ -59,12 +63,43 @@ module.exports = {
     });
   },
 
-  resetPW: (req, res) => {
+  resetPW: async (req, res) => {
     try {
-      console.log(req.body);
-      const email = req.body.email;
+      // const email = req.body.email;
+
+      console.log("--------------------------");
+
+      const randomHash = generateHash.generateHash({
+        length: 64,
+        charset: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_'
+      });
+
+      const query = {
+        email: req.body.email
+      }
+
+      const newPWResetHash = {
+        'resetPW_hash': randomHash
+      }
+
+      console.log(newPWResetHash);
+
+      // res.json(await db.User.find(query))
+      console.log("-----------1---------------");
+      await db.User.findOneAndUpdate(query, { $set: newPWResetHash }, { new: true }, function (err, doc) {
+        //using callback for testing.
+        if (err) {
+          console.log("Something wrong when updating data!");
+        }
+
+        console.log(doc);
+      })
+
+      console.log("-----------2---------------");
+
+
       res.json(email);
-    } catch(err){
+    } catch (err) {
       res.status(422).json(err);
     }
   }
