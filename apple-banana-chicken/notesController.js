@@ -2,7 +2,7 @@ const db = require('../models');
 
 module.exports = {
   update: async (req, res) => {
-    console.log(req.user);
+    // console.log(req.user);
     if (req.user) {
       try {
         let query = {

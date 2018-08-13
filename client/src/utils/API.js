@@ -53,7 +53,6 @@ export function deleteJobById(id) {
 };
 
 export function updateJobById(id, data) {
-  console.log('I RUN SECOND!');
   return axios.put(`/api/jobs/saved/${id}`, data);
 };
 

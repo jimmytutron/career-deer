@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 import { connect } from 'react-redux';
 import { login, resetLoginState } from './actions';
-import  { googleSignUp } from '../../utils/API';
+// import  { googleSignUp } from '../../utils/API';
 import './Login.css';
 
 import Bounce from 'react-reveal/Bounce';

@@ -33,7 +33,7 @@ class SignUp extends Component {
 
   componentWillUnmount() {
     this.props.resetSignUp();
-    console.log('componentWillMount: this.props.googleSignUpThunk', this.props.googleSignUpThunk);
+    // console.log('componentWillMount: this.props.googleSignUpThunk', this.props.googleSignUpThunk);
   }
 
   render() {

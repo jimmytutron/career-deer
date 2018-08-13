@@ -5,8 +5,6 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import { updateJobById } from '../../utils/API';
 import { Row, Col } from '../../components/Grid';
 import ProgressTile from '../../components/ProgressTile/ProgressTile';
-import { Link } from "react-router-dom";
-import Loading from "../../components/Loading/Loading";
 
 
 import Fade from 'react-reveal/Fade';
@@ -14,9 +12,13 @@ import Jump from 'react-reveal/Jump';
 
 // Redux Stuff
 import { connect } from 'react-redux';
-import { selectUpdateJob, resetUpdateJob } from '../../containers/UpdateJob/actions';
+import { selectUpdateJob } from '../../containers/UpdateJob/actions';
 
-import { grabJobs, moveJob, executeDeleteJob, jobBoardLoadReset } from './actions';
+import {
+  grabJobs,
+  moveJob,
+  deleteJob
+} from './actions';
 
 
 const reorder = (list, startIndex, endIndex) => {
@@ -36,7 +38,6 @@ const move = (source, destination, droppableSource, droppableDestination) => {
   const result = {};
   result[droppableSource.droppableId] = sourceClone;
   result[droppableDestination.droppableId] = destClone;
-  result.removed = removed;
 
   return result;
 };
@@ -47,7 +48,6 @@ class Board extends Component {
   componentDidMount() {
     // console.log('Grabbing Jobs..');
     this.props.grabJobs();
-    this.props.resetUpdateJob();
     // console.log(this.props.jobs);
   };
 
@@ -90,17 +90,45 @@ class Board extends Component {
       source.index !== destination.index ||
       source.droppableId !== destination.droppableId
     ) {
-      const {removed, ...result} = move(
+      const result = move(
         this.getList(source.droppableId),
         this.getList(destination.droppableId),
         source,
         destination
       );
-      
-      this.props.moveJob(null,null,result);
-      updateJobById(draggableId,removed);
+
+      // TODO: If there's time, implement the non hacky way.
+      // NON HACKY ============================================================================
+      // reference the data-mapper.js for how we can optimize updating stuff in the DB
+      // Essentially, we won't have to iterate the 
+      // result array of objects and check for the specific thing we just dragged.
+      // we will have reference to it by draggableId mapping to the job object
+      // This is important, since our updateJobById call needs an id AND an object 
+      // representative of the job.
+      // console.log(draggableId); 
+      // ======================================================================================
+
+      // HACKY VERSION================================
+      let job;
+      // el is representative of a job object
+      Object.entries({...result})[1][1].forEach(el => {
+        let copy = {...el};
+        if (copy._id === draggableId) {
+          copy.progress_stage = destination.droppableId;
+          job = copy;
+        }
+      });
+      // console.log(job);
+      updateJobById(draggableId,job)
+        // .then(data => console.log(data));
+        // note: non-hacky version won't have to iterate the result to find the thing
+        // we would already have access to if the draggableId was mapped to the job Object containing
+        // the matching ID.
+      // ===============================================
 
 
+      // console.log('On Drag End: result', result);
+      this.props.moveJob(null,null,result)
     }
 
   };
@@ -110,11 +138,9 @@ class Board extends Component {
     
     if (!this.props.app.user){
       return <Redirect to='/unauthorized' />
-    }
+    };
 
-    if (this.props.jobBoard.loading) {
-      return <Loading />
-    }
+    console.log(this.props.boards);
 
     if (this.props.boards.saved.length === 0 && 
         this.props.boards.applied.length === 0 &&
@@ -131,14 +157,14 @@ class Board extends Component {
         </Jump>
       <h1 className="montserrat font-weight-bold">Job Tracker Board</h1>
       <h2 className="montserrat text-center pb-5">It looks like you have nothing tracked yet!</h2>
-      <h4>Start <Link className="text-info" to="/search">searching</Link> for a job or <Link className="text-info" to="/addjob">add one yourself</Link></h4>
+      <h4>Start <a className="text-info" href="/search">searching</a> for a job or <a className="text-info" href="/addjob">add one yourself</a></h4>
       </Col>
       </Row>
       )
     }
 
     return (
-      <Fade top duration={500}>
+      <Fade top>
       <div>
       <DragDropContext onDragEnd={this.onDragEnd} >
         <Row className="justify-content-center text-center pt-5 mx-0 px-0">
@@ -149,8 +175,12 @@ class Board extends Component {
         </Row>
         <Row className="justify-content-center board pt-4 mx-0 px-0">
           {
-            Object.entries(this.props.boards).map(([key, val]) => (
-              <ProgressTile key={key} name={key} jobsList={val} updateJob={this.props.selectUpdateJob} deleteJob={this.props.executeDeleteJob} />
+            Object.entries({ ...this.props.boards }).map(([key, val]) => (
+              // returns a library's premade component --don't want each of the
+              // library components nested in a component wrapper. This is what I'll call a
+              // "component creator". It returns a component with different attributes, so we don't 
+              // unnecessarily nest it in a pointless component wrapper.
+              ProgressTile(key, val, this.props.selectUpdateJob, this.props.deleteJob)
             ))
           }
         </Row>
@@ -163,7 +193,6 @@ class Board extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    jobBoard: state.jobBoard,
     boards: state.boards,
     app: state.app
   }
@@ -172,10 +201,8 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = () => ({
   grabJobs,
   moveJob,
-  executeDeleteJob,
-  selectUpdateJob,
-  resetUpdateJob,
-  jobBoardLoadReset
+  deleteJob,
+  selectUpdateJob
 });
 
 // Put the things into the DOM!
