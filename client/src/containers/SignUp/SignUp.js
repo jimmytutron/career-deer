@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import { Container, Col, Row } from '../../components/Grid';
+import { Link } from "react-router-dom";
 
 import { connect } from 'react-redux';
 import { signUpThunk, resetSignUp, googleSignUpThunk } from './actions';
@@ -70,7 +71,7 @@ class SignUp extends Component {
           </Row>
           <Row className="justify-content-center text-center">
             <Col size="12 md-8 lg-8">
-            <h6 className="montserrat mt-3">A returning deerling? <a href="/login">Login Here!</a></h6>
+            <h6 className="montserrat mt-3">A returning deerling? <Link to="/login">Login Here!</Link></h6>
             </Col>
           </Row>
         </Container>

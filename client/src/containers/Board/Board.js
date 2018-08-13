@@ -5,6 +5,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import { updateJobById } from '../../utils/API';
 import { Row, Col } from '../../components/Grid';
 import ProgressTile from '../../components/ProgressTile/ProgressTile';
+import { Link } from "react-router-dom";
 
 
 import Fade from 'react-reveal/Fade';
@@ -156,7 +157,7 @@ class Board extends Component {
         </Jump>
       <h1 className="montserrat font-weight-bold">Job Tracker Board</h1>
       <h2 className="montserrat text-center pb-5">It looks like you have nothing tracked yet!</h2>
-      <h4>Start <a className="text-info" href="/search">searching</a> for a job or <a className="text-info" href="/addjob">add one yourself</a></h4>
+      <h4>Start <Link className="text-info" to="/search">searching</Link> for a job or <Link className="text-info" to="/addjob">add one yourself</Link></h4>
       </Col>
       </Row>
       )
