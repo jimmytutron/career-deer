@@ -46,9 +46,9 @@ class Board extends Component {
   
 
   componentDidMount() {
-    console.log('Grabbing Jobs..');
+    // console.log('Grabbing Jobs..');
     this.props.grabJobs();
-    console.log(this.props.jobs);
+    // console.log(this.props.jobs);
   };
 
   getList = id => {
@@ -80,7 +80,7 @@ class Board extends Component {
         source.index,
         destination.index
       );
-      console.log('On Drag End: `items', items);
+      // console.log('On Drag End: `items', items);
       // updateJobById()
       this.props.moveJob(items, source.droppableId);
       return;

@@ -36,7 +36,6 @@ export function moveJob(jobs,key,crossMoved = undefined) {
 
 export function deleteJob(job, jobs) {
 	return async (dispatch) => {
-		console.log(job)
 		await dispatch(executeDeleteJob(job));
 		return {
 			type: DELETE_JOB,
