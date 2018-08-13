@@ -8,11 +8,11 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import { executeDeleteJob } from "../../containers/UpdateJob/actions";
+
 
 
 import { Link } from "react-router-dom";
-import { selectUpdateJob } from '../../containers/UpdateJob/actions';
+
 
 const cardStyles = {
   width: '250px'
@@ -31,7 +31,7 @@ const cardHeadingStyle = {
 //   ...draggableStyle
 // });
 
-const JobTile = (key, job, idx, selectUpdateJob, deleteJob) => {
+const JobTile = (key, job, idx, selectUpdateJob, executeDeleteJob) => {
   // const {
   //   _id,
   //   location,
@@ -61,7 +61,7 @@ const JobTile = (key, job, idx, selectUpdateJob, deleteJob) => {
             <CardContent>
             <IconButton
             className="float-right delete-icon"
-            // onClick={() => selectUpdateJob(job)}
+            onClick={executeDeleteJob}
             >
             <i className="fas fa-times"></i>
             </IconButton>
