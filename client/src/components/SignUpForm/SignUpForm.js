@@ -29,7 +29,7 @@ const renderTextField = ({
   )
 
 let SignUpForm = (props) => {
-  const { handleSubmit, pristine, submitting, errorMessage, googleAuth } = props;
+const { handleSubmit, pristine, submitting, errorMessage, /*googleAuth*/ } = props;
   return (
     <form style={FormStyle} onSubmit={handleSubmit}>
       <Row className="justify-content-center">

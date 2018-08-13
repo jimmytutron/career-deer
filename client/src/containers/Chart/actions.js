@@ -228,7 +228,7 @@ function calcPercentile(array) {
 
 
 export function noData(err) {
-  console.log("error no data")
+  // console.log("error no data")
   return {
     type: 'NO_DATA',
     payload: {

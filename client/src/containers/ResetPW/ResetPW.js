@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { cookies } from 'react-cookie';
-
 import { postResetPassword } from './actions';
 import ResetPWForm from '../../components/ResetPWForm';
 

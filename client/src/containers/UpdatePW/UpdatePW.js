@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { cookies } from 'react-cookie';
+
 import queryString from 'query-string';
 
 import { updatePassword } from './actions';
