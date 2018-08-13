@@ -6,9 +6,6 @@ export function postResetPassword(userInfo) {
     return async (dispatch, getState) => {
         try {
             userInfo.email = userInfo.email.toLowerCase();
-            console.log("entered pwReset")
-            console.log("--------------------")
-            console.log(userInfo)
             const apiResponse = await(resetPW(userInfo));
             dispatch(resetConfirmed('ok'));
         } catch(err){
