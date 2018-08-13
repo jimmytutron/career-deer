@@ -5,7 +5,7 @@ import { Container, Col, Row } from '../../components/Grid';
 
 import { connect } from 'react-redux';
 import { login, resetLoginState } from './actions';
-import  { googleSignUp } from '../../utils/API';
+// import  { googleSignUp } from '../../utils/API';
 import './Login.css';
 
 import Bounce from 'react-reveal/Bounce';

@@ -59,28 +59,16 @@ export default {
       }
     }
   },
+  jobBoard: {
+    loading: true
+  },
   boards: {
-
     // Think of progress_stage as an id here.
-    saved: {
-      jobs: []
-    },
-
-    applied: {
-      jobs: []
-    },
-
-    phone: {
-      jobs: []
-    },
-
-    ['on-site']: {
-      jobs: []
-    },
-
-    offer: {
-      jobs: []
-    }
+    saved: [],
+    applied: [],
+    phone: [],
+    'on-site': [],  
+    offer: [],   
   },
   burgerMenu: {
     isOpen: true

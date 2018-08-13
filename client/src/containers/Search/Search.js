@@ -49,7 +49,7 @@ class Search extends Component {
     const alreadySaved = savedData.filter(elem => {
       return (elem.url === saveJob_url)
     })
-    return (alreadySaved.length != 0);
+    return (alreadySaved.length !== 0);
   }
 
   componentDidMount() {
