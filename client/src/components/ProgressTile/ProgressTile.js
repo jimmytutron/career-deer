@@ -15,31 +15,33 @@ const getListStyle = isDraggingOver => ({
   overflow: 'auto'
 });
 
-const ProgressTile = (key, jobs, updateJob, deleteJob) => {
+class ProgressTile extends Component {
   // console.log(key,'PDROPPABrogress Tile Keys');
   // console.log(jobs, 'Progress tile jobs');
-  return (
-  <Droppable droppableId={key} key={key}>
-    {(provided, snapshot) => (
-      <div className="mb-5 mx-1 inline">
-        <h3 className="text-center text-uppercase montserrat">{key}</h3>
-        <div
-          ref={provided.innerRef}
-          style={getListStyle(snapshot.isDraggingOver)}>
-          {
-            Object.entries({ ...jobs }).map(([key, val], idx) => {
-              return (
-                JobTile(key, val, idx, updateJob, () => {
-                  deleteJob(val, jobs.slice(idx, 1), key)})
-              )
-            })
-          }
-           {provided.placeholder}
-        </div>
-      </div>
-    )}
-  </Droppable>
-  )
+  render() {
+    return (
+      <Droppable droppableId={this.props.name} key={"board-" + this.props.name}>
+        {(provided, snapshot) => (
+          <div className="mb-5 mx-1 inline">
+            <h3 className="text-center text-uppercase montserrat">{this.props.name}</h3>
+            <div
+              ref={provided.innerRef}
+              style={getListStyle(snapshot.isDraggingOver)}>
+              {
+                Object.entries({ ...this.props.jobs }).map(([key, val], idx) => {
+                  return (
+                    JobTile(key, val, idx, this.props.updateJob, () => {
+                      this.props.deleteJob(val, this.props.jobs, idx)})
+                  )
+                })
+              }
+              {provided.placeholder}
+            </div>
+          </div>
+        )}
+      </Droppable>
+    )
+  }
 }
 
 export default ProgressTile;

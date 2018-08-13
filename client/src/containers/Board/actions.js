@@ -1,5 +1,4 @@
-import { getAllJobs } from '../../utils/API';
-import { executeDeleteJob } from '../../containers/UpdateJob/actions';
+import { getAllJobs, deleteJobById } from '../../utils/API';
 export const JOBS_SUCCESS = "JOBS_SUCCESS";
 export const JOBS_FAIL = "JOBS_FAIL";
 export const MOVE_JOB = "MOVE_JOB";
@@ -34,17 +33,20 @@ export function moveJob(jobs,key,crossMoved = undefined) {
   }
 };
 
-export function deleteJob(job, jobs) {
+export function executeDeleteJob(job, jobs, index) {
 	return async (dispatch) => {
-		console.log(job)
-		await dispatch(executeDeleteJob(job));
+		await deleteJobById(job._id);
+		dispatch(deleteJob(job.progress_stage, jobs.splice(index, 1)));
+	}
+}
+
+export function deleteJob(progress_stage, jobs) {
 		return {
 			type: DELETE_JOB,
 			payload: {
-				[job.progress_state]: jobs
+				[progress_stage]: jobs
 			}
 		}
-	}
 }
 
 export function grabJobsSuccess(data) {

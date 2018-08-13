@@ -14,11 +14,7 @@ import Jump from 'react-reveal/Jump';
 import { connect } from 'react-redux';
 import { selectUpdateJob } from '../../containers/UpdateJob/actions';
 
-import {
-  grabJobs,
-  moveJob,
-  deleteJob
-} from './actions';
+import { grabJobs, moveJob, executeDeleteJob } from './actions';
 
 
 const reorder = (list, startIndex, endIndex) => {
@@ -180,7 +176,7 @@ class Board extends Component {
               // library components nested in a component wrapper. This is what I'll call a
               // "component creator". It returns a component with different attributes, so we don't 
               // unnecessarily nest it in a pointless component wrapper.
-              ProgressTile(key, val, this.props.selectUpdateJob, this.props.deleteJob)
+              <ProgressTile key={key} name={key} jobs={val} updateJob={this.props.selectUpdateJob} deleteJob={this.props.executeDeleteJob} />
             ))
           }
         </Row>
@@ -201,7 +197,7 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = () => ({
   grabJobs,
   moveJob,
-  deleteJob,
+  executeDeleteJob,
   selectUpdateJob
 });
 
