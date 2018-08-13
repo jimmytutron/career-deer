@@ -103,7 +103,7 @@ module.exports = async (req, res) => {
 
       let find_title = $(this).find("a.job_title").text();
       let find_url = $(this).find("a.job_title").attr("href");
-      let find_company = $(this).find("i.fa.fa-building").next().text();
+      let find_company = $(this).find("i.fa.fa-building").parent().next().text();
       let find_location = $(this).find("i.fa.fa-map-marker").next().text();
 
       const find_jobData = {};

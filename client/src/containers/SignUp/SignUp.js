@@ -58,7 +58,7 @@ class SignUp extends Component {
           </Row>
           <Row className="justify-content-center">
             <Col />
-            <Col size="12 md-8 lg-8" className="banana">
+            <Col size="12 md-8 lg-8" className="">
               <SignUpForm
                onSubmit={this.signUp}
                errorMessage={renderError(this.props.signedUp, this.props.app)}
@@ -68,8 +68,12 @@ class SignUp extends Component {
             </Col>
             <Col />
           </Row>
+          <Row className="justify-content-center text-center">
+            <Col size="12 md-8 lg-8">
+            <h6 className="montserrat mt-3">A returning deerling? <a href="/login">Login Here!</a></h6>
+            </Col>
+          </Row>
         </Container>
-        {/* <div>{this.props.renderMaterial}</div> */}
       </React.Fragment>
     );
   };
@@ -83,8 +87,8 @@ const renderError = (signedUpState, appState) => {
           return "You must enter a first name, last name, and an email.";
         if (signedUpState.error.response.data.name === "MissingPasswordError")
           return "You must enter a password.";
-        if (signedUpState.error.response.data.name === "MissingPasswordError")
-          return "You must enter a password.";
+        if (signedUpState.error.response.data.name === "UnmatchedPasswordError")
+          return "Your Passwords do not match.";
         if (signedUpState.error.response.data.code === 11000)
           return "An account with that email already exists. Please choose another email.";
       };

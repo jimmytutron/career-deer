@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import { Cookies } from 'react-cookie';
-
 import { Nav } from "../../components/Nav";
 import Home from "../Home/Home";
 import LoginPage from "../Login/LoginPage";
@@ -25,7 +23,6 @@ import { connect } from 'react-redux';
 import { appLoginUpdate, appLogoutUpdate, appInitialLoad } from './actions';
 
 class App extends Component {
-  cookies = new Cookies()
 
   loginAction = user => {
     this.props.appLoginUpdate(user);

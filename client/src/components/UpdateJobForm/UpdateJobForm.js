@@ -8,6 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import './UpdateJobForm.css';
 import Button from '@material-ui/core/Button';
 import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
 
 const renderTextField = (
   {
@@ -44,7 +45,7 @@ const renderNote = (
     </Col>
     <Col size="12 lg-6">
     <Tooltip id="tooltip-icon" title="Add A Note" placement="top">
-    <Button variant="extendedFab" className="add-btn" type="Button" onClick={()=>fields.push()}><i className="fas fa-plus"></i></Button>
+    <IconButton className="add-btn" type="Button" onClick={()=>fields.push()}><i className="fas fa-plus"></i></IconButton>
     </Tooltip>
     </Col>
     </Row>
@@ -52,12 +53,10 @@ const renderNote = (
       {fields.map((note, index) => (
         <li key={index}>
         <Paper>
-        <Row className="justify-content-center px-3 my-3">
-        <Col size="2 md-1" className="text-center">
-        <Tooltip id="tooltip-delete-icon" title="Delete" placement="top">
-          <Button variant="fab" color="secondary" className="btn btn-danger mt-4 mx-auto" onClick={() => fields.remove(index)}><i className="fas fa-trash"></i></Button>
+        <Tooltip id="tooltip-delete-icon" title="Delete Note" placement="top">
+          <IconButton variant="fab" className="float-right delete-note" onClick={() => fields.remove(index)}><i className="fas fa-times"></i></IconButton>
         </Tooltip>
-        </Col>
+        <Row className="justify-content-center px-3 my-3">
         <Col size="8 md-11">
           <Field className="text-input"
             floatingLabelText={`Note #${index + 1}`}
@@ -113,11 +112,12 @@ let UpdateJobForm = ({ deleteJob, handleSubmit, pristine, submitting, errorMessa
         </Col>        
         <Col size="12 md-12 lg-6">
         <h6>{errorMessage}</h6>
-        <Button variant="contained" color="primary" type="submit" disabled={submitting}>
-          <i className="fas fa-cloud"></i>&nbsp; Save
-        </Button> &nbsp;
-        <Button variant="contained" color="secondary" onClick={deleteJob}> <i className="fas fa-eraser"></i>&nbsp; Remove Job</Button>
-        <p>* indicates a required field.</p>
+        <Tooltip id="tooltip-icon" title="Save changes" placement="left">
+        <IconButton className="save-btn" variant="contained" color="primary" type="submit" disabled={submitting}>
+          <i className="fas fa-save"></i>
+        </IconButton> 
+        </Tooltip>
+        <p className="my-1">* indicates a required field.</p>
         </Col>
         </Row>
     </form>

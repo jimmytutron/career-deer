@@ -1,7 +1,7 @@
 .note {
 	max-height: 100px;
 	padding: 5px 20px 5px 20px;
-	overflow: scroll;
+	overflow: auto;
 	border-radius: 5px;
 	background: #EEF2FF;
 }
@@ -15,6 +15,20 @@
     min-height: 100vh;
     min-width: 100vw;
     display: inline-flex;
-    overflow-anchor: none;
-    flex-wrap: nowrap;
+	overflow-anchor: none;
+	flex-wrap: nowrap;
+}
+
+.job-link {
+	color: rgb(88, 105, 167);
+}
+
+.job-link:hover {
+	color: #3c98ff;
+}
+
+.delete-icon {
+	margin-top: -20px !important;
+	margin-right: -25px !important;
+	font-size: 15px !important;
 }

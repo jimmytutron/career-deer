@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import UpdateJobForm from '../../components/UpdateJobForm/UpdateJobForm';
 import { Container, Col, Row } from '../../components/Grid';
+import Fade from 'react-reveal/Fade';
 
 import { connect } from 'react-redux';
-import { Cookies } from 'react-cookie';
 import { executeDeleteJob, executeUpdateJob, resetUpdateJob, selectUpdateJob } from './actions';
 import { grabJobs } from '../Board/actions'
 
 
 class UpdateJob extends Component {
-
-  cookies = new Cookies();
 
   updateJobValues = values => {
     const newJob = {
@@ -38,6 +36,7 @@ class UpdateJob extends Component {
 
 
     return (
+    <Fade bottom duration={500}>
       <Container>
         <Row>
           <Col className="text-center">
@@ -56,6 +55,7 @@ class UpdateJob extends Component {
           <Col />
         </Row>
       </Container>
+    </Fade>
     );
   };
 };
@@ -63,7 +63,6 @@ class UpdateJob extends Component {
 const mapStateToProps = (state,props) => {
   return { 
     updateJob: state.updateJob,
-    viewJobs: state.viewJobs,
     app: state.app
   };
 };
