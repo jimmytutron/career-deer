@@ -43,6 +43,7 @@
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^5.0.1",
+    "query-string": "^6.1.0",
     "random-hash": "^4.0.1",
     "react-beautiful-dnd": "^8.0.2",
     "react-burger-menu": "^2.5.2",
