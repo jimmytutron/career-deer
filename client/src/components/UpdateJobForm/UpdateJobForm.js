@@ -53,12 +53,10 @@ const renderNote = (
       {fields.map((note, index) => (
         <li key={index}>
         <Paper>
-        <Row className="justify-content-center px-3 my-3">
-        <Col size="2 md-1" className="text-center">
         <Tooltip id="tooltip-delete-icon" title="Delete Note" placement="top">
-          <IconButton variant="fab" color="secondary" className="mt-4 mx-auto" onClick={() => fields.remove(index)}><i className="fas fa-trash"></i></IconButton>
+          <IconButton variant="fab" className="float-right delete-note" onClick={() => fields.remove(index)}><i className="fas fa-times"></i></IconButton>
         </Tooltip>
-        </Col>
+        <Row className="justify-content-center px-3 my-3">
         <Col size="8 md-11">
           <Field className="text-input"
             floatingLabelText={`Note #${index + 1}`}

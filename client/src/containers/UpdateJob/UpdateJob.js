@@ -36,7 +36,7 @@ class UpdateJob extends Component {
 
 
     return (
-    <Fade bottom>
+    <Fade bottom duration={500}>
       <Container>
         <Row>
           <Col className="text-center">

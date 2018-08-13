@@ -45,15 +45,14 @@ class LoginPage extends Component {
           <Row className="justify-content-center">
             <Col size="12 md-6 lg-5">
               <Bounce top duration={2000}>
-                <a href="/auth/google">
                   <img className="img-fluid" src="/imgs/icons/studying.svg" alt="empty desk" />
-                </a>
               </Bounce>
             </Col>
             <Col size="12 md-6 lg-6" className="log-in">
               <h1 className="text-center mt-5 montserrat font-weight-bold">Welcome Back!</h1>
               <h2 className="text-center mt-2 montserrat">Let's get you on track</h2>
               <LoginForm onSubmit={this.login} errorMessage={renderError(this.props.loggedIn, this.props.app)} />
+              <h6 className="montserrat mt-3 text-center">Not apart of our herd yet? <a href="/login">Sign Up Here!</a></h6>
             </Col>
           </Row>
         </Container>
