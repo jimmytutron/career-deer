@@ -3,8 +3,28 @@ import mapData from './data-mapper';
 export const JOBS_SUCCESS = "JOBS_SUCCESS";
 export const JOBS_FAIL = "JOBS_FAIL";
 export const MOVE_JOB = "MOVE_JOB";
-export const DELETE_JOB = "DELETE_JOB"
+export const DELETE_JOB = "DELETE_JOB";
+export const JOBBOARD_LOAD_SUCCESS = "JOBBOARD_LOAD_SUCCESS";
+export const JOBBOARD_LOAD_RESET = "JOBBOARD_LOAD_RESET";
 
+
+export function jobBoardLoadSuccess() {
+	return {
+		type: JOBBOARD_LOAD_SUCCESS,
+		payload: {
+			loading: false
+		}
+	}
+}
+
+export function jobBoardLoadReset() {
+	return {
+		type: JOBBOARD_LOAD_RESET,
+		payload: {
+			loading: true
+		}
+	}
+}
 
 export function grabJobs() {
 	return async (dispatch, getState) => {
@@ -12,6 +32,7 @@ export function grabJobs() {
 			const apiResponse = await (getAllJobs());
 			// console.log(apiResponse.data)
 			dispatch(grabJobsSuccess(mapData(apiResponse.data)));
+			dispatch(jobBoardLoadSuccess());
 		}
 		catch (err){
 			dispatch(grabJobsFail(err));

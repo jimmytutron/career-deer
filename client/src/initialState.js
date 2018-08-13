@@ -59,6 +59,9 @@ export default {
       }
     }
   },
+  jobBoard: {
+    loading: true
+  },
   boards: {
     // Think of progress_stage as an id here.
     saved: [],

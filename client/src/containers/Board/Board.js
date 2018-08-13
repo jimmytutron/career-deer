@@ -5,6 +5,7 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import { updateJobById } from '../../utils/API';
 import { Row, Col } from '../../components/Grid';
 import ProgressTile from '../../components/ProgressTile/ProgressTile';
+import Loading from "../../components/Loading/Loading";
 
 
 import Fade from 'react-reveal/Fade';
@@ -14,7 +15,7 @@ import Jump from 'react-reveal/Jump';
 import { connect } from 'react-redux';
 import { selectUpdateJob, resetUpdateJob } from '../../containers/UpdateJob/actions';
 
-import { grabJobs, moveJob, executeDeleteJob } from './actions';
+import { grabJobs, moveJob, executeDeleteJob, jobBoardLoadReset } from './actions';
 
 
 const reorder = (list, startIndex, endIndex) => {
@@ -108,7 +109,11 @@ class Board extends Component {
     
     if (!this.props.app.user){
       return <Redirect to='/unauthorized' />
-    };
+    }
+
+    if (this.props.jobBoard.loading) {
+      return <Loading />
+    }
 
     if (this.props.boards.saved.length === 0 && 
         this.props.boards.applied.length === 0 &&
@@ -157,6 +162,7 @@ class Board extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
+    jobBoard: state.jobBoard,
     boards: state.boards,
     app: state.app
   }
@@ -167,7 +173,8 @@ const mapDispatchToProps = () => ({
   moveJob,
   executeDeleteJob,
   selectUpdateJob,
-  resetUpdateJob
+  resetUpdateJob,
+  jobBoardLoadReset
 });
 
 // Put the things into the DOM!

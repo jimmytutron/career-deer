@@ -1,6 +1,22 @@
-import { MOVE_JOB, DELETE_JOB, JOBS_SUCCESS, JOBS_FAIL } from './actions';
+import { MOVE_JOB, DELETE_JOB, JOBS_SUCCESS, JOBS_FAIL, JOBBOARD_LOAD_SUCCESS, JOBBOARD_LOAD_RESET } from './actions';
 import initialState from '../../initialState';
 
+export function jobBoardReducer(state = initialState, {type, payload}) {
+  switch (type) {
+    case JOBBOARD_LOAD_SUCCESS:
+      return {
+        ...state,
+        ...payload
+      }
+    case JOBBOARD_LOAD_RESET:
+      return {
+        ...state,
+        ...payload
+      }
+    default:
+      return state;
+  }
+}
 
 export function grabJobsReducer(state = initialState, { type, payload }) {
   switch (type) {

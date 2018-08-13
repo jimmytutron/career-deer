@@ -10,7 +10,7 @@ import pwResetReducer from './containers/ResetPW/reducer';
 import { signUpReducer, googleAuthReducer } from './containers/SignUp/reducer';
 import chartReducer from './containers/Chart/reducer';
 import addJobReducer from './containers/AddJob/reducer';
-import { grabJobsReducer } from './containers/Board/reducer';
+import { grabJobsReducer, jobBoardReducer } from './containers/Board/reducer';
 import updateJobReducer from './containers/UpdateJob/reducer';
 import { reducer as burgerMenuReducer } from 'redux-burger-menu';
 import searchReducer from './containers/Search/reducer';
@@ -24,6 +24,7 @@ const allReducers = combineReducers({
   googleAuth: googleAuthReducer,
   chartData: chartReducer,
   addJob: addJobReducer,
+  jobBoard: jobBoardReducer,
   boards: grabJobsReducer,
   updateJob: updateJobReducer,
   burgerMenu: burgerMenuReducer,
