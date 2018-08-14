@@ -9,7 +9,7 @@ import { updatePassword } from './actions';
 import UpdatePWForm from '../../components/UpdatePWForm';
 
 import { Col, Row, Container } from '../../components/Grid';
-import Bounce from 'react-reveal/Bounce';
+import Flip from 'react-reveal/Flip';
 
 
 
@@ -34,9 +34,9 @@ class UpdatePW extends Component {
                 <Container>
                     <Row className="justify-content-center text-center pt-5 mx-0 px-0">
                         <Col size="12 md-10">
-                            <Bounce>
+                            <Flip right>
                                 <img className="my-4" width="45%" src="/imgs/icons/password.svg" alt="forgot your password?" />
-                            </Bounce>
+                            </Flip>
                         </Col>
                     </Row>
                     <UpdatePWForm onSubmit={this.requestUpdatePW} />
