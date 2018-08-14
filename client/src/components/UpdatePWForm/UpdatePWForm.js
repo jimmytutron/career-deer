@@ -34,24 +34,27 @@ const FormStyle = {
 let UpdatePWForm = ({ handleSubmit, pristine, submitting, errorMessage }) => {
   return (
     <Row className="justify-content-center text-center">
-      <Col size="10">
+      <Col size="12 md-10">
 
         <form style={FormStyle} onSubmit={handleSubmit}>
 
           <Row>
-          <h2 className="text-left">Enter New Password.</h2>
+          <h2 className="text-left mt-4 montserrat">Enter a new password.</h2>
             <Field className="text-input" name="password" component={renderTextField} type="password" label="Please enter a new password." />
-            <Field className="text-input" name="passwordRepeat" component={renderTextField} type="password" label="Please enter your new password again." />
+            <Field className="text-input" name="passwordRepeat" component={renderTextField} type="password" label="Please confirm your new password" />
           </Row>
           <h6>{errorMessage}</h6>
+          <Row className="justify-content-end">
           <Button
             variant="contained"
             color="secondary"
-            className = "btn btn-info my-3"
+            className = "my-3"
             type="submit"
             disabled={pristine || submitting}
           >
-            Update Password</Button>
+            Update Password
+            </Button>
+            </Row>
         </form>
        </Col>
      </Row>
