@@ -8,7 +8,8 @@ import queryString from 'query-string';
 import { updatePassword } from './actions';
 import UpdatePWForm from '../../components/UpdatePWForm';
 
-import { /*Col, Row,*/ Container } from '../../components/Grid';
+import { Col, Row, Container } from '../../components/Grid';
+import Bounce from 'react-reveal/Bounce';
 
 
 
@@ -31,6 +32,13 @@ class UpdatePW extends Component {
         } else {
             return (
                 <Container>
+                    <Row className="justify-content-center text-center pt-5 mx-0 px-0">
+                        <Col size="12 md-10">
+                            <Bounce>
+                                <img className="my-4" width="45%" src="/imgs/icons/password.svg" alt="forgot your password?" />
+                            </Bounce>
+                        </Col>
+                    </Row>
                     <UpdatePWForm onSubmit={this.requestUpdatePW} />
                 </Container>
             )
