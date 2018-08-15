@@ -4,7 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { TextField } from 'redux-form-material-ui';
 import { Col, Row } from '../Grid';
 import { validate } from './validate';
-import Bounce from 'react-reveal/Bounce';
+// import Bounce from 'react-reveal/Bounce';
 import Button from '@material-ui/core/Button';
 
 const renderTextField = (

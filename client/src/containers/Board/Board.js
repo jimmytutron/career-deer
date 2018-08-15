@@ -31,6 +31,10 @@ const move = (source, destination, droppableSource, droppableDestination) => {
   const destClone = [...destination];
   const [removed] = sourceClone.splice(droppableSource.index, 1);
 
+  removed.progress_stage = droppableDestination.droppableId;
+  // console.log("----------------")
+  // console.log(removed)
+  // console.log("----------------")
   destClone.splice(droppableDestination.index, 0, removed);
 
   const result = {};
