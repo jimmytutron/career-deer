@@ -23,7 +23,7 @@
     "bcrypt-nodejs": "^0.0.3",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
-    "chart.js": "^2.7.2",
+    "chart.js": "^2.9.4",
     "chartjs-plugin-datalabels": "^0.3.0",
     "cheerio": "^1.0.0-rc.2",
     "connect-mongo": "^2.0.1",
